@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hassani TV | مركز المباريات المباشرة</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
+
+    <style>
+        * { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; box-sizing: border-box; }
+        input, textarea { -webkit-user-select: text; user-select: text; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg-base: #060a08;
+            --bg-surface: #0a110d;
+            --bg-elevated: #0f1712;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #00E676;
+            --primary-glow: rgba(0, 230, 118, 0.4);
+            --accent: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --live: #ff004a;
+            --live-glow: rgba(255, 0, 74, 0.4);
+            
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass-hover: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .light-mode {
+            --bg-base: #f4f7f5;
+            --bg-surface: #ffffff;
+            --bg-elevated: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #059669;
+            --primary-glow: rgba(5, 150, 105, 0.2);
+            --accent: #b45309;
+            --accent-glow: rgba(180, 83, 9, 0.2);
+            --live: #e11d48;
+            --live-glow: rgba(225, 29, 72, 0.3);
+            
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-hover: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg-base); color: var(--text-main); transition: 0.5s background, 0.5s color; min-height: 100vh; overflow-x: hidden; }
+
+        /* ================= CINEMATIC BACKGROUND ================= */
+        .bg-layer { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+        .bg-stadium-light { position: absolute; top: 0; left: 0; right: 0; height: 80vh; background: radial-gradient(ellipse at 50% 0%, var(--primary-glow), transparent 60%); opacity: 0.6; transition: 0.5s; }
+        .light-mode .bg-stadium-light { opacity: 0.4; }
+        
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; animation: floatOrb 25s infinite alternate ease-in-out; }
+        .orb-1 { width: 40vw; height: 40vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle, var(--primary-glow), transparent); top: 20%; right: -10%; }
+        .orb-2 { width: 35vw; height: 35vw; max-width: 450px; max-height: 450px; background: radial-gradient(circle, var(--accent-glow), transparent); bottom: 10%; left: -10%; animation-delay: -12s; }
+        
+        .bg-noise { position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
+        .light-mode .bg-noise { opacity: 0.02; }
+
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-30px, 40px) scale(1.1); } }
+
+        /* ================= NAVBAR ================= */
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 50; background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--glass-border); transition: 0.4s; }
+
+        .nav-link { padding: 8px 16px; border-radius: 12px; font-weight: 700; font-size: 14px; color: var(--text-muted); transition: 0.3s; }
+        .nav-link:hover { color: var(--text-main); background: var(--glass-hover); }
+        .nav-link.active { color: var(--primary); background: var(--primary-glow); }
+
+        .theme-toggle { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); cursor: pointer; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--glass-hover); border-color: var(--primary); transform: translateY(-2px); }
+
+        /* ================= DAY TABS ================= */
+        .day-tabs { display: inline-flex; padding: 6px; border-radius: 100px; background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); box-shadow: var(--card-shadow); }
+        .day-tab { padding: 10px 28px; border-radius: 100px; font-weight: 800; font-size: 14px; color: var(--text-muted); cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; background: transparent; font-family: inherit; }
+        .day-tab.active { background: linear-gradient(135deg, var(--primary), #10B981); color: #fff; box-shadow: 0 8px 20px var(--primary-glow); }
+        .day-tab:not(.active):hover { color: var(--text-main); }
+
+        /* ================= STATUS FILTER (Chips) ================= */
+        .chip-filter { padding: 8px 18px; border-radius: 12px; font-weight: 700; font-size: 13px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-muted); cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; }
+        .chip-filter:hover { background: var(--glass-hover); color: var(--text-main); }
+        .chip-filter.active { background: var(--bg-surface); color: var(--primary); border-color: var(--primary); box-shadow: 0 4px 15px var(--primary-glow); }
+        .chip-filter .count { background: var(--glass-hover); padding: 2px 8px; border-radius: 100px; font-size: 11px; font-weight: 900; }
+        .chip-filter.active .count { background: var(--primary); color: #fff; }
+
+        /* ================= MATCH CARDS ================= */
+        .match-card {
+            display: block; text-decoration: none; color: var(--text-main);
+            background: var(--bg-surface); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 18px; margin-bottom: 12px;
+            position: relative; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--card-shadow);
+        }
+        .match-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,230,118,0.05), transparent);
+            transform: skewX(-20deg); transition: 0.7s ease;
+            pointer-events: none;
+        }
+        .match-card:hover {
+            transform: translateY(-4px); border-color: var(--primary);
+            box-shadow: 0 15px 40px var(--primary-glow), var(--card-shadow);
+        }
+        .match-card:hover::before { left: 150%; }
+        
+        .match-card.live-card { 
+            border-color: var(--live);
+            background: linear-gradient(145deg, var(--bg-surface), rgba(255, 0, 74, 0.05));
+        }
+        .match-card.live-card:hover {
+            box-shadow: 0 15px 40px var(--live-glow), var(--card-shadow);
+        }
+
+        /* Team Logo */
+        .team-logo-md { width: 56px; height: 56px; border-radius: 14px; background: var(--bg-base); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; padding: 6px; transition: 0.3s; }
+        .match-card:hover .team-logo-md { transform: scale(1.08); border-color: var(--primary); }
+        .team-logo-md img { width: 100%; height: 100%; object-fit: contain; }
+        
+        .team-name { font-size: 13px; font-weight: 800; line-height: 1.3; text-align: center; }
+
+        /* Score & Time */
+        .score-big { font-size: 30px; font-weight: 900; letter-spacing: -1px; color: var(--text-main); }
+        .time-big { font-size: 22px; font-weight: 800; color: var(--text-main); }
+
+        /* Status Badges */
+        .badge { padding: 4px 12px; border-radius: 100px; font-size: 10px; font-weight: 900; border: 1px solid; display: inline-flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-live { background: rgba(255,0,74,0.1); color: var(--live); border-color: rgba(255,0,74,0.3); }
+        .light-mode .badge-live { background: rgba(225,29,72,0.1); }
+        .badge-soon { background: rgba(0,230,118,0.1); color: var(--primary); border-color: rgba(0,230,118,0.3); }
+        .light-mode .badge-soon { background: rgba(5,150,105,0.1); }
+        .badge-upcoming { background: var(--glass-bg); color: var(--text-muted); border-color: var(--glass-border); }
+        .badge-finished { background: var(--glass-bg); color: var(--text-muted); border-color: var(--glass-border); }
+        
+        .live-pulse { width: 6px; height: 6px; background-color: var(--live); border-radius: 50%; box-shadow: 0 0 10px var(--live); animation: pulse-live 1.5s infinite; }
+        @keyframes pulse-live { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; } }
+
+        .stream-dot { position: absolute; top: 14px; left: 14px; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); animation: pulse-stream 2s infinite; }
+        @keyframes pulse-stream { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        /* League Header */
+        .league-header {
+            display: flex; align-items: center; gap: 12px; padding: 16px 20px;
+            background: var(--bg-elevated); border: 1px solid var(--glass-border);
+            border-radius: 16px; margin: 24px 0 12px 0;
+            font-weight: 900; color: var(--text-main); font-size: 14px;
+            transition: 0.3s;
+        }
+        .league-header:hover { border-color: var(--accent); }
+        .league-header img { width: 28px; height: 28px; object-fit: contain; }
+
+        /* Loader */
+        .loader { width: 50px; height: 50px; border: 3px solid var(--glass-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 40px auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Ads */
+        .ad-slot { width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1px dashed var(--glass-border); background: var(--glass-bg); color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 20px; }
+
+        /* Empty */
+        .empty-state { text-align: center; padding: 60px 20px; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 24px; }
+
+        /* Scroll Reveal */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Hide Scrollbar for horizontal scroll */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+    <!-- 🌌 CINEMATIC BACKGROUND -->
+    <div class="bg-layer">
+        <div class="bg-stadium-light"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- 📱 NAVBAR -->
+    <header class="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-white font-black text-xl">H</span>
+                </div>
+                <div class="text-xl font-black tracking-tight">
+                    Hassani<span style="color: var(--accent);">TV</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-2">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="site.html" class="nav-link active">المباريات</a>
+                <a href="#" class="nav-link">البطولات</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="theme-toggle" aria-label="تغيير المظهر">
+                    <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 📊 MAIN -->
+    <main class="max-w-4xl mx-auto px-4 pt-28 pb-12 relative z-10 min-h-screen">
+        
+        <!-- Page Header -->
+        <div class="reveal text-center mb-8">
+            <span class="text-xs font-black text-[var(--accent)] tracking-widest uppercase mb-2 block">Match Center</span>
+            <h1 class="text-3xl md:text-4xl font-black mb-2">
+                جدول <span style="background: linear-gradient(135deg, var(--primary), #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">المباريات</span>
+            </h1>
+            <p class="text-sm text-[var(--text-muted)]">تابع أهم المباريات مع تحديث لحظي للنتائج</p>
+        </div>
+
+        <!-- Top Ad -->
+        <div class="ad-slot mb-6 reveal">إعلان — TOP BANNER</div>
+
+        <!-- 📅 Day Tabs -->
+        <div class="flex justify-center mb-6 reveal">
+            <div class="day-tabs">
+                <button id="tab-yesterday" class="day-tab" onclick="switchDay('yesterday')">الأمس</button>
+                <button id="tab-today" class="day-tab active" onclick="switchDay('today')">اليوم</button>
+                <button id="tab-tomorrow" class="day-tab" onclick="switchDay('tomorrow')">الغد</button>
+            </div>
+        </div>
+
+        <!-- 🎯 Status Filters -->
+        <div class="flex items-center gap-2 mb-6 overflow-x-auto scrollbar-hide pb-2 reveal">
+            <button class="chip-filter active" data-filter="all" onclick="filterByStatus('all', this)">
+                جميع المباريات <span class="count" id="count-all">0</span>
+            </button>
+            <button class="chip-filter" data-filter="live" onclick="filterByStatus('live', this)">
+                <span class="w-2 h-2 rounded-full bg-[var(--live)] animate-pulse"></span>
+                مباشر <span class="count" id="count-live">0</span>
+            </button>
+            <button class="chip-filter" data-filter="upcoming" onclick="filterByStatus('upcoming', this)">
+                لم تبدأ <span class="count" id="count-upcoming">0</span>
+            </button>
+            <button class="chip-filter" data-filter="finished" onclick="filterByStatus('finished', this)">
+                انتهت <span class="count" id="count-finished">0</span>
+            </button>
+        </div>
+
+        <!-- Matches Container -->
+        <div id="matches-container">
+            <div class="loader"></div>
+        </div>
+
+    </main>
+
+    <!-- 📌 FOOTER -->
+    <footer class="border-t border-[var(--glass-border)] bg-[var(--bg-surface)] pt-10 pb-6 text-center mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-3 opacity-80">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)]">
+                    <span class="text-white font-black text-sm">H</span>
+                </div>
+                <div class="text-lg font-black">Hassani<span style="color: var(--accent);">TV</span></div>
+            </div>
+            <p class="text-xs text-[var(--text-muted)] opacity-60">© 2025 Hassani TV — صنع بـ ❤️ في المغرب 🇲🇦</p>
+        </div>
+    </footer>
+
+<script>
+/* ================= THEME TOGGLE ================= */
+const themeBtn = document.getElementById('theme-toggle');
+const moonIcon = document.getElementById('moon-icon');
+const sunIcon = document.getElementById('sun-icon');
+
+function updateIcons() {
+    if (document.documentElement.classList.contains('light-mode')) {
+        moonIcon.classList.remove('hidden'); sunIcon.classList.add('hidden');
+    } else {
+        sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
+    }
+}
+updateIcons();
+
+themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+    updateIcons();
+});
+
+/* ================= DATA & LOGIC ================= */
+let currentDay = "today";
+let currentFilter = "all";
+let allMatches = [];
+
+function escapeHTML(str) {
+    return String(str || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
+/* ================= MATCH CARD GENERATOR ================= */
+function createMatchCard(m) {
+    const isLive = m.type === "live";
+    const isFinished = m.type === "finished";
+    const isUpcoming = m.type === "upcoming";
+    const hasStreams = m.streams && m.streams.length > 0;
+    const isSoon = String(m.pillText || "").includes("بعد قليل");
+
+    // Status Badge
+    let badge = "";
+    if (isLive) {
+        badge = `<div class="badge badge-live"><span class="live-pulse"></span>${escapeHTML(m.pillText)}</div>`;
+    } else if (isSoon) {
+        badge = `<div class="badge badge-soon">${escapeHTML(m.pillText)}</div>`;
+    } else if (isFinished) {
+        badge = `<div class="badge badge-finished">انتهت</div>`;
+    } else {
+        badge = `<div class="badge badge-upcoming">${escapeHTML(m.pillText)}</div>`;
+    }
+
+    // Center Display
+    let centerDisplay = (isLive || isFinished)
+        ? `<div class="score-big">${escapeHTML(m.mainText)}</div>`
+        : `<div class="time-big">${escapeHTML(m.mainText)}</div>`;
+
+    // Stream indicator
+    const streamDot = hasStreams ? `<div class="stream-dot"></div>` : '';
+
+    return `
+        <a href="/watch?id=${escapeHTML(String(m.id))}" class="match-card ${isLive ? 'live-card' : ''}">
+            ${streamDot}
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-[11px] font-black tracking-wider uppercase text-[var(--text-muted)]">${escapeHTML(m.league)}</span>
+                ${badge}
+            </div>
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex flex-col items-center w-[30%] gap-2">
+                    <div class="team-logo-md"><img src="${escapeHTML(m.homeLogo)}" alt="${escapeHTML(m.home)}" onerror="this.style.display='none'"></div>
+                    <span class="team-name">${escapeHTML(m.home)}</span>
+                </div>
+                <div class="flex flex-col items-center w-[30%]">
+                    ${centerDisplay}
+                    ${hasStreams && isUpcoming ? `<span class="mt-2 text-[9px] bg-[var(--accent)]/10 text-[var(--accent)] px-2 py-0.5 rounded font-bold border border-[var(--accent)]/20">🎬 يتوفر بث</span>` : ''}
+                </div>
+                <div class="flex flex-col items-center w-[30%] gap-2">
+                    <div class="team-logo-md"><img src="${escapeHTML(m.awayLogo)}" alt="${escapeHTML(m.away)}" onerror="this.style.display='none'"></div>
+                    <span class="team-name">${escapeHTML(m.away)}</span>
+                </div>
+            </div>
+        </a>
+    `;
+}
+
+/* ================= GROUP MATCHES BY LEAGUE ================= */
+function groupByLeague(matches) {
+    const groups = {};
+    matches.forEach(m => {
+        const key = m.league || 'Other';
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(m);
+    });
+    return groups;
+}
+
+/* ================= RENDER MATCHES ================= */
+function renderFilteredMatches() {
+    const container = document.getElementById("matches-container");
+    
+    let filtered = allMatches;
+    if (currentFilter !== "all") {
+        filtered = allMatches.filter(m => m.type === currentFilter);
+    }
+
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state reveal active">
+                <div class="text-6xl mb-4 opacity-40">⚽</div>
+                <h3 class="text-xl font-black mb-2">لا توجد مباريات</h3>
+                <p class="text-sm text-[var(--text-muted)]">جرب تغيير الفلتر أو اختيار يوم آخر</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Group by League
+    const groups = groupByLeague(filtered);
+    let html = "";
+    let matchIndex = 0;
+
+    Object.keys(groups).forEach(leagueName => {
+        const matches = groups[leagueName];
+        html += `
+            <div class="league-header reveal">
+                <span class="text-lg">🏆</span>
+                <span>${escapeHTML(leagueName)}</span>
+                <span class="mr-auto text-xs text-[var(--text-muted)] font-bold">${matches.length} مباراة</span>
+            </div>
+        `;
+        matches.forEach(m => {
+            html += createMatchCard(m);
+            matchIndex++;
+            // إعلان بعد كل 4 ماتشات
+            if (matchIndex % 4 === 0) {
+                html += `<div class="ad-slot my-4">إعلان — IN-FEED</div>`;
+            }
+        });
+    });
+
+    container.innerHTML = html;
+    
+    // Re-trigger reveal for new elements
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+}
+
+/* ================= UPDATE COUNTS ================= */
+function updateCounts() {
+    document.getElementById('count-all').textContent = allMatches.length;
+    document.getElementById('count-live').textContent = allMatches.filter(m => m.type === 'live').length;
+    document.getElementById('count-upcoming').textContent = allMatches.filter(m => m.type === 'upcoming').length;
+    document.getElementById('count-finished').textContent = allMatches.filter(m => m.type === 'finished').length;
+}
+
+/* ================= FETCH MATCHES ================= */
+async function loadMatches(day) {
+    currentDay = day;
+    const container = document.getElementById("matches-container");
+    container.innerHTML = `<div class="loader"></div>`;
+
+    try {
+        const res = await fetch(`/api/matches?day=${encodeURIComponent(day)}`);
+        const data = await res.json();
+        allMatches = Array.isArray(data.matches) ? data.matches : [];
+        
+        updateCounts();
+        renderFilteredMatches();
+    } catch (e) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="text-5xl mb-4">⚠️</div>
+                <h3 class="text-xl font-black mb-2 text-red-500">تعذر تحميل المباريات</h3>
+                <p class="text-sm text-[var(--text-muted)]">تأكد من اتصال السيرفر وحاول مجدداً</p>
+                <button onclick="loadMatches(currentDay)" class="mt-4 px-6 py-2 rounded-full bg-[var(--primary)] text-white font-bold">إعادة المحاولة</button>
+            </div>
+        `;
+    }
+}
+
+/* ================= EVENTS ================= */
+function switchDay(day) {
+    document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
+    document.getElementById("tab-" + day).classList.add("active");
+    loadMatches(day);
+}
+
+function filterByStatus(status, btn) {
+    currentFilter = status;
+    document.querySelectorAll(".chip-filter").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    renderFilteredMatches();
+}
+
+/* ================= SCROLL REVEAL ================= */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ================= AUTO REFRESH & INIT ================= */
+document.addEventListener('contextmenu', e => e.preventDefault());
+setInterval(() => loadMatches(currentDay), 60000); // كل دقيقة
+loadMatches("today");
+</script>
+
+</body>
+</html>

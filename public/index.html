@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hassani TV | منصة البث المباشر الأقوى</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        // Theme init قبل تحميل الصفحة لتفادي الوميض
+        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
+
+    <style>
+        /* ================= BASE & PROTECTION ================= */
+        * { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+        input, textarea { -webkit-user-select: text; user-select: text; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            /* 🌙 DARK MODE (Cinematic Stadium) */
+            --bg-base: #060a08;
+            --bg-surface: #0a110d;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #00E676; /* Neon Green */
+            --primary-glow: rgba(0, 230, 118, 0.4);
+            --accent: #D4AF37;  /* Premium Gold */
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --live: #ff004a;
+            
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-hover: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            
+            --stadium-light: radial-gradient(circle at 50% 0%, rgba(0, 230, 118, 0.15), transparent 60%);
+        }
+
+        .light-mode {
+            /* ☀️ LIGHT MODE (Premium Sports Platform) */
+            --bg-base: #f4f7f5;
+            --bg-surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #059669;
+            --primary-glow: rgba(5, 150, 105, 0.2);
+            --accent: #b45309;
+            --accent-glow: rgba(180, 83, 9, 0.2);
+            --live: #e11d48;
+            
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-hover: #ffffff;
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            
+            --stadium-light: radial-gradient(circle at 50% 0%, rgba(5, 150, 105, 0.08), transparent 60%);
+        }
+
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-base); color: var(--text-main); transition: background-color 0.5s ease, color 0.5s ease; min-height: 100vh; overflow-x: hidden; }
+
+        /* ================= CINEMATIC BACKGROUND ================= */
+        .bg-layer { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
+        .bg-stadium-light { position: absolute; top: 0; left: 0; right: 0; height: 100vh; background: var(--stadium-light); transition: background 0.5s; }
+        
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.6; animation: floatOrb 20s infinite alternate ease-in-out; }
+        .orb-1 { width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, var(--primary-glow), transparent); top: -20%; right: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle, var(--accent-glow), transparent); bottom: -10%; left: -10%; animation-delay: -10s; }
+        
+        .bg-noise { position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
+        .light-mode .bg-noise { opacity: 0.02; }
+
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-40px, 40px) scale(1.1); } }
+
+        /* ================= NAVBAR ================= */
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 50; transition: all 0.4s ease; border-bottom: 1px solid transparent; }
+        .navbar.scrolled { background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+        .theme-toggle { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); cursor: pointer; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--glass-hover); transform: translateY(-2px); border-color: var(--primary); }
+
+        /* ================= BUTTONS ================= */
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #10B981); color: #fff; padding: 14px 36px; border-radius: 100px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 30px var(--primary-glow); display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px var(--primary-glow); filter: brightness(1.1); }
+        
+        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border); padding: 14px 36px; border-radius: 100px; font-weight: 700; font-size: 16px; backdrop-filter: blur(10px); transition: all 0.3s; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .btn-secondary:hover { background: var(--glass-hover); border-color: var(--accent); transform: translateY(-2px); }
+
+        /* ================= CARDS & COMPONENTS ================= */
+        .premium-card { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 24px; padding: 32px; position: relative; overflow: hidden; transition: all 0.4s; box-shadow: var(--card-shadow); }
+        .premium-card::before { content: ''; position: absolute; inset: 0; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), var(--primary-glow), transparent 40%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+        .premium-card:hover { transform: translateY(-6px); border-color: var(--primary); }
+        .premium-card:hover::before { opacity: 0.15; }
+
+        .feat-icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--primary); font-size: 28px; transition: 0.4s; }
+        .premium-card:hover .feat-icon { background: var(--primary); color: #fff; transform: scale(1.1) rotate(-5deg); box-shadow: 0 10px 25px var(--primary-glow); border-color: transparent; }
+
+        /* ================= FEATURED MATCH (Dynamic) ================= */
+        .featured-match-card { background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-base) 100%); border: 1px solid var(--glass-border); border-radius: 32px; padding: 2px; position: relative; overflow: hidden; box-shadow: var(--card-shadow); transition: transform 0.4s; }
+        .featured-match-inner { background: var(--glass-bg); backdrop-filter: blur(20px); border-radius: 30px; padding: 30px; position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
+        .featured-match-card::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, var(--accent-glow), transparent 30%); animation: rotate 10s linear infinite; opacity: 0.3; z-index: 1; }
+        .featured-match-card:hover { transform: scale(1.02); }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        .team-logo-big { width: 90px; height: 90px; border-radius: 24px; background: var(--bg-base); border: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center; padding: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
+        .team-logo-big img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+        
+        .live-pulse { width: 10px; height: 10px; background-color: var(--live); border-radius: 50%; box-shadow: 0 0 15px var(--live); animation: pulse-live 1.5s infinite; }
+        @keyframes pulse-live { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } }
+
+        /* ================= TEXT GRADIENTS ================= */
+        .text-grad-primary { background: linear-gradient(135deg, var(--primary), #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-grad-accent { background: linear-gradient(135deg, var(--accent), #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* ================= SCROLL REVEAL ANIMATIONS ================= */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+    </style>
+</head>
+<body>
+
+    <!-- 🌌 CINEMATIC BACKGROUND -->
+    <div class="bg-layer">
+        <div class="bg-stadium-light"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- 📱 NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-white font-black text-xl">H</span>
+                </div>
+                <div class="text-2xl font-black tracking-tight text-[var(--text-main)]">
+                    Hassani<span class="text-[var(--accent)]">TV</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-bold text-[var(--text-muted)]">
+                <a href="site.html" class="hover:text-[var(--primary)] transition-colors">مباريات اليوم</a>
+                <a href="#features" class="hover:text-[var(--primary)] transition-colors">المميزات</a>
+                <a href="#leagues" class="hover:text-[var(--primary)] transition-colors">البطولات</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="theme-toggle" aria-label="تغيير المظهر">
+                    <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
+                <a href="site.html" class="btn-primary hidden sm:flex !px-6 !py-2.5 !text-sm">دخول للمنصة</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ⚡ HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+            
+            <!-- Hero Text -->
+            <div class="text-center lg:text-right reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--glass-border)] bg-[var(--glass-bg)] mb-6 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-[var(--live)] animate-pulse"></span>
+                    <span class="text-xs font-black tracking-widest text-[var(--text-muted)] uppercase">Live Sports Platform</span>
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black mb-6 leading-[1.2]">
+                    موطن كرة القدم <br>
+                    <span class="text-grad-primary">الحقيقي</span> بين يديك
+                </h1>
+                
+                <p class="text-lg sm:text-xl mb-10 leading-relaxed text-[var(--text-muted)] max-w-2xl mx-auto lg:mx-0">
+                    منصة Hassani TV تمنحك تجربة مشاهدة سينمائية. سيرفرات فائقة السرعة، جودة 4K/HD، وتغطية حصرية لكل البطولات بدون تقطيع.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="site.html" class="btn-primary w-full sm:w-auto justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        مشاهدة مباريات اليوم
+                    </a>
+                    <a href="#features" class="btn-secondary w-full sm:w-auto justify-center">اكتشف المنصة</a>
+                </div>
+            </div>
+
+            <!-- Featured Match (Dynamic) -->
+            <div class="reveal delay-100 relative w-full max-w-md mx-auto lg:ml-0" id="featured-match-container">
+                <!-- Skeleton Loader قبل ما يجي الماتش -->
+                <div class="featured-match-card animate-pulse">
+                    <div class="featured-match-inner items-center justify-center">
+                        <div class="loader w-10 h-10 border-4 border-[var(--glass-border)] border-t-[var(--primary)] rounded-full animate-spin"></div>
+                        <p class="mt-4 font-bold text-[var(--text-muted)]">جاري جلب أهم مباراة...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 📊 STATS SECTION -->
+    <section class="py-10 border-y border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-x-reverse divide-[var(--glass-border)]">
+                <div class="reveal">
+                    <div class="text-4xl font-black text-grad-accent mb-1">+50</div>
+                    <div class="text-sm font-bold text-[var(--text-muted)]">بطولة ودوري</div>
+                </div>
+                <div class="reveal delay-100">
+                    <div class="text-4xl font-black text-grad-primary mb-1">4K/HD</div>
+                    <div class="text-sm font-bold text-[var(--text-muted)]">جودة البث</div>
+                </div>
+                <div class="reveal delay-200">
+                    <div class="text-4xl font-black text-grad-accent mb-1">24/7</div>
+                    <div class="text-sm font-bold text-[var(--text-muted)]">سيرفرات مستقرة</div>
+                </div>
+                <div class="reveal delay-100">
+                    <div class="text-4xl font-black text-grad-primary mb-1">100%</div>
+                    <div class="text-sm font-bold text-[var(--text-muted)]">مجاناً وآمن</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌟 FEATURES SECTION -->
+    <section id="features" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-sm font-black tracking-wider text-[var(--accent)] uppercase mb-2 block">Premium Features</span>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">لماذا <span class="text-grad-primary">Hassani TV</span> ؟</h2>
+                <p class="text-lg text-[var(--text-muted)] max-w-2xl mx-auto">تصميم عصري، تقنيات متطورة، وتجربة مستخدم تضاهي المنصات العالمية المدفوعة.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Feat 1 -->
+                <div class="premium-card reveal">
+                    <div class="feat-icon">⚡</div>
+                    <h3 class="text-2xl font-black mb-3">سرعة خيالية</h3>
+                    <p class="text-[var(--text-muted)] leading-relaxed">بنية تحتية قوية تعتمد على أحدث تقنيات الـ HLS لضمان وصول البث إليك في أجزاء من الثانية بدون تأخير.</p>
+                </div>
+                <!-- Feat 2 -->
+                <div class="premium-card reveal delay-100">
+                    <div class="feat-icon">🎯</div>
+                    <h3 class="text-2xl font-black mb-3">تحديث لحظي</h3>
+                    <p class="text-[var(--text-muted)] leading-relaxed">جدول مباريات يتزامن تلقائياً كل دقيقة ليعطيك حالة المباراة، النتائج، والأهداف في الوقت الفعلي.</p>
+                </div>
+                <!-- Feat 3 -->
+                <div class="premium-card reveal delay-200">
+                    <div class="feat-icon">📱</div>
+                    <h3 class="text-2xl font-black mb-3">متجاوب 100%</h3>
+                    <p class="text-[var(--text-muted)] leading-relaxed">واجهة مصممة لتتلائم بشكل مثالي مع شاشة هاتفك، جهازك اللوحي، أو شاشة التلفاز الذكي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🏆 LEAGUES SECTION -->
+    <section id="leagues" class="py-24 bg-[var(--glass-bg)] border-y border-[var(--glass-border)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-black mb-10">البطولات <span class="text-grad-accent">المدعومة</span></h2>
+            
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🏆 دوري أبطال أوروبا</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🏴󠁧󠁢󠁥󠁮󠁧󠁿 الدوري الإنجليزي</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🇪🇸 الدوري الإسباني</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🇲🇦 البطولة الإحترافية</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🇮🇹 الدوري الإيطالي</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🌍 كأس العالم</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🇸🇦 دوري روشن</span>
+                <span class="px-5 py-2.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--glass-border)] font-bold text-[var(--text-muted)] hover:border-[var(--primary)] hover:text-[var(--text-main)] transition-colors cursor-default shadow-sm">🇩🇪 الدوري الألماني</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚀 BOTTOM CTA -->
+    <section class="py-24 relative z-10 text-center reveal">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-black mb-6">لا تفوت <span class="text-grad-primary">اللحظة</span></h2>
+            <p class="text-xl text-[var(--text-muted)] mb-10">انضم الآن إلى آلاف المشاهدين واستمتع بالمباريات مجاناً.</p>
+            <a href="site.html" class="btn-primary !px-10 !py-4 !text-lg">
+                بدأ المشاهدة الآن
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- 📌 FOOTER -->
+    <footer class="border-t border-[var(--glass-border)] bg-[var(--bg-surface)] pt-12 pb-8 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <div class="flex items-center gap-2 mb-6 opacity-80">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)]">
+                    <span class="text-white font-black text-sm">H</span>
+                </div>
+                <div class="text-xl font-black">Hassani<span class="text-[var(--accent)]">TV</span></div>
+            </div>
+            <p class="text-sm font-bold text-[var(--text-muted)] mb-2">المنصة العربية الأولى لبث المباريات بجودة عالية</p>
+            <p class="text-xs text-[var(--text-muted)] opacity-60">© 2025 Hassani TV. جميع الحقوق محفوظة. 🇲🇦</p>
+        </div>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        /* 🎨 THEME TOGGLE LOGIC */
+        const themeBtn = document.getElementById('theme-toggle');
+        const moonIcon = document.getElementById('moon-icon');
+        const sunIcon = document.getElementById('sun-icon');
+
+        function updateIcons() {
+            if (document.documentElement.classList.contains('light-mode')) {
+                moonIcon.classList.remove('hidden'); sunIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
+            }
+        }
+        updateIcons();
+
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('light-mode');
+            localStorage.setItem('theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+            updateIcons();
+        });
+
+        /* 🖱️ NAVBAR SCROLL EFFECT */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        /* 🎥 SCROLL REVEAL ANIMATION */
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* ⚽ FETCH FEATURED MATCH FOR HERO SECTION */
+        async function loadFeaturedMatch() {
+            const container = document.getElementById('featured-match-container');
+            try {
+                const res = await fetch('/api/matches?day=today');
+                const data = await res.json();
+                
+                if (data.success && data.matches && data.matches.length > 0) {
+                    // نأخذ المباراة الأولى (لأن الـ Backend ديجا كيرتب المباشر والأهم هو الأول)
+                    const m = data.matches[0];
+                    const isLive = m.type === "live";
+                    const hasStream = m.streams && m.streams.length > 0;
+                    
+                    let badge = isLive 
+                        ? `<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[var(--live)]/10 border border-[var(--live)]/20 text-[var(--live)] text-xs font-black"><span class="live-pulse"></span>مباشر الآن</div>` 
+                        : `<div class="inline-flex items-center px-3 py-1 rounded bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-muted)] text-xs font-bold">${m.pillText}</div>`;
+
+                    let centerInfo = isLive || m.type === "finished" 
+                        ? `<div class="text-4xl sm:text-5xl font-black tracking-tight" style="background: linear-gradient(to bottom, var(--text-main), var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${m.mainText}</div>` 
+                        : `<div class="text-2xl sm:text-3xl font-black text-[var(--text-main)]">${m.mainText}</div>`;
+
+                    container.innerHTML = `
+                        <a href="site.html" class="featured-match-card block cursor-pointer group">
+                            <div class="featured-match-inner">
+                                <div class="flex justify-between items-center mb-6">
+                                    <span class="text-xs font-black text-[var(--accent)] tracking-wider uppercase">${m.league}</span>
+                                    ${badge}
+                                </div>
+
+                                <div class="flex items-center justify-between px-2">
+                                    <div class="flex flex-col items-center w-[30%] gap-3">
+                                        <div class="team-logo-big group-hover:border-[var(--primary)]"><img src="${m.homeLogo}" alt="${m.home}" onerror="this.style.display='none'"></div>
+                                        <span class="text-sm font-bold text-center leading-tight">${m.home}</span>
+                                    </div>
+
+                                    <div class="flex flex-col items-center w-[30%] justify-center">
+                                        ${centerInfo}
+                                        ${hasStream && !isLive ? `<span class="mt-3 text-[10px] bg-[var(--accent)]/10 text-[var(--accent)] px-2 py-1 rounded font-bold border border-[var(--accent)]/20">يتوفر بث</span>` : ''}
+                                    </div>
+
+                                    <div class="flex flex-col items-center w-[30%] gap-3">
+                                        <div class="team-logo-big group-hover:border-[var(--primary)]"><img src="${m.awayLogo}" alt="${m.away}" onerror="this.style.display='none'"></div>
+                                        <span class="text-sm font-bold text-center leading-tight">${m.away}</span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-8 pt-4 border-t border-[var(--glass-border)] text-center text-xs font-bold text-[var(--text-muted)] group-hover:text-[var(--primary)] transition-colors">
+                                    انقر لمشاهدة التفاصيل ←
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                } else {
+                    // إذا لم توجد مباريات
+                    container.innerHTML = `
+                        <div class="featured-match-card">
+                            <div class="featured-match-inner items-center justify-center text-center">
+                                <span class="text-6xl mb-4 opacity-50 block">⚽</span>
+                                <h3 class="text-xl font-black text-[var(--text-main)] mb-2">استرح قليلاً</h3>
+                                <p class="text-sm text-[var(--text-muted)]">لا توجد مواجهات كبرى مبرمجة في هذا الوقت.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (e) {
+                container.innerHTML = `<div class="p-10 text-center text-[var(--text-muted)] border border-[var(--glass-border)] rounded-3xl bg-[var(--bg-surface)]">تعذر تحميل المباراة الأبرز</div>`;
+            }
+        }
+
+        // 🖱️ Card Mouse Hover Effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.premium-card, .featured-match-inner');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 🚫 منع النسخ والزر الأيمن
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // تحميل المباراة البارزة
+        loadFeaturedMatch();
+    </script>
+</body>
+</html>

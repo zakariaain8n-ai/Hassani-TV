@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hassani TV | مشاهدة المباراة</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <script>
+        if (localStorage.getItem('theme') === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
+
+    <style>
+        * { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg-base: #060a08;
+            --bg-surface: #0a110d;
+            --bg-elevated: #0f1712;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --primary: #00E676;
+            --primary-glow: rgba(0, 230, 118, 0.4);
+            --accent: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.4);
+            --live: #ff004a;
+            --live-glow: rgba(255, 0, 74, 0.4);
+            
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass-hover: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .light-mode {
+            --bg-base: #f4f7f5;
+            --bg-surface: #ffffff;
+            --bg-elevated: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #059669;
+            --primary-glow: rgba(5, 150, 105, 0.2);
+            --accent: #b45309;
+            --accent-glow: rgba(180, 83, 9, 0.2);
+            --live: #e11d48;
+            --live-glow: rgba(225, 29, 72, 0.3);
+            
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(0, 0, 0, 0.06);
+            --glass-hover: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        body { font-family: 'Tajawal', sans-serif; background: var(--bg-base); color: var(--text-main); transition: 0.5s background, 0.5s color; min-height: 100vh; overflow-x: hidden; }
+
+        /* ================= CINEMATIC BACKGROUND ================= */
+        .bg-layer { position: fixed; inset: 0; z-index: -2; pointer-events: none; overflow: hidden; }
+        .bg-stadium-light { position: absolute; top: 0; left: 0; right: 0; height: 100vh; background: radial-gradient(ellipse at 50% 0%, var(--primary-glow), transparent 70%); opacity: 0.5; }
+        .light-mode .bg-stadium-light { opacity: 0.3; }
+        
+        .glow-orb { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.4; animation: floatOrb 30s infinite alternate ease-in-out; }
+        .orb-1 { width: 40vw; height: 40vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle, var(--accent-glow), transparent); top: 30%; right: -10%; }
+        .orb-2 { width: 35vw; height: 35vw; max-width: 450px; max-height: 450px; background: radial-gradient(circle, var(--primary-glow), transparent); bottom: 10%; left: -10%; animation-delay: -15s; }
+        
+        .bg-noise { position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
+        .light-mode .bg-noise { opacity: 0.02; }
+
+        @keyframes floatOrb { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-30px, 30px) scale(1.1); } }
+
+        /* ================= NAVBAR ================= */
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 50; background: var(--glass-bg); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--glass-border); }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); font-weight: 700; font-size: 14px; transition: 0.3s; }
+        .back-btn:hover { background: var(--glass-hover); border-color: var(--primary); transform: translateX(4px); }
+        .theme-toggle { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); cursor: pointer; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--glass-hover); border-color: var(--primary); }
+
+        /* ================= MATCH HEADER ================= */
+        .match-header {
+            background: linear-gradient(145deg, var(--bg-surface) 0%, var(--bg-elevated) 100%);
+            border: 1px solid var(--glass-border); border-radius: 24px; padding: 2px; position: relative; overflow: hidden; box-shadow: var(--card-shadow);
+        }
+        .match-header::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, var(--accent-glow), transparent 30%);
+            animation: rotate 15s linear infinite; opacity: 0.15;
+        }
+        .match-header-inner { background: var(--bg-surface); border-radius: 22px; padding: 24px; position: relative; z-index: 2; backdrop-filter: blur(20px); }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        /* 👑 TEAM LOGOS - FIXED 100% 👑 */
+        .team-logo-royal { 
+            width: 90px; height: 90px; border-radius: 24px; 
+            background: linear-gradient(145deg, var(--bg-elevated), var(--bg-base));
+            border: 2px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: center; padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .team-logo-royal:hover { transform: scale(1.08); border-color: var(--accent); box-shadow: 0 15px 30px var(--accent-glow); }
+        .logo-fallback {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 38px; font-weight: 900; color: var(--accent);
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-base));
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Score Board */
+        .score-royal { font-size: 48px; font-weight: 900; letter-spacing: -2px; background: linear-gradient(to bottom, var(--text-main), var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .time-royal { font-size: 28px; font-weight: 900; color: var(--text-main); }
+
+        /* Status Badges */
+        .badge-royal { padding: 6px 14px; border-radius: 100px; font-size: 11px; font-weight: 900; border: 1px solid; display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-live { background: rgba(255,0,74,0.1); color: var(--live); border-color: rgba(255,0,74,0.3); box-shadow: 0 4px 15px var(--live-glow); }
+        .badge-soon { background: rgba(0,230,118,0.1); color: var(--primary); border-color: rgba(0,230,118,0.3); }
+        .badge-upcoming, .badge-finished { background: var(--glass-bg); color: var(--text-muted); border-color: var(--glass-border); }
+
+        .live-pulse { width: 8px; height: 8px; background-color: var(--live); border-radius: 50%; box-shadow: 0 0 10px var(--live); animation: pulse-live 1.5s infinite; }
+        @keyframes pulse-live { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: 0.5; } }
+
+        /* ================= SERVER SELECTION ================= */
+        .servers-wrapper { background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 20px; padding: 16px; box-shadow: var(--card-shadow); }
+        .server-btn { padding: 12px 24px; border-radius: 14px; font-weight: 800; font-size: 14px; background: var(--bg-elevated); border: 1px solid var(--glass-border); color: var(--text-muted); transition: all 0.3s; white-space: nowrap; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+        .server-btn:hover { background: var(--glass-hover); color: var(--text-main); border-color: var(--primary); transform: translateY(-2px); }
+        .server-btn.active { background: linear-gradient(135deg, var(--primary), #10B981); color: #fff; border-color: transparent; box-shadow: 0 8px 20px var(--primary-glow); transform: translateY(-2px); }
+
+        /* ================= VIDEO PLAYER ================= */
+        .video-wrapper { background: #000; border-radius: 24px; border: 1px solid var(--glass-border); overflow: hidden; aspect-ratio: 16/9; width: 100%; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px var(--primary-glow); }
+        .video-wrapper::before { content: ''; position: absolute; inset: -1px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 24px; z-index: -1; opacity: 0.3; filter: blur(20px); }
+
+        /* ================= AD SLOTS & INFO ================= */
+        .ad-slot { width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1px dashed var(--glass-border); background: var(--glass-bg); color: var(--text-muted); font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 20px; }
+        .related-card { display: block; text-decoration: none; color: var(--text-main); background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; transition: all 0.3s; height: 100%; }
+        .related-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px var(--primary-glow); }
+
+        .loader { width: 50px; height: 50px; border: 3px solid var(--glass-border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 40px auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+    <!-- 🌌 CINEMATIC BACKGROUND -->
+    <div class="bg-layer">
+        <div class="bg-stadium-light"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <!-- 📱 NAVBAR -->
+    <header class="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="site.html" class="back-btn">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                <span class="hidden sm:inline">عودة للمباريات</span>
+            </a>
+
+            <a href="index.html" class="flex items-center gap-3 group absolute left-1/2 transform -translate-x-1/2">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] shadow-lg transition-transform group-hover:scale-110">
+                    <span class="text-white font-black text-xl">H</span>
+                </div>
+                <div class="text-xl font-black tracking-tight hidden sm:block">
+                    Hassani<span style="color: var(--accent);">TV</span>
+                </div>
+            </a>
+
+            <button id="theme-toggle" class="theme-toggle">
+                <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 📊 MAIN -->
+    <main class="max-w-5xl mx-auto px-4 pt-28 pb-12 relative z-10 min-h-screen">
+        
+        <div class="ad-slot mb-6 reveal">إعلان — LEADERBOARD (728x90)</div>
+
+        <!-- 👑 MATCH HEADER -->
+        <div class="match-header mb-6 reveal">
+            <div class="match-header-inner">
+                
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">🏆</span>
+                        <span id="m-league" class="text-sm font-black text-[var(--accent)] tracking-wider uppercase">جاري التحميل...</span>
+                    </div>
+                    <div id="m-status-badge"></div>
+                </div>
+
+                <div class="flex items-center justify-between gap-4">
+                    
+                    <!-- Home Team -->
+                    <div class="flex flex-col items-center gap-3 w-[30%]">
+                        <div class="team-logo-royal" id="m-home-logo-wrap">
+                            <div class="logo-fallback" id="m-home-fallback">?</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="m-home-name" class="text-sm sm:text-base font-black leading-tight"></div>
+                            <div class="text-[10px] text-[var(--text-muted)] mt-1">صاحب الأرض</div>
+                        </div>
+                    </div>
+
+                    <!-- Center Score -->
+                    <div class="flex flex-col items-center justify-center w-[40%]">
+                        <div id="m-score" class="score-royal">- : -</div>
+                        <div id="m-time-info" class="text-xs text-[var(--text-muted)] font-bold mt-2"></div>
+                    </div>
+
+                    <!-- Away Team -->
+                    <div class="flex flex-col items-center gap-3 w-[30%]">
+                        <div class="team-logo-royal" id="m-away-logo-wrap">
+                            <div class="logo-fallback" id="m-away-fallback">?</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="m-away-name" class="text-sm sm:text-base font-black leading-tight"></div>
+                            <div class="text-[10px] text-[var(--text-muted)] mt-1">الضيف</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 🎬 SERVER SELECTION -->
+        <div id="servers-section" class="mb-4 reveal hidden">
+            <div class="servers-wrapper">
+                <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">📡</span>
+                        <span class="text-sm font-black">اختر السيرفر</span>
+                    </div>
+                    <span class="text-[10px] text-[var(--text-muted)] font-bold">إذا كان السيرفر بطيء، جرّب سيرفر آخر</span>
+                </div>
+                <div id="servers-list" class="flex gap-2 overflow-x-auto scrollbar-hide pb-1"></div>
+            </div>
+        </div>
+
+        <!-- 🎥 VIDEO PLAYER -->
+        <div class="video-wrapper mb-6 reveal">
+            <video id="hls-video" controls class="w-full h-full hidden" playsinline></video>
+            <iframe id="embed-iframe" src="" class="w-full h-full hidden" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+            
+            <div id="no-stream-msg" class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/95">
+                <div class="text-6xl mb-4 opacity-60">📺</div>
+                <div class="text-white font-black text-xl mb-2">البث المباشر غير متوفر حالياً</div>
+                <div class="text-gray-400 text-sm max-w-md">سيتم إضافة روابط المشاهدة قبل بداية المباراة مباشرة.</div>
+            </div>
+
+            <div id="loading-player" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-black/95 z-20">
+                <div class="loader"></div>
+                <p class="text-white font-bold mt-4">جاري تحميل البث...</p>
+            </div>
+        </div>
+
+        <div class="ad-slot mb-8 reveal">إعلان — RECTANGLE (300x250)</div>
+
+        <!-- 📊 Info Section -->
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="related-card reveal">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">💡</span>
+                    <h3 class="font-black text-lg">نصائح للمشاهدة</h3>
+                </div>
+                <ul class="text-sm text-[var(--text-muted)] space-y-2.5 leading-relaxed">
+                    <li>✓ استخدم اتصال إنترنت سريع (WiFi) لجودة أفضل 4K/HD.</li>
+                    <li>✓ جرّب تغيير السيرفر من القائمة أعلاه إذا واجهت تقطيع.</li>
+                    <li>✓ اضغط على أيقونة ملء الشاشة لتجربة سينمائية.</li>
+                </ul>
+            </div>
+
+            <div class="related-card reveal">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">🔗</span>
+                    <h3 class="font-black text-lg">شارك المتعة</h3>
+                </div>
+                <p class="text-sm text-[var(--text-muted)] mb-5">أرسل رابط المباراة لأصدقائك عبر الواتساب واستمتعوا معاً!</p>
+                <button onclick="shareMatch()" class="w-full py-3.5 rounded-xl font-black text-white transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, var(--primary), #10B981); box-shadow: 0 8px 20px var(--primary-glow);">
+                    📤 مشاركة الرابط
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 📌 FOOTER -->
+    <footer class="border-t border-[var(--glass-border)] bg-[var(--bg-surface)] pt-10 pb-6 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-center gap-2 mb-3 opacity-80">
+                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[var(--primary)] to-[var(--accent)]">
+                    <span class="text-white font-black text-sm">H</span>
+                </div>
+                <div class="text-lg font-black">Hassani<span style="color: var(--accent);">TV</span></div>
+            </div>
+            <p class="text-xs text-[var(--text-muted)] opacity-60">© 2025 Hassani TV — 🇲🇦</p>
+        </div>
+    </footer>
+
+<script>
+/* ================= THEME TOGGLE ================= */
+const themeBtn = document.getElementById('theme-toggle');
+const moonIcon = document.getElementById('moon-icon');
+const sunIcon = document.getElementById('sun-icon');
+
+function updateIcons() {
+    if (document.documentElement.classList.contains('light-mode')) {
+        moonIcon.classList.remove('hidden'); sunIcon.classList.add('hidden');
+    } else {
+        sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden');
+    }
+}
+updateIcons();
+
+themeBtn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light-mode');
+    localStorage.setItem('theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+    updateIcons();
+});
+
+/* ================= GET MATCH ID ================= */
+const urlParams = new URLSearchParams(window.location.search);
+const matchId = urlParams.get('id');
+let hlsInstance = null;
+let currentMatch = null;
+
+if (!matchId) window.location.href = "/site.html";
+
+function escapeHTML(str) {
+    return String(str || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
+
+/* 👑 DYNAMIC LOGO LOADER WITH FALLBACK 👑 */
+function loadLogo(wrapId, fallbackId, name, logoUrl) {
+    const wrap = document.getElementById(wrapId);
+    const letter = name ? name.trim().charAt(0).toUpperCase() : '?';
+    
+    // Reset to fallback initially
+    wrap.innerHTML = `<div class="logo-fallback" id="${fallbackId}">${letter}</div>`;
+    
+    // Attempt to load image
+    if (logoUrl) {
+        const img = new Image();
+        img.onload = () => {
+            wrap.innerHTML = ''; // Remove fallback
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            img.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))';
+            wrap.appendChild(img); // Add successful image
+        };
+        img.onerror = () => {
+            // Image failed (CORS or 404), fallback remains visible
+        };
+        img.src = logoUrl;
+    }
+}
+
+/* ================= RENDER MATCH INFO ================= */
+function renderMatchInfo(m) {
+    document.title = `${m.home} ضد ${m.away} | Hassani TV`;
+    
+    document.getElementById("m-league").textContent = m.league;
+    document.getElementById("m-home-name").textContent = m.home;
+    document.getElementById("m-away-name").textContent = m.away;
+    
+    // Load Logos using the smart function
+    loadLogo("m-home-logo-wrap", "m-home-fallback", m.home, m.homeLogo);
+    loadLogo("m-away-logo-wrap", "m-away-fallback", m.away, m.awayLogo);
+
+    const isLive = m.type === "live";
+    const isFinished = m.type === "finished";
+    const isSoon = String(m.pillText || "").includes("بعد قليل");
+
+    // Score/Time
+    const scoreEl = document.getElementById("m-score");
+    if (isLive || isFinished) {
+        scoreEl.innerHTML = m.mainText;
+        scoreEl.className = "score-royal";
+    } else {
+        scoreEl.className = "time-royal";
+        scoreEl.textContent = m.mainText;
+    }
+
+    // Time Info
+    const timeInfoEl = document.getElementById("m-time-info");
+    if (isLive) {
+        timeInfoEl.innerHTML = `<span class="text-[var(--live)] font-black">${escapeHTML(m.pillText)}</span>`;
+    } else if (isFinished) {
+        timeInfoEl.textContent = "المباراة انتهت";
+    } else {
+        timeInfoEl.textContent = m.pillText;
+    }
+
+    // Status Badge
+    const badgeEl = document.getElementById("m-status-badge");
+    if (isLive) {
+        badgeEl.innerHTML = `<div class="badge-royal badge-live"><span class="live-pulse"></span>مباشر الآن</div>`;
+    } else if (isSoon) {
+        badgeEl.innerHTML = `<div class="badge-royal badge-soon">⏰ ${escapeHTML(m.pillText)}</div>`;
+    } else if (isFinished) {
+        badgeEl.innerHTML = `<div class="badge-royal badge-finished">✓ انتهت</div>`;
+    } else {
+        badgeEl.innerHTML = `<div class="badge-royal badge-upcoming">${escapeHTML(m.pillText)}</div>`;
+    }
+}
+
+/* ================= SETUP SERVERS ================= */
+function setupServers(m) {
+    const serversSection = document.getElementById("servers-section");
+    const serversList = document.getElementById("servers-list");
+    
+    if (!m.streams || m.streams.length === 0) {
+        serversSection.classList.add("hidden");
+        document.getElementById("no-stream-msg").classList.remove("hidden");
+        return;
+    }
+
+    serversSection.classList.remove("hidden");
+    document.getElementById("no-stream-msg").classList.add("hidden");
+    serversList.innerHTML = "";
+
+    m.streams.forEach((s, idx) => {
+        const btn = document.createElement("button");
+        btn.className = `server-btn ${idx === 0 ? 'active' : ''}`;
+        btn.innerHTML = `<span>${idx === 0 ? '🎬' : '📡'}</span> ${escapeHTML(s.name || `سيرفر ${idx + 1}`)}`;
+        btn.onclick = () => {
+            document.querySelectorAll(".server-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            playVideo(s.url);
+        };
+        serversList.appendChild(btn);
+    });
+
+    playVideo(m.streams[0].url);
+}
+
+/* ================= PLAY VIDEO ================= */
+function playVideo(url) {
+    const video = document.getElementById("hls-video");
+    const iframe = document.getElementById("embed-iframe");
+    const loader = document.getElementById("loading-player");
+    
+    if (hlsInstance) hlsInstance.destroy();
+    video.pause(); 
+    iframe.src = "";
+    loader.classList.remove("hidden");
+
+    setTimeout(() => {
+        loader.classList.add("hidden");
+        
+        if (url.includes('.m3u8')) {
+            iframe.classList.add("hidden"); 
+            video.classList.remove("hidden");
+            
+            if (Hls.isSupported()) {
+                hlsInstance = new Hls();
+                hlsInstance.loadSource(url);
+                hlsInstance.attachMedia(video);
+                hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url; 
+                video.play();
+            }
+        } else {
+            video.classList.add("hidden"); 
+            iframe.classList.remove("hidden");
+            iframe.src = url;
+        }
+    }, 500);
+}
+
+/* ================= LOAD MATCH (INIT) ================= */
+async function loadMatch() {
+    try {
+        const res = await fetch(`/api/match/${matchId}`);
+        const data = await res.json();
+        
+        if (!data.success) {
+            document.querySelector("main").innerHTML = `
+                <div class="text-center py-20">
+                    <div class="text-6xl mb-4 opacity-50">❌</div>
+                    <h2 class="text-2xl font-black text-red-500 mb-4">المباراة غير موجودة</h2>
+                    <a href="site.html" class="inline-block mt-4 px-6 py-3 rounded-full bg-[var(--glass-bg)] border border-[var(--glass-border)] text-white font-bold hover:bg-[var(--glass-hover)] transition">← عودة للمباريات</a>
+                </div>
+            `;
+            return;
+        }
+
+        currentMatch = data.match;
+        renderMatchInfo(currentMatch);
+        setupServers(currentMatch);
+
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+/* ================= SHARE MATCH ================= */
+async function shareMatch() {
+    const url = window.location.href;
+    const title = currentMatch ? `${currentMatch.home} ضد ${currentMatch.away} | Hassani TV` : 'شاهد المباراة على Hassani TV';
+    
+    if (navigator.share) {
+        try { await navigator.share({ title, url }); } catch (e) {}
+    } else {
+        try {
+            await navigator.clipboard.writeText(url);
+            alert('✅ تم نسخ الرابط بنجاح! يمكنك إرساله لأصدقائك الآن.');
+        } catch (e) { alert('❌ تعذر نسخ الرابط'); }
+    }
+}
+
+/* ================= AUTO REFRESH MATCH INFO ================= */
+setInterval(async () => {
+    if (!currentMatch) return;
+    try {
+        const res = await fetch(`/api/match/${matchId}`);
+        const data = await res.json();
+        if (data.success) {
+            currentMatch = data.match;
+            renderMatchInfo(data.match);
+        }
+    } catch (e) {}
+}, 30000);
+
+/* ================= SCROLL REVEAL & PROTECTION ================= */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+/* INIT */
+loadMatch();
+</script>
+
+</body>
+</html>
