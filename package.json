@@ -1,11 +1,14 @@
 {
-  "name": "fifa-tv",
+  "name": "hassani-tv",
   "version": "1.0.0",
-  "description": "FIFA TV football matches dashboard",
+  "description": "Hassani TV - Live football streaming platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "axios": "^1.20.0",
