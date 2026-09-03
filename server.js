@@ -8,7 +8,7 @@ const moment = require('moment-timezone');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.API_FOOTBALL_KEY;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
