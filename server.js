@@ -8,32 +8,27 @@ const moment = require('moment-timezone');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const API_KEY = (process.env.API_FOOTBALL_KEY || '').trim();
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+const TZ = 'Africa/Casablanca';
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const STREAMS_FILE = path.join(__dirname, 'streams.json');
-const CACHE_MS = 10 * 60 * 1000; // 10 minutes
-const TZ = 'Africa/Casablanca';
+const CACHE_MS = 5 * 60 * 1000;
 
 function loadStreams() {
   try {
     if (fs.existsSync(STREAMS_FILE)) {
       return JSON.parse(fs.readFileSync(STREAMS_FILE, 'utf8') || '{}');
     }
-  } catch (e) {
-    console.error('streams.json read error:', e.message);
-  }
+  } catch (e) {}
   return {};
 }
-
 function saveStreams(data) {
   try {
     fs.writeFileSync(STREAMS_FILE, JSON.stringify(data, null, 2), 'utf8');
-  } catch (e) {
-    console.error('streams.json write error:', e.message);
-  }
+  } catch (e) {}
 }
 
 let streamsDB = loadStreams();
@@ -43,18 +38,12 @@ let cache = {
   yesterday: { t: 0, data: null }
 };
 
-// block ONLY when daily limit is hit (reset next day roughly)
-let rateLimitedUntil = 0;
-
 const ALLOWED_LEAGUES = {
   2: 1000, 3: 900, 848: 800,
   39: 950, 140: 950, 135: 900, 78: 900, 61: 850,
   1: 1000, 4: 950, 9: 900, 6: 900, 5: 700,
-  45: 600, 143: 600, 137: 600, 81: 600, 66: 600
-};
-
-const SECONDARY_LEAGUES = {
-  200: 750, 307: 700, 233: 650, 94: 500, 88: 450, 13: 600, 71: 500
+  45: 600, 143: 600, 137: 600, 81: 600, 66: 600,
+  200: 750, 307: 700, 233: 650
 };
 
 const VIP = [
@@ -62,13 +51,13 @@ const VIP = [
   'al-hilal', 'al hilal', 'al-nassr', 'al nassr', 'al-ittihad', 'al-ahli', 'al ahly', 'zamalek',
   'real madrid', 'barcelona', 'atletico',
   'manchester city', 'manchester united', 'liverpool', 'arsenal', 'chelsea', 'tottenham',
-  'juventus', 'inter', 'ac milan', 'milan', 'napoli', 'roma',
+  'juventus', 'inter', 'ac milan', 'milan', 'napoli', 'roma', 'lecce',
   'bayern', 'dortmund', 'psg', 'paris saint', 'marseille', 'monaco',
-  'benfica', 'porto', 'sporting', 'ajax', 'psv', 'feyenoord'
+  'benfica', 'porto', 'sporting'
 ];
 
-function isVip(name) {
-  const n = (name || '').toLowerCase();
+function isVip(name = '') {
+  const n = name.toLowerCase();
   return VIP.some(v => n.includes(v));
 }
 
@@ -87,7 +76,6 @@ function buildMatch(item) {
   const finished = ['FT', 'AET', 'PEN', 'CANC', 'ABD', 'AWD', 'WO'].includes(st) || diff < -150;
 
   let type, mainText, pillText, order;
-
   if (live) {
     type = 'live';
     mainText = `${item.goals.home ?? 0} - ${item.goals.away ?? 0}`;
@@ -101,18 +89,12 @@ function buildMatch(item) {
   } else {
     type = 'upcoming';
     mainText = matchTime.format('hh:mm A');
-    if (diff >= 0 && diff <= 120) {
-      pillText = `بعد قليل ${diff}m`;
-      order = 2;
-    } else {
-      pillText = 'لم تبدأ بعد';
-      order = 3;
-    }
+    pillText = (diff >= 0 && diff <= 120) ? `بعد قليل ${Math.max(diff, 0)}m` : 'لم تبدأ بعد';
+    order = (diff >= 0 && diff <= 120) ? 2 : 3;
   }
 
   const id = String(item.fixture.id);
-  const leagueId = item.league.id;
-  let priority = ALLOWED_LEAGUES[leagueId] || SECONDARY_LEAGUES[leagueId] || 100;
+  let priority = ALLOWED_LEAGUES[item.league.id] || 100;
   if (isVip(item.teams.home.name)) priority += 80;
   if (isVip(item.teams.away.name)) priority += 80;
 
@@ -133,148 +115,209 @@ function buildMatch(item) {
   };
 }
 
-function filterMatches(fixtures) {
-  let list = (fixtures || []).filter(m => {
-    if (isDirty(m)) return false;
-    const id = m.league.id;
-    if (ALLOWED_LEAGUES[id]) return true;
-    if (SECONDARY_LEAGUES[id] && (isVip(m.teams.home.name) || isVip(m.teams.away.name))) return true;
-    return false;
-  }).map(buildMatch);
+function filterMatches(fixtures = []) {
+  const list = fixtures
+    .filter(m => {
+      if (isDirty(m)) return false;
+      const id = m.league?.id;
+      if (ALLOWED_LEAGUES[id]) return true;
+      // VIP even outside main list
+      return isVip(m.teams?.home?.name) || isVip(m.teams?.away?.name);
+    })
+    .map(buildMatch)
+    .sort((a, b) => (a.order - b.order) || (b.priority - a.priority) || (a.ts - b.ts))
+    .slice(0, 30);
 
-  list.sort((a, b) => (a.order - b.order) || (b.priority - a.priority) || (a.ts - b.ts));
-  return list.slice(0, 20);
+  return list;
 }
 
-function attachStreams(matches) {
+function attachStreams(matches = []) {
   streamsDB = loadStreams();
-  return (matches || []).map(m => ({
-    ...m,
-    streams: streamsDB[String(m.id)] || []
-  }));
+  return matches.map(m => ({ ...m, streams: streamsDB[String(m.id)] || [] }));
 }
 
-function getDateForDay(day) {
+function dayToDate(day) {
   const now = moment().tz(TZ);
   if (day === 'tomorrow') return now.clone().add(1, 'day').format('YYYY-MM-DD');
   if (day === 'yesterday') return now.clone().subtract(1, 'day').format('YYYY-MM-DD');
   return now.format('YYYY-MM-DD');
 }
 
-async function fetchFromApi(date) {
+async function fetchFixtures(date) {
   if (!API_KEY) {
-    const err = new Error('MISSING_API_KEY');
-    err.code = 'MISSING_API_KEY';
-    throw err;
+    return {
+      ok: false,
+      code: 'MISSING_API_KEY',
+      status: 0,
+      errors: 'API key missing',
+      rawCount: 0,
+      fixtures: []
+    };
   }
 
-  if (Date.now() < rateLimitedUntil) {
-    const err = new Error('RATE_LIMITED');
-    err.code = 'RATE_LIMITED';
-    throw err;
-  }
+  try {
+    const response = await axios.get(
+      `https://v3.football.api-sports.io/fixtures`,
+      {
+        params: { date },
+        headers: {
+          'x-apisports-key': API_KEY
+        },
+        timeout: 20000,
+        validateStatus: () => true
+      }
+    );
 
-  const response = await axios.get(
-    `https://v3.football.api-sports.io/fixtures?date=${date}`,
-    {
-      headers: {
-        'x-apisports-key': API_KEY
-      },
-      timeout: 12000
+    const status = response.status;
+    const data = response.data || {};
+    const errors = data.errors;
+    const fixtures = Array.isArray(data.response) ? data.response : [];
+
+    // normalize errors
+    let hasErrors = false;
+    let errorsText = null;
+    if (typeof errors === 'string' && errors.trim()) {
+      hasErrors = true;
+      errorsText = errors;
+    } else if (Array.isArray(errors) && errors.length) {
+      hasErrors = true;
+      errorsText = JSON.stringify(errors);
+    } else if (errors && typeof errors === 'object' && Object.keys(errors).length) {
+      hasErrors = true;
+      errorsText = JSON.stringify(errors);
     }
-  );
 
-  const errors = response.data?.errors;
-  if (errors && Object.keys(errors).length) {
-    const msg = JSON.stringify(errors);
-    if (/request limit|requests/i.test(msg)) {
-      // block ~until next day utc roughly 6h minimum
-      rateLimitedUntil = Date.now() + 6 * 60 * 60 * 1000;
-      const err = new Error('RATE_LIMITED');
-      err.code = 'RATE_LIMITED';
-      err.detail = msg;
-      throw err;
+    if (status === 401 || status === 403) {
+      return {
+        ok: false,
+        code: 'INVALID_API_KEY',
+        status,
+        errors: errorsText || 'Unauthorized',
+        rawCount: 0,
+        fixtures: []
+      };
     }
-    const err = new Error(msg);
-    err.code = 'API_ERROR';
-    throw err;
-  }
 
-  return response.data?.response || [];
+    if (hasErrors) {
+      return {
+        ok: false,
+        code: 'API_ERROR',
+        status,
+        errors: errorsText,
+        rawCount: fixtures.length,
+        fixtures: []
+      };
+    }
+
+    if (status >= 500) {
+      return {
+        ok: false,
+        code: 'API_SERVER_ERROR',
+        status,
+        errors: `HTTP ${status}`,
+        rawCount: 0,
+        fixtures: []
+      };
+    }
+
+    return {
+      ok: true,
+      code: 'OK',
+      status,
+      errors: null,
+      rawCount: fixtures.length,
+      fixtures
+    };
+  } catch (e) {
+    return {
+      ok: false,
+      code: 'NETWORK_ERROR',
+      status: 0,
+      errors: e.message,
+      rawCount: 0,
+      fixtures: []
+    };
+  }
 }
 
-// ================== API ==================
-app.get('/api/health', (req, res) => {
+// ===== API =====
+app.get('/api/health', async (req, res) => {
   res.json({
     ok: true,
     hasKey: Boolean(API_KEY),
-    rateLimited: Date.now() < rateLimitedUntil,
+    keyLength: API_KEY.length,
     tz: TZ,
     now: moment().tz(TZ).format()
   });
 });
 
-app.get('/api/matches', async (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  const day = req.query.day || 'today';
-  const date = getDateForDay(day);
+// debug endpoint
+app.get('/api/debug-football', async (req, res) => {
+  const date = dayToDate(req.query.day || 'today');
+  const result = await fetchFixtures(date);
+  res.json({
+    date,
+    hasKey: Boolean(API_KEY),
+    keyLength: API_KEY.length,
+    result: {
+      ok: result.ok,
+      code: result.code,
+      status: result.status,
+      errors: result.errors,
+      rawCount: result.rawCount
+    }
+  });
+});
 
-  // fresh cache hit
+app.get('/api/matches', async (req, res) => {
+  const day = req.query.day || 'today';
+  const date = dayToDate(day);
+
   if (cache[day]?.data && Date.now() - cache[day].t < CACHE_MS) {
-    const cached = cache[day].data;
-    cached.matches = attachStreams(cached.matches);
+    const cached = { ...cache[day].data, cached: true };
+    cached.matches = attachStreams(cached.matches || []);
     return res.json(cached);
   }
 
-  try {
-    console.log(`[API] fetching ${date} (day=${day}) key=${API_KEY ? 'yes' : 'NO'}`);
-    const raw = await fetchFromApi(date);
-    const matches = attachStreams(filterMatches(raw));
+  const result = await fetchFixtures(date);
 
-    const payload = {
-      success: true,
-      source: 'api-football',
-      isMock: false,
-      day,
-      date,
-      count: matches.length,
-      matches
-    };
-
-    cache[day] = { t: Date.now(), data: payload };
-    console.log(`[API] ok ${date} => ${matches.length} matches`);
-    return res.json(payload);
-
-  } catch (e) {
-    console.error('[API] fail:', e.code || e.message);
-
-    // if we have old cache, serve it (better than fake/random)
+  if (!result.ok) {
+    // if old cache exists, use it
     if (cache[day]?.data?.matches?.length) {
-      const cached = cache[day].data;
+      const cached = { ...cache[day].data, stale: true };
       cached.matches = attachStreams(cached.matches);
-      cached.stale = true;
-      cached.warning = e.code || e.message;
+      cached.warning = result.code;
+      cached.detail = result.errors;
       return res.json(cached);
     }
 
-    // NO fake classic matches anymore (Roma/Barca fake confusion)
     return res.json({
       success: true,
       source: 'empty',
-      isMock: false,
       day,
       date,
       count: 0,
       matches: [],
-      warning: e.code || e.message,
-      message:
-        e.code === 'MISSING_API_KEY'
-          ? 'API key missing on server'
-          : e.code === 'RATE_LIMITED'
-          ? 'API daily limit reached'
-          : 'Could not fetch live matches right now'
+      warning: result.code,
+      detail: result.errors,
+      httpStatus: result.status,
+      message: 'Could not fetch live matches right now'
     });
   }
+
+  const matches = attachStreams(filterMatches(result.fixtures));
+  const payload = {
+    success: true,
+    source: 'api-football',
+    day,
+    date,
+    count: matches.length,
+    rawCount: result.rawCount,
+    matches
+  };
+
+  cache[day] = { t: Date.now(), data: payload };
+  return res.json(payload);
 });
 
 app.get('/api/match/:id', (req, res) => {
@@ -282,14 +325,12 @@ app.get('/api/match/:id', (req, res) => {
   streamsDB = loadStreams();
 
   for (const day of ['today', 'tomorrow', 'yesterday']) {
-    const list = cache[day]?.data?.matches || [];
-    const found = list.find(m => String(m.id) === id);
+    const found = (cache[day]?.data?.matches || []).find(m => String(m.id) === id);
     if (found) {
       found.streams = streamsDB[id] || [];
       return res.json({ success: true, match: found });
     }
   }
-
   return res.status(404).json({ success: false, error: 'Match not found' });
 });
 
@@ -310,20 +351,12 @@ app.post('/api/admin/streams', (req, res) => {
   streamsDB = loadStreams();
   streamsDB[String(matchId)] = streams;
   saveStreams(streamsDB);
-
-  // bust cache so streams appear immediately
-  cache = {
-    today: { t: 0, data: null },
-    tomorrow: { t: 0, data: null },
-    yesterday: { t: 0, data: null }
-  };
-
-  return res.json({ success: true, matchId, streams });
+  cache = { today: { t: 0, data: null }, tomorrow: { t: 0, data: null }, yesterday: { t: 0, data: null } };
+  return res.json({ success: true });
 });
 
 // pages
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
-app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 app.get('/matches', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
 app.get('/site', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
 app.get('/site.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
@@ -333,7 +366,7 @@ app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'adm
 app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 
 app.listen(PORT, () => {
-  console.log(`🚀 Hassani TV on port ${PORT}`);
-  console.log(`🔑 API key: ${API_KEY ? 'OK' : 'MISSING'}`);
-  console.log(`🕒 TZ ${TZ} => ${moment().tz(TZ).format()}`);
+  console.log(`🚀 Hassani TV port=${PORT}`);
+  console.log(`🔑 key=${API_KEY ? 'OK len=' + API_KEY.length : 'MISSING'}`);
+  console.log(`🕒 ${moment().tz(TZ).format()}`);
 });
