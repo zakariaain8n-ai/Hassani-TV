@@ -7,157 +7,333 @@ const moment = require('moment-timezone');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_FOOTBALL_KEY;
+const API_KEY = (process.env.API_FOOTBALL_KEY || '').trim();
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const STREAMS_FILE = path.join(__dirname, 'streams.json');
+const CACHE_MS = 10 * 60 * 1000; // 10 minutes
+const TZ = 'Africa/Casablanca';
 
-function loadSavedStreams() {
-    try {
-        if (fs.existsSync(STREAMS_FILE)) {
-            const raw = fs.readFileSync(STREAMS_FILE, 'utf8');
-            return JSON.parse(raw) || {};
-        }
-    } catch (e) { console.error(e.message); }
-    return {};
+function loadStreams() {
+  try {
+    if (fs.existsSync(STREAMS_FILE)) {
+      return JSON.parse(fs.readFileSync(STREAMS_FILE, 'utf8') || '{}');
+    }
+  } catch (e) {
+    console.error('streams.json read error:', e.message);
+  }
+  return {};
 }
 
-function saveStreamsToFile(data) {
-    try { fs.writeFileSync(STREAMS_FILE, JSON.stringify(data, null, 2), 'utf8'); } 
-    catch (e) { console.error(e.message); }
+function saveStreams(data) {
+  try {
+    fs.writeFileSync(STREAMS_FILE, JSON.stringify(data, null, 2), 'utf8');
+  } catch (e) {
+    console.error('streams.json write error:', e.message);
+  }
 }
 
-let streamsDatabase = loadSavedStreams();
-const CACHE_DURATION = 10 * 60 * 1000;
-let cache = { today: { t: 0, data: null }, tomorrow: { t: 0, data: null }, yesterday: { t: 0, data: null } };
-let API_BLOCKED = false;
+let streamsDB = loadStreams();
+let cache = {
+  today: { t: 0, data: null },
+  tomorrow: { t: 0, data: null },
+  yesterday: { t: 0, data: null }
+};
 
-const ALLOWED_LEAGUES = { 39:950, 140:950, 135:900, 78:900, 61:850, 2:1000, 3:900, 848:800, 1:1000, 4:950, 9:900, 6:900, 5:700, 45:600, 143:600, 137:600, 81:600, 66:600 };
-const SECONDARY_LEAGUES = { 200:750, 307:700, 233:650, 94:500, 88:450, 13:600, 71:500 };
-const VIP_TEAMS = ['wydad', 'raja', 'far rabat', 'rsb berkane', 'mas fez', 'al-hilal', 'al-nassr', 'al-ittihad', 'al-ahli', 'al ahly', 'zamalek', 'real madrid', 'barcelona', 'atletico madrid', 'manchester city', 'manchester united', 'liverpool', 'arsenal', 'chelsea', 'tottenham', 'juventus', 'inter', 'ac milan', 'milan', 'napoli', 'roma', 'bayern', 'dortmund', 'psg', 'marseille', 'monaco'];
+// block ONLY when daily limit is hit (reset next day roughly)
+let rateLimitedUntil = 0;
 
-function isVip(name) { return VIP_TEAMS.some(v => (name || '').toLowerCase().includes(v)); }
-function isDirty(match) { return ['women', 'femenil', 'frauen', 'wsl', 'u15', 'u17', 'u19', 'u20', 'u21', 'u23', 'youth', 'reserve', 'friendly', 'esports', 'futsal'].some(w => `${match.league?.name} ${match.teams?.home?.name} ${match.teams?.away?.name}`.toLowerCase().includes(w)); }
+const ALLOWED_LEAGUES = {
+  2: 1000, 3: 900, 848: 800,
+  39: 950, 140: 950, 135: 900, 78: 900, 61: 850,
+  1: 1000, 4: 950, 9: 900, 6: 900, 5: 700,
+  45: 600, 143: 600, 137: 600, 81: 600, 66: 600
+};
+
+const SECONDARY_LEAGUES = {
+  200: 750, 307: 700, 233: 650, 94: 500, 88: 450, 13: 600, 71: 500
+};
+
+const VIP = [
+  'wydad', 'raja', 'far rabat', 'rsb berkane',
+  'al-hilal', 'al hilal', 'al-nassr', 'al nassr', 'al-ittihad', 'al-ahli', 'al ahly', 'zamalek',
+  'real madrid', 'barcelona', 'atletico',
+  'manchester city', 'manchester united', 'liverpool', 'arsenal', 'chelsea', 'tottenham',
+  'juventus', 'inter', 'ac milan', 'milan', 'napoli', 'roma',
+  'bayern', 'dortmund', 'psg', 'paris saint', 'marseille', 'monaco',
+  'benfica', 'porto', 'sporting', 'ajax', 'psv', 'feyenoord'
+];
+
+function isVip(name) {
+  const n = (name || '').toLowerCase();
+  return VIP.some(v => n.includes(v));
+}
+
+function isDirty(m) {
+  const t = `${m.league?.name || ''} ${m.teams?.home?.name || ''} ${m.teams?.away?.name || ''}`.toLowerCase();
+  return ['women', 'femenil', 'frauen', 'wsl', 'u15', 'u17', 'u18', 'u19', 'u20', 'u21', 'u23', 'youth', 'reserve', 'friendly', 'esports', 'futsal']
+    .some(w => t.includes(w));
+}
 
 function buildMatch(item) {
-    const now = moment().tz('Africa/Casablanca');
-    const matchTime = moment(item.fixture.date).tz('Africa/Casablanca');
-    const diff = matchTime.diff(now, 'minutes');
-    const st = item.fixture.status.short;
-    const live = ['1H', 'HT', '2H', 'ET', 'BT', 'P', 'LIVE', 'INT'].includes(st);
-    const finished = ['FT', 'AET', 'PEN', 'CANC', 'ABD'].includes(st) || diff < -150;
+  const now = moment().tz(TZ);
+  const matchTime = moment(item.fixture.date).tz(TZ);
+  const diff = matchTime.diff(now, 'minutes');
+  const st = item.fixture.status.short;
+  const live = ['1H', 'HT', '2H', 'ET', 'BT', 'P', 'LIVE', 'INT'].includes(st);
+  const finished = ['FT', 'AET', 'PEN', 'CANC', 'ABD', 'AWD', 'WO'].includes(st) || diff < -150;
 
-    let type, mainText, pillText, order;
-    if (live) { type = 'live'; mainText = `${item.goals.home ?? 0} - ${item.goals.away ?? 0}`; pillText = `مباشر ${item.fixture.status.elapsed || ''}'`; order = 1; } 
-    else if (finished) { type = 'finished'; mainText = `${item.goals.home ?? 0} - ${item.goals.away ?? 0}`; pillText = 'انتهت'; order = 4; } 
-    else { type = 'upcoming'; mainText = matchTime.format('hh:mm A'); pillText = (diff >= 0 && diff <= 120) ? `بعد قليل ${diff}m` : 'لم تبدأ بعد'; order = 3; }
+  let type, mainText, pillText, order;
 
-    const leagueId = item.league.id;
-    let priority = ALLOWED_LEAGUES[leagueId] || SECONDARY_LEAGUES[leagueId] || 100;
-    if (isVip(item.teams.home.name)) priority += 80;
-    if (isVip(item.teams.away.name)) priority += 80;
+  if (live) {
+    type = 'live';
+    mainText = `${item.goals.home ?? 0} - ${item.goals.away ?? 0}`;
+    pillText = `مباشر ${item.fixture.status.elapsed || ''}'`;
+    order = 1;
+  } else if (finished) {
+    type = 'finished';
+    mainText = `${item.goals.home ?? 0} - ${item.goals.away ?? 0}`;
+    pillText = 'انتهت';
+    order = 4;
+  } else {
+    type = 'upcoming';
+    mainText = matchTime.format('hh:mm A');
+    if (diff >= 0 && diff <= 120) {
+      pillText = `بعد قليل ${diff}m`;
+      order = 2;
+    } else {
+      pillText = 'لم تبدأ بعد';
+      order = 3;
+    }
+  }
 
-    const matchId = String(item.fixture.id);
-    return { id: matchId, league: item.league.name, home: item.teams.home.name, homeLogo: item.teams.home.logo, away: item.teams.away.name, awayLogo: item.teams.away.logo, mainText, pillText, type, ts: matchTime.valueOf(), order, priority, streams: streamsDatabase[matchId] || [] };
+  const id = String(item.fixture.id);
+  const leagueId = item.league.id;
+  let priority = ALLOWED_LEAGUES[leagueId] || SECONDARY_LEAGUES[leagueId] || 100;
+  if (isVip(item.teams.home.name)) priority += 80;
+  if (isVip(item.teams.away.name)) priority += 80;
+
+  return {
+    id,
+    league: item.league.name,
+    home: item.teams.home.name,
+    homeLogo: item.teams.home.logo,
+    away: item.teams.away.name,
+    awayLogo: item.teams.away.logo,
+    mainText,
+    pillText,
+    type,
+    ts: matchTime.valueOf(),
+    order,
+    priority,
+    streams: streamsDB[id] || []
+  };
 }
 
 function filterMatches(fixtures) {
-    let list = fixtures.filter(m => {
-        if (isDirty(m)) return false;
-        const id = m.league.id;
-        return ALLOWED_LEAGUES.hasOwnProperty(id) || (SECONDARY_LEAGUES.hasOwnProperty(id) && (isVip(m.teams.home.name) || isVip(m.teams.away.name)));
-    }).map(buildMatch);
-    list.sort((a, b) => (a.order - b.order) || (b.priority - a.priority) || (a.ts - b.ts));
-    return list.slice(0, 15);
+  let list = (fixtures || []).filter(m => {
+    if (isDirty(m)) return false;
+    const id = m.league.id;
+    if (ALLOWED_LEAGUES[id]) return true;
+    if (SECONDARY_LEAGUES[id] && (isVip(m.teams.home.name) || isVip(m.teams.away.name))) return true;
+    return false;
+  }).map(buildMatch);
+
+  list.sort((a, b) => (a.order - b.order) || (b.priority - a.priority) || (a.ts - b.ts));
+  return list.slice(0, 20);
 }
 
-function getMockData() {
-    return [
-        { id: "101", league: 'Serie A', home: 'Lecce', homeLogo: 'https://media.api-sports.io/football/teams/887.png', away: 'AS Roma', awayLogo: 'https://media.api-sports.io/football/teams/497.png', mainText: '0 - 3', pillText: "مباشر", type: 'live', order: 1, ts: Date.now(), streams: streamsDatabase["101"] || [] },
-        { id: "102", league: 'La Liga', home: 'Real Madrid', homeLogo: 'https://media.api-sports.io/football/teams/541.png', away: 'Barcelona', awayLogo: 'https://media.api-sports.io/football/teams/529.png', mainText: '04:00 PM', pillText: 'بعد قليل 25m', type: 'upcoming', order: 2, ts: Date.now() + 1, streams: streamsDatabase["102"] || [] }
-    ];
+function attachStreams(matches) {
+  streamsDB = loadStreams();
+  return (matches || []).map(m => ({
+    ...m,
+    streams: streamsDB[String(m.id)] || []
+  }));
 }
+
+function getDateForDay(day) {
+  const now = moment().tz(TZ);
+  if (day === 'tomorrow') return now.clone().add(1, 'day').format('YYYY-MM-DD');
+  if (day === 'yesterday') return now.clone().subtract(1, 'day').format('YYYY-MM-DD');
+  return now.format('YYYY-MM-DD');
+}
+
+async function fetchFromApi(date) {
+  if (!API_KEY) {
+    const err = new Error('MISSING_API_KEY');
+    err.code = 'MISSING_API_KEY';
+    throw err;
+  }
+
+  if (Date.now() < rateLimitedUntil) {
+    const err = new Error('RATE_LIMITED');
+    err.code = 'RATE_LIMITED';
+    throw err;
+  }
+
+  const response = await axios.get(
+    `https://v3.football.api-sports.io/fixtures?date=${date}`,
+    {
+      headers: {
+        'x-apisports-key': API_KEY
+      },
+      timeout: 12000
+    }
+  );
+
+  const errors = response.data?.errors;
+  if (errors && Object.keys(errors).length) {
+    const msg = JSON.stringify(errors);
+    if (/request limit|requests/i.test(msg)) {
+      // block ~until next day utc roughly 6h minimum
+      rateLimitedUntil = Date.now() + 6 * 60 * 60 * 1000;
+      const err = new Error('RATE_LIMITED');
+      err.code = 'RATE_LIMITED';
+      err.detail = msg;
+      throw err;
+    }
+    const err = new Error(msg);
+    err.code = 'API_ERROR';
+    throw err;
+  }
+
+  return response.data?.response || [];
+}
+
+// ================== API ==================
+app.get('/api/health', (req, res) => {
+  res.json({
+    ok: true,
+    hasKey: Boolean(API_KEY),
+    rateLimited: Date.now() < rateLimitedUntil,
+    tz: TZ,
+    now: moment().tz(TZ).format()
+  });
+});
 
 app.get('/api/matches', async (req, res) => {
-    const day = req.query.day || 'today';
-    const now = moment().tz('Africa/Casablanca');
-    let date = now.format('YYYY-MM-DD');
-    if (day === 'tomorrow') date = now.clone().add(1, 'day').format('YYYY-MM-DD');
-    if (day === 'yesterday') date = now.clone().subtract(1, 'day').format('YYYY-MM-DD');
+  res.setHeader('Content-Type', 'application/json');
+  const day = req.query.day || 'today';
+  const date = getDateForDay(day);
 
-    streamsDatabase = loadSavedStreams();
-    if (cache[day].data && Date.now() - cache[day].t < CACHE_DURATION) {
-        let cData = cache[day].data;
-        if (cData.matches) cData.matches.forEach(m => { m.streams = streamsDatabase[m.id] || []; });
-        return res.json(cData);
+  // fresh cache hit
+  if (cache[day]?.data && Date.now() - cache[day].t < CACHE_MS) {
+    const cached = cache[day].data;
+    cached.matches = attachStreams(cached.matches);
+    return res.json(cached);
+  }
+
+  try {
+    console.log(`[API] fetching ${date} (day=${day}) key=${API_KEY ? 'yes' : 'NO'}`);
+    const raw = await fetchFromApi(date);
+    const matches = attachStreams(filterMatches(raw));
+
+    const payload = {
+      success: true,
+      source: 'api-football',
+      isMock: false,
+      day,
+      date,
+      count: matches.length,
+      matches
+    };
+
+    cache[day] = { t: Date.now(), data: payload };
+    console.log(`[API] ok ${date} => ${matches.length} matches`);
+    return res.json(payload);
+
+  } catch (e) {
+    console.error('[API] fail:', e.code || e.message);
+
+    // if we have old cache, serve it (better than fake/random)
+    if (cache[day]?.data?.matches?.length) {
+      const cached = cache[day].data;
+      cached.matches = attachStreams(cached.matches);
+      cached.stale = true;
+      cached.warning = e.code || e.message;
+      return res.json(cached);
     }
 
-    if (API_BLOCKED || !API_KEY) {
-        const payload = { success: true, isMock: true, day, date, count: getMockData().length, matches: getMockData() };
-        cache[day] = { t: Date.now(), data: payload };
-        return res.json(payload);
-    }
-
-    try {
-        const response = await axios.get(`https://v3.football.api-sports.io/fixtures?date=${date}`, { headers: { 'x-apisports-key': API_KEY, 'x-rapidapi-host': 'v3.football.api-sports.io' }, timeout: 5000 });
-        if (response.data.errors && Object.keys(response.data.errors).length) { API_BLOCKED = true; throw new Error('Limit'); }
-        let list = filterMatches(response.data.response || []);
-        if (!list.length) list = getMockData();
-        const payload = { success: true, isMock: false, day, date, count: list.length, matches: list };
-        cache[day] = { t: Date.now(), data: payload };
-        return res.json(payload);
-    } catch (e) {
-        API_BLOCKED = true;
-        const payload = { success: true, isMock: true, day, date, count: getMockData().length, matches: getMockData() };
-        cache[day] = { t: Date.now(), data: payload };
-        return res.json(payload);
-    }
-});
-
-// 🌐 API GET SINGLE MATCH
-app.get('/api/match/:id', (req, res) => {
-    const matchId = req.params.id;
-    streamsDatabase = loadSavedStreams();
-    
-    let foundMatch = null;
-    ['today', 'tomorrow', 'yesterday'].forEach(day => {
-        if (cache[day] && cache[day].data && cache[day].data.matches) {
-            const m = cache[day].data.matches.find(x => String(x.id) === matchId);
-            if (m) foundMatch = m;
-        }
+    // NO fake classic matches anymore (Roma/Barca fake confusion)
+    return res.json({
+      success: true,
+      source: 'empty',
+      isMock: false,
+      day,
+      date,
+      count: 0,
+      matches: [],
+      warning: e.code || e.message,
+      message:
+        e.code === 'MISSING_API_KEY'
+          ? 'API key missing on server'
+          : e.code === 'RATE_LIMITED'
+          ? 'API daily limit reached'
+          : 'Could not fetch live matches right now'
     });
-
-    if (!foundMatch) {
-        const mock = getMockData().find(x => String(x.id) === matchId);
-        if (mock) foundMatch = mock;
-    }
-
-    if (foundMatch) {
-        foundMatch.streams = streamsDatabase[matchId] || [];
-        return res.json({ success: true, match: foundMatch });
-    }
-    return res.status(404).json({ success: false, error: 'Match not found' });
+  }
 });
 
-app.post('/api/admin/streams', (req, res) => {
-    const { matchId, streams } = req.body;
-    streamsDatabase[String(matchId)] = streams;
-    saveStreamsToFile(streamsDatabase);
-    cache = { today: { t: 0, data: null }, tomorrow: { t: 0, data: null }, yesterday: { t: 0, data: null } };
-    return res.json({ success: true });
+app.get('/api/match/:id', (req, res) => {
+  const id = String(req.params.id);
+  streamsDB = loadStreams();
+
+  for (const day of ['today', 'tomorrow', 'yesterday']) {
+    const list = cache[day]?.data?.matches || [];
+    const found = list.find(m => String(m.id) === id);
+    if (found) {
+      found.streams = streamsDB[id] || [];
+      return res.json({ success: true, match: found });
+    }
+  }
+
+  return res.status(404).json({ success: false, error: 'Match not found' });
 });
 
 app.post('/api/admin/login', (req, res) => {
-    if (req.body?.password === ADMIN_PASSWORD) return res.json({ success: true });
-    return res.status(401).json({ success: false });
+  if (req.body?.password === ADMIN_PASSWORD) return res.json({ success: true });
+  return res.status(401).json({ success: false });
 });
 
-// 🌐 ROUTES
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
-app.get('/watch', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watch.html')));
-app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.post('/api/admin/streams', (req, res) => {
+  const { password, matchId, streams } = req.body || {};
+  if (password && password !== ADMIN_PASSWORD) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
+  if (!matchId || !Array.isArray(streams)) {
+    return res.status(400).json({ success: false, error: 'Invalid payload' });
+  }
 
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+  streamsDB = loadStreams();
+  streamsDB[String(matchId)] = streams;
+  saveStreams(streamsDB);
+
+  // bust cache so streams appear immediately
+  cache = {
+    today: { t: 0, data: null },
+    tomorrow: { t: 0, data: null },
+    yesterday: { t: 0, data: null }
+  };
+
+  return res.json({ success: true, matchId, streams });
+});
+
+// pages
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/matches', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
+app.get('/site', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
+app.get('/site.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
+app.get('/watch', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watch.html')));
+app.get('/watch.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watch.html')));
+app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/admin.html', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+
+app.listen(PORT, () => {
+  console.log(`🚀 Hassani TV on port ${PORT}`);
+  console.log(`🔑 API key: ${API_KEY ? 'OK' : 'MISSING'}`);
+  console.log(`🕒 TZ ${TZ} => ${moment().tz(TZ).format()}`);
+});
