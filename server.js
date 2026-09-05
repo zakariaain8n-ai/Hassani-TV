@@ -12,8 +12,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'zikopato2010@tv';
 
 app.use(express.json());
 
-// 🟢 التعديل الأول: خلينا السيرفر يقرا ملفات التصميم من أي بلاصة (Root و Public)
-app.use(express.static(__dirname));
+// 🟢 هادي مهمة بزاف: كتقول لـ Render أي ملف ف public يقدر يتقرا مباشرة
 app.use(express.static(path.join(__dirname, 'public')));
 
 const STREAMS_FILE = path.join(__dirname, 'streams.json');
@@ -120,7 +119,6 @@ app.get('/api/matches', async (req, res) => {
     }
 });
 
-// 🌐 API GET SINGLE MATCH
 app.get('/api/match/:id', (req, res) => {
     const matchId = req.params.id;
     streamsDatabase = loadSavedStreams();
@@ -158,29 +156,37 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(401).json({ success: false });
 });
 
-// 🟢 التعديل الثاني: Routes ذكية كتقلب على ملف الديزاين فين ما كان باش ما يعطيش Not Found
+// 🌐 ROUTES - برمجة صارمة لـ Linux / Render
 app.get('/', (req, res) => {
-    const publicPath = path.join(__dirname, 'public', 'site.html');
-    const rootPath = path.join(__dirname, 'site.html');
-    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
-    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
-    res.status(404).send('Site.html not found! Check your files.');
+    const filePath = path.join(__dirname, 'public', 'site.html');
+    if (fs.existsSync(filePath)) {
+        res.sendFile(filePath);
+    } else {
+        res.send(`<h1 style="color:white;background:black;padding:20px;">Error 404: The server works, but site.html is missing at ${filePath}</h1>`);
+    }
+});
+
+app.get('/home', (req, res) => {
+    const filePath = path.join(__dirname, 'public', 'index.html');
+    if (fs.existsSync(filePath)) res.sendFile(filePath);
+    else res.send('Error: index.html not found');
 });
 
 app.get('/watch', (req, res) => {
-    const publicPath = path.join(__dirname, 'public', 'watch.html');
-    const rootPath = path.join(__dirname, 'watch.html');
-    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
-    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
-    res.status(404).send('Watch.html not found! Check your files.');
+    const filePath = path.join(__dirname, 'public', 'watch.html');
+    if (fs.existsSync(filePath)) res.sendFile(filePath);
+    else res.send('Error: watch.html not found');
 });
 
 app.get('/admin', (req, res) => {
-    const publicPath = path.join(__dirname, 'public', 'admin.html');
-    const rootPath = path.join(__dirname, 'admin.html');
-    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
-    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
-    res.status(404).send('Admin.html not found! Check your files.');
+    const filePath = path.join(__dirname, 'public', 'admin.html');
+    if (fs.existsSync(filePath)) res.sendFile(filePath);
+    else res.send('Error: admin.html not found');
 });
 
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+// أي رابط آخر غير هادو، رجعو للصفحة الرئيسية
+app.get('*', (req, res) => {
+    res.redirect('/');
+});
+
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
