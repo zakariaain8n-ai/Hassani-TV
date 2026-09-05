@@ -11,6 +11,9 @@ const API_KEY = process.env.API_FOOTBALL_KEY;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'zikopato2010@tv';
 
 app.use(express.json());
+
+// 🟢 التعديل الأول: خلينا السيرفر يقرا ملفات التصميم من أي بلاصة (Root و Public)
+app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const STREAMS_FILE = path.join(__dirname, 'streams.json');
@@ -155,9 +158,29 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(401).json({ success: false });
 });
 
-// 🌐 ROUTES
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
-app.get('/watch', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watch.html')));
-app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+// 🟢 التعديل الثاني: Routes ذكية كتقلب على ملف الديزاين فين ما كان باش ما يعطيش Not Found
+app.get('/', (req, res) => {
+    const publicPath = path.join(__dirname, 'public', 'site.html');
+    const rootPath = path.join(__dirname, 'site.html');
+    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
+    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
+    res.status(404).send('Site.html not found! Check your files.');
+});
+
+app.get('/watch', (req, res) => {
+    const publicPath = path.join(__dirname, 'public', 'watch.html');
+    const rootPath = path.join(__dirname, 'watch.html');
+    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
+    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
+    res.status(404).send('Watch.html not found! Check your files.');
+});
+
+app.get('/admin', (req, res) => {
+    const publicPath = path.join(__dirname, 'public', 'admin.html');
+    const rootPath = path.join(__dirname, 'admin.html');
+    if (fs.existsSync(publicPath)) return res.sendFile(publicPath);
+    if (fs.existsSync(rootPath)) return res.sendFile(rootPath);
+    res.status(404).send('Admin.html not found! Check your files.');
+});
 
 app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
