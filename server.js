@@ -12,7 +12,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'zikopato2010@tv';
 
 app.use(express.json());
 
-// 🟢 هادي مهمة بزاف: كتقول لـ Render أي ملف ف public يقدر يتقرا مباشرة
+// static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 const STREAMS_FILE = path.join(__dirname, 'streams.json');
@@ -156,36 +156,25 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(401).json({ success: false });
 });
 
-// 🌐 ROUTES - برمجة صارمة لـ Linux / Render
+// 🌐 HTML Routes
 app.get('/', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'site.html');
-    if (fs.existsSync(filePath)) {
-        res.sendFile(filePath);
-    } else {
-        res.send(`<h1 style="color:white;background:black;padding:20px;">Error 404: The server works, but site.html is missing at ${filePath}</h1>`);
-    }
+    res.sendFile(path.join(__dirname, 'public', 'site.html'));
 });
 
 app.get('/home', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'index.html');
-    if (fs.existsSync(filePath)) res.sendFile(filePath);
-    else res.send('Error: index.html not found');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/watch', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'watch.html');
-    if (fs.existsSync(filePath)) res.sendFile(filePath);
-    else res.send('Error: watch.html not found');
+    res.sendFile(path.join(__dirname, 'public', 'watch.html'));
 });
 
 app.get('/admin', (req, res) => {
-    const filePath = path.join(__dirname, 'public', 'admin.html');
-    if (fs.existsSync(filePath)) res.sendFile(filePath);
-    else res.send('Error: admin.html not found');
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-// أي رابط آخر غير هادو، رجعو للصفحة الرئيسية
-app.get('*', (req, res) => {
+// 🟢 Fallback route compatible with Express 5 (No wildcard syntax error)
+app.use((req, res) => {
     res.redirect('/');
 });
 
