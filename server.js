@@ -181,7 +181,6 @@ app.get('/privacy', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
 });
 
-// Keep old routes available if files exist
 app.get('/site', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'site.html'));
 });
@@ -197,3 +196,5 @@ app.get('/admin', (req, res) => {
 app.use((req, res) => {
     res.redirect('/');
 });
+
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
