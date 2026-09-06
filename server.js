@@ -156,13 +156,34 @@ app.post('/api/admin/login', (req, res) => {
     return res.status(401).json({ success: false });
 });
 
-// 🌐 HTML Routes
+// 🌐 HTML Routes - Legal blog mode
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'site.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/article', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'article.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'contact.html'));
+});
+
+app.get('/privacy', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'privacy.html'));
+});
+
+// Keep old routes available if files exist
+app.get('/site', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'site.html'));
 });
 
 app.get('/watch', (req, res) => {
@@ -173,9 +194,6 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-// 🟢 Fallback route compatible with Express 5 (No wildcard syntax error)
 app.use((req, res) => {
     res.redirect('/');
 });
-
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
