@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مقال رياضي | Hassani TV</title>
-    <meta name="description" content="مقالات رياضية معمقة من Hassani TV: تحليلات كرة القدم العالمية والعربية، الدوريات الأوروبية، البطولة المغربية وسوق الانتقالات.">
-    <meta name="keywords" content="كرة القدم, تحليلات, دوري الأبطال, البطولة المغربية, الوداد, الرجاء, ريال مدريد, برشلونة, مانشستر سيتي, بايرن ميونخ, باريس سان جيرمان">
+    <meta name="description" content="مقالات رياضية معمقة من Hassani TV: تحليلات كرة القدم العالمية والعربية.">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Hassani TV">
-
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --bg: #0b1220;
@@ -54,7 +50,16 @@
             margin-bottom: 14px;
         }
         h1 { font-size: clamp(26px, 4vw, 40px); line-height: 1.4; margin-bottom: 12px; }
-        .meta { color: #64748b; font-size: 14px; font-weight: 700; margin-bottom: 22px; }
+        .meta { color: #64748b; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+        .hero-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 18px;
+            margin: 0 0 22px;
+            border: 1px solid var(--border);
+            background: #0f172a;
+        }
         .ad-box {
             margin: 24px 0;
             min-height: 90px;
@@ -72,7 +77,7 @@
             padding: 26px;
         }
         .content p { color: #dbe4f0; margin-bottom: 18px; font-size: 18px; }
-        .content h2 { font-size: 24px; margin: 26px 0 12px; color: #ffffff; }
+        .content h2 { font-size: 24px; margin: 26px 0 12px; color: #fff; }
         .content h3 { font-size: 20px; margin: 22px 0 10px; color: #e2e8f0; }
         .content ul { padding-right: 22px; margin-bottom: 18px; }
         .content li { color: #dbe4f0; margin-bottom: 10px; font-size: 17px; }
@@ -85,12 +90,7 @@
             color: #cfe9d9;
             font-size: 17px;
         }
-        .back {
-            display: inline-block;
-            margin-top: 22px;
-            color: var(--primary);
-            font-weight: 800;
-        }
+        .back { display: inline-block; margin-top: 22px; color: var(--primary); font-weight: 800; }
         footer {
             border-top: 1px solid var(--border);
             padding: 28px 0 40px;
@@ -99,7 +99,10 @@
         }
         footer .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
         footer a { color: var(--muted); font-weight: 700; font-size: 14px; }
-        @media (max-width: 700px) { .menu { display: none; } }
+        @media (max-width: 700px) {
+            .menu { display: none; }
+            .hero-img { height: 190px; }
+        }
     </style>
 </head>
 <body>
@@ -119,6 +122,7 @@
         <div class="tag" id="tag">تحليل رياضي</div>
         <h1 id="title">عنوان المقال</h1>
         <div class="meta" id="meta">Hassani TV · 8 دقائق قراءة</div>
+        <img id="hero" class="hero-img" src="" alt="صورة المقال" loading="lazy">
 
         <div class="ad-box">
             <ins class="adsbygoogle"
@@ -169,6 +173,7 @@ const articles = {
         tag: "دوري أبطال أوروبا",
         title: "ريال مدريد وسط الميدان: قراءة تكتيكية شاملة قبل مواجهات دوري الأبطال",
         meta: "تحليل معمق · 10 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>يمثل خط الوسط في كرة القدم الحديثة العمود الفقري لأي مشروع فني ناجح، ويدرك النادي الملكي هذه المعادلة أكثر من غيره، حيث بُنيت أمجاده الأوروبية خلال العقد الأخير على قاعدة صلبة في المنطقة الوسطى من الملعب. اليوم، ومع دخول ريال مدريد مرحلة جديدة من مشروعه، يبرز خط الوسط كنقطة يجب مراقبتها بعمق قبل مواجهات دوري أبطال أوروبا الحاسمة.</p>"
             + "<h2>لماذا يعتبر وسط الميدان مفتاح الليالي الأوروبية؟</h2>"
@@ -206,6 +211,7 @@ const articles = {
         tag: "البطولة الاحترافية",
         title: "الديربي البيضاوي بين الوداد والرجاء: تحليل تاريخي ورياضي شامل",
         meta: "تقرير محلي معمق · 9 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>يعتبر الديربي البيضاوي بين الوداد الرياضي والرجاء البيضاوي واحدا من أعرق المواجهات في كرة القدم الإفريقية والعربية، وليس مجرد مباراة تنافسية في البطولة الاحترافية المغربية. هذه المواجهة تحمل بعدا تاريخيا واجتماعيا وثقافيا يتجاوز حدود الملعب.</p>"
             + "<h2>البعد التاريخي للديربي</h2>"
@@ -237,6 +243,7 @@ const articles = {
         tag: "بريميرليغ",
         title: "مانشستر سيتي وضبط الإيقاع الدفاعي: قراءة في تفاصيل التوازن التكتيكي",
         meta: "تحليل تكتيكي · 9 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>لطالما اشتهر مانشستر سيتي بأسلوبه الهجومي الجميل والسيطرة الكاملة على المباريات عبر الاستحواذ العالي والتمرير المستمر. لكن خلف هذا الأسلوب الهجومي المميز، يكمن سر النجاح الحقيقي في التوازن الدفاعي المدروس بعناية فائقة.</p>"
             + "<h2>الأسلوب الهجومي وتحدياته الدفاعية</h2>"
@@ -274,6 +281,7 @@ const articles = {
         tag: "سوق الانتقالات",
         title: "كيف تبني الأندية الكبرى استراتيجيات التعاقدات؟ دليل شامل",
         meta: "مقال معمق · 11 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>لم يعد سوق الانتقالات في كرة القدم الحديثة مجرد عمليات بيع وشراء عشوائية، بل تحول إلى علم قائم بذاته يعتمد على البيانات والتحليل العميق والتخطيط طويل المدى. الأندية الكبرى في العالم تستثمر ملايين اليوروهات ليس فقط في التعاقدات، بل في المنظومات التي تحدد هذه التعاقدات.</p>"
             + "<h2>المرحلة الأولى: تحديد الاحتياجات</h2>"
@@ -332,6 +340,7 @@ const articles = {
         tag: "ليغ 1",
         title: "باريس سان جيرمان بين السيطرة المحلية والطموح الأوروبي",
         meta: "متابعة تحليلية · 8 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>يمثل باريس سان جيرمان حالة فريدة في كرة القدم الأوروبية، فهو الفريق الذي يهيمن بشكل شبه مطلق على البطولة المحلية، لكنه يعاني من صعوبة في تحويل هذه الهيمنة إلى ألقاب قارية كبرى. هذا التناقض يفتح باب النقاش حول طبيعة المشروع الرياضي للنادي الباريسي.</p>"
             + "<h2>الهيمنة على ليغ 1</h2>"
@@ -367,6 +376,7 @@ const articles = {
         tag: "بوندسليغا",
         title: "بايرن ميونخ: قوة الاستمرارية في وجه التحديات الجديدة",
         meta: "تقرير تحليلي · 8 دقائق قراءة",
+        img: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80",
         html:
             "<p>يظل بايرن ميونخ رمزا للاستمرارية والنجاح في كرة القدم الأوروبية. النادي البافاري بنى إمبراطورية كروية على مدى عقود عبر مزج ذكي بين التقاليد والحداثة، بين المدرسة المحلية والانفتاح العالمي. لكن هذا الموسم يطرح تحديات جديدة على النادي الأكثر تتويجا في ألمانيا.</p>"
             + "<h2>سر الاستمرارية</h2>"
@@ -415,6 +425,8 @@ const article = articles[id] || articles['1'];
 document.getElementById('tag').textContent = article.tag;
 document.getElementById('title').textContent = article.title;
 document.getElementById('meta').textContent = article.meta;
+document.getElementById('hero').src = article.img;
+document.getElementById('hero').alt = article.title;
 document.getElementById('content').innerHTML = article.html;
 document.title = article.title + ' | Hassani TV';
 </script>
