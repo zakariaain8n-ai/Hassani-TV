@@ -562,7 +562,36 @@ app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'c
 app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname, 'public', 'privacy.html')));
 app.get('/terms', (req, res) => res.sendFile(path.join(__dirname, 'public', 'terms.html')));
 app.get('/site', (req, res) => res.sendFile(path.join(__dirname, 'public', 'site.html')));
-app.get('/watch', (req, res) => res.sendFile(path.join(__dirname, 'public', 'watch.html')));
+
+// ==========================================
+// 📺 WATCH PAGE ROUTE WITH SERVER-SIDE CANONICAL SEO
+// ==========================================
+app.get('/watch', (req, res) => {
+    const watchFilePath = path.join(__dirname, 'public', 'watch.html');
+
+    fs.readFile(watchFilePath, 'utf8', (err, htmlData) => {
+        if (err) {
+            return res.status(500).send('Server Error');
+        }
+
+        const matchId = req.query.id ? String(req.query.id).trim() : '';
+        let canonicalUrl = 'https://hassani-tv.site/watch';
+
+        if (matchId) {
+            // Strictly URL-encode the parameter to prevent HTML injection / XSS
+            canonicalUrl += `?id=${encodeURIComponent(matchId)}`;
+        }
+
+        const canonicalTag = `<link rel="canonical" href="${canonicalUrl}">`;
+
+        // Inject canonical tag into <head> on the server side
+        const modifiedHtml = htmlData.replace('<!-- CANONICAL_TAG -->', canonicalTag);
+
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        return res.send(modifiedHtml);
+    });
+});
+
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 
 // Clean Global 404 Fallback
