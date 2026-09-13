@@ -48,13 +48,16 @@ let streamsDatabase = loadSavedStreams();
 // ==========================================
 // 📚 HIGH-QUALITY ARTICLES DB (EXPANDED & FACT-CHECKED)
 // ==========================================
+// ==========================================
+// 📚 HIGH-QUALITY ARTICLES DB (EXPANDED & FACT-CHECKED)
+// ==========================================
 const ARTICLES_DB = {
     "real-madrid-midfield-analysis": {
         slug: "real-madrid-midfield-analysis",
         tag: "دوري أبطال أوروبا",
         title: "ريال مدريد وسط الميدان: قراءة تكتيكية شاملة قبل مواجهات دوري الأبطال",
         description: "تحليل تكتيكي شامل لخط وسط ريال مدريد قبل مباريات دوري أبطال أوروبا، وكيف يؤثر التوازن الفني على حسم البطولات القارية.",
-        img: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+        img: "https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "ملعب كرة قدم يرمز لمواجهات دوري أبطال أوروبا",
         datePublished: "2024-03-10T08:00:00+00:00",
         dateModified: "2024-03-12T10:00:00+00:00",
@@ -80,7 +83,7 @@ const ARTICLES_DB = {
         tag: "البطولة الاحترافية",
         title: "الديربي البيضاوي بين الوداد والرجاء: تحليل تاريخي ورياضي شامل",
         description: "تحليل شامل للديربي البيضاوي بين الوداد والرجاء، الأبعاد التاريخية والتكتيكية، وتأثير المواجهة على سباق لقب البطولة الاحترافية المغربية.",
-        img: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80",
+        img: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "أجواء حماسية في ملعب كرة قدم تعكس الديربي",
         datePublished: "2024-04-05T08:00:00+00:00",
         dateModified: "2024-04-05T08:00:00+00:00",
@@ -100,7 +103,7 @@ const ARTICLES_DB = {
         tag: "الكرة المغربية",
         title: "أكاديمية محمد السادس: مصنع للمواهب ومستقبل الكرة المغربية",
         description: "تقرير تفصيلي حول دور أكاديمية محمد السادس لكرة القدم في تكوين المواهب الشابة وفق المعايير الدولية وتأثيرها المباشر على المنتخب المغربي.",
-        img: "https://images.unsplash.com/photo-1518605368461-1eb25bc4390b?auto=format&fit=crop&w=1200&q=80",
+        img: "https://images.pexels.com/photos/3148452/pexels-photo-3148452.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "كرة قدم على العشب ترمز لتكوين اللاعبين الشباب",
         datePublished: "2024-01-20T08:00:00+00:00",
         dateModified: "2024-02-15T09:30:00+00:00",
@@ -120,7 +123,7 @@ const ARTICLES_DB = {
         tag: "قضايا رياضية",
         title: "تقنية الـ VAR بعد سنوات من التطبيق: تأثيرها الحقيقي على كرة القدم",
         description: "مقال نقدي يناقش تقنية حكم الفيديو المساعد VAR، تأثيرها على تقليل أخطاء التحكيم، والجدل المستمر حول تأثيرها على عفوية اللعبة وإيقاعها.",
-        img: "https://images.unsplash.com/photo-1521579450373-c40ec4640103?auto=format&fit=crop&w=1200&q=80",
+        img: "https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "تقنية الفيديو المساعد للحكام",
         datePublished: "2024-02-10T08:00:00+00:00",
         dateModified: "2024-02-10T08:00:00+00:00",
@@ -140,7 +143,7 @@ const ARTICLES_DB = {
         tag: "تحليل فني",
         title: "الرقم 6 المعاصر: الجندي المجهول في خطط كبار أوروبا",
         description: "قراءة فنية معمقة في أهمية لاعب الارتكاز الدفاعي (الرقم 6)، وكيف يحدد توازن الفرق، واستخلاص الكرات، وبناء الهجمات تحت الضغط.",
-        img: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=1200&q=80",
+        img: "https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "لاعب ارتكاز يستعد لتمرير الكرة",
         datePublished: "2024-01-05T08:00:00+00:00",
         dateModified: "2024-01-05T08:00:00+00:00",
