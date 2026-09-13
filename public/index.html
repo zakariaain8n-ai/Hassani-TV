@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hassani TV | أخبار كرة القدم العالمية والعربية</title>
+    <title>Hassani TV | أخبار وتحليلات كرة القدم العالمية والعربية</title>
     <meta name="description" content="Hassani TV - موقع رياضي متخصص في أخبار كرة القدم، الدوريات الأوروبية، البطولة المغربية، وتحليلات المباريات.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hassani-tv.site/">
@@ -31,6 +31,7 @@
         a { color: inherit; text-decoration: none; }
         .container { width: min(1100px, 92%); margin: 0 auto; }
 
+        /* Unified Navigation */
         header {
             position: sticky; top: 0; z-index: 50;
             background: rgba(11,18,32,0.92);
@@ -39,53 +40,61 @@
         }
         .nav {
             display: flex; align-items: center; justify-content: space-between;
-            min-height: 72px; gap: 16px;
+            min-height: 72px; flex-wrap: wrap; padding: 10px 0;
         }
         .logo { font-size: 24px; font-weight: 900; }
         .logo span { color: var(--primary); }
-        .menu { display: flex; gap: 18px; flex-wrap: wrap; }
-        .menu a { color: var(--muted); font-weight: 700; font-size: 14px; }
+        .menu { display: flex; gap: 14px; flex-wrap: wrap; }
+        .menu a { color: var(--muted); font-weight: 700; font-size: 14px; padding: 4px 0; transition: color 0.3s; }
         .menu a:hover, .menu a.active { color: var(--primary); }
 
+        /* Hero Section */
         .hero {
-            padding: 48px 0 24px;
+            padding: 48px 0 32px;
             border-bottom: 1px solid var(--border);
+            text-align: center;
         }
-        .hero h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 10px; }
-        .hero p { color: var(--muted); max-width: 700px; }
+        .hero h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 14px; color: #fff; }
+        .hero p { color: var(--muted); max-width: 700px; margin: 0 auto; font-size: 18px; }
 
-        .ad-box {
-            margin: 24px 0;
-            min-height: 90px;
-            border: 1px dashed var(--border);
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--muted); font-size: 12px; font-weight: 700;
-            background: rgba(255,255,255,0.02);
-            overflow: hidden;
-        }
-
+        /* Grid Layout */
         .grid {
             display: grid;
-            grid-template-columns: 1.7fr 0.9fr;
+            grid-template-columns: 1fr;
             gap: 24px;
-            padding: 28px 0 50px;
+            padding: 32px 0 50px;
         }
-        @media (max-width: 900px) {
-            .grid { grid-template-columns: 1fr; }
-            .menu { display: none; }
+        @media (min-width: 900px) {
+            .grid { grid-template-columns: 1.8fr 1fr; }
         }
 
+        /* Article Cards */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 18px;
+            border-radius: 12px;
             overflow: hidden;
-            margin-bottom: 18px;
-            transition: .25s ease;
+            margin-bottom: 24px;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
-        .card:hover { transform: translateY(-3px); border-color: rgba(0,200,83,.35); }
-        .card-body { padding: 18px; }
+        @media (min-width: 600px) {
+            .card { flex-direction: row; align-items: stretch; }
+        }
+        .card:hover { transform: translateY(-4px); border-color: rgba(0,200,83,.4); }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #0f172a;
+        }
+        @media (min-width: 600px) {
+            .card-img { width: 40%; height: auto; min-height: 200px; }
+        }
+        
+        .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .tag {
             display: inline-block;
             background: rgba(0,200,83,.12);
@@ -95,183 +104,149 @@
             border-radius: 999px;
             font-size: 12px;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            align-self: flex-start;
         }
-        .card h2 { font-size: 22px; line-height: 1.5; margin-bottom: 8px; }
-        .card p { color: var(--muted); font-size: 15px; }
-        .meta { margin-top: 14px; color: #64748b; font-size: 13px; font-weight: 700; }
+        .card h2 { font-size: 20px; line-height: 1.5; margin-bottom: 10px; color: #fff; }
+        .card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; line-height: 1.6; }
+        .read-more { color: var(--primary); font-weight: 700; font-size: 14px; margin-top: auto; }
 
+        /* Sidebar */
         .side-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 18px;
-            margin-bottom: 18px;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
-        .side-card h3 { margin-bottom: 12px; font-size: 18px; }
+        .side-card h3 { margin-bottom: 16px; font-size: 18px; color: #fff; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 6px; }
         .side-card ul { list-style: none; }
-        .side-card li { padding: 10px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 700; font-size: 14px; }
+        .side-card li { padding: 12px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 700; font-size: 15px; }
+        .side-card li a { color: var(--muted); font-weight: 700; font-size: 15px; transition: color 0.2s; }
+        .side-card li a:hover { color: var(--primary); }
         .side-card li:last-child { border-bottom: none; }
 
+        /* Footer */
         footer {
             border-top: 1px solid var(--border);
-            padding: 28px 0 40px;
+            padding: 32px 0;
             color: var(--muted);
             text-align: center;
         }
-        footer .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
-        footer a { color: var(--muted); font-weight: 700; font-size: 14px; }
+        footer .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+        footer a { color: var(--muted); font-weight: 700; font-size: 14px; transition: color 0.2s; }
         footer a:hover { color: var(--primary); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 700px) {
+            .nav { flex-direction: column; gap: 12px; justify-content: center; }
+            .menu { justify-content: center; gap: 12px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
-<nav class="menu">
-    <a class="active" href="/">Home (الرئيسية)</a>
-    <a href="/site">Matches (المباريات)</a>
-    <a href="/">News (الأخبار)</a>
-    <a href="/?category=morocco">Moroccan Football</a>
-    <a href="/?category=international">International Football</a>
-    <a href="/about">About Us</a>
-    <a href="/contact">Contact Us</a>
-</nav>
+    <header>
+        <div class="container nav">
+            <a class="logo" href="/">Hassani<span>TV</span></a>
+            <nav class="menu">
+                <a class="active" href="/">الرئيسية</a>
+                <a href="/site">المباريات</a>
+                <a href="/about">من نحن</a>
+                <a href="/contact">اتصل بنا</a>
+                <a href="/privacy">سياسة الخصوصية</a>
+                <a href="/terms">الشروط والأحكام</a>
+            </nav>
+        </div>
+    </header>
 
     <section class="hero">
         <div class="container">
-            <h1>أخبار كرة القدم وتحليلات رياضية يومية</h1>
+            <h1>أخبار كرة القدم وتحليلات رياضية معمقة</h1>
             <p>
-                تابع آخر أخبار الدوريات الأوروبية، البطولة المغربية، سوق الانتقالات،
-                والمواعيد المهمة عبر محتوى عربي واضح ومحدث.
+                تابع آخر أخبار الدوريات الأوروبية، البطولة الاحترافية المغربية، والتحليلات التكتيكية الحصرية عبر محتوى رياضي موثوق ومحدث.
             </p>
         </div>
     </section>
 
     <main class="container">
-        <!-- Display Ad Top -->
-        <div class="ad-box">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-6541657840288379"
-                 data-ad-slot="1234567890"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
         <div class="grid">
+            <!-- Articles List -->
             <section>
+                <!-- Article 1 -->
                 <article class="card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="ريال مدريد" loading="lazy">
                     <div class="card-body">
-                        <span class="tag">دوري الأبطال</span>
-                        <h2><a href="/article?id=1">ريال مدريد يبحث عن تعزيز خط الوسط قبل المواجهات الحاسمة</a></h2>
-                        <p>
-                            يدخل ريال مدريد مرحلة حساسة من الموسم مع التركيز على التوازن بين الدفاع والهجوم،
-                            وسط نقاشات فنية حول أفضل التشكيلات لمواجهات دوري أبطال أوروبا.
-                        </p>
-                        <div class="meta">تحليل فني · 8 دقائق قراءة</div>
+                        <span class="tag">دوري أبطال أوروبا</span>
+                        <h2><a href="/article/real-madrid-midfield-analysis">ريال مدريد وسط الميدان: قراءة تكتيكية شاملة قبل مواجهات دوري الأبطال</a></h2>
+                        <p>تحليل تكتيكي شامل لخط وسط ريال مدريد قبل مباريات دوري أبطال أوروبا، وكيف يؤثر التوازن الفني على حسم البطولات القارية.</p>
+                        <a href="/article/real-madrid-midfield-analysis" class="read-more">اقرأ المقال كاملاً ←</a>
                     </div>
                 </article>
 
+                <!-- Article 2 -->
                 <article class="card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80" alt="الديربي البيضاوي" loading="lazy">
                     <div class="card-body">
                         <span class="tag">البطولة الاحترافية</span>
-                        <h2><a href="/article?id=2">الوداد والرجاء: كلاسيكو مغربي يعيد رسم سباق اللقب</a></h2>
-                        <p>
-                            يكتسب الديربي البيضاوي أهمية مضاعفة هذا الموسم، بعد تقارب النقاط وتراجع الفوارق
-                            بين المرشحين التقليديين للقب البطولة الاحترافية.
-                        </p>
-                        <div class="meta">تقرير محلي · 6 دقائق قراءة</div>
+                        <h2><a href="/article/derby-casablanca-wydad-raja">الديربي البيضاوي بين الوداد والرجاء: تحليل تاريخي ورياضي شامل</a></h2>
+                        <p>تحليل شامل للديربي البيضاوي بين الوداد والرجاء، الأبعاد التاريخية والتكتيكية، وتأثير المواجهة على سباق لقب البطولة.</p>
+                        <a href="/article/derby-casablanca-wydad-raja" class="read-more">اقرأ المقال كاملاً ←</a>
                     </div>
                 </article>
 
-                <!-- In-feed Display -->
-                <div class="ad-box">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-6541657840288379"
-                         data-ad-slot="1234567891"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
+                <!-- Article 3 -->
                 <article class="card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1518605368461-1eb25bc4390b?auto=format&fit=crop&w=600&q=80" alt="أكاديمية محمد السادس" loading="lazy">
                     <div class="card-body">
-                        <span class="tag">بريميرليغ</span>
-                        <h2><a href="/article?id=3">مانشستر سيتي يعيد ضبط الإيقاع الدفاعي بعد سلسلة نتائج متباينة</a></h2>
-                        <p>
-                            يعمل الطاقم الفني على تصحيح الثغرات الدفاعية وتحسين التحول من الدفاع إلى الهجوم،
-                            خاصة في المباريات التي تُحسم بتفاصيل صغيرة.
-                        </p>
-                        <div class="meta">تحليل · 7 دقائق قراءة</div>
+                        <span class="tag">الكرة المغربية</span>
+                        <h2><a href="/article/mohammed-vi-academy-moroccan-football">أكاديمية محمد السادس: مصنع للمواهب ومستقبل الكرة المغربية</a></h2>
+                        <p>تقرير تفصيلي حول دور أكاديمية محمد السادس لكرة القدم في تكوين المواهب الشابة وفق المعايير الدولية وتأثيرها المباشر.</p>
+                        <a href="/article/mohammed-vi-academy-moroccan-football" class="read-more">اقرأ المقال كاملاً ←</a>
                     </div>
                 </article>
 
+                <!-- Article 4 -->
                 <article class="card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1521579450373-c40ec4640103?auto=format&fit=crop&w=600&q=80" alt="تقنية الفار" loading="lazy">
                     <div class="card-body">
-                        <span class="tag">سوق الانتقالات</span>
-                        <h2><a href="/article?id=4">كيف تبني الأندية الكبرى خطط التعاقدات في يناير؟</a></h2>
-                        <p>
-                            لم تعد الانتقالات الشتوية مجرد حلول طارئة، بل أصبحت جزءا من استراتيجية موسمية
-                            تعتمد على البيانات، الجاهزية البدنية، وتوازن الرواتب.
-                        </p>
-                        <div class="meta">مقال معمق · 9 دقائق قراءة</div>
+                        <span class="tag">قضايا رياضية</span>
+                        <h2><a href="/article/var-technology-football-impact">تقنية الـ VAR بعد سنوات من التطبيق: تأثيرها الحقيقي على كرة القدم</a></h2>
+                        <p>مقال نقدي يناقش تقنية حكم الفيديو المساعد VAR، تأثيرها على تقليل أخطاء التحكيم، والجدل المستمر حول عفوية اللعبة.</p>
+                        <a href="/article/var-technology-football-impact" class="read-more">اقرأ المقال كاملاً ←</a>
                     </div>
                 </article>
-
+                
+                <!-- Article 5 -->
                 <article class="card">
+                    <img class="card-img" src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=600&q=80" alt="الرقم 6" loading="lazy">
                     <div class="card-body">
-                        <span class="tag">ليغ 1</span>
-                        <h2><a href="/article?id=5">باريس سان جيرمان بين السيطرة المحلية والطموح الأوروبي</a></h2>
-                        <p>
-                            يواصل الفريق الباريسي هيمنته المحلية، لكن النقاش يبقى مفتوحا حول القدرة على
-                            ترجمة الجودة الفردية إلى نتائج ثابتة قاريا.
-                        </p>
-                        <div class="meta">متابعة · 5 دقائق قراءة</div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-body">
-                        <span class="tag">بوندسليغا</span>
-                        <h2><a href="/article?id=6">بايرن ميونخ يختبر عمق الروتار قبل سباق اللقب</a></h2>
-                        <p>
-                            تبدو المنافسة الألمانية أكثر انفتاحا هذا الموسم، ما يفرض على بايرن إدارة أفضل
-                            للرزنامة وتدوير اللاعبين دون فقدان الهوية الهجومية.
-                        </p>
-                        <div class="meta">تقرير · 6 دقائق قراءة</div>
+                        <span class="tag">تحليل فني</span>
+                        <h2><a href="/article/number-6-midfielder-tactics">الرقم 6 المعاصر: الجندي المجهول في خطط كبار أوروبا</a></h2>
+                        <p>قراءة فنية معمقة في أهمية لاعب الارتكاز الدفاعي، وكيف يحدد توازن الفرق، واستخلاص الكرات، وبناء الهجمات تحت الضغط.</p>
+                        <a href="/article/number-6-midfielder-tactics" class="read-more">اقرأ المقال كاملاً ←</a>
                     </div>
                 </article>
             </section>
 
+            <!-- Sidebar -->
             <aside>
                 <div class="side-card">
-                    <h3>الأكثر قراءة</h3>
+                    <h3>أحدث المقالات</h3>
                     <ul>
-                        <li>أبرز المواعيد الأوروبية هذا الأسبوع</li>
-                        <li>قراءة تكتيكية لكلاسيكو المغرب</li>
-                        <li>من يتحكم في إيقاع وسط الميدان؟</li>
-                        <li>معايير تقييم الصفقة الناجحة</li>
+                        <li><a href="/article/real-madrid-midfield-analysis">ريال مدريد وسط الميدان: قراءة تكتيكية شاملة</a></li>
+                        <li><a href="/article/mohammed-vi-academy-moroccan-football">أكاديمية محمد السادس: مصنع للمواهب</a></li>
+                        <li><a href="/article/derby-casablanca-wydad-raja">الديربي البيضاوي: تحليل تاريخي ورياضي</a></li>
+                        <li><a href="/article/var-technology-football-impact">تقنية الـ VAR بعد سنوات من التطبيق</a></li>
                     </ul>
-                </div>
-
-                <!-- Sidebar Display -->
-                <div class="ad-box" style="min-height:250px">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-6541657840288379"
-                         data-ad-slot="1234567892"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                 </div>
 
                 <div class="side-card">
                     <h3>تصنيفات</h3>
                     <ul>
-                        <li>دوري الأبطال</li>
-                        <li>البطولة الاحترافية</li>
-                        <li>بريميرليغ</li>
-                        <li>تحليلات تكتيكية</li>
+                        <li>الكرة المغربية</li>
+                        <li>دوري أبطال أوروبا</li>
+                        <li>قضايا رياضية</li>
+                        <li>تحليلات فنية</li>
                     </ul>
                 </div>
             </aside>
@@ -282,11 +257,13 @@
         <div class="container">
             <div class="links">
                 <a href="/">الرئيسية</a>
+                <a href="/site">المباريات</a>
                 <a href="/about">من نحن</a>
                 <a href="/contact">اتصل بنا</a>
                 <a href="/privacy">سياسة الخصوصية</a>
+                <a href="/terms">الشروط والأحكام</a>
             </div>
-            <p>© 2026 Hassani TV — محتوى رياضي إخباري عربي</p>
+            <p>© 2026 Hassani TV — المحتوى الرياضي الموثوق</p>
         </div>
     </footer>
 </body>
