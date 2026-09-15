@@ -17794,7 +17794,7 @@ VAR هي اختصار لعبارة Video Assistant Referee، أي حكم الف�
         tag: "التكتيك والتحليل",
         title: "الكرات الثابتة في كرة القدم الحديثة: كيف تحولت الركلات والركنيات إلى سلاح تكتيكي لحسم المباريات؟",
         description: "تحليل تكتيكي شامل لدور الركنيات والركلات الحرة والكرات الثانية والتنظيم الدفاعي في كرة القدم الحديثة.",
-        img: "https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        img: "https://images.pexels.com/photos/36992252/pexels-photo-36992252.jpeg?auto=compress&cs=tinysrgb&w=1200",
         alt: "الكرات الثابتة والتكتيك في كرة القدم",
         author: "فريق التحرير الرياضي",
         datePublished: "2026-04-01T08:00:00+00:00",
