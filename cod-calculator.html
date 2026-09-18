@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة أرباح COD — Morocco.com</title>
+    <meta name="description" content="احسب أرباحك الحقيقية من بيع المنتجات بنظام COD في المغرب">
+    <meta name="theme-color" content="#08060F">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#A78BFA"/>
+                                <stop offset="100%" stop-color="#5B21B6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Morocco<span class="brand-accent">.com</span></span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="cod-calculator.html" class="nav-item active">حاسبة COD</a>
+                <a href="index.html#tools" class="nav-item">الأدوات</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="calc-header">
+        <div class="container">
+            <div class="calc-header-inner">
+                <div class="breadcrumb">
+                    <a href="index.html">الرئيسية</a>
+                    <span class="separator">/</span>
+                    <span>حاسبة أرباح COD</span>
+                </div>
+
+                <span class="section-label gold-tag">
+                    <span class="tag-dot" style="background: #E8B84E; box-shadow: 0 0 12px #E8B84E;"></span>
+                    الأداة الرئيسية
+                </span>
+
+                <h1 class="calc-title">
+                    حاسبة <span class="text-accent">أرباح COD</span>
+                </h1>
+                <p class="calc-subtitle">
+                    احسب الربح الحقيقي من بيع المنتجات بنظام الدفع عند الاستلام
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-layout">
+
+                <!-- Input Panel -->
+                <div class="calc-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            أدخل البيانات
+                        </h2>
+                        <button class="btn-reset" onclick="resetCalculator()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            مسح
+                        </button>
+                    </div>
+
+                    <div class="calc-form">
+
+                        <!-- Stock -->
+                        <div class="form-group">
+                            <h3 class="group-title">📦 المخزون</h3>
+                            <div class="form-field">
+                                <label for="stockQuantity">
+                                    عدد الوحدات
+                                    <span class="hint">شحال من قطعة عندك أو باغي تبيع</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="stockQuantity" placeholder="300" min="1" step="1" oninput="calculate()">
+                                    <span class="input-suffix">وحدة</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prices -->
+                        <div class="form-group">
+                            <h3 class="group-title">💵 الأسعار (لكل وحدة)</h3>
+
+                            <div class="form-field">
+                                <label for="sellingPrice">
+                                    سعر البيع
+                                    <span class="hint">السعر اللي كتبيع بيه القطعة الواحدة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="sellingPrice" placeholder="200" min="0" step="0.01" oninput="calculate()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="purchasePrice">
+                                    سعر الشراء
+                                    <span class="hint">الثمن اللي شريتي بيه القطعة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="purchasePrice" placeholder="80" min="0" step="0.01" oninput="calculate()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Costs -->
+                        <div class="form-group">
+                            <h3 class="group-title">🚚 التكاليف</h3>
+
+                            <div class="form-field">
+                                <label for="shippingCost">
+                                    التوصيل (لكل وحدة)
+                                    <span class="hint">تكلفة شركة التوصيل لكل قطعة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="shippingCost" placeholder="30" min="0" step="0.01" oninput="calculate()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="packagingCost">
+                                    التغليف (لكل وحدة)
+                                    <span class="hint">ثمن الكرطون والبلاستيك لكل قطعة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="packagingCost" placeholder="5" min="0" step="0.01" oninput="calculate()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="adsCost">
+                                    الإعلانات <span class="badge-total">إجمالي</span>
+                                    <span class="hint">المبلغ الكلي اللي غادي تصرف على الإعلانات للمخزون كامل</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="adsCost" placeholder="3000" min="0" step="0.01" oninput="calculate()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Returns -->
+                        <div class="form-group">
+                            <h3 class="group-title">🔄 المرتجعات</h3>
+                            <div class="form-field">
+                                <label for="returnRate">
+                                    نسبة المرتجعات
+                                    <span class="hint">شحال % من المخزون كيرجع (المتوسط 15-30%)</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="returnRate" placeholder="20" min="0" max="100" step="1" oninput="syncReturnRate(); calculate()">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <input type="range" id="returnSlider" class="slider" min="0" max="70" value="0" oninput="syncReturnInput(); calculate()">
+                                <div class="slider-marks">
+                                    <span>0%</span>
+                                    <span>35%</span>
+                                    <span>70%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            النتائج
+                        </h2>
+                    </div>
+
+                    <!-- Waiting State -->
+                    <div class="results-waiting" id="resultsWaiting">
+                        <div class="waiting-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 11H5a2 2 0 00-2 2v7a2 2 0 002 2h4a2 2 0 002-2v-7a2 2 0 00-2-2zM19 3h-4a2 2 0 00-2 2v7a2 2 0 002 2h4a2 2 0 002-2V5a2 2 0 00-2-2z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p>دخل عدد الوحدات و سعر البيع باش تشوف النتائج</p>
+                    </div>
+
+                    <!-- Results Content -->
+                    <div class="results-content" id="resultsContent" style="display: none;">
+
+                        <!-- Main Profit Card -->
+                        <div class="main-profit-card" id="mainProfitCard">
+                            <div class="main-label" id="mainProfitLabel">💰 الربح الصافي</div>
+                            <div class="main-value" id="mainProfit">—</div>
+                            <div class="result-status" id="profitStatus"></div>
+                        </div>
+
+                        <!-- Metrics Grid -->
+                        <div class="metrics-grid">
+                            <div class="metric">
+                                <div class="metric-label">إجمالي المبيعات</div>
+                                <div class="metric-value" id="totalRevenue">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">هامش الربح</div>
+                                <div class="metric-value" id="marginPercent">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">إجمالي التكاليف</div>
+                                <div class="metric-value" id="totalCosts">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">الربح لكل وحدة</div>
+                                <div class="metric-value" id="profitPerUnit">—</div>
+                            </div>
+                        </div>
+
+                        <!-- Returns Section -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">🔄 تأثير المرتجعات</h3>
+                            <div class="metrics-grid">
+                                <div class="metric metric-success">
+                                    <div class="metric-label">الوحدات الموصلة</div>
+                                    <div class="metric-value" id="deliveredUnits">—</div>
+                                </div>
+                                <div class="metric metric-danger">
+                                    <div class="metric-label">الوحدات المرجوعة</div>
+                                    <div class="metric-value" id="returnedUnits">—</div>
+                                </div>
+                                <div class="metric metric-warning">
+                                    <div class="metric-label">خسارة المرتجعات</div>
+                                    <div class="metric-value" id="returnLoss">—</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Costs Breakdown -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">💵 تفاصيل التكاليف</h3>
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-label">إجمالي الشراء</div>
+                                    <div class="metric-value" id="costPurchase">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">إجمالي التوصيل</div>
+                                    <div class="metric-value" id="costShipping">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">إجمالي التغليف</div>
+                                    <div class="metric-value" id="costPackaging">—</div>
+                                </div>
+                                <div class="metric metric-gold">
+                                    <div class="metric-label">إجمالي الإعلانات</div>
+                                    <div class="metric-value" id="costAds">—</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Per Unit Analysis -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📊 تحليل لكل وحدة</h3>
+                            <div class="unit-analysis">
+                                <div class="unit-item">
+                                    <span class="unit-label">سعر البيع</span>
+                                    <span class="unit-value" id="unitSelling">—</span>
+                                </div>
+                                <div class="unit-item">
+                                    <span class="unit-label">التكلفة الإجمالية</span>
+                                    <span class="unit-value" id="unitCost">—</span>
+                                </div>
+                                <div class="unit-item unit-highlight">
+                                    <span class="unit-label">الربح الصافي</span>
+                                    <span class="unit-value" id="unitProfit">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cost Bars Chart -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📈 توزيع التكاليف</h3>
+                            <div class="cost-bars" id="costBars"></div>
+                        </div>
+
+                        <!-- Tips -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">💡 نصائح ذكية</h3>
+                            <div class="tips-container" id="tipsContainer"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Morocco.com</span> — صُنع في المغرب</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/cod-calculator.js"></script>
+</body>
+</html>

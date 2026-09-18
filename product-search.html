@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بحث المنتجات بـ AI — Morocco.com</title>
+    <meta name="description" content="ابحث على أي منتج و AI يجيب ليك الأسعار الحقيقية فـ السوق المغربي">
+    <meta name="theme-color" content="#08060F">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#A78BFA"/>
+                                <stop offset="100%" stop-color="#5B21B6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Morocco<span class="brand-accent">.com</span></span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="cod-calculator.html" class="nav-item">حاسبة COD</a>
+                <a href="product-search.html" class="nav-item active">بحث المنتجات</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="calc-header">
+        <div class="container">
+            <div class="calc-header-inner">
+                <div class="breadcrumb">
+                    <a href="index.html">الرئيسية</a>
+                    <span class="separator">/</span>
+                    <span>بحث المنتجات</span>
+                </div>
+
+                <span class="section-label gold-tag">
+                    <span class="tag-dot" style="background: #E8B84E; box-shadow: 0 0 12px #E8B84E;"></span>
+                    مدعوم بـ AI
+                </span>
+
+                <h1 class="calc-title">
+                    ابحث على <span class="text-accent">أي منتج</span>
+                </h1>
+                <p class="calc-subtitle">
+                    اكتب اسم المنتج و AI يجيب ليك الأنواع، الماركات، والأسعار فـ السوق المغربي
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <div class="search-input-wrap">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="مثلاً: ساعة ذكية، سماعات بلوتوث، عطر..."
+                    >
+                    <button class="btn btn-primary btn-search" onclick="searchProducts()">
+                        <span>ابحث</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="price-filter">
+                    <label class="filter-label">🎚️ نطاق السعر (اختياري):</label>
+                    <div class="price-inputs">
+                        <div class="price-input-wrap">
+                            <input type="number" id="minPrice" placeholder="من" min="0">
+                            <span>DH</span>
+                        </div>
+                        <span class="price-separator">→</span>
+                        <div class="price-input-wrap">
+                            <input type="number" id="maxPrice" placeholder="إلى" min="0">
+                            <span>DH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Suggestions -->
+                <div class="suggestions">
+                    <span class="suggestions-label">🔥 بحث شائع:</span>
+                    <button class="suggestion-chip" onclick="quickSearch('ساعة ذكية')">ساعة ذكية</button>
+                    <button class="suggestion-chip" onclick="quickSearch('سماعات بلوتوث')">سماعات بلوتوث</button>
+                    <button class="suggestion-chip" onclick="quickSearch('كاميرا مراقبة')">كاميرا مراقبة</button>
+                    <button class="suggestion-chip" onclick="quickSearch('عطر')">عطر</button>
+                    <button class="suggestion-chip" onclick="quickSearch('حذاء رياضي')">حذاء رياضي</button>
+                </div>
+            </div>
+
+            <!-- Initial State -->
+            <div id="initialState" class="state-box">
+                <div class="state-icon">
+                    <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                </div>
+                <h2 class="state-title">ابدأ البحث</h2>
+                <p class="state-text">اكتب اسم منتج فـ خانة البحث فوق باش يبدا AI</p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="state-box" style="display: none;">
+                <div class="ai-loader">
+                    <div class="ai-pulse"></div>
+                    <div class="ai-icon">🤖</div>
+                </div>
+                <h2 class="state-title">AI كيبحث...</h2>
+                <p class="state-text">سني شوية باش نجيب ليك المنتجات و الأسعار</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="state-box" style="display: none;">
+                <div class="state-icon state-icon-error">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="8" x2="12" y2="12"/>
+                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                </div>
+                <h2 class="state-title">وقع مشكل</h2>
+                <p class="state-text" id="errorMessage">حاول مرة أخرى</p>
+                <button class="btn btn-primary" onclick="newSearch()">حاول مرة أخرى</button>
+            </div>
+
+            <!-- Results State -->
+            <div id="resultsState" style="display: none;">
+                <div class="results-header">
+                    <div>
+                        <h2 class="results-title" id="resultsTitle">النتائج</h2>
+                        <p class="results-count" id="resultsCount">— منتج</p>
+                    </div>
+                    <button class="btn-new-search" onclick="newSearch()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        بحث جديد
+                    </button>
+                </div>
+
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Product cards injected here -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Morocco.com</span> — صُنع في المغرب</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/products-db.js"></script>
+    <script src="js/product-search.js"></script>
+</body>
+</html>

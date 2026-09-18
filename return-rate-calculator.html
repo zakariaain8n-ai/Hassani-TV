@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة المرتجعات — Morocco.com</title>
+    <meta name="description" content="احسب تأثير المرتجعات على أرباحك واعرف أقصى نسبة مرتجعات مسموح بها فـ تجارتك">
+    <meta name="theme-color" content="#08060F">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#A78BFA"/>
+                                <stop offset="100%" stop-color="#5B21B6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Morocco<span class="brand-accent">.com</span></span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="cod-calculator.html" class="nav-item">حاسبة COD</a>
+                <a href="return-rate-calculator.html" class="nav-item active">حاسبة المرتجعات</a>
+                <a href="product-search.html" class="nav-item">بحث المنتجات</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="calc-header">
+        <div class="container">
+            <div class="calc-header-inner">
+                <div class="breadcrumb">
+                    <a href="index.html">الرئيسية</a>
+                    <span class="separator">/</span>
+                    <span>حاسبة المرتجعات</span>
+                </div>
+
+                <span class="section-label gold-tag">
+                    <span class="tag-dot" style="background: #EF4444; box-shadow: 0 0 12px #EF4444;"></span>
+                    تحليل المرتجعات
+                </span>
+
+                <h1 class="calc-title">
+                    حاسبة <span class="text-accent">تأثير المرتجعات</span>
+                </h1>
+                <p class="calc-subtitle">
+                    اعرف شحال كيكلفوك المرتجعات وأقصى نسبة مسموح بها قبل ما تولي فـ الخسارة
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-layout">
+
+                <!-- Input Panel -->
+                <div class="calc-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            بيانات الحملة / الطلبات
+                        </h2>
+                        <button class="btn-reset" onclick="resetCalculator()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            مسح
+                        </button>
+                    </div>
+
+                    <div class="calc-form">
+
+                        <!-- Volume -->
+                        <div class="form-group">
+                            <h3 class="group-title">📦 الطلبات والأسعار</h3>
+                            <div class="form-field">
+                                <label for="totalOrders">
+                                    إجمالي الطلبات المشحونة
+                                    <span class="hint">مجموع الطلبات اللي خرجتي للتوصيل</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="totalOrders" placeholder="100" min="1" step="1" oninput="calculateReturns()">
+                                    <span class="input-suffix">طلب</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="sellingPrice">
+                                    سعر البيع للطلب
+                                    <span class="hint">ثمن المنتج المعلن للزبون</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="sellingPrice" placeholder="200" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="purchasePrice">
+                                    تكلفة الشراء (لكل قطعة)
+                                    <span class="hint">ثمن شري الـ المنتج فـ الجملة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="purchasePrice" placeholder="70" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logistics Costs -->
+                        <div class="form-group">
+                            <h3 class="group-title">🚚 مصاريف الشحن والإعلان</h3>
+
+                            <div class="form-field">
+                                <label for="shippingOut">
+                                    مصاريف الشحن الذهاب (لكل طلب)
+                                    <span class="hint">ثمن توصيل طلبية من شركة الشحن</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="shippingOut" placeholder="35" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="shippingReturnFee">
+                                    رسوم إرجاع الطرد المرجوع (إن وجدت)
+                                    <span class="hint">الرسوم التي تأخذها شركة الشحن عند إرجاع الطرد (0 إذا مجانية)</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="shippingReturnFee" placeholder="10" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="adCostPerOrder">
+                                    تكلفة الإعلان لكل طلب (CPA)
+                                    <span class="hint">شحال كتقام عليك الطلبية فـ الإعلانات</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="adCostPerOrder" placeholder="25" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="packagingCost">
+                                    تكلفة التغليف (لكل طرد)
+                                    <span class="hint">ثمن العلبة والأكياس والستيكر</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="packagingCost" placeholder="5" min="0" step="0.01" oninput="calculateReturns()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Return Rate Slider -->
+                        <div class="form-group">
+                            <h3 class="group-title">🔄 نسبة المرتجعات المتوقعة</h3>
+                            <div class="form-field">
+                                <label for="returnRate">
+                                    نسبة المرتجعات (%)
+                                    <span class="hint">النسبة المئوية للطلبات المرجوعة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="returnRate" placeholder="25" min="0" max="100" step="1" oninput="syncReturnRate(); calculateReturns()">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                                <input type="range" id="returnSlider" class="slider" min="0" max="80" value="25" oninput="syncReturnInput(); calculateReturns()">
+                                <div class="slider-marks">
+                                    <span>0%</span>
+                                    <span>40%</span>
+                                    <span>80%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                            تحليل تأثير المرتجعات
+                        </h2>
+                    </div>
+
+                    <!-- Waiting State -->
+                    <div class="results-waiting" id="resultsWaiting">
+                        <div class="waiting-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p>دخل الأرقام وسعر البيع باش تشوف التقرير المفصل</p>
+                    </div>
+
+                    <!-- Results Content -->
+                    <div class="results-content" id="resultsContent" style="display: none;">
+
+                        <!-- Main Net Profit Card -->
+                        <div class="main-profit-card" id="mainProfitCard">
+                            <div class="main-label">💰 الربح الصافي النهائي (بعد المرتجعات)</div>
+                            <div class="main-value" id="netProfitVal">—</div>
+                            <div class="result-status" id="profitStatus"></div>
+                        </div>
+
+                        <!-- Critical Metrics Grid -->
+                        <div class="metrics-grid">
+                            <div class="metric metric-gold">
+                                <div class="metric-label">🚨 أقصى نسبة مرتجعات مسموح بها</div>
+                                <div class="metric-value" id="breakEvenReturnRate">—</div>
+                            </div>
+                            <div class="metric metric-danger">
+                                <div class="metric-label">💸 إجمالي الفلوس الضايعة فـ المرتجعات</div>
+                                <div class="metric-value" id="totalReturnLoss">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">خسارة كل طرد مرجوع واحد</div>
+                                <div class="metric-value" id="lossPerReturnedUnit">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">الربح من كل طرد موصل واحد</div>
+                                <div class="metric-value" id="profitPerDeliveredUnit">—</div>
+                            </div>
+                        </div>
+
+                        <!-- Compensation Ratio Metric -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">⚖️ معدل التعويض المطلوب</h3>
+                            <div class="unit-analysis">
+                                <div class="unit-item unit-highlight">
+                                    <span class="unit-label">طلب مرجوع واحد كياكل أرباح:</span>
+                                    <span class="unit-value" id="compensationRatio">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivered vs Returned Orders -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📊 توزيع الطلبات والمداخيل</h3>
+                            <div class="metrics-grid">
+                                <div class="metric metric-success">
+                                    <div class="metric-label">الطلبات الموصلة (Livré)</div>
+                                    <div class="metric-value" id="deliveredCount">—</div>
+                                </div>
+                                <div class="metric metric-danger">
+                                    <div class="metric-label">الطلبات المرجوعة (Retour)</div>
+                                    <div class="metric-value" id="returnedCount">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">المبيعات الإجمالية المقبوضة</div>
+                                    <div class="metric-value" id="totalRevenueVal">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">هامش الربح النهائي</div>
+                                    <div class="metric-value" id="profitMarginVal">—</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cost Bars Chart -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📈ين كتمشي مصاريفك؟</h3>
+                            <div class="cost-bars" id="costBars"></div>
+                        </div>
+
+                        <!-- Smart Tips -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">💡 نصائح لتقليل المرتجعات</h3>
+                            <div class="tips-container" id="tipsContainer"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Morocco.com</span> — صُنع في المغرب</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/return-calculator.js"></script>
+</body>
+</html>

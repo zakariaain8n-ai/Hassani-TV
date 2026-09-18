@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة ROAS الإعلانات — Morocco.com</title>
+    <meta name="description" content="قِس فعالية إعلاناتك فـ الفيسبوك وتيك توك واحسب العائد الحقيقي على الاستثمار الإعلاني فـ COD">
+    <meta name="theme-color" content="#08060F">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#A78BFA"/>
+                                <stop offset="100%" stop-color="#5B21B6"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Morocco<span class="brand-accent">.com</span></span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="cod-calculator.html" class="nav-item">حاسبة COD</a>
+                <a href="roas-calculator.html" class="nav-item active">حاسبة ROAS</a>
+                <a href="product-search.html" class="nav-item">بحث المنتجات</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="calc-header">
+        <div class="container">
+            <div class="calc-header-inner">
+                <div class="breadcrumb">
+                    <a href="index.html">الرئيسية</a>
+                    <span class="separator">/</span>
+                    <span>حاسبة ROAS الإعلانات</span>
+                </div>
+
+                <span class="section-label gold-tag">
+                    <span class="tag-dot" style="background: #38BDF8; box-shadow: 0 0 12px #38BDF8;"></span>
+                    تحليل الحملات الإعلانية
+                </span>
+
+                <h1 class="calc-title">
+                    حاسبة <span class="text-accent">ROAS العائد الإعلاني</span>
+                </h1>
+                <p class="calc-subtitle">
+                    قِس العائد الحقيقي على إعلاناتك فـ Facebook و TikTok بعد احتساب نسب التأكيد والتوصيل
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-layout">
+
+                <!-- Input Panel -->
+                <div class="calc-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            أدخل أرقام الحملة الإعلانية
+                        </h2>
+                        <button class="btn-reset" onclick="resetCalculator()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            مسح
+                        </button>
+                    </div>
+
+                    <div class="calc-form">
+
+                        <!-- Ad Budget -->
+                        <div class="form-group">
+                            <h3 class="group-title">📢 الإعلانات والمنتج</h3>
+                            
+                            <div class="form-field">
+                                <label for="adBudget">
+                                    الميزانية الإعلانية المصروفة (Ad Spend)
+                                    <span class="hint">إجمالي الفلوس اللي خلصتي فـ Facebook / TikTok</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="adBudget" placeholder="1000" min="1" step="1" oninput="calculateROAS()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="totalPurchases">
+                                    عدد الطلبات فـ المنصة الإعلانية (Purchases)
+                                    <span class="hint">عدد المبيعات المسجلة فـ Meta / TikTok Ads Manager</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="totalPurchases" placeholder="40" min="1" step="1" oninput="calculateROAS()">
+                                    <span class="input-suffix">طلب</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="sellingPrice">
+                                    سعر البيع للوحدة (AOV)
+                                    <span class="hint">ثمن بيع المنتج للزبون</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="sellingPrice" placeholder="250" min="0" step="0.01" oninput="calculateROAS()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="cogs">
+                                    تكلفة الشراء (COGS)
+                                    <span class="hint">ثمن شراء المنتج فـ الجملة</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="cogs" placeholder="80" min="0" step="0.01" oninput="calculateROAS()">
+                                    <span class="input-currency">DH</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="shippingCost">
+                                    تكلفة الشحن والتغليف للطلب
+                                    <span class="hint">مصاريف شركة التوصيل + الكرتونة والستيكر</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="shippingCost" placeholder="40" min="0" step="0.01" oninput="calculateROAS()">
+                                    <span class="input-suffix">DH</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Funnel Rates -->
+                        <div class="form-group">
+                            <h3 class="group-title">📞 نسب التأكيد والتوصيل فـ COD</h3>
+
+                            <div class="form-field">
+                                <label for="confirmRate">
+                                    نسبة التأكيد (Confirmation Rate)
+                                    <span class="hint">نسبة الطلبات المؤكدة فـ الهاتف (المتوسط 70-85%)</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="confirmRate" placeholder="80" min="0" max="100" step="1" oninput="calculateROAS()">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="deliveryRate">
+                                    نسبة التوصيل من المؤكد (Delivery Rate)
+                                    <span class="hint">نسبة الطلبات الموصلة والمقبوضة فعلياً (المتوسط 60-75%)</span>
+                                </label>
+                                <div class="input-wrap">
+                                    <input type="number" id="deliveryRate" placeholder="70" min="0" max="100" step="1" oninput="calculateROAS()">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="20" x2="12" y2="10"/>
+                                <line x1="18" y1="20" x2="18" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="16"/>
+                            </svg>
+                            تقرير ROAS والأرباح
+                        </h2>
+                    </div>
+
+                    <!-- Waiting State -->
+                    <div class="results-waiting" id="resultsWaiting">
+                        <div class="waiting-icon">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p>أدخل الميزانية، عدد الطلبات، وسعر البيع لرؤية أداء إعلاناتك</p>
+                    </div>
+
+                    <!-- Results Content -->
+                    <div class="results-content" id="resultsContent" style="display: none;">
+
+                        <!-- Main ROAS Card -->
+                        <div class="main-profit-card" id="mainProfitCard">
+                            <div class="main-label">🎯 ROAS الفعلي الحقيقي فـ جيبيك (Real COD ROAS)</div>
+                            <div class="main-value" id="realRoasVal">—</div>
+                            <div class="result-status" id="roasStatus"></div>
+                        </div>
+
+                        <!-- Critical Metrics Grid -->
+                        <div class="metrics-grid">
+                            <div class="metric metric-gold">
+                                <div class="metric-label">🚨 نقطة التعادل ROAS (Break-even ROAS)</div>
+                                <div class="metric-value" id="breakEvenRoasVal">—</div>
+                            </div>
+                            <div class="metric metric-success">
+                                <div class="metric-label">💰 الربح الصافي للحملة</div>
+                                <div class="metric-value" id="netProfitVal">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">تكلفة الاستحواذ الحالية (Current CPA)</div>
+                                <div class="metric-value" id="currentCpaVal">—</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">أقصى CPA مسموح بيه (Max CPA)</div>
+                                <div class="metric-value" id="maxCpaVal">—</div>
+                            </div>
+                        </div>
+
+                        <!-- Platform vs Real ROAS Comparison -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">⚖️ المقارنة: الفيسبوك ضد الواقع</h3>
+                            <div class="unit-analysis">
+                                <div class="unit-item">
+                                    <span class="unit-label">ROAS المنصة الإعلانية (Facebook / TikTok):</span>
+                                    <span class="unit-value" id="platformRoasVal">—</span>
+                                </div>
+                                <div class="unit-item unit-highlight">
+                                    <span class="unit-label">ROAS الفعلي المقبوض فـ COD:</span>
+                                    <span class="unit-value" id="realRoasUnitVal">—</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orders Funnel -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📦 مسار الطلبات (Funnel)</h3>
+                            <div class="metrics-grid">
+                                <div class="metric">
+                                    <div class="metric-label">الطلبات المسجلة (Conversions)</div>
+                                    <div class="metric-value" id="conversionsCount">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">الطلبات المؤكدة (Confirmé)</div>
+                                    <div class="metric-value" id="confirmedCount">—</div>
+                                </div>
+                                <div class="metric metric-success">
+                                    <div class="metric-label">الطلبات الموصلة (Livré)</div>
+                                    <div class="metric-value" id="deliveredCount">—</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">المداخيل الموصلة الإجمالية</div>
+                                    <div class="metric-value" id="deliveredRevenueVal">—</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cost Bars Chart -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">📈 توزيع ميزانية الحملة</h3>
+                            <div class="cost-bars" id="costBars"></div>
+                        </div>
+
+                        <!-- Smart Tips -->
+                        <div class="result-section">
+                            <h3 class="result-section-title">💡 توصيات لتحسين أداء الإعلانات</h3>
+                            <div class="tips-container" id="tipsContainer"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Morocco.com</span> — صُنع في المغرب</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/roas-calculator.js"></script>
+</body>
+</html>

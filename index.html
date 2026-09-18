@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassani E.com — منصة التاجر المغربي</title>
+    <meta name="description" content="منصة Hassani E.com للتجار: حاسبات الأرباح، بحث المنتجات، وأدوات إدارة التجارة الإلكترونية فالمغرب">
+    <meta name="theme-color" content="#0A0A0F">
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#00E676"/>
+                                <stop offset="100%" stop-color="#00796B"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-item active">الرئيسية</a>
+                <a href="#tools" class="nav-item">الأدوات</a>
+                <a href="#about" class="nav-item">حول</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-inner">
+                <span class="hero-tag">
+                    <span class="tag-dot"></span>
+                    مجاني بدون تسجيل
+                </span>
+
+                <h1 class="hero-title">
+                    منصة التاجر المغربي
+                    <br>
+                    <span class="text-accent">الشاملة</span>
+                </h1>
+
+                <p class="hero-text">
+                    حاسبات الأرباح، أدوات ذكية، وتحليل دقيق لإدارة تجارتك الإلكترونية بنجاح.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#tools" class="btn btn-primary">
+                        اكتشف الأدوات
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-label">الأدوات</span>
+                <h2 class="section-title">أدوات لكل تاجر</h2>
+                <p class="section-desc">مجموعة أدوات مصممة لحل المشاكل الحقيقية فـ COD</p>
+            </div>
+
+            <div class="tools-list">
+                
+                <a href="cod-calculator.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23" stroke-linecap="round"/>
+                            <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">حاسبة أرباح COD</h3>
+                    <p class="tool-desc">احسب أرباحك الحقيقية من نظام الدفع عند الاستلام</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+                <a href="product-search.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">بحث المنتجات</h3>
+                    <p class="tool-desc">ابحث على المنتجات وأسعارها في السوق المغربي</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+                <a href="return-rate-calculator.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">حاسبة المرتجعات</h3>
+                    <p class="tool-desc">اعرف تأثير المرتجعات على أرباحك وأقصى نسبة مسموح بها</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+                <a href="roas-calculator.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">حاسبة ROAS</h3>
+                    <p class="tool-desc">قِس فعالية إعلاناتك وعائد استثمارك الحقيقي فـ COD</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+                <!-- 🟢 قمنا بتحويل "قريباً" إلى أزرار شغالة -->
+                <a href="pricing-calculator.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">حاسبة التسعير</h3>
+                    <p class="tool-desc">حدد السعر الأمثل لمنتجك بناءً على تكاليفك لضمان الربح</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+                <a href="breakeven-calculator.html" class="tool">
+                    <div class="tool-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">نقطة التعادل</h3>
+                    <p class="tool-desc">احسب عدد المبيعات اللازمة لتغطية جميع تكاليفك الإعلانية</p>
+                    <span class="tool-badge tool-badge-active">متوفرة الآن ←</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-box">
+                <span class="section-label">حول المشروع</span>
+                <h2 class="section-title">مصنوع في المغرب</h2>
+                <p class="about-text">
+                    <strong>Hassani E.com</strong> منصة مغربية 100% تهدف لمساعدة التجار على فهم أرقامهم بشكل أفضل
+                    واتخاذ قرارات أذكى لتنمية أعمالهم فـ مجال التجارة الإلكترونية.
+                </p>
+
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-num text-accent">100%</div>
+                        <div class="stat-lbl">مجاني</div>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <div class="stat-num text-accent">0</div>
+                        <div class="stat-lbl">تسجيل</div>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <div class="stat-num text-gold">6</div>
+                        <div class="stat-lbl">أدوات احترافية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
