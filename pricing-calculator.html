@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة التسعير | Hassani E.com</title>
+    <meta name="description" content="حدد السعر الأمثل لمنتجك في التجارة الإلكترونية بناءً على التكاليف وهامش الربح المستهدف.">
+    <meta name="theme-color" content="#0A0A0F">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#00E676"/>
+                                <stop offset="100%" stop-color="#00796B"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="index.html#tools" class="nav-item active">الأدوات</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="calc-header">
+        <div class="container calc-header-inner">
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span class="separator">/</span>
+                <a href="index.html#tools">الأدوات</a>
+                <span class="separator">/</span>
+                <span class="current">حاسبة التسعير</span>
+            </div>
+            <h1 class="calc-title">حاسبة التسعير الذكية</h1>
+            <p class="calc-subtitle">حدد السعر الأمثل لبيع منتجك بناءً على جميع التكاليف ونسبة الربح المستهدفة لضمان عدم الخسارة.</p>
+        </div>
+    </div>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-layout">
+                
+                <!-- Inputs Panel -->
+                <div class="calc-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            تكاليف المنتج
+                        </h2>
+                        <button class="btn-reset" onclick="resetCalc()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 3v5h5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            إعادة ضبط
+                        </button>
+                    </div>
+
+                    <div class="calc-form">
+                        <div class="form-group">
+                            <h3 class="group-title">التكاليف الأساسية</h3>
+                            
+                            <div class="form-field">
+                                <label>تكلفة الشراء (Product Cost)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="costProduct" placeholder="0.00" min="0" step="1">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>تكلفة التوصيل (Shipping Cost)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="costShipping" placeholder="35.00" value="35" min="0" step="1">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>تكلفة الإعلان التقريبية لكل مبيعة (CPA)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="costAds" placeholder="40.00" value="40" min="0" step="1">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>مصاريف التغليف وأخرى (Packaging)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="costMisc" placeholder="5.00" value="5" min="0" step="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3 class="group-title text-gold">الربح المستهدف</h3>
+                            
+                            <div class="form-field">
+                                <label>هامش الربح الصافي المرغوب فيه <span id="marginValue" style="color:var(--gold); float:left;">30%</span></label>
+                                <input type="range" id="marginSlider" class="slider" min="5" max="80" value="30">
+                                <div class="slider-marks">
+                                    <span>5%</span>
+                                    <span>80%</span>
+                                </div>
+                                <span class="hint">نسبة الربح الصافي من سعر البيع النهائي.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            نتيجة التسعير
+                        </h2>
+                    </div>
+
+                    <div class="results-content">
+                        
+                        <div class="main-profit-card" id="resultCard">
+                            <div class="main-label">السعر المقترح للبيع</div>
+                            <div class="main-value" id="resSuggestedPrice">0.00 <span style="font-size: 1rem; color: var(--white-40);">MAD</span></div>
+                            <div class="result-status positive" id="resStatus">تغطية تامة للتكاليف</div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric metric-danger">
+                                <div class="metric-label">إجمالي التكاليف للمبيعة</div>
+                                <div class="metric-value" id="resTotalCost">0.00 MAD</div>
+                            </div>
+                            <div class="metric metric-gold">
+                                <div class="metric-label">الربح الصافي (المدخول)</div>
+                                <div class="metric-value" id="resNetProfit">0.00 MAD</div>
+                            </div>
+                        </div>
+
+                        <div class="result-section">
+                            <h3 class="result-section-title">توزيع المداخيل (بناءً على السعر المقترح)</h3>
+                            <div class="cost-bars">
+                                <div class="cost-bar">
+                                    <div class="cost-bar-label">المنتج والتغليف</div>
+                                    <div class="cost-bar-track">
+                                        <div class="cost-bar-fill" id="barProduct" style="width: 0%; background: var(--violet-500);"></div>
+                                    </div>
+                                    <div class="cost-bar-value" id="valProduct">0%</div>
+                                </div>
+                                <div class="cost-bar">
+                                    <div class="cost-bar-label">التوصيل والإعلانات</div>
+                                    <div class="cost-bar-track">
+                                        <div class="cost-bar-fill" id="barShippingAds" style="width: 0%; background: #EF4444;"></div>
+                                    </div>
+                                    <div class="cost-bar-value" id="valShippingAds">0%</div>
+                                </div>
+                                <div class="cost-bar">
+                                    <div class="cost-bar-label">الربح الصافي</div>
+                                    <div class="cost-bar-track">
+                                        <div class="cost-bar-fill" id="barProfit" style="width: 0%; background: var(--gold);"></div>
+                                    </div>
+                                    <div class="cost-bar-value" id="valProfit" style="color: var(--gold-light);">0%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        const inputs = {
+            product: document.getElementById('costProduct'),
+            shipping: document.getElementById('costShipping'),
+            ads: document.getElementById('costAds'),
+            misc: document.getElementById('costMisc'),
+            margin: document.getElementById('marginSlider')
+        };
+        
+        const displays = {
+            marginVal: document.getElementById('marginValue'),
+            sugPrice: document.getElementById('resSuggestedPrice'),
+            totCost: document.getElementById('resTotalCost'),
+            netProfit: document.getElementById('resNetProfit'),
+            
+            barProduct: document.getElementById('barProduct'),
+            valProduct: document.getElementById('valProduct'),
+            barShippingAds: document.getElementById('barShippingAds'),
+            valShippingAds: document.getElementById('valShippingAds'),
+            barProfit: document.getElementById('barProfit'),
+            valProfit: document.getElementById('valProfit')
+        };
+
+        const formatMoney = (num) => num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        function calculate() {
+            const costP = parseFloat(inputs.product.value) || 0;
+            const costS = parseFloat(inputs.shipping.value) || 0;
+            const costA = parseFloat(inputs.ads.value) || 0;
+            const costM = parseFloat(inputs.misc.value) || 0;
+            const targetMargin = parseFloat(inputs.margin.value) || 0;
+
+            displays.marginVal.textContent = targetMargin + '%';
+
+            const fixedCosts = costP + costM;
+            const variableCosts = costS + costA;
+            const totalCost = fixedCosts + variableCosts;
+
+            if (totalCost === 0) {
+                resetDisplays();
+                return;
+            }
+
+            let suggestedPrice = totalCost / (1 - (targetMargin / 100));
+            suggestedPrice = Math.ceil(suggestedPrice / 10) * 10 - 1; 
+
+            const netProfit = suggestedPrice - totalCost;
+            const actualMargin = (netProfit / suggestedPrice) * 100;
+
+            displays.sugPrice.innerHTML = `${formatMoney(suggestedPrice)} <span style="font-size: 1rem; color: var(--white-40);">MAD</span>`;
+            displays.totCost.textContent = `${formatMoney(totalCost)} MAD`;
+            displays.netProfit.textContent = `${formatMoney(netProfit)} MAD`;
+
+            const pctFixed = (fixedCosts / suggestedPrice) * 100;
+            const pctVar = (variableCosts / suggestedPrice) * 100;
+
+            displays.barProduct.style.width = `${pctFixed}%`;
+            displays.valProduct.textContent = `${pctFixed.toFixed(1)}%`;
+
+            displays.barShippingAds.style.width = `${pctVar}%`;
+            displays.valShippingAds.textContent = `${pctVar.toFixed(1)}%`;
+
+            displays.barProfit.style.width = `${actualMargin}%`;
+            displays.valProfit.textContent = `${actualMargin.toFixed(1)}%`;
+        }
+
+        function resetDisplays() {
+            displays.sugPrice.innerHTML = `0.00 <span style="font-size: 1rem; color: var(--white-40);">MAD</span>`;
+            displays.totCost.textContent = `0.00 MAD`;
+            displays.netProfit.textContent = `0.00 MAD`;
+            
+            ['barProduct', 'barShippingAds', 'barProfit'].forEach(b => displays[b].style.width = '0%');
+            ['valProduct', 'valShippingAds', 'valProfit'].forEach(v => displays[v].textContent = '0%');
+        }
+
+        function resetCalc() {
+            inputs.product.value = '';
+            inputs.shipping.value = '35';
+            inputs.ads.value = '40';
+            inputs.misc.value = '5';
+            inputs.margin.value = '30';
+            calculate();
+        }
+
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        calculate();
+    </script>
+</body>
+</html>
