@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة نقطة التعادل | Hassani E.com</title>
+    <meta name="description" content="احسب نقطة التعادل (Break-even Point) واعرف عدد المبيعات اللازمة لتغطية تكاليف الإعلانات في التجارة الإلكترونية.">
+    <meta name="theme-color" content="#0A0A0F">
+    <link rel="icon" href="data:,">
+    
+    <!-- Google AdSense Auto Ads Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .ad-container {
+            width: 100%;
+            margin: 2rem auto;
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(167, 139, 250, 0.02);
+            border: 1px dashed rgba(167, 139, 250, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="bg-grid"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
+                        <defs>
+                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
+                                <stop offset="0%" stop-color="#00E676"/>
+                                <stop offset="100%" stop-color="#00796B"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-item">الرئيسية</a>
+                <a href="index.html#tools" class="nav-item active">الأدوات</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="calc-header">
+        <div class="container calc-header-inner">
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span class="separator">/</span>
+                <a href="index.html#tools">الأدوات</a>
+                <span class="separator">/</span>
+                <span class="current">نقطة التعادل</span>
+            </div>
+            <h1 class="calc-title">حاسبة نقطة التعادل <span class="text-gold">(Break-even)</span></h1>
+            <p class="calc-subtitle">احسب شحال من مبيعة خاصك تجيب باش ترجع فلوس الإعلانات (الميزانية اليومية) وتغطي مصاريفك بلا ما تخسر.</p>
+            
+            <!-- Top AdSense Banner -->
+            <div class="ad-container" style="margin-top: 2rem;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6541657840288379"
+                     data-ad-slot="1234567890"
+                     data-ad-format="horizontal"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </div>
+    </div>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="calc-layout">
+                
+                <!-- Inputs Panel -->
+                <div class="calc-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            البيانات الأساسية
+                        </h2>
+                        <button class="btn-reset" onclick="resetCalc()">إعادة ضبط</button>
+                    </div>
+
+                    <div class="calc-form">
+                        <div class="form-group">
+                            <h3 class="group-title">التكاليف الثابتة</h3>
+                            
+                            <div class="form-field">
+                                <label>ميزانية الإعلانات اليومية (Daily Budget)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="dailyBudget" placeholder="200" value="200" min="0" step="1">
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label>مصاريف يومية أخرى (أدوات، فريق...)</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="otherCosts" placeholder="0" value="0" min="0" step="1">
+                                </div>
+                                <span class="hint">خليها 0 إلا ما كنتيش متأكد.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3 class="group-title">بيانات المنتج</h3>
+                            
+                            <div class="form-field">
+                                <label>الربح الصافي من المبيعة الواحدة</label>
+                                <div class="input-wrap">
+                                    <span class="input-suffix">MAD</span>
+                                    <input type="number" id="profitPerSale" placeholder="70" value="70" min="1" step="1">
+                                </div>
+                                <span class="hint">الربح اللي كيبقى ليك فكل مبيعة (بعد خصم الشراء والتوصيل والتغليف).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calc-panel results-panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">النتائج</h2>
+                    </div>
+
+                    <div class="results-content">
+                        
+                        <div class="main-profit-card" id="resultCard">
+                            <div class="main-label">نقطة التعادل اليومية (المبيعات المطلوبة)</div>
+                            <div class="main-value" id="resBreakEvenSales">0 <span style="font-size: 1rem; color: var(--white-40);">مبيعات</span></div>
+                            <div class="result-status warning" id="resStatus">لتغطية التكاليف بدون ربح أو خسارة</div>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric metric-danger">
+                                <div class="metric-label">إجمالي التكاليف اليومية</div>
+                                <div class="metric-value" id="resTotalFixed">0 MAD</div>
+                            </div>
+                            <div class="metric metric-gold">
+                                <div class="metric-label">كل مبيعة إضافية كتربحك</div>
+                                <div class="metric-value" id="resProfitPerExtra">0 MAD</div>
+                            </div>
+                        </div>
+
+                        <!-- Middle AdSense Banner -->
+                        <div class="ad-container" style="margin: 1.5rem 0;">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-6541657840288379"
+                                 data-ad-slot="1234567891"
+                                 data-ad-format="horizontal"
+                                 data-full-width-responsive="true"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        </div>
+
+                        <div class="tips-container" style="margin-top: 20px;">
+                            <div class="tip tip-info">
+                                <div class="tip-icon">💡</div>
+                                <div class="tip-text">
+                                    إلا جبتي <strong>أقل</strong> من هاد العدد دالمبيعات، راك <strong>خاسر</strong>.<br>
+                                    إلا جبتي <strong>أكثر</strong> من هاد العدد، راك بديتي <strong>تربح</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        const inputs = {
+            budget: document.getElementById('dailyBudget'),
+            other: document.getElementById('otherCosts'),
+            profit: document.getElementById('profitPerSale')
+        };
+        
+        const displays = {
+            beSales: document.getElementById('resBreakEvenSales'),
+            totFixed: document.getElementById('resTotalFixed'),
+            profExtra: document.getElementById('resProfitPerExtra')
+        };
+
+        const formatMoney = (num) => num.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+
+        function calculate() {
+            const budget = parseFloat(inputs.budget.value) || 0;
+            const other = parseFloat(inputs.other.value) || 0;
+            const profitPerSale = parseFloat(inputs.profit.value) || 0;
+
+            const totalFixedCosts = budget + other;
+
+            if (profitPerSale <= 0) {
+                displays.beSales.innerHTML = `∞ <span style="font-size: 1rem; color: var(--white-40);">مستحيل</span>`;
+                displays.totFixed.textContent = `${formatMoney(totalFixedCosts)} MAD`;
+                displays.profExtra.textContent = `0 MAD`;
+                return;
+            }
+
+            // Break-even Formula
+            const breakEvenSales = Math.ceil(totalFixedCosts / profitPerSale);
+
+            displays.beSales.innerHTML = `${breakEvenSales} <span style="font-size: 1rem; color: var(--white-40);">مبيعات</span>`;
+            displays.totFixed.textContent = `${formatMoney(totalFixedCosts)} MAD`;
+            displays.profExtra.textContent = `+${formatMoney(profitPerSale)} MAD`;
+        }
+
+        function resetCalc() {
+            inputs.budget.value = '200';
+            inputs.other.value = '0';
+            inputs.profit.value = '70';
+            calculate();
+        }
+
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        calculate();
+    </script>
+</body>
+</html>
