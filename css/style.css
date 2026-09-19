@@ -65,7 +65,26 @@
     color: var(--white);
 }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ===== RESET & DISABLE TEXT SELECTION ===== */
+*, *::before, *::after { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    
+    /* 🔒 منع تحديد وتظليل النصوص فـ السيت كامل */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* 🟢 السماح بالتحديد فقط داخل الخانات (Inputs) باش التاجر يقدر يكتب الأرقام عادي */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
 html { scroll-behavior: smooth; }
 
 body {
