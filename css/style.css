@@ -4,18 +4,18 @@
    ============================================ */
 
 :root {
-    /* Backgrounds - Deep Blacks & Dark Greys */
+    /* Backgrounds - Deep Blacks */
     --bg: #000000;
     --bg-2: #0A0A0A;
     --bg-3: #111111;
     --bg-elevated: #171717;
 
-    /* Primary Accent - Crisp Light/White instead of Violet */
+    /* Primary Accent - Crisp Light/White */
     --primary: #FFFFFF;
     --primary-dark: #E5E5E5;
     --primary-glow: rgba(255, 255, 255, 0.15);
 
-    /* Secondary Accent - Subtle Silver/Grey (Replaces Gold) */
+    /* Secondary Accent - Subtle Silver/Grey */
     --gold: #A3A3A3;
     --gold-light: #D4D4D4;
     --gold-dark: #737373;
@@ -34,13 +34,13 @@
     --white-10: rgba(255, 255, 255, 0.10);
     --white-05: rgba(255, 255, 255, 0.05);
 
-    /* Glass - Dark Frosted */
+    /* Glass */
     --glass: rgba(255, 255, 255, 0.03);
     --glass-strong: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-border-strong: rgba(255, 255, 255, 0.15);
 
-    /* Glows - Monochrome */
+    /* Glows */
     --glow-violet: 0 0 40px rgba(255, 255, 255, 0.05);
     --glow-gold: 0 0 30px rgba(255, 255, 255, 0.03);
 
@@ -57,6 +57,12 @@
     /* Ease */
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 🛑 إصلاح التظليل (Selection Color) 🛑 */
+::selection {
+    background: rgba(255, 255, 255, 0.2); /* رمادي شفاف بدل الأزرق */
+    color: var(--white);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -83,7 +89,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .bg-blobs { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; }
 
-/* Soft white/grey glowing orbs instead of colored blobs */
 .blob-1 {
     width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
@@ -100,7 +105,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @keyframes float-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(30px, -20px); } }
 @keyframes float-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-30px, 30px); } }
 
-/* Grid Texture */
 .bg-grid {
     position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.3;
     background-image: 
@@ -114,7 +118,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ================= TYPOGRAPHY ================= */
 h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spacing: -0.02em; }
 
-/* Text Accents - White/Silver gradients */
 .text-accent {
     background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D4 50%, #A3A3A3 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -198,7 +201,7 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 
 /* ================= BENTO GRID (Tools) ================= */
 .tools { padding: 4rem 0; }
-.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
 .bento-card {
     background: var(--bg-2);
     border: 1px solid var(--glass-border);
@@ -210,42 +213,42 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 .bento-card:hover {
     transform: translateY(-5px); border-color: var(--white-20);
     background: var(--bg-3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.05);
 }
+
+/* 🛑 إصلاح الأيقونات 🛑 */
 .bento-icon {
     width: 48px; height: 48px; border-radius: 12px;
     background: var(--bg-elevated); display: flex; align-items: center; justify-content: center;
     color: var(--white-80); margin-bottom: 1.5rem; border: 1px solid var(--glass-border);
     transition: 0.3s;
 }
-/* إصلاح مشكل اللوغو: منع تغيير اللون الداخلي */
 .bento-card:hover .bento-icon { 
     background: rgba(255, 255, 255, 0.1); 
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     transform: scale(1.05);
-    /* حيدنا color باش ما يفرضش الأبيض على SVG */
 }
-.bento-card:hover .bento-icon svg {
-    /* يمنع تغيير الألوان الداخلية ديال SVG (بحال اللوغو) */
-    fill: currentColor; 
-}
+
 .bento-title { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--white); }
 .bento-desc { color: var(--white-60); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex: 1; }
 .tool-badge { display: inline-block; padding: 0.3rem 0.85rem; background: var(--bg-elevated); border: 1px solid var(--glass-border); color: var(--white-60); font-size: 0.75rem; font-weight: 700; border-radius: 50px; }
 .tool-badge-active { color: var(--white); border-color: var(--white-40); }
 
-/* ================= ABOUT ================= */
-.about { padding: 6rem 0; }
-.about-box {
-    max-width: 780px; margin: 0 auto; padding: 3.5rem 2.5rem;
-    background: var(--bg-2); border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl); text-align: center;
+/* ================= SPLIT SECTION (Why Us) ================= */
+.split-section {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    padding: 6rem 0;
 }
-.about-text { color: var(--white-80); font-size: 1.05rem; margin-bottom: 2.5rem; max-width: 540px; margin-left: auto; margin-right: auto; line-height: 1.8; }
-.about-stats { display: flex; justify-content: center; align-items: center; gap: 3rem; }
-.stat-num { font-family: var(--font-num); font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--white); }
-.stat-lbl { color: var(--white-60); font-size: 0.9rem; font-weight: 500; }
-.stat-line { width: 1px; height: 40px; background: var(--glass-border-strong); }
+.split-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+.split-text p { color: var(--white-60); font-size: 1.1rem; margin-bottom: 2rem; }
+.split-visual {
+    background: var(--bg-elevated); border: 1px solid var(--glass-border-strong);
+    border-radius: var(--radius-xl); height: 350px;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding: 2rem; gap: 1rem; overflow: hidden; position: relative;
+}
+.chart-bar { width: 40px; background: var(--bg-3); border-radius: 8px 8px 0 0; }
+.chart-bar.active { background: var(--white); box-shadow: 0 -10px 30px rgba(255,255,255,0.2); }
 
 /* ================= FOOTER ================= */
 .footer { border-top: 1px solid var(--glass-border); padding: 2.5rem 0; background: var(--bg-2); text-align: center; margin-top: 4rem; }
@@ -259,6 +262,8 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 .calc-header-inner { max-width: 900px; margin: 0 auto; text-align: center; }
 .breadcrumb { display: flex; justify-content: center; gap: 0.5rem; font-size: 0.85rem; color: var(--white-40); margin-bottom: 1.5rem; }
 .breadcrumb a { color: var(--white-80); font-weight: 600; }
+.separator { color: var(--white-20); }
+
 .calc-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--white); }
 .calc-subtitle { font-size: 1.05rem; color: var(--white-60); max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
@@ -283,6 +288,8 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 .form-field label { display: block; font-weight: 600; color: var(--white-80); margin-bottom: 0.5rem; font-size: 0.95rem; }
 .hint { display: block; font-size: 0.8rem; color: var(--white-40); margin-top: 0.4rem; }
 
+.badge-total { display: inline-block; padding: 0.15rem 0.5rem; background: var(--white); color: var(--bg); font-size: 0.7rem; font-weight: 700; border-radius: 50px; margin-right: 0.4rem; }
+
 .input-wrap { position: relative; display: flex; align-items: center; }
 .input-wrap input {
     width: 100%; padding: 0.8rem 1rem 0.8rem 3.5rem;
@@ -292,6 +299,11 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 }
 .input-wrap input:focus { border-color: var(--white-40); background: var(--bg-elevated); outline: none; }
 .input-suffix { position: absolute; left: 1rem; color: var(--white-60); font-size: 0.85rem; font-family: var(--font-num); }
+
+/* Slider */
+.slider { width: 100%; height: 4px; background: var(--bg-3); border-radius: 2px; outline: none; -webkit-appearance: none; margin-top: 1rem; }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--white); border-radius: 50%; cursor: pointer; }
+.slider-marks { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--white-40); margin-top: 0.5rem; font-family: var(--font-num); }
 
 /* Results */
 .results-content { padding: 1.5rem; }
@@ -308,22 +320,8 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 .metric-label { font-size: 0.8rem; color: var(--white-60); margin-bottom: 0.4rem; }
 .metric-value { font-family: var(--font-num); font-size: 1.25rem; font-weight: 700; color: var(--white); }
 
-/* Slider */
-.slider { width: 100%; height: 4px; background: var(--bg-3); border-radius: 2px; outline: none; -webkit-appearance: none; margin-top: 1rem; }
-.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--white); border-radius: 50%; cursor: pointer; }
-.slider-marks { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--white-40); margin-top: 0.5rem; font-family: var(--font-num); }
-
-/* Legal Pages */
-.legal-content {
-    padding: 3rem; background: var(--bg-2); border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-}
-.legal-content h2 { font-size: 1.4rem; color: var(--white); margin: 2rem 0 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
-.legal-content p, .legal-content li { color: var(--white-70); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
-.legal-content ul { padding-right: 1.5rem; }
-
 /* Ads */
-.ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: var(--bg-3); border: 1px dashed var(--glass-border); border-radius: 12px; overflow: hidden; }
+.ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
@@ -331,6 +329,7 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     .results-panel { position: static; }
     .bento-grid { grid-template-columns: 1fr; }
     .bento-card.span-2 { grid-column: span 1; }
+    .split-section { grid-template-columns: 1fr; text-align: center; }
 }
 
 @media (max-width: 768px) {
@@ -343,8 +342,5 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     .nav-menu.active { display: flex; }
     .menu-toggle { display: flex; }
     .hero-title { font-size: 2.2rem; }
-    .about-stats { gap: 2rem; flex-direction: column; }
-    .stat-line { width: 50px; height: 1px; }
     .metrics-grid { grid-template-columns: 1fr; }
-    .legal-content { padding: 1.5rem; }
 }
