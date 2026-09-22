@@ -98,7 +98,13 @@ function displayResults(query, products) {
     title.textContent = `نتائج البحث عن: "${query}"`;
     count.textContent = `${products.length} منتجات متوفرة`;
 
-    let html = '';
+    // 🛑 إضافة شريط التحذير (Disclaimer) 🛑
+    let html = `
+        <div class="disclaimer-banner ai-notice">
+            <span><strong>ملاحظة:</strong> الأسعار المعروضة هي متوسطات تقريبية تم جمعها وتحليلها بناءً على بيانات السوق المغربي، وقد تختلف قليلاً حسب المورد، الجودة، وتكلفة الشحن الحالية. المرجو التأكد قبل الشراء.</span>
+        </div>
+    `;
+
     products.forEach(p => {
         const qualityClass = p.quality === 'ممتاز' ? 'quality-premium' : 'quality-good';
         html += `
