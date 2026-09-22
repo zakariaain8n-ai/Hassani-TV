@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hassani E.com — منصة التاجر المغربي</title>
-    <meta name="description" content="حاسبات الأرباح، ROAS، والمرتجعات. بيانات دقيقة لتنمية تجارتك الإلكترونية.">
+    <meta name="description" content="منصة Hassani E.com للتجار: حاسبات الأرباح، بحث المنتجات، ومدونة تعليمية شاملة للتجارة الإلكترونية فالمغرب">
     <meta name="theme-color" content="#000000">
-    <!-- Site Favicon (Logo) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='7' fill='%23FFFFFF'/><path d='M9 20L13 14L17 18L23 10' stroke='%23000000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='23' cy='10' r='2' fill='%23000000'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='7' fill='%23FFFFFF'/><path d='M9 20L13 14L17 18L23 10' stroke='%23000000' stroke-width='2.5' stroke-linecap="round" stroke-linejoin="round"/><circle cx='23' cy='10' r='2' fill='%23000000'/></svg>">
     
     <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
@@ -15,6 +14,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .blog-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .blog-preview-card {
+            background: var(--bg-2);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .blog-preview-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--white-20);
+            background: var(--bg-3);
+        }
+        .blog-preview-tag {
+            font-size: 0.8rem;
+            color: var(--white-60);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .blog-preview-title {
+            font-size: 1.15rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        .blog-preview-desc {
+            font-size: 0.9rem;
+            color: var(--white-60);
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+        .blog-read-link {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +72,7 @@
     </div>
     <div class="bg-grid"></div>
 
-    <!-- Ultra-thin Navbar -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="brand">
@@ -42,6 +89,7 @@
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-item active">الرئيسية</a>
                 <a href="#tools" class="nav-item">الأدوات</a>
+                <a href="blog.html" class="nav-item">المدونة</a>
                 <a href="about.html" class="nav-item">حول</a>
             </div>
             
@@ -51,7 +99,7 @@
         </div>
     </nav>
 
-    <!-- SIGNATURE HERO MOMENT -->
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-inner">
@@ -66,29 +114,32 @@
                 </h1>
 
                 <p class="hero-text">
-                    منصة مغربية شاملة توفر لك حاسبات دقيقة لـ COD، الـ ROAS، والمرتجعات. بيانات حقيقية لتنمية تجارتك الإلكترونية بثقة.
+                    منصة مغربية شاملة توفر لك حاسبات دقيقة لـ COD، الـ ROAS، والمرتجعات، بالإضافة لمدونة تعليمية مخصصة للتاجر المغربي.
                 </p>
 
                 <div class="hero-actions">
                     <a href="#tools" class="btn btn-primary">
-                        ابدأ مجاناً
+                        اكتشف الأدوات
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
+                    </a>
+                    <a href="blog.html" class="btn" style="border: 1px solid var(--glass-border); color: var(--white);">
+                        تصفح المدونة
                     </a>
                 </div>
             </div>
             
             <!-- AdSense Top Banner -->
-            <div class="ad-container" style="margin-top: 4rem;">
+            <div class="ad-container" style="margin-top: 3rem;">
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
     </section>
 
-    <!-- WELCOME MESSAGE (Replaces Trust Bar) -->
-    <div style="padding: 2rem 0 4rem; text-align: center; border-bottom: 1px solid var(--glass-border);">
+    <!-- WELCOME MESSAGE -->
+    <div style="padding: 2rem 0 3rem; text-align: center; border-bottom: 1px solid var(--glass-border);">
         <div class="container">
             <p style="color: var(--white-40); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">
                 مرحباً بك في فضائك الرقمي. لقد صممنا هذه الأدوات بعناية لتوفير الجهد والوقت، ولتكون رفيقك اليومي في اتخاذ قرارات مالية سليمة لتجارتك.
@@ -107,7 +158,7 @@
 
             <div class="bento-grid">
                 
-                <!-- Card 1 (Spans 2 cols) -->
+                <!-- Card 1 -->
                 <a href="cod-calculator.html" class="bento-card span-2">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -137,7 +188,7 @@
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
 
-                <!-- Card 4 (Spans 2 cols) -->
+                <!-- Card 4 -->
                 <a href="pricing-calculator.html" class="bento-card span-2">
                     <div class="bento-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -168,12 +219,70 @@
                 </a>
 
             </div>
+        </div>
+    </section>
 
-            <!-- AdSense Middle Banner -->
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+    <!-- 📰 NEW BLOG ARTICLES SECTION (قسم المدونة المضاف فـ الرئيسية) -->
+    <section class="container" style="padding: 4rem 0 6rem; border-top: 1px solid var(--glass-border);">
+        <div class="section-head">
+            <span class="section-label">المحتوى التعليمي</span>
+            <h2 class="section-title">أحدث مقالات المدونة</h2>
+            <p class="section-desc">إرشادات ودلائل عملية للنجاح فـ التجارة الإلكترونية فـ المغرب.</p>
+        </div>
+
+        <div class="blog-preview-grid">
+            
+            <a href="blog-start-ecom-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">دليل المبتدئين</span>
+                <h3 class="blog-preview-title">دليل التجارة الإلكترونية فـ المغرب 2026: كيف تبدأ مشروع COD ناجح من الصفر</h3>
+                <p class="blog-preview-desc">خطوات عملية لبداية التجارة الإلكترونية بـ نظام الدفع عند الاستلام، اختيار المنتج، والتعامل مع الموردين.</p>
+
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-best-shipping-companies.html" class="blog-preview-card">
+                <span class="blog-preview-tag">اللوجستيك والشحن</span>
+                <h3 class="blog-preview-title">مقارنة أفضل شركات التوصيل فـ المغرب (COD) 2026: أسعار ومدد التسليم</h3>
+                <p class="blog-preview-desc">تحليل مفصل لأبرز شركات التوصيل فـ المغرب (أمانة، كات، أوزون...) وكيف تختار الشريك المناسب.</p>
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-reduce-retour-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">إدارة المرتجعات</span>
+                <h3 class="blog-preview-title">10 طرق مجربة لتقليل نسبة المرتجعات (Retour) فـ السوق المغربي</h3>
+                <p class="blog-preview-desc">استراتيجيات عملية لرفع نسبة التأكيد والتوصيل فـ الهاتف، وتفادي رفض الزبناء للطرود.</p>
+
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-facebook-tiktok-ads-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">التسويق الإعلاني</span>
+                <h3 class="blog-preview-title">إعلانات فيسبوك وتيك توك فـ المغرب: كيف تحقق CPA منخفض فـ 2026</h3>
+                <p class="blog-preview-desc">أسرار كتابة الإعلانات وتصميم الفيديوهات الموجهة للزبون المغربي، وطريقة ضبط الاستهداف.</p>
+
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-product-sourcing-casa.html" class="blog-preview-card">
+                <span class="blog-preview-tag">التوريد والجملة</span>
+                <h3 class="blog-preview-title">من أين تشتري منتجات الجملة فـ المغرب؟ (درب عمر، كراج علال، والموردين)</h3>
+                <p class="blog-preview-desc">دليل التاجر المغربي للوصول لأفضل أسعار الجملة فـ أسواق الدار البيضاء وطريقة التفاوض.</p>
+
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-cod-vs-prepaid.html" class="blog-preview-card">
+                <span class="blog-preview-tag">استراتيجيات العمل</span>
+                <h3 class="blog-preview-title">الدفع عند الاستلام (COD) أم الدفع الإلكتروني: أيهما أفضل للتاجر المغربي؟</h3>
+                <p class="blog-preview-desc">مقارنة شاملة بين مزايا وعيوب نظام الدفع عند التسليم والدفع بالبطاقة البنكية.</p>
+
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="blog.html" class="btn btn-primary">عرض جميع المقالات</a>
         </div>
     </section>
 
@@ -198,6 +307,7 @@
     <footer class="footer">
         <div class="container">
             <div class="links">
+                <a href="blog.html">المدونة</a>
                 <a href="about.html">من نحن</a>
                 <a href="contact.html">اتصل بنا</a>
                 <a href="privacy.html">سياسة الخصوصية</a>
