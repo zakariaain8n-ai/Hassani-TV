@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة أرباح COD — Hassani E.com</title>
-    <meta name="description" content="احسب أرباحك الحقيقية من بيع المنتجات بنظام COD في المغرب وتعرف على تأثير المرتجعات.">
+    <title>حاسبة أرباح COD المغرب — Hassani E.com</title>
+    <meta name="description" content="احسب الأرباح الصافية الحقيقية لمبيعات التجارة الإلكترونية بنظام الدفع عند الاستلام فـ المغرب مع احتساب مصاريف التوصيل، الإعلانات والمرتجعات.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hassani-tv.site/cod-calculator.html">
     <meta name="theme-color" content="#08060F">
-    <!-- Site Favicon (Logo) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='7' fill='%23FFFFFF'/><path d='M9 20L13 14L17 18L23 10' stroke='%23000000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='23' cy='10' r='2' fill='%23000000'/></svg>">
+    <link rel="icon" href="data:,">
     
     <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
@@ -24,10 +25,68 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(167, 139, 250, 0.02);
-            border: 1px dashed rgba(167, 139, 250, 0.15);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
             border-radius: 14px;
             overflow: hidden;
+        }
+
+        /* SEO Rich Content Section */
+        .seo-content-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        .content-card {
+            background: var(--bg-2);
+            border: 1px solid var(--glass-border-strong);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        .content-card h2 {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--white-15);
+            padding-bottom: 0.5rem;
+        }
+        .content-card h3 {
+            font-size: 1.2rem;
+            color: var(--white-95);
+            margin: 1.5rem 0 0.75rem;
+        }
+        .content-card p, .content-card li {
+            color: var(--white-70);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .content-card ul, .content-card ol {
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .example-box {
+            background: var(--bg-3);
+            border-right: 4px solid var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.25rem 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .faq-answer {
+            color: var(--white-70);
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -86,15 +145,15 @@
                 </div>
 
                 <span class="section-label gold-tag">
-                    <span class="tag-dot" style="background: #E8B84E; box-shadow: 0 0 12px #E8B84E;"></span>
-                    الأداة الرئيسية
+                    <span class="tag-dot"></span>
+                    الأداة الرئيسية للتجار
                 </span>
 
                 <h1 class="calc-title">
                     حاسبة <span class="text-accent">أرباح COD</span>
                 </h1>
                 <p class="calc-subtitle">
-                    احسب الربح الحقيقي من بيع المنتجات بنظام الدفع عند الاستلام مع أخذ المرتجعات والإعلانات بعين الاعتبار.
+                    احسب الربح الحقيقي الصافي من بيع المنتجات بنظام الدفع عند الاستلام فـ المغرب مع احتساب التكاليف والمرتجعات.
                 </p>
                 
                 <!-- Top AdSense Banner -->
@@ -112,7 +171,7 @@
         </div>
     </section>
 
-    <!-- Calculator -->
+    <!-- Calculator Section -->
     <section class="calc-section">
         <div class="container">
             <div class="calc-layout">
@@ -170,7 +229,7 @@
                             <div class="form-field">
                                 <label for="purchasePrice">
                                     سعر الشراء
-                                    <span class="hint">الثمن اللي شريتي بيه القطعة</span>
+                                    <span class="hint">الثمن اللي شريتي بيه القطعة فـ الجملة</span>
                                 </label>
                                 <div class="input-wrap">
                                     <input type="number" id="purchasePrice" placeholder="80" min="0" step="0.01" oninput="calculate()">
@@ -196,8 +255,8 @@
 
                             <div class="form-field">
                                 <label for="shippingCost">
-                                    التوصيل (لكل وحدة)
-                                    <span class="hint">تكلفة شركة التوصيل لكل قطعة</span>
+                                    التوصيل (لكل وحدة موصلة)
+                                    <span class="hint">تكلفة شركة التوصيل لكل قطعة موصلة</span>
                                 </label>
                                 <div class="input-wrap">
                                     <input type="number" id="shippingCost" placeholder="30" min="0" step="0.01" oninput="calculate()">
@@ -208,7 +267,7 @@
                             <div class="form-field">
                                 <label for="packagingCost">
                                     التغليف (لكل وحدة)
-                                    <span class="hint">ثمن الكرطون والبلاستيك لكل قطعة</span>
+                                    <span class="hint">ثمن الكرطون والبلاستيك والستيكر لكل قطعة</span>
                                 </label>
                                 <div class="input-wrap">
                                     <input type="number" id="packagingCost" placeholder="5" min="0" step="0.01" oninput="calculate()">
@@ -391,18 +450,118 @@
                 </div>
 
             </div>
+
+            <!-- ======================================================= -->
+            <!-- 🌟 SEO RICH TEXT CONTENT SECTION (P1: High Value Content) -->
+            <!-- ======================================================= -->
+            <div class="seo-content-section">
+                
+                <!-- Section 1: Intro -->
+                <article class="content-card">
+                    <h2>ما هي حاسبة أرباح التجارة الإلكترونية فـ المغرب (COD Calculator)؟</h2>
+                    <p>تُعد حاسبة أرباح الدفع عند الاستلام (Cash on Delivery Calculator) أداة مالية استراتيجية مصممة خصيصاً لمساعدة التجار والمسوقين فـ المغرب على حساب الأرباح الصافية لمشاريعهم بدقة متناهية. على عكس التجارة الإلكترونية التقليدية التي تعتمد على الدفع بالبطاقة البنكية فـ الموقع، تفرض بيئة العمل فـ السوق المغربي مصاريف إضافية وتحديات لوجستية معقدة مثل: نسبة المرتجعات (Retour)، تكاليف الإعلانات فـ فيسبوك وتيك توك (Ad Spend)، ومصاريف التغليف والتوصيل.</p>
+                    <p>استخدام هذه الأداة يضمن لك عدم السقوط فـ فخ "الأرباح الوهمية"، حيث يعتقد العديد من المبتدئين أن الفرق بين سعر الشراء وسعر البيع هو الربح الصافي، بينما تفاجئهم المصاريف المخفية بالخسارة فـ نهاية الشهر.</p>
+                </article>
+
+                <!-- Section 2: Mathematical Formula -->
+                <article class="content-card">
+                    <h2>كيف يتم حساب الربح الصافي فـ نظام الدفع عند الاستلام؟</h2>
+                    <p>تعتمد الأداة على معادلة رياضية دقيقة تأخذ فـ الاعتبار مسار الطلبية الكامل فـ السوق المغربي (من الشراء إلى التسليم):</p>
+                    
+                    <div class="example-box">
+                        <p style="font-weight: 700; color: var(--white);">المعادلة الأساسية:</p>
+                        <p style="font-family: var(--font-num); color: var(--gold-light); dir: ltr; text-align: left;">
+                            الربح الصافي = إجمالي المبيعات المقبوضة - (تكلفة شراء المخزون + إجمالي الإعلانات + مصاريف التوصيل الموصل + مصاريف التغليف + خسائر المرتجعات)
+                        </p>
+                    </div>
+
+                    <h3>تفاصيل عناصر التكلفة:</h3>
+                    <ul>
+                        <li><strong>إجمالي المبيعات المقبوضة:</strong> عدد الوحدات الموصلة فعلياً (Livré) × سعر البيع للقطعة.</li>
+                        <li><strong>خسارة المرتجعات:</strong> تشمل مصاريف التغليف المفقودة فـ الطلبات المرجوعة + رسوم الشحن أو الإرجاع التي تأخذها شركة التوصيل عن الطلبيات غير المستلمة.</li>
+                        <li><strong>تكلفة الإعلان لكل طلب (CPA):</strong> قسمة إجمالي الميزانية الإعلانية على عدد الطلبات الكلية المشحونة.</li>
+                    </ul>
+                </article>
+
+                <!-- Section 3: Practical Example -->
+                <article class="content-card">
+                    <h2>مثال تطبيقي واقعي فـ السوق المغربي</h2>
+                    <p>لتوضيح الصورة، نفترض أنك قمت بشراء حملة تجريبية لمنتج إلكتروني فـ المغرب بالمعطيات التالية:</p>
+                    
+                    <div class="example-box">
+                        <ul>
+                            <li><strong>المخزون الكلي:</strong> 100 قطعة.</li>
+                            <li><strong>سعر شراء القطعة بالجملة:</strong> 70 درهم (DH).</li>
+                            <li><strong>سعر البيع للزبون:</strong> 200 درهم (DH).</li>
+                            <li><strong>تكلفة التوصيل لكل قطعة موصلة:</strong> 35 درهم (DH).</li>
+                            <li><strong>تكلفة التغليف للقطعة:</strong> 5 دراهم (DH).</li>
+                            <li><strong>إجمالي المصاريف الإعلانية (Meta Ads):</strong> 2,500 درهم (DH).</li>
+                            <li><strong>نسبة المرتجعات المتوقعة (Retour Rate):</strong> 20% (أي 80 قطعة موصلة و 20 قطعة مرجوعة).</li>
+                        </ul>
+                    </div>
+
+                    <h3>نتيجة التحليل المالي:</h3>
+                    <p>إجمالي المداخيل المقبوضة = 80 قطعة × 200 DH = <strong>16,000 DH</strong>.<br>
+                    إجمالي التكاليف الكلية (شراء + إعلانات + توصيل + تغليف) = <strong>12,700 DH</strong>.<br>
+                    <strong>الربح الصافي النهائي = 3,300 درهم مغربي</strong> (بـ هامش ربحصافي قدره 20.6%).</p>
+                </article>
+
+                <!-- Section 4: Tips for E-commerce -->
+                <article class="content-card">
+                    <h2>5 نصائح ذهبية لرفع الأرباح وتقليل خسائر COD فـ المغرب</h2>
+                    <ol>
+                        <li><strong>تأكيد الطلبيات بسرعة (Confirmation):</strong> اتصل بالزبون فـ أقل من 3 ساعات من إدخال الطلب فـ الموقع، كلما تأخر الاتصال زادت نسبة إلغاء الطلب.</li>
+                        <li><strong>التتبع اليومي مع شركة التوصيل (Tracking):</strong> راقب الطلبات المعلقة فـ مدن الوصول، وتواصل مع الزبناء الذين لا يجيبون على موزعي شركة الشحن.</li>
+                        <li><strong>تحسين وصف المنتج فـ Landing Page:</strong> وضح تفاصيل المقاسات، الألوان، والجودة لتفادي رفض الزبون للمنتج عند معاينته أثناء التسليم.</li>
+                        <li><strong>مراعاة تكلفة الإعلان المتغيرة (CPA):</strong> إذا تجاوزت تكلفة إحضار الطلب الواحدة 40% من سعر بيع المنتج، قم فوراً بتغيير الإعلان أو تحسين صفحة البيع.</li>
+                        <li><strong>تقديم عروض التجمعات (Upselling & Bundles):</strong> قدم خصماً للزبون عند شراء قطعتين أو ثلاث قطعات، هذا يزيد من متوسط قيمة السلة (AOV) ويقلل تكلفة الشحن والإعلان لكل قطعة.</li>
+                    </ol>
+                </article>
+
+                <!-- Section 5: FAQ -->
+                <article class="content-card">
+                    <h2>الأسئلة الشائعة حول أرباح التجارة الإلكترونية (FAQ)</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">ما هي نسبة المرتجعات (Retour) المقبولة فـ السوق المغربي؟</div>
+                        <div class="faq-answer">تتراوح النسبة الطبيعية فـ المغرب بين 15% و 25%. إذا تجاوزت نسبة المرتجعات 30% فمشروعك فـ منطقة خطر ويجب مراجعة جودة المنتج أو شركة التوصيل.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">كيف أحسب تكلفة الإعلان المناسبة لكل طلب (CPA)؟</div>
+                        <div class="faq-answer">قم بقسمة المبلغ الإجمالي المصروف فـ المنصة الإعلانية (Facebook / TikTok) على عدد الطلبات الكلية المسجلة فـ الموقع قبل التأكيد.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">هل تحسب الحاسبة مصاريف الطلبيات المرجوعة؟</div>
+                        <div class="faq-answer">نعم، الحاسبة تقوم خصيصاً باحتساب مصاريف التغليف والتوصيل الضائعة فـ القطع المرجوعة لتعطيك الأرباح الصافية الحقيقية 100%.</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">هل يتم حفظ أرقام تجارتي فـ خوادم الموقع؟</div>
+                        <div class="faq-answer">لا نهائياً، جميع العمليات الحسابية تتم مباشرة داخل متصفحك (Client-side) ونحن لا نقوم بتسجيل أو حفظ أي بيانات مالية خاصة بك.</div>
+                    </div>
+                </article>
+
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع في المغرب</p>
+            <p style="margin-bottom: 1rem;">
+                <a href="privacy.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">سياسة الخصوصية</a> | 
+                <a href="terms.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">الشروط والأحكام</a> | 
+                <a href="contact.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">اتصل بنا</a>
+            </p>
+            <p>© 2026 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
         </div>
     </footer>
 
     <script src="js/app.js"></script>
     <script src="js/cod-calculator.js"></script>
-    <script src="js/security.js"></script> <!-- 🛡️ سطر الحماية -->
+    <script src="js/security.js"></script>
 </body>
 </html>
