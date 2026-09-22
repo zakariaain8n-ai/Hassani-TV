@@ -61,7 +61,7 @@
 
 /* 🛑 إصلاح التظليل (Selection Color) 🛑 */
 ::selection {
-    background: transparent; /* إخفاء لون التظليل تماماً */
+    background: transparent;
     color: inherit;
 }
 ::-moz-selection {
@@ -82,7 +82,7 @@
     user-select: none !important;
 }
 
-/* 🟢 السماح بالتحديد فقط داخل الخانات (Inputs) باش التاجر يقدر يكتب الأرقام عادي */
+/* 🟢 السماح بالتحديد فقط داخل الخانات (Inputs) */
 input, textarea {
     -webkit-user-select: text !important;
     -moz-user-select: text !important;
@@ -240,7 +240,7 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     box-shadow: 0 10px 30px rgba(255,255,255,0.05);
 }
 
-/* 🛑 إصلاح الأيقونات 🛑 */
+/* 🛑 إصلاح الأيقونات ومنع تلوينها بالأبيض 🛑 */
 .bento-icon {
     width: 48px; height: 48px; border-radius: 12px;
     background: var(--bg-elevated); display: flex; align-items: center; justify-content: center;
@@ -369,24 +369,35 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     .metrics-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== SEARCH PAGE LAYOUT FIXES (RTL) ===== */
+/* ============================================
+   PRODUCT SEARCH PAGE (Clean & Organized RTL)
+   ============================================ */
 .search-section { padding: 4rem 0 6rem; direction: rtl; }
+
+/* 1. Search Box - Large & Centered */
 .search-box {
     max-width: 850px; margin: 0 auto 3rem; padding: 2.5rem;
     background: var(--bg-2); border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     text-align: right;
 }
+
+/* 2. Main Search Input */
 .search-input-wrap {
     display: flex; gap: 1rem; margin-bottom: 1.5rem; width: 100%;
     align-items: center; position: relative;
+}
+.search-input-container {
+    position: relative;
+    flex: 1;
+    width: 100%;
 }
 .search-icon {
     position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%);
     color: var(--white-40); pointer-events: none; z-index: 2; width: 22px; height: 22px;
 }
 #searchInput {
-    flex: 1; height: 56px; padding: 1rem 1rem 1rem 3.5rem !important;
+    width: 100%; height: 56px; padding: 1rem 3.5rem 1rem 1rem !important;
     background: var(--bg-3); border: 1px solid var(--glass-border-strong);
     border-radius: var(--radius); color: var(--white); font-family: var(--font);
     font-size: 1.1rem; font-weight: 500; transition: all 0.3s;
@@ -398,10 +409,12 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     height: 56px; padding: 0 2rem !important; font-size: 1.1rem;
     flex-shrink: 0; display: inline-flex; align-items: center; gap: 0.5rem;
 }
+
+/* 3. Price Filter (Organized Line) */
 .price-filter {
     display: flex; align-items: center; gap: 1.5rem; padding: 1.2rem 1.5rem;
     background: var(--bg-3); border: 1px solid var(--glass-border);
-    border-radius: var(--radius); margin-bottom: 1.5rem; direction: rtl; justify-content: flex-start;
+    border-radius: var(--radius); margin-bottom: 1.5rem;
 }
 .filter-label { color: var(--white-80); font-weight: 700; font-size: 1rem; }
 .price-inputs { display: flex; align-items: center; gap: 1rem; flex: 1; }
@@ -417,6 +430,8 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 }
 .price-input-wrap span { color: var(--white-40); font-size: 0.85rem; font-weight: 700; }
 .price-separator { color: var(--white-60); font-weight: bold; }
+
+/* 4. Suggestions */
 .suggestions { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
 .suggestions-label { color: var(--white-60); font-size: 0.95rem; font-weight: 600; margin-left: 0.5rem; }
 .suggestion-chip {
@@ -425,9 +440,13 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: 0.2s;
 }
 .suggestion-chip:hover { background: var(--white); color: var(--bg); }
+
+/* 5. State Boxes (Loading/Error/Initial) */
 .state-box { max-width: 500px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
 .state-title { font-size: 1.6rem; margin-bottom: 1rem; color: var(--white); }
 .state-text { color: var(--white-60); font-size: 1.1rem; }
+
+/* 6. Results Header */
 .results-header {
     max-width: 1100px; margin: 0 auto 2rem; padding: 1.5rem 2rem;
     background: var(--bg-2); border: 1px solid var(--glass-border-strong);
@@ -440,10 +459,13 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     color: var(--white); border-radius: var(--radius-sm); cursor: pointer; font-weight: 700;
 }
 .btn-new-search:hover { background: var(--white-15); }
+
+/* 7. Results Grid & Cards (The Square Frames) */
 .results-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.5rem; max-width: 1100px; margin: 0 auto;
 }
+
 .product-card {
     padding: 2rem; background: var(--bg-2); border: 1px solid var(--glass-border-strong);
     border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 1.2rem;
@@ -454,22 +476,28 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     transform: translateY(-5px); border-color: var(--white-20);
     box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
+
 .product-card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; }
 .product-brand { padding: 0.4rem 1rem; background: var(--bg-3); color: var(--white-80); border: 1px solid var(--glass-border); border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
 .product-quality { padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
 .quality-premium { background: rgba(0, 200, 83, 0.1); color: #00E676; border: 1px solid rgba(0, 200, 83, 0.3); }
 .quality-good { background: rgba(255, 255, 255, 0.05); color: var(--white-80); border: 1px solid var(--glass-border); }
+
 .product-name { color: var(--white); font-size: 1.25rem; font-weight: 800; line-height: 1.5; margin: 0; }
+
 .product-prices { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .price-item { padding: 1rem; background: var(--bg-3); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); }
 .price-label { color: var(--white-60); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
 .price-value { color: var(--white); font-family: var(--font-num); font-size: 1.1rem; font-weight: 800; }
+
 .product-metrics { display: flex; justify-content: space-between; padding: 1rem; background: var(--bg); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); }
 .product-metric { display: flex; flex-direction: column; gap: 0.3rem; }
 .metric-lbl { color: var(--white-60); font-size: 0.85rem; font-weight: 600; }
 .metric-val { color: var(--white); font-family: var(--font-num); font-weight: 800; font-size: 1.05rem; }
 .metric-profit { color: #00E676; }
+
 .product-note { padding: 1rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); color: var(--white-80); border-radius: var(--radius-sm); font-size: 0.95rem; line-height: 1.6; }
+
 .product-cta {
     display: block; text-align: center; padding: 1rem;
     background: var(--white); color: var(--bg);
@@ -477,6 +505,7 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
 }
 .product-cta:hover { background: var(--white-80); transform: translateY(-2px); }
 
+/* MOBILE RESPONSIVE FIXES FOR SEARCH PAGE */
 @media (max-width: 768px) {
     .search-box { padding: 1.5rem; }
     .search-input-wrap { flex-direction: column; }
@@ -485,5 +514,7 @@ h1, h2, h3 { color: var(--white); font-weight: 800; line-height: 1.3; letter-spa
     .price-inputs { justify-content: space-between; }
     .results-header { flex-direction: column; text-align: center; gap: 1.5rem; }
     .product-prices { grid-template-columns: 1fr; }
+    
+    /* Ad Container Width Fix for AdSense */
     .ad-container { width: 100% !important; min-width: 280px !important; box-sizing: border-box; }
 }
