@@ -61,76 +61,43 @@
             font-size: 0.9rem;
             margin-top: auto;
         }
+        .ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 14px; overflow: hidden; }
     </style>
 </head>
 <body>
 
-    <!-- Ambient Background -->
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
+    <div class="bg-blobs"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
     <div class="bg-grid"></div>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-inner">
             <a href="index.html" class="brand">
                 <div class="brand-logo">
-                    <svg viewBox="0 0 32 32" fill="none">
-                        <rect x="2" y="2" width="28" height="28" rx="7" fill="#FFFFFF"/>
-                        <path d="M9 20L13 14L17 18L23 10" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="10" r="2" fill="#000000"/>
-                    </svg>
+                    <svg viewBox="0 0 32 32" fill="none"><rect x="2" y="2" width="28" height="28" rx="7" fill="#FFFFFF"/><path d="M9 20L13 14L17 18L23 10" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="10" r="2" fill="#000000"/></svg>
                 </div>
                 <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
             </a>
-
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-item active">الرئيسية</a>
                 <a href="#tools" class="nav-item">الأدوات</a>
                 <a href="blog.html" class="nav-item">المدونة</a>
                 <a href="about.html" class="nav-item">حول</a>
             </div>
-            
-            <button class="menu-toggle" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-inner">
-                <span class="hero-tag">
-                    <span class="tag-dot"></span>
-                    حساباتك التجارية، بكل بساطة.
-                </span>
-
-                <h1 class="hero-title">
-                    قرارات أذكى،<br>
-                    <span class="text-accent">أرباح أكبر.</span>
-                </h1>
-
-                <p class="hero-text">
-                    منصة مغربية شاملة توفر لك حاسبات دقيقة لـ COD، الـ ROAS، والمرتجعات، بالإضافة لمدونة تعليمية مخصصة للتاجر المغربي.
-                </p>
-
+                <span class="hero-tag"><span class="tag-dot"></span>حساباتك التجارية، بكل بساطة.</span>
+                <h1 class="hero-title">قرارات أذكى،<br><span class="text-accent">أرباح أكبر.</span></h1>
+                <p class="hero-text">منصة مغربية شاملة توفر لك حاسبات دقيقة لـ COD، الـ ROAS، والمرتجعات، بالإضافة لمدونة تعليمية مخصصة للتاجر المغربي.</p>
                 <div class="hero-actions">
-                    <a href="#tools" class="btn btn-primary">
-                        اكتشف الأدوات
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <a href="blog.html" class="btn" style="border: 1px solid var(--glass-border); color: var(--white);">
-                        تصفح المدونة
-                    </a>
+                    <a href="#tools" class="btn btn-primary">اكتشف الأدوات <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    <a href="blog.html" class="btn" style="border: 1px solid var(--glass-border); color: var(--white);">تصفح المدونة</a>
                 </div>
             </div>
-            
-            <!-- AdSense Top Banner -->
             <div class="ad-container" style="margin-top: 3rem;">
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -138,16 +105,12 @@
         </div>
     </section>
 
-    <!-- WELCOME MESSAGE -->
     <div style="padding: 2rem 0 3rem; text-align: center; border-bottom: 1px solid var(--glass-border);">
         <div class="container">
-            <p style="color: var(--white-40); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">
-                مرحباً بك في فضائك الرقمي. لقد صممنا هذه الأدوات بعناية لتوفير الجهد والوقت، ولتكون رفيقك اليومي في اتخاذ قرارات مالية سليمة لتجارتك.
-            </p>
+            <p style="color: var(--white-40); font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">مرحباً بك في فضائك الرقمي. لقد صممنا هذه الأدوات بعناية لتوفير الجهد والوقت، ولتكون رفيقك اليومي في اتخاذ قرارات مالية سليمة لتجارتك.</p>
         </div>
     </div>
 
-    <!-- BENTO BOX TOOLS GRID -->
     <section class="tools" id="tools">
         <div class="container">
             <div class="section-head">
@@ -157,72 +120,52 @@
             </div>
 
             <div class="bento-grid">
-                
-                <!-- Card 1 -->
                 <a href="cod-calculator.html" class="bento-card span-2">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة أرباح COD</h3>
                     <p class="bento-desc">احسب أرباحك الحقيقية من نظام الدفع عند الاستلام مع خصم مصاريف الشحن والتغليف بدقة متناهية.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
-
-                <!-- Card 2 -->
                 <a href="roas-calculator.html" class="bento-card">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة ROAS</h3>
                     <p class="bento-desc">قِس فعالية إعلاناتك وعائد استثمارك الحقيقي بعد احتساب نسب التوصيل.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
-
-                <!-- Card 3 -->
                 <a href="return-rate-calculator.html" class="bento-card">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة المرتجعات</h3>
                     <p class="bento-desc">اعرف أقصى نسبة مرتجعات مسموح بها قبل أن يتحول مشروعك إلى الخسارة.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
-
-                <!-- Card 4 -->
                 <a href="pricing-calculator.html" class="bento-card span-2">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة التسعير الذكية</h3>
                     <p class="bento-desc">حدد السعر الأمثل لمنتجك لضمان الهامش الربحي المطلوب وتغطية جميع التكاليف المخفية.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
-
-                <!-- Card 5 -->
                 <a href="breakeven-calculator.html" class="bento-card">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">نقطة التعادل</h3>
                     <p class="bento-desc">احسب عدد المبيعات اللازمة لتغطية جميع تكاليفك الإعلانية.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
-
-                <!-- Card 6 -->
                 <a href="product-search.html" class="bento-card">
-                    <div class="bento-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    </div>
+                    <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
                     <h3 class="bento-title">بحث المنتجات بـ AI</h3>
                     <p class="bento-desc">ابحث واكتشف متوسط أسعار المنتجات في السوق المغربي بضغطة زر.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
+            </div>
 
+            <div class="ad-container">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
         </div>
     </section>
 
-    <!-- 📰 NEW BLOG ARTICLES SECTION (قسم المدونة المضاف فـ الرئيسية) -->
+    <!-- BLOG PREVIEWS IN INDEX -->
     <section class="container" style="padding: 4rem 0 6rem; border-top: 1px solid var(--glass-border);">
         <div class="section-head">
             <span class="section-label">المحتوى التعليمي</span>
@@ -232,50 +175,73 @@
 
         <div class="blog-preview-grid">
             
-            <a href="blog-start-ecom-morocco.html" class="blog-preview-card">
+            <a href="blog-start-ecom-morocco-from-scratch.html" class="blog-preview-card">
                 <span class="blog-preview-tag">دليل المبتدئين</span>
-                <h3 class="blog-preview-title">دليل التجارة الإلكترونية فـ المغرب 2026: كيف تبدأ مشروع COD ناجح من الصفر</h3>
-                <p class="blog-preview-desc">خطوات عملية لبداية التجارة الإلكترونية بـ نظام الدفع عند الاستلام، اختيار المنتج، والتعامل مع الموردين.</p>
-
+                <h3 class="blog-preview-title">كيف تبدأ مشروع تجارة إلكترونية في المغرب من الصفر (2026)</h3>
+                <p class="blog-preview-desc">خارطة طريق كاملة ومجربة للانطلاق في E-commerce فـ السوق المغربي بنظام COD وتفادي الخسارة.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
-            <a href="blog-best-shipping-companies.html" class="blog-preview-card">
-                <span class="blog-preview-tag">اللوجستيك والشحن</span>
-                <h3 class="blog-preview-title">مقارنة أفضل شركات التوصيل فـ المغرب (COD) 2026: أسعار ومدد التسليم</h3>
-                <p class="blog-preview-desc">تحليل مفصل لأبرز شركات التوصيل فـ المغرب (أمانة، كات، أوزون...) وكيف تختار الشريك المناسب.</p>
+            <a href="blog-cod-profit-step-by-step.html" class="blog-preview-card">
+                <span class="blog-preview-tag">الأرباح</span>
+                <h3 class="blog-preview-title">كيف تحسب أرباحك الحقيقية من نظام COD خطوة بخطوة</h3>
+                <p class="blog-preview-desc">دليل عملي للتاجر المغربي لحساب الأرباح الصافية الحقيقية من الدفع عند الاستلام مع خصم المصاريف.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
-            <a href="blog-reduce-retour-morocco.html" class="blog-preview-card">
-                <span class="blog-preview-tag">إدارة المرتجعات</span>
-                <h3 class="blog-preview-title">10 طرق مجربة لتقليل نسبة المرتجعات (Retour) فـ السوق المغربي</h3>
-                <p class="blog-preview-desc">استراتيجيات عملية لرفع نسبة التأكيد والتوصيل فـ الهاتف، وتفادي رفض الزبناء للطرود.</p>
-
+            <a href="blog-common-ecom-mistakes-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">أخطاء التاجر</span>
+                <h3 class="blog-preview-title">5 أخطاء شائعة يرتكبها التجار في حساب الأرباح</h3>
+                <p class="blog-preview-desc">اكتشف أبرز الأخطاء المالية التي تسبب خسارة التجار في التجارة الإلكترونية بالمغرب وكيف تتداركها.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
-            <a href="blog-facebook-tiktok-ads-morocco.html" class="blog-preview-card">
+            <a href="blog-roas-facebook-tiktok-explained.html" class="blog-preview-card">
                 <span class="blog-preview-tag">التسويق الإعلاني</span>
-                <h3 class="blog-preview-title">إعلانات فيسبوك وتيك توك فـ المغرب: كيف تحقق CPA منخفض فـ 2026</h3>
-                <p class="blog-preview-desc">أسرار كتابة الإعلانات وتصميم الفيديوهات الموجهة للزبون المغربي، وطريقة ضبط الاستهداف.</p>
-
+                <h3 class="blog-preview-title">ما هو ROAS وكيف تقيس العائد الحقيقي لإعلاناتك؟</h3>
+                <p class="blog-preview-desc">الشرح الكامل لمفهوم ROAS والفرق بين الرقم الظاهر في المنصة الإعلانية والعائد الفعلي المقبوض.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
-            <a href="blog-product-sourcing-casa.html" class="blog-preview-card">
-                <span class="blog-preview-tag">التوريد والجملة</span>
-                <h3 class="blog-preview-title">من أين تشتري منتجات الجملة فـ المغرب؟ (درب عمر، كراج علال، والموردين)</h3>
-                <p class="blog-preview-desc">دليل التاجر المغربي للوصول لأفضل أسعار الجملة فـ أسواق الدار البيضاء وطريقة التفاوض.</p>
-
+            <a href="blog-acceptable-return-rates-cod.html" class="blog-preview-card">
+                <span class="blog-preview-tag">المرتجعات</span>
+                <h3 class="blog-preview-title">نسبة المرتجعات المقبولة في COD: متى تهدد متجرك؟</h3>
+                <p class="blog-preview-desc">دليل التاجر لمعرفة نسبة المرتجعات (Retour) الطبيعية وكيفية حساب النسبة الحرجة لحماية أرباحك.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
-            <a href="blog-cod-vs-prepaid.html" class="blog-preview-card">
-                <span class="blog-preview-tag">استراتيجيات العمل</span>
-                <h3 class="blog-preview-title">الدفع عند الاستلام (COD) أم الدفع الإلكتروني: أيهما أفضل للتاجر المغربي؟</h3>
-                <p class="blog-preview-desc">مقارنة شاملة بين مزايا وعيوب نظام الدفع عند التسليم والدفع بالبطاقة البنكية.</p>
+            <a href="blog-pricing-strategy-ecom-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">التسعير</span>
+                <h3 class="blog-preview-title">كيف تحدد سعر منتجك بطريقة صحيحة: التكاليف الخفية</h3>
+                <p class="blog-preview-desc">قواعد التسعير الذكي للمنتجات في السوق المغربي لضمان تغطية مصاريف الإعلانات والشحن وتحقيق ربح.</p>
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
 
+            <a href="blog-breakeven-point-explained.html" class="blog-preview-card">
+                <span class="blog-preview-tag">التخطيط والإعلانات</span>
+                <h3 class="blog-preview-title">نقطة التعادل (Break-even): مفهومها وأهميتها قبل الإعلانات</h3>
+                <p class="blog-preview-desc">دليل التاجر لفهم نقطة التعادل فـ الإعلانات وكيفية حساب المبيعات المطلوبة لتغطية المصاريف.</p>
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-gross-vs-net-profit-ecom.html" class="blog-preview-card">
+                <span class="blog-preview-tag">الثقافة المالية</span>
+                <h3 class="blog-preview-title">الفرق بين الربح الإجمالي والربح الصافي في التجارة الإلكترونية</h3>
+                <p class="blog-preview-desc">تعرف على كيفية حساب الأرباح الحقيقية والتكاليف الخفية لتجنب الخسارة المالية فـ COD.</p>
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-reduce-shipping-packaging-costs.html" class="blog-preview-card">
+                <span class="blog-preview-tag">اللوجستيك</span>
+                <h3 class="blog-preview-title">5 نصائح لتقليل تكلفة التوصيل والتغليف في المغرب</h3>
+                <p class="blog-preview-desc">استراتيجيات عملية لتقليل مصاريف التوصيل والشحن والتغليف فـ التجارة الإلكترونية لزيادة الربح الصافي.</p>
+                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+            </a>
+
+            <a href="blog-how-to-find-winning-product-morocco.html" class="blog-preview-card">
+                <span class="blog-preview-tag">المنتجات</span>
+                <h3 class="blog-preview-title">كيف تختار المنتج الرابح في المغرب قبل شراء المخزون؟</h3>
+                <p class="blog-preview-desc">دليل التاجر لاكتشاف وفحص المنتج الرابح فـ COD بالمغرب بأقل ميزانية ممكنة.</p>
                 <span class="blog-read-link">اقرأ المقال كامل ←</span>
             </a>
 
@@ -303,7 +269,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="links">
