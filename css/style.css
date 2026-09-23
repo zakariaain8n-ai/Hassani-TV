@@ -74,6 +74,7 @@
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
+    font-family: var(--font) !important;
     
     /* 🔒 منع تحديد وتظليل النصوص فـ السيت كامل */
     -webkit-user-select: none !important;

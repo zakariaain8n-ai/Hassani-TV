@@ -7,7 +7,7 @@
     <meta name="description" content="مقالات ودلائل شاملة حول التجارة الإلكترونية فـ المغرب، نظام COD، التسويق الإعلاني، وشركات التوصيل للتاجر المغربي.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hassani-tv.site/blog.html">
-    <meta name="theme-color" content="#08060F">
+    <meta name="theme-color" content="#000000">
     <link rel="icon" href="data:,">
     
     <!-- Google AdSense Auto Ads Script -->
@@ -37,8 +37,14 @@
             transform: translateY(-6px);
             border-color: var(--white-40);
         }
+        .blog-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+        }
         .blog-card-body {
-            padding: 2rem;
+            padding: 1.5rem 2rem 2rem;
             display: flex;
             flex-direction: column;
             flex: 1;
@@ -76,6 +82,7 @@
             display: flex;
             justify-content: space-between;
         }
+        .ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -111,6 +118,7 @@
                 <a href="blog.html" class="nav-item active">المدونة</a>
                 <a href="about.html" class="nav-item">من نحن</a>
             </div>
+            <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -122,14 +130,8 @@
                 <h1 class="calc-title">مدونة <span class="text-accent">التجارة الإلكترونية</span></h1>
                 <p class="calc-subtitle" style="margin: 0 auto;">مقالات، دلائل عملية، واستراتيجيات مجربة للنجاح فـ سوق COD المغربي.</p>
                 
-                <!-- AdSense Top Banner -->
                 <div class="ad-container" style="margin-top: 2rem;">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-6541657840288379"
-                         data-ad-slot="1234567890"
-                         data-ad-format="horizontal"
-                         data-full-width-responsive="true"></ins>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="1234567890" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
                     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                 </div>
             </div>
@@ -141,81 +143,63 @@
         <div class="container">
             <div class="blog-grid">
 
-                <!-- Article 1 -->
                 <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/34577/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600" alt="دليل المبتدئين" class="blog-card-img">
                     <div class="blog-card-body">
                         <span class="blog-tag">دليل المبتدئين</span>
-                        <h2 class="blog-title"><a href="blog-start-ecom-morocco.html">دليل التجارة الإلكترونية فـ المغرب 2026: كيف تبدأ مشروع COD ناجح من الصفر</a></h2>
-                        <p class="blog-desc">خطوات عملية لبداية التجارة الإلكترونية فـ المغرب بـ نظام الدفع عند الاستلام، اختيار المنتج، التعامل مع الموردين، وإطلاق أول حملة إعلانية.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: فريق التحرير</span>
-                            <span>10 دقائق قراءة</span>
-                        </div>
+                        <h2 class="blog-title"><a href="blog-start-ecom-morocco-from-scratch.html">كيف تبدأ مشروع تجارة إلكترونية في المغرب من الصفر (2026)</a></h2>
+                        <p class="blog-desc">خارطة طريق كاملة ومجربة للانطلاق في E-commerce فـ السوق المغربي بنظام COD وتفادي الخسارة.</p>
+                        <div class="blog-meta"><span>بقلم: فريق التحرير</span><span>12 دقيقة قراءة</span></div>
                     </div>
                 </article>
 
-                <!-- Article 2 -->
                 <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=600" alt="حساب أرباح COD" class="blog-card-img">
                     <div class="blog-card-body">
-                        <span class="blog-tag">اللوجستيك والشحن</span>
-                        <h2 class="blog-title"><a href="blog-best-shipping-companies.html">مقارنة أفضل شركات التوصيل فـ المغرب (COD) 2026: أسعار ومدد التسليم</a></h2>
-                        <p class="blog-desc">تحليل مفصل لأبرز شركات التوصيل فـ المغرب (أمانة، غزالة، كات، أوزون...) وكيف تختار الشريك المناسب لتقليل المرتجعات.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: حمزة المراكشي</span>
-                            <span>8 دقائق قراءة</span>
-                        </div>
+                        <span class="blog-tag">دليل المبتدئين</span>
+                        <h2 class="blog-title"><a href="blog-cod-profit-step-by-step.html">كيف تحسب أرباحك الحقيقية من نظام COD خطوة بخطوة</a></h2>
+                        <p class="blog-desc">دليل عملي للتاجر المغربي لحساب الأرباح الصافية الحقيقية من الدفع عند الاستلام مع خصم المصاريف.</p>
+                        <div class="blog-meta"><span>بقلم: فريق التحليل المالي</span><span>8 دقائق قراءة</span></div>
                     </div>
                 </article>
 
-                <!-- Article 3 -->
                 <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/3148452/pexels-photo-3148452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أخطاء مالية" class="blog-card-img">
                     <div class="blog-card-body">
                         <span class="blog-tag">استراتيجيات العمل</span>
-                        <h2 class="blog-title"><a href="blog-cod-vs-prepaid.html">الدفع عند الاستلام (COD) أم الدفع الإلكتروني: أيهما أفضل للتاجر المغربي؟</a></h2>
-                        <p class="blog-desc">مقارنة شاملة بين مزايا وعيوب نظام الدفع عند التسليم والدفع بالبطاقة البنكية، وكيف يؤثر ذلك على نسبة الشراء فـ السوق المحلي.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: حسام الدين الناصري</span>
-                            <span>7 دقائق قراءة</span>
-                        </div>
+                        <h2 class="blog-title"><a href="blog-common-ecom-mistakes-morocco.html">5 أخطاء شائعة يرتكبها التجار في حساب الأرباح</a></h2>
+                        <p class="blog-desc">اكتشف أبرز الأخطاء المالية التي تسبب خسارة التجار في التجارة الإلكترونية بالمغرب وكيف تتداركها.</p>
+                        <div class="blog-meta"><span>بقلم: فريق النصائح</span><span>6 دقائق قراءة</span></div>
                     </div>
                 </article>
 
-                <!-- Article 4 -->
                 <article class="blog-card">
-                    <div class="blog-card-body">
-                        <span class="blog-tag">إدارة المرتجعات</span>
-                        <h2 class="blog-title"><a href="blog-reduce-retour-morocco.html">10 طرق مجربة لتقليل نسبة المرتجعات (Retour) فـ السوق المغربي</a></h2>
-                        <p class="blog-desc">استراتيجيات عملية لرفع نسبة التأكيد والتوصيل فـ الهاتف، وتفادي رفض الزبناء للطرود أثناء التسليم.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: عماد العلي</span>
-                            <span>9 دقائق قراءة</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="blog-card">
-                    <div class="blog-card-body">
-                        <span class="blog-tag">التوريد والجملة</span>
-                        <h2 class="blog-title"><a href="blog-product-sourcing-casa.html">من أين تشتري منتجات الجملة فـ المغرب؟ (درب عمر، كراج علال، والموردين)</a></h2>
-                        <p class="blog-desc">دليل التاجر المغربي للوصول لأفضل أسعار الجملة فـ أسواق الدار البيضاء، وطريقة التفاوض مع الموردين المحليين والمستوردين.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: سفيان بنشريفة</span>
-                            <span>11 دقيقة قراءة</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ROAS إعلانات" class="blog-card-img">
                     <div class="blog-card-body">
                         <span class="blog-tag">التسويق الإعلاني</span>
-                        <h2 class="blog-title"><a href="blog-facebook-tiktok-ads-morocco.html">إعلانات فيسبوك وتيك توك فـ المغرب: كيف تحقق CPA منخفض فـ 2026</a></h2>
-                        <p class="blog-desc">أسرار كتابة الإعلانات وتصميم الفيديوهات الموجهة للزبون المغربي، وطريقة ضبط الاستهداف للوصول لـ ROAS مرتفع.</p>
-                        <div class="blog-meta">
-                            <span>بقلم: فريق التحرير</span>
-                            <span>12 دقيقة قراءة</span>
-                        </div>
+                        <h2 class="blog-title"><a href="blog-roas-facebook-tiktok-explained.html">ما هو ROAS وكيف تقيس العائد الحقيقي لإعلاناتك؟</a></h2>
+                        <p class="blog-desc">الشرح الكامل لمفهوم ROAS والفرق بين الرقم الظاهر في المنصة الإعلانية والعائد الفعلي المقبوض.</p>
+                        <div class="blog-meta"><span>بقلم: فريق التسويق</span><span>6 دقائق قراءة</span></div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=600" alt="المرتجعات" class="blog-card-img">
+                    <div class="blog-card-body">
+                        <span class="blog-tag">إدارة المرتجعات</span>
+                        <h2 class="blog-title"><a href="blog-acceptable-return-rates-cod.html">نسبة المرتجعات المقبولة في COD: متى تهدد متجرك؟</a></h2>
+                        <p class="blog-desc">دليل التاجر لمعرفة نسبة المرتجعات (Retour) الطبيعية وكيفية حساب النسبة الحرجة لحماية أرباحك.</p>
+                        <div class="blog-meta"><span>بقلم: عماد العلي</span><span>6 دقائق قراءة</span></div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="استراتيجية التسعير" class="blog-card-img">
+                    <div class="blog-card-body">
+                        <span class="blog-tag">استراتيجيات التسعير</span>
+                        <h2 class="blog-title"><a href="blog-pricing-strategy-ecom-morocco.html">كيف تحدد سعر منتجك بطريقة صحيحة: التكاليف الخفية</a></h2>
+                        <p class="blog-desc">قواعد التسعير الذكي للمنتجات في السوق المغربي لضمان تغطية مصاريف الإعلانات والشحن وتحقيق ربح.</p>
+                        <div class="blog-meta"><span>بقلم: سفيان بنشريفة</span><span>7 دقائق قراءة</span></div>
                     </div>
                 </article>
 
