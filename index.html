@@ -6,62 +6,24 @@
     <title>Hassani E.com — منصة التاجر المغربي</title>
     <meta name="description" content="منصة Hassani E.com للتجار: حاسبات الأرباح، بحث المنتجات، ومدونة تعليمية شاملة للتجارة الإلكترونية فالمغرب">
     <meta name="theme-color" content="#000000">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='7' fill='%23FFFFFF'/><path d='M9 20L13 14L17 18L23 10' stroke='%23000000' stroke-width='2.5' stroke-linecap="round" stroke-linejoin="round"/><circle cx='23' cy='10' r='2' fill='%23000000'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='2' width='28' height='28' rx='7' fill='%23FFFFFF'/><path d='M9 20L13 14L17 18L23 10' stroke='%23000000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/><circle cx='23' cy='10' r='2' fill='%23000000'/></svg>">
     
-    <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
     <style>
-        .blog-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .blog-preview-card {
-            background: var(--bg-2);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-lg);
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-        .blog-preview-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--white-20);
-            background: var(--bg-3);
-        }
-        .blog-preview-tag {
-            font-size: 0.8rem;
-            color: var(--white-60);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .blog-preview-title {
-            font-size: 1.15rem;
-            color: var(--white);
-            margin-bottom: 0.75rem;
-            line-height: 1.5;
-        }
-        .blog-preview-desc {
-            font-size: 0.9rem;
-            color: var(--white-60);
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-            flex: 1;
-        }
-        .blog-read-link {
-            color: var(--white);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-top: auto;
-        }
-        .ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 14px; overflow: hidden; }
+        .blog-preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .blog-preview-card { background: var(--bg-2); border: 1px solid var(--glass-border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s ease; text-decoration: none; color: inherit; }
+        .blog-preview-card:hover { transform: translateY(-5px); border-color: var(--white-20); background: var(--bg-3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .blog-card-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
+        .blog-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+        .blog-preview-tag { font-size: 0.8rem; color: var(--white-60); font-weight: 700; margin-bottom: 0.5rem; }
+        .blog-preview-title { font-size: 1.15rem; color: var(--white); margin-bottom: 0.75rem; line-height: 1.5; font-weight: 800; }
+        .blog-preview-desc { font-size: 0.9rem; color: var(--white-60); line-height: 1.6; margin-bottom: 1.25rem; flex: 1; }
+        .blog-meta { font-size: 0.85rem; color: var(--white-40); border-top: 1px solid var(--glass-border); padding-top: 1rem; display: flex; justify-content: space-between; font-weight: 600; }
+        .ad-container { width: 100%; max-width: 900px; margin: 2rem auto; min-height: 90px; display: flex; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -77,6 +39,7 @@
                 </div>
                 <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
             </a>
+
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-item active">الرئيسية</a>
                 <a href="#tools" class="nav-item">الأدوات</a>
@@ -98,6 +61,7 @@
                     <a href="blog.html" class="btn" style="border: 1px solid var(--glass-border); color: var(--white);">تصفح المدونة</a>
                 </div>
             </div>
+            
             <div class="ad-container" style="margin-top: 3rem;">
                 <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -116,14 +80,12 @@
             <div class="section-head">
                 <span class="section-label">أدوات الاستثمار</span>
                 <h2 class="section-title">حاسبات صُممت للنمو</h2>
-                <p class="section-desc">مجموعة متكاملة من الأدوات التي تحل المشاكل الحقيقية للتجار.</p>
             </div>
-
             <div class="bento-grid">
                 <a href="cod-calculator.html" class="bento-card span-2">
                     <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة أرباح COD</h3>
-                    <p class="bento-desc">احسب أرباحك الحقيقية من نظام الدفع عند الاستلام مع خصم مصاريف الشحن والتغليف بدقة متناهية.</p>
+                    <p class="bento-desc">احسب أرباحك الحقيقية من نظام الدفع عند الاستلام مع خصم مصاريف الشحن والتغليف.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
                 <a href="roas-calculator.html" class="bento-card">
@@ -141,7 +103,7 @@
                 <a href="pricing-calculator.html" class="bento-card span-2">
                     <div class="bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
                     <h3 class="bento-title">حاسبة التسعير الذكية</h3>
-                    <p class="bento-desc">حدد السعر الأمثل لمنتجك لضمان الهامش الربحي المطلوب وتغطية جميع التكاليف المخفية.</p>
+                    <p class="bento-desc">حدد السعر الأمثل لمنتجك لضمان الهامش الربحي المطلوب وتغطية جميع التكاليف.</p>
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
                 <a href="breakeven-calculator.html" class="bento-card">
@@ -157,92 +119,76 @@
                     <span class="tool-badge tool-badge-active" style="width: fit-content;">متوفرة الآن</span>
                 </a>
             </div>
-
-            <div class="ad-container">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6541657840288379" data-ad-slot="" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
         </div>
     </section>
 
-    <!-- BLOG PREVIEWS IN INDEX -->
+    <!-- BLOG PREVIEWS IN INDEX (6 ARTICLES) -->
     <section class="container" style="padding: 4rem 0 6rem; border-top: 1px solid var(--glass-border);">
         <div class="section-head">
             <span class="section-label">المحتوى التعليمي</span>
             <h2 class="section-title">أحدث مقالات المدونة</h2>
-            <p class="section-desc">إرشادات ودلائل عملية للنجاح فـ التجارة الإلكترونية فـ المغرب.</p>
         </div>
 
         <div class="blog-preview-grid">
             
-            <a href="blog-start-ecom-morocco-from-scratch.html" class="blog-preview-card">
-                <span class="blog-preview-tag">دليل المبتدئين</span>
-                <h3 class="blog-preview-title">كيف تبدأ مشروع تجارة إلكترونية في المغرب من الصفر (2026)</h3>
-                <p class="blog-preview-desc">خارطة طريق كاملة ومجربة للانطلاق في E-commerce فـ السوق المغربي بنظام COD وتفادي الخسارة.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
-            </a>
-
             <a href="blog-cod-profit-step-by-step.html" class="blog-preview-card">
-                <span class="blog-preview-tag">الأرباح</span>
-                <h3 class="blog-preview-title">كيف تحسب أرباحك الحقيقية من نظام COD خطوة بخطوة</h3>
-                <p class="blog-preview-desc">دليل عملي للتاجر المغربي لحساب الأرباح الصافية الحقيقية من الدفع عند الاستلام مع خصم المصاريف.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=600" alt="حساب الأرباح" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">دليل المبتدئين</span>
+                    <h3 class="blog-preview-title">كيف تحسب أرباحك الحقيقية من نظام COD في المغرب خطوة بخطوة</h3>
+                    <p class="blog-preview-desc">دليل عملي للتاجر المغربي لحساب الأرباح الصافية الحقيقية من الدفع عند الاستلام.</p>
+                    <div class="blog-meta"><span>فريق التحرير</span><span>1 مارس 2026</span></div>
+                </div>
             </a>
 
             <a href="blog-common-ecom-mistakes-morocco.html" class="blog-preview-card">
-                <span class="blog-preview-tag">أخطاء التاجر</span>
-                <h3 class="blog-preview-title">5 أخطاء شائعة يرتكبها التجار في حساب الأرباح</h3>
-                <p class="blog-preview-desc">اكتشف أبرز الأخطاء المالية التي تسبب خسارة التجار في التجارة الإلكترونية بالمغرب وكيف تتداركها.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/3148452/pexels-photo-3148452.jpeg?auto=compress&cs=tinysrgb&w=600" alt="أخطاء مالية" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">أخطاء التاجر</span>
+                    <h3 class="blog-preview-title">5 أخطاء شائعة يرتكبها التجار المغاربة في حساب الأرباح وكيف تتجنبها</h3>
+                    <p class="blog-preview-desc">اكتشف أبرز الأخطاء المالية التي تسبب خسارة التجار في التجارة الإلكترونية بالمغرب.</p>
+                    <div class="blog-meta"><span>فريق التحليل</span><span>2 مارس 2026</span></div>
+                </div>
             </a>
 
             <a href="blog-roas-facebook-tiktok-explained.html" class="blog-preview-card">
-                <span class="blog-preview-tag">التسويق الإعلاني</span>
-                <h3 class="blog-preview-title">ما هو ROAS وكيف تقيس العائد الحقيقي لإعلاناتك؟</h3>
-                <p class="blog-preview-desc">الشرح الكامل لمفهوم ROAS والفرق بين الرقم الظاهر في المنصة الإعلانية والعائد الفعلي المقبوض.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ROAS" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">التسويق الإعلاني</span>
+                    <h3 class="blog-preview-title">ما هو ROAS وكيف تقيس العائد الحقيقي لإعلاناتك في فيسبوك وتيك توك؟</h3>
+                    <p class="blog-preview-desc">الشرح الكامل لمفهوم ROAS والفرق بين الرقم الظاهر في المنصة الإعلانية والعائد الفعلي.</p>
+                    <div class="blog-meta"><span>فريق التسويق</span><span>3 مارس 2026</span></div>
+                </div>
             </a>
 
             <a href="blog-acceptable-return-rates-cod.html" class="blog-preview-card">
-                <span class="blog-preview-tag">المرتجعات</span>
-                <h3 class="blog-preview-title">نسبة المرتجعات المقبولة في COD: متى تهدد متجرك؟</h3>
-                <p class="blog-preview-desc">دليل التاجر لمعرفة نسبة المرتجعات (Retour) الطبيعية وكيفية حساب النسبة الحرجة لحماية أرباحك.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?auto=compress&cs=tinysrgb&w=600" alt="المرتجعات" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">المرتجعات</span>
+                    <h3 class="blog-preview-title">نسبة المرتجعات المقبولة في COD بالمغرب: كم تبلغ ومتى تهدد متجرك؟</h3>
+                    <p class="blog-preview-desc">تعرف على نسبة المرتجعات (Retour) الطبيعية وكيفية حساب النسبة الحرجة لحماية أرباحك.</p>
+                    <div class="blog-meta"><span>عماد العلي</span><span>4 مارس 2026</span></div>
+                </div>
             </a>
 
             <a href="blog-pricing-strategy-ecom-morocco.html" class="blog-preview-card">
-                <span class="blog-preview-tag">التسعير</span>
-                <h3 class="blog-preview-title">كيف تحدد سعر منتجك بطريقة صحيحة: التكاليف الخفية</h3>
-                <p class="blog-preview-desc">قواعد التسعير الذكي للمنتجات في السوق المغربي لضمان تغطية مصاريف الإعلانات والشحن وتحقيق ربح.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="التسعير" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">استراتيجيات التسعير</span>
+                    <h3 class="blog-preview-title">كيف تحدد سعر منتجك بطريقة صحيحة: هامش الربح والتكاليف الخفية</h3>
+                    <p class="blog-preview-desc">دليل التاجر لتسعير المنتجات في التجارة الإلكترونية بالمغرب لضمان الأرباح.</p>
+                    <div class="blog-meta"><span>سفيان بنشريفة</span><span>5 مارس 2026</span></div>
+                </div>
             </a>
 
             <a href="blog-breakeven-point-explained.html" class="blog-preview-card">
-                <span class="blog-preview-tag">التخطيط والإعلانات</span>
-                <h3 class="blog-preview-title">نقطة التعادل (Break-even): مفهومها وأهميتها قبل الإعلانات</h3>
-                <p class="blog-preview-desc">دليل التاجر لفهم نقطة التعادل فـ الإعلانات وكيفية حساب المبيعات المطلوبة لتغطية المصاريف.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
-            </a>
-
-            <a href="blog-gross-vs-net-profit-ecom.html" class="blog-preview-card">
-                <span class="blog-preview-tag">الثقافة المالية</span>
-                <h3 class="blog-preview-title">الفرق بين الربح الإجمالي والربح الصافي في التجارة الإلكترونية</h3>
-                <p class="blog-preview-desc">تعرف على كيفية حساب الأرباح الحقيقية والتكاليف الخفية لتجنب الخسارة المالية فـ COD.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
-            </a>
-
-            <a href="blog-reduce-shipping-packaging-costs.html" class="blog-preview-card">
-                <span class="blog-preview-tag">اللوجستيك</span>
-                <h3 class="blog-preview-title">5 نصائح لتقليل تكلفة التوصيل والتغليف في المغرب</h3>
-                <p class="blog-preview-desc">استراتيجيات عملية لتقليل مصاريف التوصيل والشحن والتغليف فـ التجارة الإلكترونية لزيادة الربح الصافي.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
-            </a>
-
-            <a href="blog-how-to-find-winning-product-morocco.html" class="blog-preview-card">
-                <span class="blog-preview-tag">المنتجات</span>
-                <h3 class="blog-preview-title">كيف تختار المنتج الرابح في المغرب قبل شراء المخزون؟</h3>
-                <p class="blog-preview-desc">دليل التاجر لاكتشاف وفحص المنتج الرابح فـ COD بالمغرب بأقل ميزانية ممكنة.</p>
-                <span class="blog-read-link">اقرأ المقال كامل ←</span>
+                <img src="https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=600" alt="نقطة التعادل" class="blog-card-img">
+                <div class="blog-card-body">
+                    <span class="blog-preview-tag">التخطيط والإعلانات</span>
+                    <h3 class="blog-preview-title">نقطة التعادل (Break-even): مفهومها وأهميتها قبل إطلاق الإعلانات</h3>
+                    <p class="blog-preview-desc">كيفية حساب المبيعات المطلوبة لتغطية المصاريف وتجنب الخسارة فـ COD.</p>
+                    <div class="blog-meta"><span>حسام الدين الناصري</span><span>6 مارس 2026</span></div>
+                </div>
             </a>
 
         </div>
@@ -252,23 +198,7 @@
         </div>
     </section>
 
-    <!-- SPLIT SECTION (Why Us) -->
-    <section class="container">
-        <div class="split-section">
-            <div class="split-text">
-                <span class="section-label">الوضوح المالي</span>
-                <h2>قرارات مبنية على بيانات،<br>لا على التخمين.</h2>
-                <p>في عالم التجارة الإلكترونية، الأرقام هي التي تتحدث. منصتنا توفر لك بيئة آمنة ودقيقة لتحليل مسار أموالك، من تكلفة النقرة إلى الربح الصافي في جيبك.</p>
-            </div>
-            <div class="split-visual">
-                <div class="chart-bar" style="height: 30%;"></div>
-                <div class="chart-bar" style="height: 50%;"></div>
-                <div class="chart-bar" style="height: 70%;"></div>
-                <div class="chart-bar active" style="height: 95%;"></div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="links">
