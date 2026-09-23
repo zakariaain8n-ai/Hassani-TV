@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن | Hassani E.com</title>
-    <meta name="description" content="تعرف على منصة Hassani E.com والهدف من إنشاء أدوات وحاسبات التجارة الإلكترونية للتجار المغاربة.">
-    <meta name="theme-color" content="#08060F">
+    <title>من نحن | قصة منصة Hassani E.com للتجارة الإلكترونية</title>
+    <meta name="description" content="تعرف على قصة Hassani E.com، المنصة المغربية الأولى لتوفير حاسبات الأرباح، الـ ROAS، وتقييم المرتجعات لتمكين التاجر المغربي من تحقيق النجاح.">
+    <meta name="theme-color" content="#000000">
     
     <!-- Google AdSense Auto Ads Script -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
@@ -15,17 +15,25 @@
     
     <style>
         .legal-content {
-            padding: 3rem;
-            background: var(--glass);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            padding: 4rem;
+            background: var(--bg-2);
             border: 1px solid var(--glass-border-strong);
             border-radius: var(--radius-lg);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--violet-glow-soft);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
-        .legal-content h2 { font-size: 1.5rem; color: var(--violet-300); margin: 2rem 0 1rem; }
-        .legal-content p { color: var(--white-80); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.25rem; }
+        .legal-content h2 { font-size: 1.8rem; color: var(--white); margin: 2.5rem 0 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
+        .legal-content p { color: var(--white-80); font-size: 1.15rem; line-height: 2; margin-bottom: 1.5rem; }
         .legal-content strong { color: var(--white); }
+        .legal-content ul { padding-right: 1.5rem; margin-bottom: 1.5rem; }
+        .legal-content li { color: var(--white-80); font-size: 1.15rem; line-height: 2; margin-bottom: 0.5rem; }
+        .internal-link { color: var(--primary-dark); font-weight: 700; text-decoration: underline; }
+        .internal-link:hover { color: var(--white); }
+
+        @media (max-width: 768px) {
+            .legal-content { padding: 2rem; }
+            .legal-content h2 { font-size: 1.5rem; }
+            .legal-content p, .legal-content li { font-size: 1.05rem; }
+        }
     </style>
 </head>
 <body>
@@ -39,15 +47,9 @@
             <a href="index.html" class="brand">
                 <div class="brand-logo">
                     <svg viewBox="0 0 32 32" fill="none">
-                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
-                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
-                        <defs>
-                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
-                                <stop offset="0%" stop-color="#00E676"/>
-                                <stop offset="100%" stop-color="#00796B"/>
-                            </linearGradient>
-                        </defs>
+                        <rect x="2" y="2" width="28" height="28" rx="7" fill="#FFFFFF"/>
+                        <path d="M9 20L13 14L17 18L23 10" stroke="#000000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="23" cy="10" r="2" fill="#000000"/>
                     </svg>
                 </div>
                 <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
@@ -55,8 +57,10 @@
             <div class="nav-menu">
                 <a href="index.html" class="nav-item">الرئيسية</a>
                 <a href="index.html#tools" class="nav-item">الأدوات</a>
-                <a href="about.html" class="nav-item active">من نحن</a>
+                <a href="blog.html" class="nav-item">المدونة</a>
+                <a href="about.html" class="nav-item active">حول</a>
             </div>
+            <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -64,28 +68,42 @@
     <section class="calc-header">
         <div class="container">
             <div class="calc-header-inner" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="section-label">حول المشروع</span>
+                <span class="section-label">فريق العمل والرؤية</span>
                 <h1 class="calc-title">من <span class="text-accent">نحن</span></h1>
-                <p class="calc-subtitle" style="margin: 0 auto;">صُنع في المغرب، من أجل التجار المغاربة.</p>
+                <p class="calc-subtitle" style="margin: 0 auto;">اكتشف القصة وراء منصة Hassani E.com، وكيف نسعى لتغيير واقع التجارة الإلكترونية في المغرب.</p>
             </div>
         </div>
     </section>
 
     <!-- Content -->
     <section class="calc-section" style="padding-top: 1rem;">
-        <div class="container" style="max-width: 900px;">
+        <div class="container" style="max-width: 1000px;">
             <div class="legal-content">
                 
-                <h2>الفكرة والبداية</h2>
-                <p>تأسست منصة <strong>Hassani E.com</strong> انطلاقاً من ملاحظة واقعية في السوق المغربي: الكثير من المبتدئين وحتى المحترفين في مجال التجارة الإلكترونية (E-commerce) ونظام الدفع عند الاستلام (Cash on Delivery) يخسرون أموالهم بسبب الحسابات الخاطئة والتسعير العشوائي للمنتجات.</p>
-                
-                <h2>مهمتنا</h2>
-                <p>مهمتنا هي تبسيط لغة الأرقام. لقد قمنا بتطوير مجموعة من الحاسبات والأدوات الذكية التي تساعد التاجر المغربي على معرفة أرباحه الحقيقية الصافية، حساب نقطة التعادل بدقة، وفهم تأثير المرتجعات (Retour) على ميزانيته الإعلانية قبل صرفها.</p>
+                <h2>القصة والبداية: لماذا أنشأنا Hassani E.com؟</h2>
+                <p>تأسست منصة <strong>Hassani E.com</strong> انطلاقاً من ملاحظة واقعية ومؤلمة في السوق المغربي: آلاف الشباب الطموحين يدخلون غمار التجارة الإلكترونية (E-commerce) ونظام الدفع عند الاستلام (Cash on Delivery) بحماس كبير، لكنهم ينتهون بتصفية أعمالهم بعد أشهر قليلة. ليس بسبب ضعف المنتجات أو قلة المبيعات، بل بسبب غياب الوعي المالي والتسعير العشوائي.</p>
+                <p>لقد لاحظنا أن التاجر المبتدئ غالباً ما يعتمد على التخمين، حيث يطرح ثمن الشراء من ثمن البيع ويعتقد أن الفارق هو ربحه الصافي، متجاهلاً التكاليف الخفية القاتلة مثل مصاريف الإعلانات (CPA)، تكلفة التغليف، وتأثير الطلبيات المرجوعة (الروتور). من هنا وُلدت فكرة المنصة: تحويل العمليات الحسابية المعقدة إلى أدوات بسيطة ومجانية بضغطة زر.</p>
 
-                <h2>رؤيتنا</h2>
-                <p>نطمح لأن تصبح Hassani E.com المرجع الأول والأداة اليومية لكل تاجر يطمح لبناء مشروع تجاري مربح ومستدام في المغرب. نحن نؤمن بأن القرارات المبنية على الأرقام هي وحدها القادرة على تحقيق النجاح.</p>
-                
-                <p style="text-align: center; margin-top: 2.5rem; font-weight: 700; color: var(--gold-light);">100% مجاني، 100% مغربي.</p>
+                <h2>من يقف وراء المنصة؟</h2>
+                <p>نحن فريق من الشباب المغاربة المكون من مطورين وتقنيين وخبراء في التسويق الرقمي وإدارة اللوجستيك. خبرتنا الميدانية في التجارة الإلكترونية وإطلاق الحملات الإعلانية على منصات Meta و TikTok منحتنا فهماً دقيقاً للمشاكل الحقيقية التي يواجهها التاجر المغربي يومياً. قررنا توحيد جهودنا لبرمجة هذه المنصة لتكون بمثابة المستشار المالي الرقمي لكل صاحب متجر.</p>
+
+                <h2>أدواتنا: وضوح مالي لقرارات أذكى</h2>
+                <p>لقد قمنا بتطوير مجموعة من الحاسبات والأدوات الذكية المترابطة التي تغطي كافة احتياجات التاجر:</p>
+                <ul>
+                    <li><a href="cod-calculator.html" class="internal-link">حاسبة أرباح COD:</a> لمعرفة الربح الصافي الفعلي بعد خصم كافة التكاليف.</li>
+                    <li><a href="roas-calculator.html" class="internal-link">حاسبة ROAS:</a> لقياس المردود الحقيقي للإعلانات بعد استثناء الطلبات الملغاة.</li>
+                    <li><a href="return-rate-calculator.html" class="internal-link">حاسبة المرتجعات:</a> لمعرفة نقطة الخطر وأقصى نسبة روتور يمكن للمشروع تحملها.</li>
+                    <li><a href="breakeven-calculator.html" class="internal-link">نقطة التعادل:</a> لتحديد عدد المبيعات اليومية اللازمة لتجنب الخسارة.</li>
+                </ul>
+
+                <h2>رؤيتنا ومهمتنا</h2>
+                <p><strong>مهمتنا:</strong> تبسيط لغة الأرقام المزعجة وجعل التحليل المالي متاحاً وسهلاً لأي تاجر، بغض النظر عن مستواه الدراسي أو خبرته في المحاسبة.</p>
+                <p><strong>رؤيتنا:</strong> نطمح لأن تصبح Hassani E.com المرجع الأول والأداة اليومية لكل تاجر يطمح لبناء مشروع تجاري مربح ومستدام في المغرب وإفريقيا. نحن نؤمن بأن القرارات المبنية على بيانات وأرقام دقيقة هي وحدها القادرة على تحقيق النجاح وتوسيع المشاريع.</p>
+
+                <h2>لماذا نقدم هذا مجاناً 100%؟</h2>
+                <p>نحن نؤمن بقوة المجتمع والتشارك. تقديم هذه الأدوات مجاناً يهدف إلى دعم الشباب المغربي وتقوية بيئة ريادة الأعمال الرقمية في المملكة. نجاح التاجر المغربي هو نجاح للاقتصاد ككل. يتم تمويل المنصة وتطويرها ذاتياً وبدعم من عرض مساحات إعلانية غير مزعجة (مثل Google AdSense) تغطي تكاليف الاستضافة والتطوير.</p>
+
+                <p style="text-align: center; margin-top: 3.5rem; font-weight: 800; font-size: 1.5rem; color: var(--primary-dark);">100% مجاني، 100% مغربي، من أجلكم.</p>
 
             </div>
         </div>
@@ -94,16 +112,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p style="margin-bottom: 1rem;">
-                <a href="privacy.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">سياسة الخصوصية</a> | 
-                <a href="terms.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">الشروط والأحكام</a> | 
-                <a href="contact.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">اتصل بنا</a>
-            </p>
-            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+            <div class="links">
+                <a href="blog.html">المدونة</a>
+                <a href="privacy.html">سياسة الخصوصية</a>
+                <a href="terms.html">الشروط والأحكام</a>
+                <a href="contact.html">اتصل بنا</a>
+            </div>
+            <p>© 2026 Hassani E.com — صُنع للمتاجر المغاربة</p>
         </div>
     </footer>
 
-    <!-- 🛡️ الأسطر المضافة فـ المكان الصحيح لتحت كاع قبل </body> -->
     <script src="js/app.js"></script>
     <script src="js/security.js"></script>
 </body>
