@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية — Hassani E.com</title>
-    <meta name="description" content="سياسة الخصوصية لموقع Hassani E.com وكيفية التعامل مع بيانات زوار منصة التجارة الإلكترونية.">
-    <meta name="theme-color" content="#08060F">
-    
-    <!-- Google AdSense Auto Ads Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Privacy Policy | Tech Explained</title>
+
+    <meta name="description"
+          content="Read the Privacy Policy for Tech Explained and learn how information, cookies, analytics and advertising may be handled when you use our website.">
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
     <link rel="stylesheet" href="css/style.css">
-    
+
     <style>
         .legal-content {
             padding: 3rem;
@@ -21,98 +22,393 @@
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: 1px solid var(--glass-border-strong);
             border-radius: var(--radius-lg);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--violet-glow-soft);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.3),
+                0 0 40px var(--violet-glow-soft);
         }
-        .legal-content h2 { font-size: 1.5rem; color: var(--violet-300); margin: 2rem 0 1rem; }
-        .legal-content p, .legal-content li { color: var(--white-80); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
-        .legal-content ul { padding-right: 1.5rem; margin-bottom: 1.5rem; }
-        .legal-content li::marker { color: var(--gold); }
+
+        .legal-content h2 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin: 2rem 0 1rem;
+        }
+
+        .legal-content p,
+        .legal-content li {
+            color: var(--white-80);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content li::marker {
+            color: var(--primary-dark);
+        }
+
+        .legal-content a {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .legal-content a:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="bg-blobs"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
     <div class="bg-grid"></div>
 
-    <!-- Navbar -->
+
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container nav-inner">
+
             <a href="index.html" class="brand">
+
                 <div class="brand-logo">
                     <svg viewBox="0 0 32 32" fill="none">
-                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
-                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
-                        <defs>
-                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
-                                <stop offset="0%" stop-color="#00E676"/>
-                                <stop offset="100%" stop-color="#00796B"/>
-                            </linearGradient>
-                        </defs>
+
+                        <rect
+                            x="2"
+                            y="2"
+                            width="28"
+                            height="28"
+                            rx="7"
+                            fill="#FFFFFF"
+                        />
+
+                        <path
+                            d="M9 20L13 14L17 18L23 10"
+                            stroke="#000000"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <circle
+                            cx="23"
+                            cy="10"
+                            r="2"
+                            fill="#000000"
+                        />
+
                     </svg>
                 </div>
-                <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
+
+                <span class="brand-name">
+                    Tech<span class="brand-accent"> Explained</span>
+                </span>
+
             </a>
+
+
             <div class="nav-menu">
-                <a href="index.html" class="nav-item">الرئيسية</a>
-                <a href="index.html#tools" class="nav-item">الأدوات</a>
-                <a href="privacy.html" class="nav-item active">الخصوصية</a>
+
+                <a href="index.html" class="nav-item">
+                    Home
+                </a>
+
+                <a href="blog.html" class="nav-item">
+                    Articles
+                </a>
+
+                <a href="about.html" class="nav-item">
+                    About
+                </a>
+
+                <a href="privacy.html" class="nav-item active">
+                    Privacy
+                </a>
+
+                <a href="contact.html" class="nav-item">
+                    Contact
+                </a>
+
             </div>
+
+
+            <button
+                class="menu-toggle"
+                aria-label="Open navigation menu"
+                onclick="toggleMenu()"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
         </div>
     </nav>
 
-    <!-- Header -->
+
+    <!-- HEADER -->
     <section class="calc-header">
+
         <div class="container">
-            <div class="calc-header-inner" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="section-label">الصفحات القانونية</span>
-                <h1 class="calc-title">سياسة <span class="text-accent">الخصوصية</span></h1>
-                <p class="calc-subtitle" style="margin: 0 auto;">نحن في Hassani E.com نأخذ خصوصية زوارنا بجدية تامة. توضح هذه الصفحة كيف نجمع البيانات وكيف نحميها.</p>
+
+            <div
+                class="calc-header-inner"
+                style="max-width: 850px; margin: 0 auto; text-align: center;"
+            >
+
+                <span class="section-label">
+                    PRIVACY & DATA
+                </span>
+
+                <h1 class="calc-title">
+                    Privacy
+                    <span class="text-accent">Policy</span>
+                </h1>
+
+                <p
+                    class="calc-subtitle"
+                    style="margin: 0 auto;"
+                >
+                    This page explains how information may be handled when
+                    you visit and use Tech Explained.
+                </p>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Content -->
-    <section class="calc-section" style="padding-top: 1rem;">
-        <div class="container" style="max-width: 900px;">
+
+    <!-- CONTENT -->
+    <section
+        class="calc-section"
+        style="padding-top: 1rem;"
+    >
+
+        <div
+            class="container"
+            style="max-width: 950px;"
+        >
+
             <div class="legal-content">
-                
-                <h2>1. جمع المعلومات</h2>
-                <p>منصتنا تعتمد على توفير أدوات وحاسبات مجانية بالكامل. نحن <strong>لا نطلب منك إنشاء حساب</strong> ولا نقوم بجمع أي معلومات شخصية حساسة (مثل الاسم، أو البريد الإلكتروني) لاستخدام أدواتنا.</p>
-                
-                <h2>2. ملفات تعريف الارتباط (Cookies)</h2>
-                <p>يستخدم موقعنا ملفات تعريف الارتباط الأساسية لضمان عمل الموقع بشكل سليم، ولتحسين تجربة تصفحك. هذه الملفات لا تحتوي على بيانات تكشف هويتك الشخصية.</p>
 
-                <h2>3. إعلانات Google AdSense</h2>
-                <ul>
-                    <li>يستخدم موقعنا برنامج Google AdSense كطرف ثالث لعرض الإعلانات.</li>
-                    <li>تستخدم Google ملفات تعريف الارتباط (مثل ملف تعريف الارتباط DART) لعرض الإعلانات بناءً على زياراتك السابقة لموقعنا ولمواقع أخرى على الإنترنت.</li>
-                    <li>يمكنك تعطيل استخدام ملفات تعريف الارتباط الخاصة بالإعلانات المخصصة عن طريق زيارة <a href="https://www.google.com/settings/ads" target="_blank" class="text-gold">إعدادات إعلانات Google</a>.</li>
-                </ul>
+                <h2>1. About This Privacy Policy</h2>
 
-                <h2>4. أمان البيانات المدخلة في الحاسبات</h2>
-                <p>جميع الأرقام والبيانات التي تقوم بإدخالها في أدواتنا (مثل حاسبة الأرباح، نقطة التعادل، أو المرتجعات) تتم معالجتها <strong>مباشرة داخل متصفحك (Client-side)</strong>. نحن لا نقوم بحفظ، تسجيل، أو إرسال أرقام تجارتك إلى أي خوادم خارجية.</p>
+                <p>
+                    This Privacy Policy explains how Tech Explained may
+                    handle information when visitors access and use this
+                    website.
+                </p>
 
-                <h2>5. التحديثات</h2>
-                <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر للتوافق مع التغييرات التقنية والقانونية. نوصي بمراجعة هذه الصفحة بشكل دوري.</p>
+                <p>
+                    We aim to respect the privacy of our visitors and to
+                    provide clear information about technologies that may
+                    be used on the website.
+                </p>
+
+
+                <h2>2. Information We May Receive</h2>
+
+                <p>
+                    Depending on how you use the website, certain technical
+                    information may be processed automatically. This may
+                    include information such as browser type, device type,
+                    approximate location, pages visited, referring pages,
+                    and general information about how the website is used.
+                </p>
+
+                <p>
+                    We do not require visitors to create an account simply
+                    to read the articles published on Tech Explained.
+                </p>
+
+
+                <h2>3. Cookies</h2>
+
+                <p>
+                    Tech Explained may use cookies and similar technologies
+                    to support website functionality, understand website
+                    usage, remember certain preferences, or support
+                    advertising services.
+                </p>
+
+                <p>
+                    Cookies may be placed by the website itself or by
+                    third-party services used on the website.
+                </p>
+
+
+                <h2>4. Analytics</h2>
+
+                <p>
+                    We may use analytics services to understand how visitors
+                    interact with the website. Analytics information can help
+                    us understand which pages are useful, identify technical
+                    issues, and improve the overall experience.
+                </p>
+
+                <p>
+                    If an analytics service is enabled on the website,
+                    information may be processed according to the privacy
+                    policy of that service.
+                </p>
+
+
+                <h2>5. Advertising</h2>
+
+                <p>
+                    Tech Explained may display advertisements provided by
+                    third-party advertising services, including Google
+                    advertising services.
+                </p>
+
+                <p>
+                    Advertising providers may use cookies or similar
+                    technologies to provide, measure, and personalize
+                    advertising, subject to the choices and settings
+                    available to users in their respective regions.
+                </p>
+
+                <p>
+                    For information about how Google handles information
+                    for advertising purposes, visitors can review
+                    <a
+                        href="https://policies.google.com/technologies/partner-sites"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Google's privacy information
+                    </a>.
+                </p>
+
+
+                <h2>6. Third-Party Services</h2>
+
+                <p>
+                    Some features of the website may rely on third-party
+                    services. These services may process certain information
+                    according to their own privacy policies and terms.
+                </p>
+
+                <p>
+                    Tech Explained does not control the privacy practices of
+                    independent third-party services.
+                </p>
+
+
+                <h2>7. External Links</h2>
+
+                <p>
+                    Our articles may occasionally contain links to external
+                    websites or services. Once you leave Tech Explained,
+                    the privacy practices of the external website apply.
+                </p>
+
+                <p>
+                    We recommend reviewing the privacy policy of any external
+                    website before providing personal information.
+                </p>
+
+
+                <h2>8. Children's Privacy</h2>
+
+                <p>
+                    Tech Explained is a general-interest technology website.
+                    We do not knowingly request personal information from
+                    children through the website.
+                </p>
+
+
+                <h2>9. Changes to This Policy</h2>
+
+                <p>
+                    This Privacy Policy may be updated from time to time to
+                    reflect changes to the website, technology, services,
+                    or applicable requirements.
+                </p>
+
+                <p>
+                    When changes are made, the updated version will be
+                    published on this page.
+                </p>
+
+
+                <h2>10. Contact</h2>
+
+                <p>
+                    If you have questions about this Privacy Policy or
+                    privacy-related matters concerning Tech Explained,
+                    you can contact us through our
+                    <a href="contact.html">
+                        Contact page
+                    </a>.
+                </p>
 
             </div>
+
         </div>
+
     </section>
 
-    <!-- Footer -->
+
+    <!-- FOOTER -->
     <footer class="footer">
+
         <div class="container">
-            <p style="margin-bottom: 1rem;">
-                <a href="privacy.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">سياسة الخصوصية</a> | 
-                <a href="terms.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">الشروط والأحكام</a> | 
-                <a href="contact.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">اتصل بنا</a>
+
+            <div class="links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="blog.html">
+                    Articles
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="terms.html">
+                    Terms
+                </a>
+
+            </div>
+
+            <p>
+                © 2026 Tech Explained. All rights reserved.
             </p>
-            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+
         </div>
+
     </footer>
+
 
     <script src="js/app.js"></script>
     <script src="js/security.js"></script>
+
 </body>
 </html>
