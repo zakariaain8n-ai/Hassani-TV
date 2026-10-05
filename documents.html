@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>الوثائق الإدارية في المغرب | دليل المغرب</title>
+
+    <meta name="description"
+        content="دليل شامل للوثائق والمساطر الإدارية في المغرب: تصحيح الإمضاء، النسخ المطابقة للأصل، شهادات ووثائق الحالة المدنية وغيرها.">
+
+    <meta name="robots" content="index, follow">
+
+    <meta name="theme-color" content="#69250D">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================
+           Documents Page
+           ========================================= */
+
+        .documents-hero {
+            padding: 5rem 0 3rem;
+        }
+
+        .documents-hero-inner {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .documents-description {
+            max-width: 720px;
+            margin: 1.25rem auto 0;
+            line-height: 1.9;
+            opacity: 0.8;
+        }
+
+        .documents-section {
+            padding: 2rem 0 5rem;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .document-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            min-height: 260px;
+
+            background: var(--glass);
+            border: 1px solid var(--glass-border-strong);
+            border-radius: var(--radius-lg);
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.08);
+
+            text-decoration: none;
+            overflow: hidden;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .document-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(105, 37, 13, 0.10),
+                    transparent 45%
+                );
+
+            pointer-events: none;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(105, 37, 13, 0.35);
+
+            box-shadow:
+                0 18px 45px rgba(0, 0, 0, 0.12);
+        }
+
+        .document-number {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 42px;
+            height: 42px;
+
+            margin-bottom: 1.25rem;
+
+            border-radius: 12px;
+
+            background: #69250D;
+            color: #fff;
+
+            font-size: 0.95rem;
+            font-weight: 800;
+        }
+
+        .document-card h2 {
+            position: relative;
+            z-index: 1;
+
+            margin: 0 0 0.9rem;
+
+            color: var(--white);
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .document-card p {
+            position: relative;
+            z-index: 1;
+
+            margin: 0;
+            color: var(--white-80);
+
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        .document-link {
+            position: relative;
+            z-index: 1;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+
+            margin-top: auto;
+            padding-top: 1.5rem;
+
+            color: #69250D;
+
+            font-weight: 800;
+            font-size: 0.95rem;
+        }
+
+        .document-link span {
+            transition: transform 0.2s ease;
+        }
+
+        .document-card:hover .document-link span {
+            transform: translateX(-4px);
+        }
+
+        .documents-note {
+            max-width: 850px;
+            margin: 2.5rem auto 0;
+
+            padding: 1.25rem 1.5rem;
+
+            border-right: 4px solid #69250D;
+            border-radius: 12px;
+
+            background: rgba(105, 37, 13, 0.05);
+
+            color: var(--white-80);
+            line-height: 1.9;
+        }
+
+        @media (max-width: 768px) {
+
+            .documents-hero {
+                padding: 3.5rem 0 2rem;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .document-card {
+                min-height: auto;
+                padding: 1.5rem;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="bg-grid"></div>
+
+
+    <!-- =========================================
+         NAVBAR
+         ========================================= -->
+
+    <nav class="navbar">
+
+        <div class="container nav-inner">
+
+            <a href="index.html" class="brand">
+
+                <div class="brand-logo">
+
+                    <svg viewBox="0 0 32 32" fill="none">
+
+                        <rect
+                            x="2"
+                            y="2"
+                            width="28"
+                            height="28"
+                            rx="7"
+                            fill="#69250D"
+                        />
+
+                        <path
+                            d="M9 20L13 14L17 18L23 10"
+                            stroke="#FFFFFF"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                        <circle
+                            cx="23"
+                            cy="10"
+                            r="2"
+                            fill="#FFFFFF"
+                        />
+
+                    </svg>
+
+                </div>
+
+                <span class="brand-name">
+                    دليل<span class="brand-accent"> المغرب</span>
+                </span>
+
+            </a>
+
+
+            <div class="nav-links">
+
+                <a href="index.html" class="nav-item">
+                    الرئيسية
+                </a>
+
+                <a href="blog.html" class="nav-item">
+                    المقالات
+                </a>
+
+                <a href="documents.html" class="nav-item active">
+                    الوثائق الإدارية
+                </a>
+
+                <a href="about.html" class="nav-item">
+                    من نحن
+                </a>
+
+                <a href="contact.html" class="nav-item">
+                    اتصل بنا
+                </a>
+
+            </div>
+
+
+            <button
+                class="menu-button"
+                type="button"
+                aria-label="فتح القائمة"
+                onclick="toggleMenu()"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================
+         HERO
+         ========================================= -->
+
+    <section class="documents-hero">
+
+        <div class="container">
+
+            <div class="documents-hero-inner">
+
+                <span class="section-label">
+                    الدليل الإداري
+                </span>
+
+                <h1 class="calc-title">
+
+                    الوثائق
+                    <span class="text-accent">
+                        الإدارية
+                    </span>
+
+                </h1>
+
+                <p class="documents-description">
+
+                    دليل عملي يساعدك على فهم أهم الوثائق والمساطر
+                    الإدارية في المغرب، مع شرح مبسط للخطوات والوثائق
+                    المطلوبة والمعلومات التي ينبغي التحقق منها قبل
+                    التوجه إلى الإدارة.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ARTICLES
+         ========================================= -->
+
+    <section class="documents-section">
+
+        <div class="container">
+
+            <div class="documents-grid">
+
+
+                <!-- 01 -->
+
+                <a
+                    href="article-tashih-imdaa.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        01
+                    </div>
+
+                    <h2>
+                        كيفية تصحيح الإمضاء
+                        (المصادقة على الإمضاء) في المغرب؟
+                    </h2>
+
+                    <p>
+                        تعرف على مفهوم تصحيح الإمضاء، أين يتم،
+                        وما الذي ينبغي تحضيره قبل التوجه إلى
+                        المصلحة الإدارية المختصة.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 02 -->
+
+                <a
+                    href="article-copie-conforme.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        02
+                    </div>
+
+                    <h2>
+                        كيفية المصادقة على نسخة مطابقة للأصل
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        شرح مبسط لمفهوم النسخة المطابقة للأصل
+                        والخطوات الأساسية التي ينبغي معرفتها
+                        قبل تقديم الوثيقة.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 03 -->
+
+                <a
+                    href="article-certificat-vie.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        03
+                    </div>
+
+                    <h2>
+                        كيفية الحصول على شهادة الحياة
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        تعرف على الغرض من شهادة الحياة،
+                        وكيفية الاستعداد لطلبها، وما المعلومات
+                        التي يجب التأكد منها.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 04 -->
+
+                <a
+                    href="article-certificat-residence.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        04
+                    </div>
+
+                    <h2>
+                        كيفية الحصول على شهادة السكنى
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        دليل عملي لفهم شهادة السكنى والوثائق
+                        التي قد تكون مطلوبة حسب الجهة والإجراء
+                        الإداري المعني.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 05 -->
+
+                <a
+                    href="article-acte-naissance.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        05
+                    </div>
+
+                    <h2>
+                        كيفية استخراج عقد الازدياد
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        تعرف على طرق الحصول على وثائق الحالة
+                        المدنية المرتبطة بالازدياد، مع توضيح
+                        الخطوات التي ينبغي اتباعها.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 06 -->
+
+                <a
+                    href="article-certificat-celibat.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        06
+                    </div>
+
+                    <h2>
+                        كيفية الحصول على شهادة العزوبة
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        شرح مبسط للإجراءات والمعلومات التي
+                        ينبغي التأكد منها عند طلب شهادة
+                        العزوبة.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 07 -->
+
+                <a
+                    href="article-livret-famille.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        07
+                    </div>
+
+                    <h2>
+                        كيفية استخراج الدفتر العائلي
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        تعرف على دور الدفتر العائلي والإجراءات
+                        المرتبطة بالحصول عليه واستعماله في
+                        الملفات الإدارية.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 08 -->
+
+                <a
+                    href="article-enregistrement-naissance.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        08
+                    </div>
+
+                    <h2>
+                        كيفية تسجيل مولود جديد
+                        في الحالة المدنية بالمغرب؟
+                    </h2>
+
+                    <p>
+                        دليل يشرح الخطوات الأساسية المرتبطة
+                        بتسجيل المولود الجديد والوثائق التي
+                        ينبغي التحقق منها.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 09 -->
+
+                <a
+                    href="article-certificat-nationalite.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        09
+                    </div>
+
+                    <h2>
+                        كيفية الحصول على شهادة الجنسية
+                        المغربية؟
+                    </h2>
+
+                    <p>
+                        تعرف على شهادة الجنسية ومتى يمكن أن
+                        تكون مطلوبة، مع شرح المسطرة والمصادر
+                        التي ينبغي الرجوع إليها.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+                <!-- 10 -->
+
+                <a
+                    href="article-changement-nom.html"
+                    class="document-card"
+                >
+
+                    <div class="document-number">
+                        10
+                    </div>
+
+                    <h2>
+                        كيفية تغيير الاسم الشخصي أو العائلي
+                        في المغرب؟
+                    </h2>
+
+                    <p>
+                        تعرف على الفرق بين تغيير الاسم الشخصي
+                        وتغيير الاسم العائلي، والجهات التي ينبغي
+                        الرجوع إليها لمعرفة المسطرة المناسبة.
+                    </p>
+
+                    <div class="document-link">
+                        اقرأ المقال
+                        <span>←</span>
+                    </div>
+
+                </a>
+
+
+            </div>
+
+
+            <!-- Information Note -->
+
+            <div class="documents-note">
+
+                <strong>ملاحظة مهمة:</strong>
+
+                المساطر والوثائق والرسوم والآجال الإدارية قد
+                تتغير حسب القوانين والتنظيمات والجهة المختصة.
+                لذلك ننصح دائماً بالتحقق من آخر المعلومات لدى
+                الإدارة أو الجهة الرسمية المعنية قبل القيام بأي
+                إجراء.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="links">
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="blog.html">
+                    المقالات
+                </a>
+
+                <a href="documents.html">
+                    الوثائق الإدارية
+                </a>
+
+                <a href="about.html">
+                    من نحن
+                </a>
+
+                <a href="contact.html">
+                    اتصل بنا
+                </a>
+
+                <a href="privacy.html">
+                    سياسة الخصوصية
+                </a>
+
+                <a href="terms.html">
+                    شروط الاستخدام
+                </a>
+
+            </div>
+
+            <p>
+                © 2026 دليل المغرب. جميع الحقوق محفوظة.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

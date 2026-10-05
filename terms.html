@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الشروط والأحكام — Hassani E.com</title>
-    <meta name="description" content="الشروط والأحكام لاستخدام أدوات وحاسبات Hassani E.com الخاصة بالتجارة الإلكترونية.">
-    <meta name="theme-color" content="#08060F">
-    
-    <!-- Google AdSense Auto Ads Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>شروط الاستخدام | دليل المغرب</title>
+
+    <meta
+        name="description"
+        content="تعرف على شروط استخدام موقع دليل المغرب، وطبيعة المحتوى الإداري المنشور وحدود المسؤولية عند الاعتماد على المعلومات."
+    >
+
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#69250D">
+
     <link rel="stylesheet" href="css/style.css">
-    
+
     <style>
         .legal-content {
             padding: 3rem;
@@ -21,96 +25,589 @@
             -webkit-backdrop-filter: blur(24px) saturate(180%);
             border: 1px solid var(--glass-border-strong);
             border-radius: var(--radius-lg);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 40px var(--violet-glow-soft);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.12),
+                0 0 40px rgba(105, 37, 13, 0.08);
         }
-        .legal-content h2 { font-size: 1.5rem; color: var(--violet-300); margin: 2rem 0 1rem; }
-        .legal-content p, .legal-content li { color: var(--white-80); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
-        .legal-content ul { padding-right: 1.5rem; margin-bottom: 1.5rem; }
-        .legal-content li::marker { color: var(--gold); }
+
+        .legal-content h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin: 2rem 0 1rem;
+        }
+
+        .legal-content p,
+        .legal-content li {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul,
+        .legal-content ol {
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-content li::marker {
+            color: #69250D;
+        }
+
+        .legal-content a {
+            color: #69250D;
+            text-decoration: underline;
+        }
+
+        .legal-content a:hover {
+            opacity: 0.75;
+        }
+
+        .legal-note {
+            margin: 1.5rem 0;
+            padding: 1.25rem 1.5rem;
+            border-right: 4px solid #69250D;
+            background: rgba(105, 37, 13, 0.05);
+            border-radius: 8px;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 768px) {
+            .legal-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .legal-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .legal-content p,
+            .legal-content li {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
+
+
 <body>
 
-    <div class="bg-blobs"><div class="blob blob-3"></div><div class="blob blob-1"></div></div>
-    <div class="bg-grid"></div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-inner">
+    <!-- =======================================================
+         HEADER
+    ======================================================== -->
+
+    <header>
+
+        <div class="container navbar">
+
             <a href="index.html" class="brand">
-                <div class="brand-logo">
-                    <svg viewBox="0 0 32 32" fill="none">
-                        <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#logoGrad)"/>
-                        <path d="M9 20L13 14L17 18L23 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="23" cy="10" r="2" fill="#E8B84E"/>
-                        <defs>
-                            <linearGradient id="logoGrad" x1="2" y1="2" x2="30" y2="30">
-                                <stop offset="0%" stop-color="#00E676"/>
-                                <stop offset="100%" stop-color="#00796B"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <span class="brand-name">Hassani<span class="brand-accent"> E.com</span></span>
+
+                <img
+                    src="images/logo.png"
+                    alt="شعار دليل المغرب"
+                >
+
+                <span>
+                    دليل المغرب
+                </span>
+
             </a>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-item">الرئيسية</a>
-                <a href="index.html#tools" class="nav-item">الأدوات</a>
-                <a href="terms.html" class="nav-item active">الشروط</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Header -->
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="index.html#topics">
+                    الأقسام
+                </a>
+
+                <a href="index.html#articles">
+                    المقالات
+                </a>
+
+                <a href="about.html">
+                    من نحن
+                </a>
+
+                <a href="contact.html">
+                    اتصل بنا
+                </a>
+
+            </nav>
+
+
+            <a
+                href="index.html#articles"
+                class="header-button"
+            >
+                استكشف المقالات ←
+            </a>
+
+
+            <button
+                class="menu-button"
+                aria-label="فتح القائمة"
+                type="button"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =======================================================
+         PAGE HEADER
+    ======================================================== -->
+
     <section class="calc-header">
+
         <div class="container">
-            <div class="calc-header-inner" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <span class="section-label">الصفحات القانونية</span>
-                <h1 class="calc-title">الشروط <span class="text-accent">والأحكام</span></h1>
-                <p class="calc-subtitle" style="margin: 0 auto;">قواعد استخدام أدوات وحاسبات منصة Hassani E.com للتجارة الإلكترونية.</p>
+
+            <div
+                class="calc-header-inner"
+                style="max-width: 850px; margin: 0 auto; text-align: center;"
+            >
+
+                <span class="section-label">
+                    الشروط والاستخدام
+                </span>
+
+                <h1 class="calc-title">
+                    شروط
+                    <span class="text-accent">
+                        الاستخدام
+                    </span>
+                </h1>
+
+                <p
+                    class="calc-subtitle"
+                    style="margin: 0 auto;"
+                >
+                    القواعد العامة لاستخدام موقع دليل المغرب
+                    والاستفادة من المحتوى المنشور فيه.
+                </p>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Content -->
-    <section class="calc-section" style="padding-top: 1rem;">
-        <div class="container" style="max-width: 900px;">
+
+    <!-- =======================================================
+         CONTENT
+    ======================================================== -->
+
+    <section
+        class="calc-section"
+        style="padding-top: 1rem;"
+    >
+
+        <div
+            class="container"
+            style="max-width: 950px;"
+        >
+
             <div class="legal-content">
-                
-                <h2>1. طبيعة الخدمة</h2>
-                <p>منصة Hassani E.com تقدم مجموعة من الأدوات الحاسبة لمساعدة التجار المغاربة على فهم أرقامهم المالية (كالربح، المرتجعات، وتكلفة الإعلانات). جميع الأدوات متاحة للاستخدام المجاني المفتوح.</p>
-                
-                <h2>2. دقة النتائج (إخلاء المسؤولية)</h2>
-                <ul>
-                    <li>النتائج التي تظهر في حاسبات المنصة (مثل ROAS، نقطة التعادل، والأرباح الصافية) مبنية بالكامل على <strong>الأرقام التي يقوم المستخدم بإدخالها</strong>.</li>
-                    <li>لا نتحمل أي مسؤولية قانونية أو مالية عن أي خسائر أو قرارات تجارية خاطئة يتخذها المستخدم بناءً على النتائج الظاهرة في الموقع. النتائج هي لغرض الاستئناس والتحليل التقريبي فقط.</li>
-                </ul>
 
-                <h2>3. حقوق الملكية الفكرية</h2>
-                <p>جميع حقوق التصميم، الأكواد البرمجية، والخوارزميات الرياضية المستخدمة في الموقع محفوظة لـ Hassani E.com. يُمنع منعاً باتاً نسخ أو إعادة إنتاج أي جزء من الموقع أو واجهاته واستخدامها في مشاريع تجارية أخرى بدون إذن مسبق.</p>
 
-                <h2>4. الاستخدام غير المشروع</h2>
-                <p>يُمنع استخدام أي برامج روبوتية (Bots) لاستخراج البيانات من الموقع أو محاولة تعطيل الخوادم بأي شكل من الأشكال.</p>
+                <div class="legal-note">
 
-                <h2>5. الإعلانات</h2>
-                <p>الموقع يعرض إعلانات من أطراف ثالثة (Google AdSense). التفاعل مع هذه الإعلانات يخضع لسياسات الشركات المعلنة، ولا نتحمل مسؤولية الخدمات أو المنتجات المعروضة عبرها.</p>
+                    <strong>
+                        آخر تحديث:
+                    </strong>
+
+                    أكتوبر 2026
+
+                    <br>
+
+                    يرجى قراءة هذه الشروط قبل استخدام الموقع.
+
+                </div>
+
+
+                <h2>
+                    1. التعريف بالموقع
+                </h2>
+
+                <p>
+                    دليل المغرب هو موقع معلوماتي مستقل يهدف إلى تقديم
+                    شروحات ومعلومات مبسطة حول الوثائق والإجراءات
+                    والمساطر الإدارية في المغرب.
+                </p>
+
+                <p>
+                    الموقع ليس إدارة حكومية، ولا يمثل أي وزارة أو مؤسسة
+                    أو جهة رسمية، ولا يتحدث باسمها.
+                </p>
+
+
+                <h2>
+                    2. طبيعة المحتوى
+                </h2>
+
+                <p>
+                    يتم إعداد محتوى الموقع بهدف مساعدة القارئ على فهم
+                    الإجراءات الإدارية والخطوات العامة المرتبطة بها
+                    بطريقة واضحة ومنظمة.
+                </p>
+
+                <p>
+                    قد تختلف المتطلبات والإجراءات حسب نوع الخدمة،
+                    الجهة المختصة، مكان الإقامة، أو التحديثات التي
+                    تطرأ على الأنظمة والخدمات الإدارية.
+                </p>
+
+
+                <h2>
+                    3. لا يعتبر الموقع مصدراً رسمياً
+                </h2>
+
+                <p>
+                    المعلومات المنشورة في دليل المغرب لا تحل محل
+                    التعليمات أو القرارات الصادرة عن الإدارة أو المؤسسة
+                    الرسمية المختصة.
+                </p>
+
+                <p>
+                    عندما يتعلق الأمر بوثيقة أو إجراء رسمي، يجب على
+                    المستخدم الرجوع إلى الجهة الرسمية المعنية للتحقق
+                    من الشروط والوثائق والرسوم والمواعيد المعمول بها.
+                </p>
+
+
+                <h2>
+                    4. دقة المعلومات وتحديثها
+                </h2>
+
+                <p>
+                    نبذل جهداً معقولاً لتقديم معلومات واضحة ودقيقة،
+                    لكن لا يمكن ضمان أن جميع المعلومات ستبقى محدثة
+                    في جميع الأوقات.
+                </p>
+
+                <p>
+                    قد تتغير القوانين أو الرسوم أو الوثائق المطلوبة
+                    أو طرق تقديم الطلبات دون إشعار مسبق.
+                </p>
+
+                <div class="legal-note">
+
+                    <strong>
+                        تنبيه مهم:
+                    </strong>
+
+                    قبل القيام بأي إجراء إداري، تحقق دائماً من آخر
+                    المعلومات لدى الجهة الرسمية المختصة، خصوصاً عندما
+                    يتعلق الأمر بالوثائق أو الرسوم أو الآجال أو الشروط.
+
+                </div>
+
+
+                <h2>
+                    5. عدم تقديم الاستشارات المهنية
+                </h2>
+
+                <p>
+                    المحتوى المنشور في الموقع هو محتوى معلوماتي عام،
+                    ولا يشكل استشارة قانونية أو مالية أو ضريبية أو
+                    إدارية مهنية مخصصة لحالة معينة.
+                </p>
+
+                <p>
+                    إذا كانت حالتك تتطلب تفسيراً قانونياً أو ضريبياً
+                    أو مهنياً متخصصاً، فمن الأفضل استشارة الجهة
+                    المختصة أو مهني مؤهل.
+                </p>
+
+
+                <h2>
+                    6. مسؤولية المستخدم
+                </h2>
+
+                <p>
+                    المستخدم مسؤول عن التحقق من المعلومات المناسبة
+                    لحالته قبل اتخاذ أي إجراء أو تقديم أي طلب رسمي.
+                </p>
+
+                <p>
+                    لا ينبغي الاعتماد على مقال واحد باعتباره بديلاً
+                    عن التعليمات الرسمية الصادرة عن الإدارة المعنية.
+                </p>
+
+
+                <h2>
+                    7. الروابط الخارجية
+                </h2>
+
+                <p>
+                    قد تحتوي بعض صفحات الموقع على روابط إلى مواقع
+                    رسمية أو مواقع خارجية أخرى بهدف مساعدة القارئ
+                    على الوصول إلى معلومات إضافية.
+                </p>
+
+                <p>
+                    لا نتحكم في محتوى أو سياسات المواقع الخارجية،
+                    ولا نتحمل مسؤولية التغييرات التي قد تطرأ عليها.
+                </p>
+
+
+                <h2>
+                    8. الاستخدام المقبول للموقع
+                </h2>
+
+                <p>
+                    يجب استخدام الموقع بطريقة قانونية ومسؤولة.
+                    ويُمنع استخدام الموقع أو محتواه في أي نشاط
+                    يخالف القوانين أو يضر بالموقع أو بالمستخدمين
+                    الآخرين.
+                </p>
+
+                <p>
+                    كما يمنع استخدام الموقع لنشر أو الترويج لمعلومات
+                    مزورة أو وثائق مزورة أو وسائل تهدف إلى التحايل
+                    على الإجراءات القانونية والإدارية.
+                </p>
+
+
+                <h2>
+                    9. الملكية الفكرية
+                </h2>
+
+                <p>
+                    ما لم تتم الإشارة إلى خلاف ذلك، فإن النصوص
+                    والتصميم والعناصر الأصلية المنشورة في الموقع
+                    مخصصة لدليل المغرب.
+                </p>
+
+                <p>
+                    لا يجوز نسخ محتوى الموقع بالكامل وإعادة نشره
+                    على مواقع أخرى بطريقة توحي بأنه محتوى أصلي
+                    للموقع الآخر.
+                </p>
+
+                <p>
+                    يمكن الاستشهاد بالمعلومات بشكل محدود مع احترام
+                    حقوق الملكية الفكرية والإشارة إلى المصدر عند
+                    الاقتضاء.
+                </p>
+
+
+                <h2>
+                    10. الإعلانات والخدمات الخارجية
+                </h2>
+
+                <p>
+                    قد يتم عرض إعلانات أو استخدام خدمات تابعة لأطراف
+                    خارجية على الموقع.
+                </p>
+
+                <p>
+                    عند تفعيل هذه الخدمات، فإن استخدامها يخضع أيضاً
+                    للشروط وسياسات الخصوصية الخاصة بمقدمي الخدمات
+                    المعنيين.
+                </p>
+
+
+                <h2>
+                    11. التعديلات على الموقع
+                </h2>
+
+                <p>
+                    نحتفظ بالحق في تعديل أو تحديث أو إضافة أو إزالة
+                    محتوى من الموقع عندما يكون ذلك ضرورياً لتحسين
+                    الخدمة أو تحديث المعلومات.
+                </p>
+
+                <p>
+                    قد تتغير هذه الشروط أيضاً عند الحاجة، وسيتم نشر
+                    النسخة الجديدة على هذه الصفحة.
+                </p>
+
+
+                <h2>
+                    12. إيقاف الوصول إلى الموقع
+                </h2>
+
+                <p>
+                    قد يتوقف الموقع مؤقتاً بسبب أعمال الصيانة أو
+                    المشاكل التقنية أو أسباب أخرى خارجة عن السيطرة.
+                </p>
+
+                <p>
+                    لا يمكن ضمان أن الموقع سيبقى متاحاً بشكل متواصل
+                    ودون انقطاع.
+                </p>
+
+
+                <h2>
+                    13. التواصل معنا
+                </h2>
+
+                <p>
+                    إذا كانت لديك ملاحظة حول المحتوى أو وجدت معلومة
+                    تحتاج إلى مراجعة، يمكنك التواصل معنا من خلال
+                    <a href="contact.html">
+                        صفحة اتصل بنا
+                    </a>.
+                </p>
+
+
+                <h2>
+                    14. قبول هذه الشروط
+                </h2>
+
+                <p>
+                    باستخدامك لموقع دليل المغرب، فإنك تقر بأنك قرأت
+                    هذه الشروط وفهمت طبيعة الموقع والمحتوى المعلوماتي
+                    الذي يقدمه.
+                </p>
+
+                <p>
+                    إذا كنت لا توافق على هذه الشروط، يرجى التوقف عن
+                    استخدام الموقع.
+                </p>
+
 
             </div>
+
         </div>
+
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+
+    <!-- =======================================================
+         FOOTER
+    ======================================================== -->
+
+    <footer>
+
         <div class="container">
-            <p style="margin-bottom: 1rem;">
-                <a href="privacy.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">سياسة الخصوصية</a> | 
-                <a href="terms.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">الشروط والأحكام</a> | 
-                <a href="contact.html" style="color:var(--white-60); margin: 0 10px; font-weight:600;">اتصل بنا</a>
-            </p>
-            <p>© 2025 <span class="text-accent">Hassani E.com</span> — صُنع للمتاجر المغاربة</p>
+
+            <div class="footer-grid">
+
+
+                <div>
+
+                    <div class="footer-brand">
+                        دليل المغرب
+                    </div>
+
+                    <p class="footer-description">
+                        دليل معلوماتي مستقل يساعد على فهم الإجراءات
+                        والوثائق الإدارية في المغرب بطريقة واضحة وعملية.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        الموقع
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="index.html">
+                            الرئيسية
+                        </a>
+
+                        <a href="index.html#topics">
+                            الأقسام
+                        </a>
+
+                        <a href="index.html#articles">
+                            المقالات
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        معلومات
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="about.html">
+                            من نحن
+                        </a>
+
+                        <a href="contact.html">
+                            اتصل بنا
+                        </a>
+
+                        <a href="privacy.html">
+                            سياسة الخصوصية
+                        </a>
+
+                        <a href="terms.html">
+                            شروط الاستخدام
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        قانوني
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="privacy.html">
+                            سياسة الخصوصية
+                        </a>
+
+                        <a href="terms.html">
+                            شروط الاستخدام
+                        </a>
+
+                        <a href="contact.html">
+                            اتصل بنا
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 دليل المغرب — جميع الحقوق محفوظة.
+                </p>
+
+                <div>
+                    موقع معلوماتي مستقل وليس جهة حكومية.
+                </div>
+
+            </div>
+
         </div>
+
     </footer>
 
-    <script src="js/security.js"></script> <!-- 🛡️ سطر الحماية كيكون هو اللخر -->
+
+    <script src="js/app.js"></script>
+
 </body>
+
 </html>

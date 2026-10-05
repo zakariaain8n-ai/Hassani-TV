@@ -1,69 +1,168 @@
 /* ============================================
-   Morocco.com — Main JS
+   دليل المغرب — Main JavaScript
    ============================================ */
 
-// Mobile menu toggle
-function toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    if (menu) menu.classList.toggle('active');
-}
+(function () {
+    "use strict";
 
-// Close menu when clicking outside
-document.addEventListener('click', function(e) {
-    const menu = document.getElementById('navMenu');
-    const toggle = document.querySelector('.menu-toggle');
-    
-    if (menu && toggle && !menu.contains(e.target) && !toggle.contains(e.target)) {
-        menu.classList.remove('active');
+
+    /* ============================================
+       Mobile Menu
+    ============================================ */
+
+    function toggleMenu() {
+        const menu = document.querySelector(".nav-links");
+
+        if (!menu) {
+            return;
+        }
+
+        menu.classList.toggle("active");
     }
-});
 
-// Smooth scroll for anchor links
-document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-            
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                const menu = document.getElementById('navMenu');
-                if (menu) menu.classList.remove('active');
-            }
-        });
+
+    /* Make toggleMenu available to HTML if needed */
+    window.toggleMenu = toggleMenu;
+
+
+    /* ============================================
+       Close Mobile Menu
+    ============================================ */
+
+    document.addEventListener("click", function (event) {
+
+        const menu = document.querySelector(".nav-links");
+        const button = document.querySelector(".menu-button");
+
+        if (!menu || !button) {
+            return;
+        }
+
+        if (
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
+        ) {
+            menu.classList.remove("active");
+        }
+
     });
 
-    // Active nav link on scroll
-    updateActiveNav();
-});
 
-// Update active nav link based on scroll position
-function updateActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-item');
-    
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const top = section.offsetTop - 100;
-            const height = section.offsetHeight;
-            
-            if (window.scrollY >= top && window.scrollY < top + height) {
-                current = section.getAttribute('id');
-            }
+    /* ============================================
+       Close Menu After Clicking a Link
+    ============================================ */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const menu = document.querySelector(".nav-links");
+
+        if (!menu) {
+            return;
+        }
+
+        const links = menu.querySelectorAll("a");
+
+        links.forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                menu.classList.remove("active");
+
+            });
+
         });
-        
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === '#' + current) {
-                item.classList.add('active');
-            }
-        });
+
     });
-}
+
+
+    /* ============================================
+       Smooth Scroll
+    ============================================ */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        links.forEach(function (link) {
+
+            link.addEventListener("click", function (event) {
+
+                const targetId = this.getAttribute("href");
+
+                if (
+                    !targetId ||
+                    targetId === "#" ||
+                    targetId.length <= 1
+                ) {
+                    return;
+                }
+
+                const target = document.querySelector(targetId);
+
+                if (!target) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            });
+
+        });
+
+    });
+
+
+    /* ============================================
+       Active Navigation
+       ============================================ */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const currentPage =
+            window.location.pathname.split("/").pop() || "index.html";
+
+        const navLinks =
+            document.querySelectorAll(".nav-links a");
+
+        navLinks.forEach(function (link) {
+
+            const href = link.getAttribute("href");
+
+            if (!href) {
+                return;
+            }
+
+            const linkPage = href.split("#")[0];
+
+            if (
+                linkPage &&
+                linkPage === currentPage
+            ) {
+                link.classList.add("active");
+            }
+
+        });
+
+    });
+
+
+    /* ============================================
+       Prevent Errors From Missing Elements
+       ============================================ */
+
+    window.addEventListener("error", function (event) {
+
+        console.warn(
+            "دليل المغرب: حدث خطأ في إحدى وظائف الصفحة.",
+            event.message || ""
+        );
+
+    });
+
+
+})();

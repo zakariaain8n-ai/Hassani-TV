@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Privacy Policy | Tech Explained</title>
+    <title>سياسة الخصوصية | دليل المغرب</title>
 
-    <meta name="description"
-          content="Read the Privacy Policy for Tech Explained and learn how information, cookies, analytics and advertising may be handled when you use our website.">
+    <meta
+        name="description"
+        content="تعرف على كيفية تعامل دليل المغرب مع المعلومات والكوكيز والإعلانات والخدمات الخارجية عند استخدام الموقع."
+    >
 
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#69250D">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,143 +26,143 @@
             border: 1px solid var(--glass-border-strong);
             border-radius: var(--radius-lg);
             box-shadow:
-                0 10px 40px rgba(0, 0, 0, 0.3),
-                0 0 40px var(--violet-glow-soft);
+                0 10px 40px rgba(0, 0, 0, 0.12),
+                0 0 40px rgba(105, 37, 13, 0.08);
         }
 
         .legal-content h2 {
             font-size: 1.5rem;
-            color: var(--white);
+            color: var(--text);
             margin: 2rem 0 1rem;
         }
 
         .legal-content p,
         .legal-content li {
-            color: var(--white-80);
+            color: var(--text-muted);
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 1rem;
         }
 
         .legal-content ul {
-            padding-left: 1.5rem;
+            padding-right: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
         .legal-content li::marker {
-            color: var(--primary-dark);
+            color: #69250D;
         }
 
         .legal-content a {
-            color: var(--primary-dark);
+            color: #69250D;
             text-decoration: underline;
         }
 
         .legal-content a:hover {
-            color: var(--white);
+            opacity: 0.75;
+        }
+
+        .legal-note {
+            margin: 1.5rem 0;
+            padding: 1.25rem 1.5rem;
+            border-right: 4px solid #69250D;
+            background: rgba(105, 37, 13, 0.05);
+            border-radius: 8px;
+            line-height: 1.9;
         }
 
         @media (max-width: 768px) {
             .legal-content {
                 padding: 2rem 1.5rem;
             }
+
+            .legal-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .legal-content p,
+            .legal-content li {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
+
 <body>
 
-    <div class="bg-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-    </div>
+    <!-- =======================================================
+         HEADER
+    ======================================================== -->
 
-    <div class="bg-grid"></div>
+    <header>
 
-
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container nav-inner">
+        <div class="container navbar">
 
             <a href="index.html" class="brand">
 
-                <div class="brand-logo">
-                    <svg viewBox="0 0 32 32" fill="none">
+                <img
+                    src="images/logo.png"
+                    alt="شعار دليل المغرب"
+                >
 
-                        <rect
-                            x="2"
-                            y="2"
-                            width="28"
-                            height="28"
-                            rx="7"
-                            fill="#FFFFFF"
-                        />
-
-                        <path
-                            d="M9 20L13 14L17 18L23 10"
-                            stroke="#000000"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-
-                        <circle
-                            cx="23"
-                            cy="10"
-                            r="2"
-                            fill="#000000"
-                        />
-
-                    </svg>
-                </div>
-
-                <span class="brand-name">
-                    Tech<span class="brand-accent"> Explained</span>
+                <span>
+                    دليل المغرب
                 </span>
 
             </a>
 
 
-            <div class="nav-menu">
+            <nav class="nav-links">
 
-                <a href="index.html" class="nav-item">
-                    Home
+                <a href="index.html">
+                    الرئيسية
                 </a>
 
-                <a href="blog.html" class="nav-item">
-                    Articles
+                <a href="index.html#topics">
+                    الأقسام
                 </a>
 
-                <a href="about.html" class="nav-item">
-                    About
+                <a href="index.html#articles">
+                    المقالات
                 </a>
 
-                <a href="privacy.html" class="nav-item active">
-                    Privacy
+                <a href="about.html">
+                    من نحن
                 </a>
 
-                <a href="contact.html" class="nav-item">
-                    Contact
+                <a href="contact.html">
+                    اتصل بنا
                 </a>
 
-            </div>
+            </nav>
+
+
+            <a
+                href="index.html#articles"
+                class="header-button"
+            >
+                استكشف المقالات ←
+            </a>
 
 
             <button
-                class="menu-toggle"
-                aria-label="Open navigation menu"
-                onclick="toggleMenu()"
+                class="menu-button"
+                aria-label="فتح القائمة"
+                type="button"
             >
-                <span></span>
-                <span></span>
-                <span></span>
+                ☰
             </button>
 
         </div>
-    </nav>
+
+    </header>
 
 
-    <!-- HEADER -->
+    <!-- =======================================================
+         HEADER SECTION
+    ======================================================== -->
+
     <section class="calc-header">
 
         <div class="container">
@@ -170,20 +173,22 @@
             >
 
                 <span class="section-label">
-                    PRIVACY & DATA
+                    الخصوصية والبيانات
                 </span>
 
                 <h1 class="calc-title">
-                    Privacy
-                    <span class="text-accent">Policy</span>
+                    سياسة
+                    <span class="text-accent">
+                        الخصوصية
+                    </span>
                 </h1>
 
                 <p
                     class="calc-subtitle"
                     style="margin: 0 auto;"
                 >
-                    This page explains how information may be handled when
-                    you visit and use Tech Explained.
+                    توضح هذه الصفحة بشكل مبسط كيفية التعامل مع المعلومات
+                    والتقنيات المستخدمة عند زيارة واستخدام موقع دليل المغرب.
                 </p>
 
             </div>
@@ -193,7 +198,10 @@
     </section>
 
 
-    <!-- CONTENT -->
+    <!-- =======================================================
+         CONTENT
+    ======================================================== -->
+
     <section
         class="calc-section"
         style="padding-top: 1rem;"
@@ -206,157 +214,267 @@
 
             <div class="legal-content">
 
-                <h2>1. About This Privacy Policy</h2>
+
+                <div class="legal-note">
+
+                    <strong>
+                        آخر تحديث:
+                    </strong>
+
+                    أكتوبر 2026
+
+                    <br>
+
+                    هذه السياسة مخصصة لموقع دليل المغرب،
+                    وهو موقع معلوماتي مستقل حول الإجراءات والوثائق
+                    الإدارية في المغرب.
+
+                </div>
+
+
+                <h2>
+                    1. مقدمة
+                </h2>
 
                 <p>
-                    This Privacy Policy explains how Tech Explained may
-                    handle information when visitors access and use this
-                    website.
+                    نحترم خصوصية زوار موقع دليل المغرب ونحرص على توضيح
+                    طبيعة المعلومات التي قد يتم التعامل معها عند استخدام
+                    الموقع.
                 </p>
 
                 <p>
-                    We aim to respect the privacy of our visitors and to
-                    provide clear information about technologies that may
-                    be used on the website.
+                    دليل المغرب هو موقع معلوماتي مستقل يهدف إلى تقديم
+                    شروحات حول الإجراءات والوثائق الإدارية في المغرب.
+                    لا يحتاج الزائر إلى إنشاء حساب من أجل قراءة المقالات
+                    المنشورة على الموقع.
                 </p>
 
 
-                <h2>2. Information We May Receive</h2>
+                <h2>
+                    2. المعلومات التي قد يتم جمعها تلقائياً
+                </h2>
 
                 <p>
-                    Depending on how you use the website, certain technical
-                    information may be processed automatically. This may
-                    include information such as browser type, device type,
-                    approximate location, pages visited, referring pages,
-                    and general information about how the website is used.
+                    عند زيارة الموقع، قد تقوم بعض التقنيات المستخدمة في
+                    المواقع الإلكترونية بمعالجة معلومات تقنية بشكل تلقائي.
                 </p>
 
                 <p>
-                    We do not require visitors to create an account simply
-                    to read the articles published on Tech Explained.
-                </p>
-
-
-                <h2>3. Cookies</h2>
-
-                <p>
-                    Tech Explained may use cookies and similar technologies
-                    to support website functionality, understand website
-                    usage, remember certain preferences, or support
-                    advertising services.
+                    يمكن أن تشمل هذه المعلومات، حسب الخدمات المفعلة في
+                    الموقع، نوع المتصفح والجهاز، نظام التشغيل، الصفحات التي
+                    تمت زيارتها، مصدر الزيارة، وبيانات تقنية عامة تساعد على
+                    فهم كيفية استخدام الموقع وتحسين أدائه.
                 </p>
 
                 <p>
-                    Cookies may be placed by the website itself or by
-                    third-party services used on the website.
+                    هذه المعلومات لا تعني بالضرورة أن الموقع يعرف الهوية
+                    الشخصية للزائر.
                 </p>
 
 
-                <h2>4. Analytics</h2>
+                <h2>
+                    3. المعلومات التي ترسلها إلينا
+                </h2>
 
                 <p>
-                    We may use analytics services to understand how visitors
-                    interact with the website. Analytics information can help
-                    us understand which pages are useful, identify technical
-                    issues, and improve the overall experience.
+                    إذا تواصلت معنا عبر البريد الإلكتروني أو من خلال وسيلة
+                    تواصل نوفرها في الموقع، فقد نحتفظ بالمعلومات التي
+                    تختار إرسالها، مثل عنوان البريد الإلكتروني ومحتوى
+                    الرسالة، وذلك من أجل قراءة الطلب والرد عليه عند الحاجة.
                 </p>
 
                 <p>
-                    If an analytics service is enabled on the website,
-                    information may be processed according to the privacy
-                    policy of that service.
+                    ننصح بعدم إرسال معلومات شخصية حساسة أو وثائق رسمية
+                    عبر البريد الإلكتروني ما لم تكن هناك حاجة واضحة لذلك
+                    وطريقة آمنة مخصصة لهذا الغرض.
                 </p>
 
 
-                <h2>5. Advertising</h2>
+                <h2>
+                    4. ملفات تعريف الارتباط (Cookies)
+                </h2>
 
                 <p>
-                    Tech Explained may display advertisements provided by
-                    third-party advertising services, including Google
-                    advertising services.
+                    قد يستخدم الموقع ملفات تعريف الارتباط (Cookies) أو
+                    تقنيات مشابهة حسب الخدمات والخصائص المفعلة فيه.
                 </p>
 
                 <p>
-                    Advertising providers may use cookies or similar
-                    technologies to provide, measure, and personalize
-                    advertising, subject to the choices and settings
-                    available to users in their respective regions.
+                    يمكن استخدام هذه التقنيات لأغراض تقنية، أو للمساعدة
+                    في فهم استخدام الموقع، أو لتذكر بعض الاختيارات، أو
+                    لتشغيل خدمات خارجية مثل خدمات الإحصائيات والإعلانات
+                    عندما تكون هذه الخدمات مفعلة.
                 </p>
 
                 <p>
-                    For information about how Google handles information
-                    for advertising purposes, visitors can review
+                    يمكنك في كثير من الحالات التحكم في ملفات تعريف
+                    الارتباط من خلال إعدادات المتصفح الخاص بك، مع العلم
+                    أن تعطيل بعض أنواعها قد يؤثر على بعض وظائف الموقع.
+                </p>
+
+
+                <h2>
+                    5. خدمات الإحصائيات وتحليل الزيارات
+                </h2>
+
+                <p>
+                    قد نستخدم مستقبلاً خدمات تحليل الزيارات لفهم كيفية
+                    استخدام الزوار للموقع، ومعرفة الصفحات التي تحصل على
+                    اهتمام أكبر، واكتشاف بعض المشاكل التقنية وتحسين تجربة
+                    المستخدم.
+                </p>
+
+                <p>
+                    إذا تم تفعيل خدمة خارجية لهذا الغرض، فإن المعلومات
+                    التي تتم معالجتها تخضع أيضاً لشروط وسياسة الخصوصية
+                    الخاصة بمزود تلك الخدمة.
+                </p>
+
+
+                <h2>
+                    6. الإعلانات
+                </h2>
+
+                <p>
+                    قد يعرض دليل المغرب إعلانات من خلال خدمات إعلانية
+                    تابعة لأطراف خارجية، بما في ذلك خدمات Google، إذا تم
+                    تفعيل الإعلانات على الموقع.
+                </p>
+
+                <p>
+                    قد تستخدم الخدمات الإعلانية ملفات تعريف الارتباط أو
+                    تقنيات مشابهة من أجل عرض الإعلانات وقياس أدائها،
+                    وفقاً للإعدادات والمتطلبات المطبقة على المستخدم
+                    والخدمة.
+                </p>
+
+                <p>
+                    للحصول على معلومات رسمية حول طريقة تعامل Google مع
+                    البيانات في الخدمات الإعلانية، يمكنك مراجعة
                     <a
                         href="https://policies.google.com/technologies/partner-sites"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Google's privacy information
+                        معلومات الخصوصية الخاصة بشركاء Google
                     </a>.
                 </p>
 
 
-                <h2>6. Third-Party Services</h2>
+                <h2>
+                    7. الروابط والمواقع الخارجية
+                </h2>
 
                 <p>
-                    Some features of the website may rely on third-party
-                    services. These services may process certain information
-                    according to their own privacy policies and terms.
+                    قد تحتوي بعض مقالات دليل المغرب على روابط لمواقع
+                    رسمية أو مواقع خارجية أخرى عندما تكون هذه الروابط
+                    مفيدة للقارئ.
                 </p>
 
                 <p>
-                    Tech Explained does not control the privacy practices of
-                    independent third-party services.
+                    عند الانتقال إلى موقع خارجي، تصبح سياسة الخصوصية
+                    وشروط استخدام ذلك الموقع هي المطبقة على استخدامك
+                    له. لذلك ننصح بقراءة سياساته قبل تقديم أي معلومات
+                    شخصية.
                 </p>
 
 
-                <h2>7. External Links</h2>
+                <h2>
+                    8. المصادر والمواقع الرسمية
+                </h2>
 
                 <p>
-                    Our articles may occasionally contain links to external
-                    websites or services. Once you leave Tech Explained,
-                    the privacy practices of the external website apply.
+                    قد نضع داخل المقالات روابط إلى مواقع الإدارات
+                    والمؤسسات الرسمية حتى يتمكن القارئ من الرجوع إلى
+                    المصدر الأصلي والتحقق من آخر المعلومات المتعلقة
+                    بالإجراء الذي يبحث عنه.
                 </p>
 
                 <p>
-                    We recommend reviewing the privacy policy of any external
-                    website before providing personal information.
+                    دليل المغرب لا يتحكم في سياسات الخصوصية أو محتوى
+                    المواقع الخارجية التي يتم الوصول إليها من خلال
+                    الروابط الموجودة في الموقع.
                 </p>
 
 
-                <h2>8. Children's Privacy</h2>
+                <h2>
+                    9. حماية المعلومات
+                </h2>
 
                 <p>
-                    Tech Explained is a general-interest technology website.
-                    We do not knowingly request personal information from
-                    children through the website.
-                </p>
-
-
-                <h2>9. Changes to This Policy</h2>
-
-                <p>
-                    This Privacy Policy may be updated from time to time to
-                    reflect changes to the website, technology, services,
-                    or applicable requirements.
+                    نتخذ خطوات معقولة للمحافظة على المعلومات التي يتم
+                    إرسالها إلينا عبر وسائل التواصل التي نوفرها، لكن لا
+                    يمكن اعتبار أي وسيلة اتصال عبر الإنترنت آمنة بشكل
+                    مطلق.
                 </p>
 
                 <p>
-                    When changes are made, the updated version will be
-                    published on this page.
+                    لذلك ننصح الزوار بعدم إرسال كلمات المرور أو بيانات
+                    البطاقات البنكية أو الوثائق الحساسة عبر وسائل
+                    التواصل العامة.
                 </p>
 
 
-                <h2>10. Contact</h2>
+                <h2>
+                    10. خصوصية الأطفال
+                </h2>
 
                 <p>
-                    If you have questions about this Privacy Policy or
-                    privacy-related matters concerning Tech Explained,
-                    you can contact us through our
+                    الموقع مخصص لتقديم معلومات عامة حول الإجراءات
+                    والوثائق الإدارية، ولا نطلب من الزوار إنشاء حساب
+                    أو تقديم معلومات شخصية من أجل قراءة المحتوى.
+                </p>
+
+                <p>
+                    إذا تم إرسال معلومات شخصية إلينا من خلال وسائل
+                    التواصل، فإننا نتعامل معها في حدود الغرض الذي
+                    أرسلت من أجله.
+                </p>
+
+
+                <h2>
+                    11. التغييرات على سياسة الخصوصية
+                </h2>
+
+                <p>
+                    قد نقوم بتحديث سياسة الخصوصية هذه عندما تتغير
+                    الخدمات أو التقنيات المستخدمة في الموقع أو طريقة
+                    تعاملنا مع المعلومات.
+                </p>
+
+                <p>
+                    عند إجراء تغيير، سيتم نشر النسخة المحدثة على هذه
+                    الصفحة مع تحديث تاريخ المراجعة عند الحاجة.
+                </p>
+
+
+                <h2>
+                    12. التواصل معنا
+                </h2>
+
+                <p>
+                    إذا كان لديك سؤال يتعلق بسياسة الخصوصية أو طريقة
+                    التعامل مع المعلومات في الموقع، يمكنك التواصل معنا
+                    عبر
                     <a href="contact.html">
-                        Contact page
+                        صفحة اتصل بنا
                     </a>.
                 </p>
+
+
+                <div class="legal-note">
+
+                    <strong>
+                        تنبيه:
+                    </strong>
+
+                    هذه الصفحة تشرح ممارسات الموقع بشكل عام وليست
+                    استشارة قانونية. إذا كانت لديك حالة قانونية أو
+                    مسألة تتطلب تفسيراً قانونياً متخصصاً، فمن الأفضل
+                    الرجوع إلى الجهة المختصة أو مستشار قانوني مؤهل.
+
+                </div>
+
 
             </div>
 
@@ -365,42 +483,124 @@
     </section>
 
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <!-- =======================================================
+         FOOTER
+    ======================================================== -->
+
+    <footer>
 
         <div class="container">
 
-            <div class="links">
+            <div class="footer-grid">
 
-                <a href="index.html">
-                    Home
-                </a>
 
-                <a href="blog.html">
-                    Articles
-                </a>
+                <div>
 
-                <a href="about.html">
-                    About
-                </a>
+                    <div class="footer-brand">
+                        دليل المغرب
+                    </div>
 
-                <a href="contact.html">
-                    Contact
-                </a>
+                    <p class="footer-description">
+                        دليل معلوماتي مستقل يساعد على فهم الإجراءات
+                        والوثائق الإدارية في المغرب بطريقة واضحة وعملية.
+                    </p>
 
-                <a href="privacy.html">
-                    Privacy Policy
-                </a>
+                </div>
 
-                <a href="terms.html">
-                    Terms
-                </a>
+
+                <div>
+
+                    <div class="footer-title">
+                        الموقع
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="index.html">
+                            الرئيسية
+                        </a>
+
+                        <a href="index.html#topics">
+                            الأقسام
+                        </a>
+
+                        <a href="index.html#articles">
+                            المقالات
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        معلومات
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="about.html">
+                            من نحن
+                        </a>
+
+                        <a href="contact.html">
+                            اتصل بنا
+                        </a>
+
+                        <a href="privacy.html">
+                            سياسة الخصوصية
+                        </a>
+
+                        <a href="terms.html">
+                            شروط الاستخدام
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        قانوني
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="privacy.html">
+                            سياسة الخصوصية
+                        </a>
+
+                        <a href="terms.html">
+                            شروط الاستخدام
+                        </a>
+
+                        <a href="contact.html">
+                            اتصل بنا
+                        </a>
+
+                    </div>
+
+                </div>
+
 
             </div>
 
-            <p>
-                © 2026 Tech Explained. All rights reserved.
-            </p>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 دليل المغرب — جميع الحقوق محفوظة.
+                </p>
+
+                <div>
+                    موقع معلوماتي مستقل وليس جهة حكومية.
+                </div>
+
+            </div>
 
         </div>
 
@@ -408,7 +608,7 @@
 
 
     <script src="js/app.js"></script>
-    <script src="js/security.js"></script>
 
 </body>
+
 </html>
