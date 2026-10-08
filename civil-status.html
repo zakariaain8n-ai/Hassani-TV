@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,678 +8,1063 @@
     <title>الحالة المدنية في المغرب | دليل المغرب</title>
 
     <meta name="description"
-          content="دليل مبسط حول إجراءات الحالة المدنية في المغرب، عقد الازدياد، الزواج، الطلاق، الوفاة، الدفتر العائلي وتصحيح بيانات الحالة المدنية.">
+        content="دليل الحالة المدنية في المغرب: عقد الازدياد، الزواج، الطلاق، الوفاة، الدفتر العائلي وتصحيح بيانات الحالة المدنية.">
 
     <link rel="icon" href="images/logo.png">
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        .site-header {
+            width: 100%;
+            padding: 12px 0 !important;
+            background: rgba(255,255,255,.96);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            position: relative;
+            z-index: 20;
+        }
+
+        .site-header .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            min-height: 62px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            width: 115px !important;
+            height: auto !important;
+            max-height: 55px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        .logo span {
+            display: none;
+        }
+
+        .main-nav {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center;
+            gap: 25px;
+            flex: 1;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #222;
+            font-size: .9rem;
+            font-weight: 700;
+            transition: color .2s ease;
+        }
+
+        .main-nav a:hover {
+            color: #69250D;
+        }
+
+        .header-cta {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 17px;
+            border-radius: 10px;
+            background: #69250D;
+            color: #fff !important;
+            text-decoration: none;
+            font-size: .82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
         .civil-hero {
-            padding: 5rem 0 3rem;
+            padding: 2.2rem 0 1.2rem !important;
             text-align: center;
         }
 
+        .civil-hero .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         .civil-hero h1 {
-            margin-bottom: 1rem;
+            margin: .45rem 0 .6rem;
+            font-size: clamp(1.7rem, 3vw, 2.35rem);
+            line-height: 1.5;
         }
 
         .civil-hero p {
-            max-width: 780px;
+            max-width: 720px;
             margin: 0 auto;
-            line-height: 2;
-            opacity: .8;
+            line-height: 1.8;
+            font-size: .92rem;
+            color: #666;
         }
+
+        .section-label {
+            color: #69250D;
+            font-size: .78rem;
+            font-weight: 800;
+        }
+
+
+        /* ================================
+           CARDS
+        ================================= */
 
         .civil-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.6rem;
-            padding: 2rem 0 5rem;
+            gap: 1.35rem;
+
+            max-width: 1180px;
+            margin: 0 auto;
+
+            padding: 1.2rem 20px 4rem;
         }
 
         .civil-card {
             overflow: hidden;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, .82);
-            border: 1px solid rgba(105, 37, 13, .13);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, .07);
-            transition: transform .25s ease, box-shadow .25s ease;
+
+            border-radius: 18px;
+
+            background: #fff;
+
+            border: 1px solid rgba(105,37,13,.11);
+
+            box-shadow:
+                0 7px 25px rgba(0,0,0,.055);
+
+            transition:
+                transform .22s ease,
+                box-shadow .22s ease;
         }
 
         .civil-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, .12);
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 14px 35px rgba(0,0,0,.10);
         }
 
         .civil-card-image {
             width: 100%;
-            height: 230px;
+            height: 205px;
+
             object-fit: cover;
+
             display: block;
-            transition: transform .4s ease;
+
+            transition: transform .35s ease;
         }
 
         .civil-card:hover .civil-card-image {
-            transform: scale(1.04);
+            transform: scale(1.025);
         }
 
         .civil-card-body {
-            padding: 1.5rem;
+            padding: 1.25rem 1.35rem 1.3rem;
         }
 
         .civil-card-number {
             display: inline-block;
+
             color: #69250D;
-            font-size: .82rem;
+
+            font-size: .75rem;
             font-weight: 800;
-            margin-bottom: .45rem;
+
+            margin-bottom: .35rem;
         }
 
         .civil-card h2 {
-            font-size: 1.18rem;
-            line-height: 1.75;
-            margin: 0 0 .65rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+
+            margin: 0 0 .55rem;
+
+            color: #222;
         }
 
         .civil-card p {
-            color: #555;
-            line-height: 1.9;
+            color: #666;
+
+            font-size: .86rem;
+
+            line-height: 1.8;
+
             margin: 0;
         }
 
         .civil-card-link {
             display: block;
-            margin-top: 1rem;
+
+            margin-top: .85rem;
+
             color: #69250D;
+
+            font-size: .82rem;
             font-weight: 800;
+
             text-decoration: none;
         }
 
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .site-footer {
+            border-top: 1px solid rgba(0,0,0,.06);
+            padding: 2rem 0 1rem;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+
+            padding: 0 20px;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-inner p {
+            color: #777;
+            font-size: .85rem;
+            margin-top: .5rem;
+        }
+
+        .footer-inner > div:last-child {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .footer-inner a {
+            color: #555;
+            text-decoration: none;
+            font-size: .82rem;
+        }
+
+        .footer-bottom {
+            max-width: 1180px;
+
+            margin: 1.5rem auto 0;
+
+            padding: 1rem 20px 0;
+
+            border-top: 1px solid rgba(0,0,0,.06);
+
+            color: #888;
+
+            font-size: .75rem;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
         @media (max-width: 768px) {
+
+            .site-header {
+                padding: 9px 0 !important;
+            }
+
+            .header-inner {
+                min-height: auto;
+
+                flex-wrap: wrap;
+
+                justify-content: center !important;
+
+                gap: 10px 15px;
+            }
+
+            .logo {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo img {
+                width: 105px !important;
+                max-height: 48px !important;
+            }
+
+            .main-nav {
+                order: 3;
+
+                width: 100%;
+
+                gap: 15px;
+
+                flex-wrap: wrap;
+            }
+
+            .main-nav a {
+                font-size: .76rem;
+            }
+
+            .header-cta {
+                display: none !important;
+            }
+
             .civil-hero {
-                padding: 3.5rem 0 2rem;
+                padding: 1.8rem 0 .7rem !important;
+            }
+
+            .civil-hero h1 {
+                font-size: 1.55rem;
+            }
+
+            .civil-hero p {
+                font-size: .82rem;
+                line-height: 1.8;
             }
 
             .civil-grid {
                 grid-template-columns: 1fr;
-                gap: 1.25rem;
+
+                padding-top: .8rem;
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
             .civil-card-image {
-                height: 210px;
+                height: 190px;
+            }
+
+            .civil-card-body {
+                padding: 1.15rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+            }
+
+            .footer-inner > div:last-child {
+                flex-wrap: wrap;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
+
+<!-- ================================
+     HEADER
+================================= -->
+
 <header class="site-header">
+
     <div class="container">
+
         <div class="header-inner">
 
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="دليل المغرب">
-                <span>دليل المغرب</span>
             </a>
 
+
             <nav class="main-nav">
-                <a href="index.html">الرئيسية</a>
-                <a href="index.html#categories">الأقسام</a>
-                <a href="articles.html">المقالات</a>
-                <a href="about.html">من نحن</a>
+
+                <a href="index.html">
+                    الرئيسية
+                </a>
+
+                <a href="index.html#categories">
+                    الأقسام
+                </a>
+
+                <a href="articles.html">
+                    المقالات
+                </a>
+
+                <a href="about.html">
+                    من نحن
+                </a>
+
             </nav>
+
 
             <a href="documents.html" class="header-cta">
                 استكشف الوثائق
             </a>
 
         </div>
+
     </div>
+
 </header>
 
 
+
+<!-- ================================
+     MAIN
+================================= -->
+
 <main>
 
+
+    <!-- HERO -->
+
     <section class="civil-hero">
+
         <div class="container">
 
-            <span class="section-label">الحالة المدنية</span>
+            <span class="section-label">
+                الحالة المدنية
+            </span>
 
             <h1>
                 دليل الحالة المدنية في المغرب
             </h1>
 
             <p>
-                مجموعة من الأدلة المبسطة التي تساعدك على فهم أهم إجراءات
-                الحالة المدنية في المغرب، والوثائق المرتبطة بالولادة والزواج
-                والطلاق والوفاة وتصحيح البيانات.
+                أدلة مبسطة تساعدك على فهم أهم إجراءات الحالة المدنية
+                والوثائق المرتبطة بالولادة والزواج والطلاق والوفاة.
             </p>
 
         </div>
+
     </section>
 
 
+
+    <!-- ================================
+         ARTICLES
+    ================================= -->
+
     <section>
-        <div class="container">
 
-            <div class="civil-grid">
+        <div class="civil-grid">
 
 
-                <!-- 01 -->
-                <article class="civil-card">
+            <!-- 01 -->
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
-                        alt="كيفية استخراج النسخة الكاملة من عقد الازدياد في المغرب"
-                        loading="lazy"
-                    >
+            <article class="civil-card">
 
-                    <div class="civil-card-body">
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80"
+                    alt="النسخة الكاملة من عقد الازدياد"
+                    loading="lazy"
+                >
 
-                        <span class="civil-card-number">01</span>
+                <div class="civil-card-body">
 
-                        <h2>
-                            كيفية استخراج النسخة الكاملة من عقد الازدياد في المغرب؟
-                        </h2>
+                    <span class="civil-card-number">
+                        01
+                    </span>
 
-                        <p>
-                            تعرف على النسخة الكاملة من عقد الازدياد ومتى يمكن طلبها
-                            وما هي المعلومات التي تتضمنها.
-                        </p>
+                    <h2>
+                        كيفية استخراج النسخة الكاملة من عقد الازدياد في المغرب؟
+                    </h2>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <p>
+                        تعرف على النسخة الكاملة من رسم الولادة ومتى يمكن طلبها
+                        وما هي المعلومات التي تتضمنها.
+                    </p>
 
-                    </div>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                </article>
+                </div>
 
+            </article>
 
-                <!-- 02 -->
-                <article class="civil-card">
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80"
-                        alt="الفرق بين النسخة الكاملة والنسخة الموجزة من عقد الازدياد"
-                        loading="lazy"
-                    >
 
-                    <div class="civil-card-body">
+            <!-- 02 -->
 
-                        <span class="civil-card-number">02</span>
+            <article class="civil-card">
 
-                        <h2>
-                            الفرق بين النسخة الكاملة والنسخة الموجزة من عقد الازدياد
-                        </h2>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+                    alt="الفرق بين النسخة الكاملة والنسخة الموجزة من عقد الازدياد"
+                    loading="lazy"
+                >
 
-                        <p>
-                            شرح مبسط للفروق بين النسخة الكاملة والنسخة الموجزة
-                            ومتى تحتاج إلى كل واحدة منهما.
-                        </p>
+                <div class="civil-card-body">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <span class="civil-card-number">
+                        02
+                    </span>
 
-                    </div>
+                    <h2>
+                        الفرق بين النسخة الكاملة والنسخة الموجزة من عقد الازدياد
+                    </h2>
 
-                </article>
+                    <p>
+                        شرح الفرق بين النسخة الكاملة والنسخة الموجزة
+                        ومتى تحتاج إلى كل واحدة منهما.
+                    </p>
 
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                <!-- 03 -->
-                <article class="civil-card">
+                </div>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80"
-                        alt="استخراج عقد الازدياد عبر الإنترنت بواسطة Watiqa"
-                        loading="lazy"
-                    >
+            </article>
 
-                    <div class="civil-card-body">
 
-                        <span class="civil-card-number">03</span>
 
-                        <h2>
-                            كيفية استخراج عقد الازدياد عبر الإنترنت بواسطة Watiqa؟
-                        </h2>
+            <!-- 03 -->
 
-                        <p>
-                            تعرف على طريقة طلب وثائق الحالة المدنية إلكترونياً
-                            والخطوات الأساسية التي ينبغي الانتباه إليها.
-                        </p>
+            <article class="civil-card">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                    alt="استخراج عقد الازدياد عبر الإنترنت بواسطة Watiqa"
+                    loading="lazy"
+                >
 
-                    </div>
+                <div class="civil-card-body">
 
-                </article>
+                    <span class="civil-card-number">
+                        03
+                    </span>
 
+                    <h2>
+                        كيفية استخراج عقد الازدياد عبر الإنترنت بواسطة Watiqa؟
+                    </h2>
 
-                <!-- 04 -->
-                <article class="civil-card">
+                    <p>
+                        تعرف على فكرة طلب وثائق الحالة المدنية عبر الإنترنت
+                        والخطوات الأساسية للخدمة الرقمية.
+                    </p>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=80"
-                        alt="تصحيح خطأ في عقد الازدياد أو رسم الحالة المدنية"
-                        loading="lazy"
-                    >
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                    <div class="civil-card-body">
+                </div>
 
-                        <span class="civil-card-number">04</span>
+            </article>
 
-                        <h2>
-                            كيفية تصحيح خطأ في عقد الازدياد أو رسم الحالة المدنية؟
-                        </h2>
 
-                        <p>
-                            ماذا تفعل عندما تجد خطأ في أحد البيانات المسجلة
-                            في رسم الحالة المدنية؟
-                        </p>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+            <!-- 04 -->
 
-                    </div>
+            <article class="civil-card">
 
-                </article>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80"
+                    alt="تصحيح خطأ في عقد الازدياد أو رسم الحالة المدنية"
+                    loading="lazy"
+                >
 
+                <div class="civil-card-body">
 
-                <!-- 05 -->
-                <article class="civil-card">
+                    <span class="civil-card-number">
+                        04
+                    </span>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=1200&q=80"
-                        alt="عدم تسجيل الولادة داخل الأجل القانوني"
-                        loading="lazy"
-                    >
+                    <h2>
+                        كيفية تصحيح خطأ في عقد الازدياد أو رسم الحالة المدنية؟
+                    </h2>
 
-                    <div class="civil-card-body">
+                    <p>
+                        ماذا تفعل إذا وجدت خطأ في اسم أو تاريخ أو إحدى البيانات
+                        الموجودة في رسم الحالة المدنية؟
+                    </p>
 
-                        <span class="civil-card-number">05</span>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                        <h2>
-                            ماذا تفعل إذا لم يتم تسجيل الولادة داخل الأجل القانوني؟
-                        </h2>
+                </div>
 
-                        <p>
-                            تعرف على ما يمكن القيام به عندما لا يتم تسجيل الولادة
-                            في الحالة المدنية داخل الأجل المحدد.
-                        </p>
+            </article>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
 
-                    </div>
 
-                </article>
+            <!-- 05 -->
 
+            <article class="civil-card">
 
-                <!-- 06 -->
-                <article class="civil-card">
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1544126592-807daa2d3f66?auto=format&fit=crop&w=1200&q=80"
+                    alt="تسجيل مولود جديد في الحالة المدنية"
+                    loading="lazy"
+                >
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
-                        alt="تسجيل الزواج في الحالة المدنية بالمغرب"
-                        loading="lazy"
-                    >
+                <div class="civil-card-body">
 
-                    <div class="civil-card-body">
+                    <span class="civil-card-number">
+                        05
+                    </span>
 
-                        <span class="civil-card-number">06</span>
+                    <h2>
+                        ماذا تفعل إذا لم يتم تسجيل الولادة داخل الأجل القانوني؟
+                    </h2>
 
-                        <h2>
-                            كيفية تسجيل الزواج في الحالة المدنية بالمغرب؟
-                        </h2>
+                    <p>
+                        تعرف على الحالة التي لا يتم فيها تسجيل الولادة داخل
+                        الأجل وكيف يتم التعامل مع الوضعية.
+                    </p>
 
-                        <p>
-                            دليل مبسط حول تسجيل واقعة الزواج والبيانات المرتبطة
-                            بها في الحالة المدنية.
-                        </p>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                </div>
 
-                    </div>
+            </article>
 
-                </article>
 
 
-                <!-- 07 -->
-                <article class="civil-card">
+            <!-- 06 -->
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1200&q=80"
-                        alt="تسجيل الطلاق في الحالة المدنية بالمغرب"
-                        loading="lazy"
-                    >
+            <article class="civil-card">
 
-                    <div class="civil-card-body">
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80"
+                    alt="تسجيل الزواج في الحالة المدنية بالمغرب"
+                    loading="lazy"
+                >
 
-                        <span class="civil-card-number">07</span>
+                <div class="civil-card-body">
 
-                        <h2>
-                            كيفية تسجيل الطلاق في الحالة المدنية بالمغرب؟
-                        </h2>
+                    <span class="civil-card-number">
+                        06
+                    </span>
 
-                        <p>
-                            تعرف على تسجيل واقعة انحلال ميثاق الزوجية والبيانات
-                            التي ترتبط بها في الحالة المدنية.
-                        </p>
+                    <h2>
+                        كيفية تسجيل الزواج في الحالة المدنية بالمغرب؟
+                    </h2>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <p>
+                        دليل مبسط حول تسجيل واقعة الزواج والبيانات المرتبطة
+                        بها في الحالة المدنية.
+                    </p>
 
-                    </div>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                </article>
+                </div>
 
+            </article>
 
-                <!-- 08 -->
-                <article class="civil-card">
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80"
-                        alt="استخراج شهادة الوفاة في المغرب"
-                        loading="lazy"
-                    >
 
-                    <div class="civil-card-body">
+            <!-- 07 -->
 
-                        <span class="civil-card-number">08</span>
+            <article class="civil-card">
 
-                        <h2>
-                            كيفية استخراج شهادة الوفاة في المغرب؟
-                        </h2>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=1200&q=80"
+                    alt="تسجيل الطلاق في الحالة المدنية بالمغرب"
+                    loading="lazy"
+                >
 
-                        <p>
-                            تعرف على الوثيقة المرتبطة بالوفاة وكيفية التعامل
-                            مع طلبها ضمن إجراءات الحالة المدنية.
-                        </p>
+                <div class="civil-card-body">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <span class="civil-card-number">
+                        07
+                    </span>
 
-                    </div>
+                    <h2>
+                        كيفية تسجيل الطلاق في الحالة المدنية بالمغرب؟
+                    </h2>
 
-                </article>
+                    <p>
+                        تعرف على تسجيل واقعة الطلاق وكيفية ارتباطها
+                        ببيانات الحالة المدنية.
+                    </p>
 
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                <!-- 09 -->
-                <article class="civil-card">
+                </div>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80"
-                        alt="تسجيل وفاة شخص في الحالة المدنية"
-                        loading="lazy"
-                    >
+            </article>
 
-                    <div class="civil-card-body">
 
-                        <span class="civil-card-number">09</span>
 
-                        <h2>
-                            كيفية تسجيل وفاة شخص في الحالة المدنية؟
-                        </h2>
+            <!-- 08 -->
 
-                        <p>
-                            شرح مبسط للإجراءات المرتبطة بتسجيل واقعة الوفاة
-                            في سجلات الحالة المدنية.
-                        </p>
+            <article class="civil-card">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1580281658628-5c6b7b7b5b5b?auto=format&fit=crop&w=1200&q=80"
+                    alt="استخراج شهادة الوفاة في المغرب"
+                    loading="lazy"
+                >
 
-                    </div>
+                <div class="civil-card-body">
 
-                </article>
+                    <span class="civil-card-number">
+                        08
+                    </span>
 
+                    <h2>
+                        كيفية استخراج شهادة الوفاة في المغرب؟
+                    </h2>
 
-                <!-- 10 -->
-                <article class="civil-card">
+                    <p>
+                        تعرف على وثيقة الوفاة وكيفية طلبها ضمن إجراءات
+                        الحالة المدنية.
+                    </p>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?auto=format&fit=crop&w=1200&q=80"
-                        alt="ضياع الدفتر العائلي والحصول على نسخة جديدة"
-                        loading="lazy"
-                    >
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                    <div class="civil-card-body">
+                </div>
 
-                        <span class="civil-card-number">10</span>
+            </article>
 
-                        <h2>
-                            ماذا تفعل إذا ضاع الدفتر العائلي؟ وكيف تحصل على نسخة جديدة؟
-                        </h2>
 
-                        <p>
-                            تعرف على الخطوات الأساسية التي يمكن اتباعها في حالة
-                            ضياع الدفتر العائلي.
-                        </p>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+            <!-- 09 -->
 
-                    </div>
+            <article class="civil-card">
 
-                </article>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+                    alt="تسجيل وفاة شخص في الحالة المدنية"
+                    loading="lazy"
+                >
 
+                <div class="civil-card-body">
 
-                <!-- 11 -->
-                <article class="civil-card">
+                    <span class="civil-card-number">
+                        09
+                    </span>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80"
-                        alt="تصحيح الاسم أو النسب بالحروف اللاتينية"
-                        loading="lazy"
-                    >
+                    <h2>
+                        كيفية تسجيل وفاة شخص في الحالة المدنية؟
+                    </h2>
 
-                    <div class="civil-card-body">
+                    <p>
+                        شرح مبسط للإجراءات المرتبطة بتسجيل واقعة الوفاة
+                        في سجلات الحالة المدنية.
+                    </p>
 
-                        <span class="civil-card-number">11</span>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                        <h2>
-                            كيفية تصحيح الاسم أو النسب بالحروف اللاتينية في الحالة المدنية؟
-                        </h2>
+                </div>
 
-                        <p>
-                            دليل حول التعامل مع اختلاف أو خطأ كتابة الاسم أو النسب
-                            بالحروف اللاتينية في الوثائق.
-                        </p>
+            </article>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
 
-                    </div>
 
-                </article>
+            <!-- 10 -->
 
+            <article class="civil-card">
 
-                <!-- 12 -->
-                <article class="civil-card">
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1200&q=80"
+                    alt="الدفتر العائلي في المغرب"
+                    loading="lazy"
+                >
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80"
-                        alt="الحصول على شهادة القرابة في المغرب"
-                        loading="lazy"
-                    >
+                <div class="civil-card-body">
 
-                    <div class="civil-card-body">
+                    <span class="civil-card-number">
+                        10
+                    </span>
 
-                        <span class="civil-card-number">12</span>
+                    <h2>
+                        ماذا تفعل إذا ضاع الدفتر العائلي؟ وكيف تحصل على نسخة جديدة؟
+                    </h2>
 
-                        <h2>
-                            كيفية الحصول على شهادة القرابة في المغرب؟
-                        </h2>
+                    <p>
+                        تعرف على الخطوات الأساسية التي يمكن اتباعها
+                        عند ضياع أو تلف الدفتر العائلي.
+                    </p>
 
-                        <p>
-                            تعرف على شهادة القرابة والغرض منها والوثائق المرتبطة
-                            بطلبها حسب الحالة.
-                        </p>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                </div>
 
-                    </div>
+            </article>
 
-                </article>
 
 
-                <!-- 13 -->
-                <article class="civil-card">
+            <!-- 11 -->
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?auto=format&fit=crop&w=1200&q=80"
-                        alt="شهادة عدم الزواج وعدم الطلاق"
-                        loading="lazy"
-                    >
+            <article class="civil-card">
 
-                    <div class="civil-card-body">
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80"
+                    alt="تصحيح الاسم أو النسب بالحروف اللاتينية"
+                    loading="lazy"
+                >
 
-                        <span class="civil-card-number">13</span>
+                <div class="civil-card-body">
 
-                        <h2>
-                            شهادة عدم الزواج وعدم الطلاق في المغرب: الفرق والوثائق
-                        </h2>
+                    <span class="civil-card-number">
+                        11
+                    </span>
 
-                        <p>
-                            توضيح الفرق بين الوثيقتين ومتى يمكن أن يطلب الشخص
-                            كل واحدة منهما.
-                        </p>
+                    <h2>
+                        كيفية تصحيح الاسم أو النسب بالحروف اللاتينية في الحالة المدنية؟
+                    </h2>
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <p>
+                        تعرف على التعامل مع اختلاف أو خطأ كتابة الاسم
+                        أو النسب بالحروف اللاتينية في الوثائق.
+                    </p>
 
-                    </div>
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                </article>
+                </div>
 
+            </article>
 
-                <!-- 14 -->
-                <article class="civil-card">
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
-                        alt="إضافة بيانات الزواج أو الطلاق إلى رسم الولادة"
-                        loading="lazy"
-                    >
 
-                    <div class="civil-card-body">
+            <!-- 12 -->
 
-                        <span class="civil-card-number">14</span>
+            <article class="civil-card">
 
-                        <h2>
-                            كيفية إضافة بيانات الزواج أو الطلاق إلى رسم الولادة؟
-                        </h2>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1494386346843-e12284507169?auto=format&fit=crop&w=1200&q=80"
+                    alt="شهادة القرابة في المغرب"
+                    loading="lazy"
+                >
 
-                        <p>
-                            شرح مبسط لفكرة تحيين بيانات رسم الولادة بعد تسجيل
-                            واقعة الزواج أو الطلاق.
-                        </p>
+                <div class="civil-card-body">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                    <span class="civil-card-number">
+                        12
+                    </span>
 
-                    </div>
+                    <h2>
+                        كيفية الحصول على شهادة القرابة في المغرب؟
+                    </h2>
 
-                </article>
+                    <p>
+                        تعرف على الوثيقة التي تثبت صلة القرابة
+                        ومتى يمكن أن تحتاج إليها.
+                    </p>
 
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
 
-                <!-- 15 -->
-                <article class="civil-card">
+                </div>
 
-                    <img
-                        class="civil-card-image"
-                        src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1200&q=80"
-                        alt="تصحيح أو تغيير بيانات الحالة المدنية الخاطئة"
-                        loading="lazy"
-                    >
+            </article>
 
-                    <div class="civil-card-body">
 
-                        <span class="civil-card-number">15</span>
 
-                        <h2>
-                            كيفية تصحح أو تغير بيانات الحالة المدنية الخاطئة؟
-                        </h2>
+            <!-- 13 -->
 
-                        <p>
-                            تعرف على الفرق بين تصحيح البيانات وتغييرها
-                            وكيفية التعامل مع الأخطاء في وثائق الحالة المدنية.
-                        </p>
+            <article class="civil-card">
 
-                        <a href="#" class="civil-card-link">
-                            الدليل قريباً ←
-                        </a>
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80"
+                    alt="شهادة عدم الزواج وعدم الطلاق"
+                    loading="lazy"
+                >
 
-                    </div>
+                <div class="civil-card-body">
 
-                </article>
+                    <span class="civil-card-number">
+                        13
+                    </span>
 
+                    <h2>
+                        شهادة عدم الزواج وعدم الطلاق في المغرب: الفرق والوثائق
+                    </h2>
 
-            </div>
+                    <p>
+                        توضيح الفرق بين الوثيقتين ومتى يمكن طلب كل واحدة
+                        منهما حسب الحالة.
+                    </p>
+
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 14 -->
+
+            <article class="civil-card">
+
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80"
+                    alt="إضافة بيانات الزواج أو الطلاق إلى رسم الولادة"
+                    loading="lazy"
+                >
+
+                <div class="civil-card-body">
+
+                    <span class="civil-card-number">
+                        14
+                    </span>
+
+                    <h2>
+                        كيفية إضافة بيانات الزواج أو الطلاق إلى رسم الولادة؟
+                    </h2>
+
+                    <p>
+                        شرح مبسط لفكرة تحيين بيانات رسم الولادة
+                        بعد تسجيل الزواج أو الطلاق.
+                    </p>
+
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- 15 -->
+
+            <article class="civil-card">
+
+                <img
+                    class="civil-card-image"
+                    src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80"
+                    alt="تصحيح أو تغيير بيانات الحالة المدنية الخاطئة"
+                    loading="lazy"
+                >
+
+                <div class="civil-card-body">
+
+                    <span class="civil-card-number">
+                        15
+                    </span>
+
+                    <h2>
+                        كيفية تصحح أو تغير بيانات الحالة المدنية الخاطئة؟
+                    </h2>
+
+                    <p>
+                        تعرف على الفرق بين تصحيح البيانات وتغييرها
+                        وكيفية التعامل مع الأخطاء في وثائق الحالة المدنية.
+                    </p>
+
+                    <a href="#" class="civil-card-link">
+                        الدليل قريباً ←
+                    </a>
+
+                </div>
+
+            </article>
+
 
         </div>
+
     </section>
 
 </main>
 
 
+
+<!-- ================================
+     FOOTER
+================================= -->
+
 <footer class="site-footer">
-    <div class="container">
 
-        <div class="footer-inner">
+    <div class="footer-inner">
 
-            <div>
-                <strong>دليل المغرب</strong>
-                <p>
-                    أدلة مبسطة لفهم الإجراءات والوثائق في المغرب.
-                </p>
-            </div>
+        <div>
 
-            <div>
-                <a href="index.html">الرئيسية</a>
-                <a href="documents.html">الوثائق</a>
-                <a href="about.html">من نحن</a>
-            </div>
+            <strong>
+                دليل المغرب
+            </strong>
+
+            <p>
+                أدلة مبسطة لفهم الإجراءات والوثائق في المغرب.
+            </p>
 
         </div>
 
-        <div class="footer-bottom">
-            © 2026 دليل المغرب - جميع الحقوق محفوظة
+
+        <div>
+
+            <a href="index.html">
+                الرئيسية
+            </a>
+
+            <a href="documents.html">
+                الوثائق
+            </a>
+
+            <a href="about.html">
+                من نحن
+            </a>
+
         </div>
 
     </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 دليل المغرب - جميع الحقوق محفوظة
+
+    </div>
+
 </footer>
+
 
 
 <script src="js/app.js"></script>
