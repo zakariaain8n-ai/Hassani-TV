@@ -1,164 +1,107 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="أدلة الضرائب والوثائق الجبائية بالمغرب لسنة 2026: شروحات مبسطة حول الضرائب والتصريحات والخدمات الجبائية مع الرجوع إلى المصادر الرسمية.">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#69250D">
-  <title>الضرائب والوثائق الجبائية بالمغرب | دليل المغرب</title>
-  <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="canonical" href="https://hassani-tv.site/taxes.html">
-  <link rel="stylesheet" href="css/style.css">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
-  <style>
-    .tax-page-hero { padding: 72px 0 38px; }
-    .tax-page-hero .eyebrow { margin-bottom: 18px; }
-    .tax-page-title { font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.35; margin: 0 0 18px; }
-    .tax-page-description { max-width: 850px; line-height: 2; color: #77716d; font-size: 1.08rem; }
-    .tax-page-note { margin-top: 24px; padding: 16px 20px; border-right: 4px solid #69250D; background: #faf7f4; border-radius: 10px; line-height: 1.9; }
-    .tax-articles-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-    .tax-card { display: flex; flex-direction: column; min-height: 100%; overflow: hidden; border: 1px solid #eee7e2; border-radius: 18px; background: #fff; transition: transform .2s ease, box-shadow .2s ease; }
-    .tax-card:hover { transform: translateY(-4px); box-shadow: 0 14px 35px rgba(30,20,15,.08); }
-    .tax-card-image { height: 185px; overflow: hidden; background: #f3efeb; }
-    .tax-card-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .tax-card-content { padding: 22px; display: flex; flex-direction: column; flex: 1; }
-    .tax-card-number { color: #9a8172; font-size: .9rem; font-weight: 700; margin-bottom: 10px; }
-    .tax-card h2 { font-size: 1.22rem; line-height: 1.7; margin: 0 0 12px; }
-    .tax-card p { color: #77716d; line-height: 1.9; margin: 0 0 20px; }
-    .tax-card-link { margin-top: auto; color: #69250D; font-weight: 700; }
-    .tax-back-link { display: inline-flex; margin-top: 28px; text-decoration: none; }
-    @media (max-width: 900px) { .tax-articles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 600px) { .tax-page-hero { padding: 45px 0 25px; } .tax-articles-grid { grid-template-columns: 1fr; } .tax-card-image { height: 200px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الضرائب والوثائق الجبائية بالمغرب | دليل المغرب</title>
+<meta name="description" content="أدلة مبسطة حول الضرائب والوثائق الجبائية بالمغرب لسنة 2026.">
+<link rel="canonical" href="https://hassani-tv.site/taxes.html">
+<link rel="stylesheet" href="css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
+<style>
+:root{--tax-ink:#18212f;--tax-muted:#657184;--tax-line:#e5eaf0;--tax-accent:#16785b;--tax-soft:#f2f8f5}
+body{font-family:inherit;color:var(--tax-ink);line-height:1.9}
+.tax-wrap{max-width:1120px;width:calc(100% - 32px);margin:0 auto}
+.tax-top{padding:18px 0;border-bottom:1px solid var(--tax-line);background:#fff}
+.tax-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.tax-brand{font-size:1.25rem;font-weight:800;color:var(--tax-ink);text-decoration:none}
+.tax-links{display:flex;gap:16px;flex-wrap:wrap}
+.tax-links a,.tax-back{color:var(--tax-accent);font-weight:700;text-decoration:none}
+.tax-hero{background:linear-gradient(135deg,#f2f8f5,#fff);padding:38px 0 30px;border-bottom:1px solid var(--tax-line)}
+.tax-kicker{color:var(--tax-accent);font-weight:800;font-size:.92rem}
+.tax-hero h1{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.45;margin:8px 0 12px}
+.tax-hero p{max-width:850px;color:var(--tax-muted);margin:0}
+.tax-content{padding:30px 0 54px}
+.tax-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.tax-card{display:flex;flex-direction:column;padding:22px;border:1px solid var(--tax-line);border-radius:16px;background:#fff;text-decoration:none;color:inherit;transition:transform .18s,border-color .18s}
+.tax-card:hover{transform:translateY(-2px);border-color:#9bcbb8}
+.tax-num{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:var(--tax-soft);color:var(--tax-accent);font-weight:800;margin-bottom:12px}
+.tax-card h2{font-size:1.13rem;line-height:1.65;margin:0 0 8px}
+.tax-card p{color:var(--tax-muted);margin:0 0 14px;font-size:.96rem}
+.tax-read{margin-top:auto;color:var(--tax-accent);font-weight:800}
+.tax-article{max-width:850px;margin:0 auto}
+.tax-article h2{font-size:1.35rem;line-height:1.6;margin:30px 0 10px}
+.tax-article p{margin:0 0 15px}
+.tax-note{background:#fff8e8;border:1px solid #f0dfb3;border-radius:12px;padding:16px 18px;margin:26px 0;color:#57451e}
+.tax-source{border-top:1px solid var(--tax-line);margin-top:28px;padding-top:18px;color:var(--tax-muted);font-size:.95rem}
+.tax-source a{color:var(--tax-accent);font-weight:700}
+.tax-footer{border-top:1px solid var(--tax-line);padding:22px 0;color:var(--tax-muted);font-size:.92rem}
+@media(max-width:700px){.tax-grid{grid-template-columns:1fr}.tax-hero{padding:28px 0 24px}.tax-card{padding:18px}.tax-links{gap:10px}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container navbar">
-      <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="شعار دليل المغرب">
-        <span>دليل المغرب</span>
-      </a>
-      <nav class="nav-links">
-        <a href="index.html">الرئيسية</a>
-        <a href="index.html#topics">الأقسام</a>
-        <a href="#tax-articles" class="active">المقالات</a>
-        <a href="about.html">من نحن</a>
-      </nav>
-      <a href="documents.html" class="header-button">استكشف الوثائق ←</a>
-      <button class="menu-button" aria-label="فتح القائمة" type="button">☰</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="section tax-page-hero">
-      <div class="container">
-        <div class="eyebrow">القسم 04 · دليل المغرب</div>
-        <h1 class="tax-page-title">الضرائب <span class="brown">والوثائق الجبائية</span></h1>
-        <p class="tax-page-description">
-          شروحات مبسطة حول الضرائب بالمغرب، والتصريحات الجبائية، والخدمات والوثائق المرتبطة بالإدارة الضريبية. الهدف هو مساعدتك على فهم الموضوع ومعرفة ما ينبغي التحقق منه قبل القيام بأي إجراء.
-        </p>
-        <div class="tax-page-note">
-          <strong>تنبيه:</strong> القواعد والنسب والآجال الجبائية قد تختلف حسب الحالة وقد تتغير مع صدور النصوص الجديدة. لذلك تحقق دائماً من التفاصيل لدى المديرية العامة للضرائب أو الجهة الرسمية المختصة.
-        </div>
-        <a class="secondary-button tax-back-link" href="index.html#topics">← الرجوع إلى جميع الأقسام</a>
-      </div>
-    </section>
-
-    <section class="section articles" id="tax-articles">
-      <div class="container">
-        <div class="articles-header">
-          <div>
-            <div class="eyebrow">أدلة القسم</div>
-            <h2 class="section-title" style="margin-top:20px;">اختَر الموضوع <span class="brown">الذي تبحث عنه.</span></h2>
-          </div>
-          <p>10 مواضيع مقترحة حول أكثر المسائل الجبائية أهمية للمواطنين وأصحاب المشاريع. سيتم ربط كل بطاقة بالمقال الكامل عند نشره.</p>
-        </div>
-
-        <div class="tax-articles-grid">
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=85" alt="وثائق مالية وضريبية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">01 · المستجدات الجبائية</div><h2>المدونة العامة للضرائب بالمغرب 2026: أهم المستجدات والتغييرات</h2><p>نظرة منظمة على المدونة العامة للضرائب لسنة 2026 وكيفية الرجوع إلى النسخة الرسمية لفهم المستجدات.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85" alt="وثائق قانونية ومالية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">02 · قانون المالية</div><h2>قانون المالية 2026 بالمغرب: أهم الإجراءات والتغييرات الضريبية</h2><p>شرح للإجراءات الجبائية الواردة في قانون المالية مع التمييز بين النصوص الرسمية والتفسيرات العامة.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=900&q=85" alt="حساب الضريبة على الدخل" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">03 · الضريبة على الدخل</div><h2>الضريبة على الدخل IR بالمغرب 2026: طريقة الحساب والفئات المعنية</h2><p>تعرف على المبادئ الأساسية للضريبة على الدخل، والفئات التي قد تخضع لها، وأين تتحقق من القواعد المطبقة على حالتك.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=900&q=85" alt="معاملات وفواتير" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">04 · الضريبة على الاستهلاك</div><h2>الضريبة على القيمة المضافة TVA بالمغرب: النسب والقواعد الأساسية</h2><p>دليل مبسط لفهم TVA وأهمية التحقق من النسبة والقواعد المناسبة لكل عملية أو نشاط.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=85" alt="حسابات المقاولات" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">05 · ضرائب الشركات</div><h2>الضريبة على الشركات IS بالمغرب 2026: النسب والالتزامات الجبائية</h2><p>مقدمة حول الضريبة على الشركات والتصريحات المرتبطة بها، مع التنبيه إلى اختلاف المعاملة حسب الحالة.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85" alt="أصحاب المشاريع الصغيرة" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">06 · المقاول الذاتي</div><h2>ضرائب المقاول الذاتي بالمغرب 2026: التصريح والأداء والالتزامات</h2><p>ما ينبغي للمقاول الذاتي معرفته حول التصريح والأداء والالتزامات، بالاعتماد على المصادر الرسمية المحدثة.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85" alt="خدمات إلكترونية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">07 · الخدمات الإلكترونية</div><h2>كيفية التصريح بالضرائب إلكترونياً بالمغرب عبر خدمات المديرية العامة للضرائب</h2><p>التعرف على الخدمات الرقمية الرسمية والخطوات التي ينبغي التأكد منها قبل إرسال التصريح.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=85" alt="منزل ووثائق عقارية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">08 · الضرائب العقارية</div><h2>الضريبة على السكن بالمغرب: الشروط والالتزامات</h2><p>شرح الفرق بين الضرائب والرسوم العقارية ذات الصلة، مع توجيه القارئ للمصدر المختص حسب وضعيته.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85" alt="أرض غير مبنية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">09 · الأراضي غير المبنية</div><h2>الضريبة على الأراضي الحضرية غير المبنية بالمغرب</h2><p>معلومات تمهيدية حول هذا الرسم، وأهمية مراجعة الجماعة الترابية المعنية لمعرفة القواعد المحلية المطبقة.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-          <article class="tax-card">
-            <div class="tax-card-image"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85" alt="ملفات ووثائق جبائية" loading="lazy"></div>
-            <div class="tax-card-content"><div class="tax-card-number">10 · الوثائق والشهادات</div><h2>الوثائق والشهادات الضريبية بالمغرب: الأنواع وطريقة الحصول عليها</h2><p>دليل للتعرف على أنواع الوثائق الجبائية والجهة التي يمكن الرجوع إليها لمعرفة شروط الحصول عليها.</p><span class="tax-card-link">المقال قيد الإعداد ←</span></div>
-          </article>
-        </div>
-
-        <div class="tax-page-note" style="margin-top:32px;">
-          <strong>المصدر الرسمي الأساسي:</strong>
-          <a href="https://www.tax.gov.ma/" target="_blank" rel="noopener noreferrer">الموقع الرسمي للمديرية العامة للضرائب</a>.
-          المعلومات التفصيلية لكل مقال ستُراجع قبل نشره.
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div><div class="footer-brand">دليل المغرب</div><p class="footer-description">دليل معلوماتي يساعدك على فهم الوثائق والمساطر والإجراءات في المغرب بطريقة واضحة وعملية.</p></div>
-        <div><div class="footer-title">الأقسام</div><div class="footer-links"><a href="index.html#topics">جميع الأقسام</a><a href="index.html#articles">المقالات</a><a href="documents.html">الوثائق الإدارية</a></div></div>
-        <div><div class="footer-title">معلومات الموقع</div><div class="footer-links"><a href="about.html">من نحن</a><a href="contact.html">اتصل بنا</a><a href="privacy.html">سياسة الخصوصية</a><a href="terms.html">شروط الاستخدام</a></div></div>
-      </div>
-      <div class="footer-bottom"><span>© 2026 دليل المغرب. جميع الحقوق محفوظة.</span><span>معلومات واضحة لخدمة القارئ.</span></div>
-    </div>
-  </footer>
-
-  <script>
-    const menuButton = document.querySelector(".menu-button");
-    const nav = document.querySelector(".nav-links");
-    menuButton?.addEventListener("click", () => {
-      if (nav.style.display === "flex") {
-        nav.style.display = "";
-      } else {
-        nav.style.display = "flex";
-        nav.style.position = "absolute";
-        nav.style.top = "82px";
-        nav.style.left = "15px";
-        nav.style.right = "15px";
-        nav.style.flexDirection = "column";
-        nav.style.alignItems = "flex-start";
-        nav.style.padding = "20px";
-        nav.style.background = "#ffffff";
-        nav.style.border = "1px solid #e9e4df";
-        nav.style.borderRadius = "18px";
-        nav.style.boxShadow = "0 20px 50px rgba(30,20,15,.08)";
-      }
-    });
-  </script>
-</body>
-</html>
+<header class="tax-top"><div class="tax-wrap tax-nav">
+<a class="tax-brand" href="index.html">دليل المغرب</a>
+<nav class="tax-links" aria-label="التنقل"><a href="index.html">الرئيسية</a><a href="taxes.html">الضرائب والوثائق الجبائية</a></nav>
+</div></header>
+<section class="tax-hero"><div class="tax-wrap">
+<span class="tax-kicker">الأدلة الإدارية والجبائية</span>
+<h1>الضرائب والوثائق الجبائية بالمغرب</h1>
+<p>دليل منظم يساعدك على فهم أهم المواضيع الضريبية، ومعرفة الخطوات الأولى والوثائق التي قد تحتاجها. اختر الموضوع لقراءة المقال كاملاً.</p>
+</div></section>
+<main class="tax-content"><div class="tax-wrap">
+<div class="tax-grid"><a class="tax-card" href="code-general-impots-maroc-2026.html">
+<span class="tax-num">01</span>
+<h2>المدونة العامة للضرائب بالمغرب 2026: أهم المستجدات والتغييرات</h2>
+<p>دليل مبسط لفهم المدونة العامة للضرائب، وكيفية الرجوع إلى النصوص الرسمية ومعرفة الالتزامات حسب وضعيتك.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="loi-finances-maroc-2026.html">
+<span class="tax-num">02</span>
+<h2>قانون المالية 2026 بالمغرب: أهم الإجراءات والتغييرات الضريبية</h2>
+<p>كيف تقرأ مستجدات قانون المالية لسنة 2026 وتعرف ما إذا كانت تمس الأفراد أو المقاولات.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="impot-revenu-ir-maroc-2026.html">
+<span class="tax-num">03</span>
+<h2>الضريبة على الدخل IR بالمغرب 2026: طريقة الحساب والفئات المعنية</h2>
+<p>تعرف على مفهوم الضريبة على الدخل، والفئات التي قد تخضع لها، والخطوات العامة لفهم حسابها.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="tva-maroc-guide.html">
+<span class="tax-num">04</span>
+<h2>الضريبة على القيمة المضافة TVA بالمغرب: النسب والقواعد الأساسية</h2>
+<p>شرح مبسط لمفهوم TVA، والفواتير، والفرق بين الضريبة المحصلة والقابلة للخصم.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="impot-societes-is-maroc-2026.html">
+<span class="tax-num">05</span>
+<h2>الضريبة على الشركات IS بالمغرب 2026: النسب والالتزامات الجبائية</h2>
+<p>دليل للمقاولات حول مفهوم IS، والنتيجة الخاضعة للضريبة، والتصريحات التي يجب تتبعها.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="auto-entrepreneur-impots-maroc-2026.html">
+<span class="tax-num">06</span>
+<h2>ضرائب المقاول الذاتي بالمغرب 2026: التصريح والأداء والالتزامات</h2>
+<p>نظرة عملية على النظام الضريبي للمقاول الذاتي، وكيفية تتبع رقم المعاملات والتصريحات.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="declaration-impots-en-ligne-maroc.html">
+<span class="tax-num">07</span>
+<h2>كيفية التصريح بالضرائب إلكترونياً بالمغرب عبر خدمات المديرية العامة للضرائب</h2>
+<p>خطوات عامة للاستعداد للتصريح الإلكتروني والتحقق من البيانات والاحتفاظ بالإثباتات.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="taxe-habitation-maroc.html">
+<span class="tax-num">08</span>
+<h2>الضريبة على السكن بالمغرب: الشروط والالتزامات</h2>
+<p>معلومات عامة حول الضريبة المرتبطة بالسكن، وأهمية التحقق من نوع العقار والاستعمال والوضعية.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="taxe-terrains-urbains-non-batis.html">
+<span class="tax-num">09</span>
+<h2>الضريبة على الأراضي الحضرية غير المبنية بالمغرب</h2>
+<p>ما الذي ينبغي التحقق منه بخصوص الأرض غير المبنية، والوعاء، والإعفاءات، والجهة المختصة.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a><a class="tax-card" href="documents-attestations-fiscales-maroc.html">
+<span class="tax-num">10</span>
+<h2>الوثائق والشهادات الضريبية بالمغرب: الأنواع وطريقة الحصول عليها</h2>
+<p>تعرف على كيفية تحديد الشهادة المطلوبة، والاستعداد للطلب، وحفظ الوثائق الرسمية.</p>
+<span class="tax-read">اقرأ المقال كاملاً ←</span>
+</a></div>
+<div class="tax-source" style="margin-top:28px">للتأكد من النصوص والآجال المحينة، راجع <a href="https://www.tax.gov.ma/" target="_blank" rel="noopener noreferrer">الموقع الرسمي للمديرية العامة للضرائب</a> و<a href="https://www.finances.gov.ma/" target="_blank" rel="noopener noreferrer">وزارة الاقتصاد والمالية</a>.</div>
+</div></main>
+<footer class="tax-footer"><div class="tax-wrap">© دليل المغرب — معلومات إرشادية، ويجب التحقق من القواعد الرسمية قبل اتخاذ أي إجراء.</div></footer>
+</body></html>
