@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>دليل CNSS بالمغرب: التسجيل والتعويضات والتغطية الصحية</title>
-    <meta name="description" content="دليل مبسط لخدمات CNSS بالمغرب: التسجيل، استرجاع رقم التسجيل، حساب MaCNSS، التغطية الصحية AMO، التعويضات، التصريحات والشكايات.">
+    <title>دليل CNSS بالمغرب: التسجيل والتعويضات والتغطية الصحية | Hassani Tools</title>
+    <meta name="description" content="دليل عملي لخدمات CNSS بالمغرب: التحقق من التسجيل، استرجاع رقم التسجيل، حساب MaCNSS، التغطية الصحية AMO، التعويضات وحل مشاكل التصريحات.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hassani-tv.site/cnss.html">
     <link rel="stylesheet" href="css/style.css">
@@ -15,409 +15,445 @@
         crossorigin="anonymous"></script>
 
     <style>
-        :root {
-            --cnss-primary: #176b48;
-            --cnss-primary-dark: #104b34;
-            --cnss-light: #edf7f1;
-            --cnss-bg: #f7f9f8;
-            --cnss-text: #202b26;
-            --cnss-muted: #68756e;
-            --cnss-border: #e2e9e4;
-            --cnss-white: #ffffff;
+        /* ===== CNSS PAGE ===== */
+        .cnss-page {
+            --green: #176b4b;
+            --green-dark: #104b35;
+            --green-light: #eaf5ee;
+            --text: #1d2923;
+            --muted: #69766f;
+            --border: #e4e9e5;
+            --surface: #ffffff;
+            --page-bg: #f7f9f7;
+
+            background: var(--page-bg);
+            color: var(--text);
+            font-family: "Tajawal", Arial, sans-serif;
+            line-height: 1.8;
+            min-height: 100vh;
         }
 
-        * {
+        .cnss-page *,
+        .cnss-page *::before,
+        .cnss-page *::after {
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            color: var(--cnss-text);
-            background: var(--cnss-bg);
-            font-family: "Tajawal", Arial, sans-serif;
-            line-height: 1.8;
-        }
-
-        a {
+        .cnss-page a {
             color: inherit;
         }
 
-        .cnss-page {
-            width: min(1120px, calc(100% - 32px));
-            margin: 0 auto;
+        .cnss-wrap {
+            width: min(1120px, calc(100% - 36px));
+            margin-inline: auto;
         }
 
-        /* Hero */
-        .cnss-hero {
-            padding: 35px 0 30px;
-            background: var(--cnss-white);
-            border-bottom: 1px solid var(--cnss-border);
+        /* Compact page intro */
+        .cnss-top {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
         }
 
-        .cnss-breadcrumb {
+        .cnss-top-inner {
+            padding-top: 15px;
+            padding-bottom: 23px;
+        }
+
+        .cnss-crumbs {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-            color: var(--cnss-muted);
-            font-size: 13px;
+            gap: 7px;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: var(--muted);
         }
 
-        .cnss-breadcrumb a {
+        .cnss-crumbs a {
+            color: var(--muted);
             text-decoration: none;
         }
 
-        .cnss-breadcrumb a:hover {
-            color: var(--cnss-primary);
+        .cnss-crumbs a:hover {
+            color: var(--green);
         }
 
-        .cnss-hero-layout {
-            display: grid;
-            grid-template-columns: 1fr auto;
+        .cnss-intro-layout {
+            display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 25px;
         }
 
-        .cnss-label {
+        .cnss-intro-copy {
+            min-width: 0;
+            max-width: 790px;
+        }
+
+        .cnss-eyebrow {
             display: inline-block;
-            padding: 4px 11px;
-            margin-bottom: 10px;
-            color: var(--cnss-primary);
-            background: var(--cnss-light);
+            margin-bottom: 7px;
+            padding: 3px 10px;
             border-radius: 5px;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .cnss-hero h1 {
-            margin: 0 0 10px;
-            font-size: clamp(27px, 4vw, 39px);
-            line-height: 1.45;
-            letter-spacing: -.5px;
-        }
-
-        .cnss-hero p {
-            max-width: 720px;
-            margin: 0;
-            color: var(--cnss-muted);
-            font-size: 16px;
-        }
-
-        .cnss-hero-mark {
-            display: flex;
-            width: 100px;
-            height: 100px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 24px;
-            background: var(--cnss-light);
-            color: var(--cnss-primary);
-            font-size: 43px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 12px;
             font-weight: 800;
         }
 
-        /* Search */
-        .cnss-content {
-            padding: 28px 0 45px;
+        .cnss-intro-copy h1 {
+            margin: 0 0 8px;
+            color: var(--text);
+            font-size: clamp(27px, 3.2vw, 36px);
+            line-height: 1.45;
+            font-weight: 800;
         }
 
-        .cnss-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 24px;
-        }
-
-        .cnss-toolbar h2 {
+        .cnss-intro-copy p {
+            max-width: 720px;
             margin: 0;
-            font-size: 24px;
+            color: var(--muted);
+            font-size: 15px;
         }
 
-        .cnss-count {
-            color: var(--cnss-muted);
-            font-size: 13px;
+        .cnss-mark {
+            flex: 0 0 76px;
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d6e9dc;
+            border-radius: 18px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        /* Main */
+        .cnss-main {
+            padding-top: 28px;
+            padding-bottom: 45px;
+        }
+
+        .cnss-section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 16px;
+        }
+
+        .cnss-section-head h2 {
+            margin: 0;
+            color: var(--text);
+            font-size: 23px;
+            line-height: 1.5;
+        }
+
+        .cnss-results {
+            color: var(--muted);
+            font-size: 12px;
             white-space: nowrap;
         }
 
-        .cnss-search {
+        /* Search */
+        .cnss-searchbox {
             position: relative;
-            margin-bottom: 18px;
+            margin-bottom: 13px;
         }
 
-        .cnss-search input {
+        .cnss-searchbox input {
             width: 100%;
-            min-height: 53px;
-            padding: 13px 45px 13px 15px;
-            border: 1px solid var(--cnss-border);
-            border-radius: 10px;
-            outline: none;
-            background: var(--cnss-white);
-            color: var(--cnss-text);
+            height: 51px;
+            padding: 0 45px 0 15px;
+            border: 1px solid #dfe6e1;
+            border-radius: 9px;
+            background: var(--surface);
+            color: var(--text);
             font: inherit;
-            font-size: 15px;
+            font-size: 14px;
+            outline: none;
             transition: border-color .2s, box-shadow .2s;
         }
 
-        .cnss-search input:focus {
-            border-color: var(--cnss-primary);
-            box-shadow: 0 0 0 3px rgba(23, 107, 72, .09);
+        .cnss-searchbox input:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(23, 107, 75, .08);
         }
 
-        .cnss-search-icon {
+        .cnss-search-symbol {
             position: absolute;
+            right: 15px;
             top: 50%;
-            right: 16px;
             transform: translateY(-50%);
-            color: var(--cnss-muted);
-            font-size: 20px;
+            color: var(--muted);
+            font-size: 19px;
             pointer-events: none;
         }
 
-        /* Category filters */
-        .cnss-filters {
+        /* Filters */
+        .cnss-filter-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 7px;
+            margin-bottom: 20px;
         }
 
-        .cnss-filter {
-            padding: 8px 14px;
-            border: 1px solid var(--cnss-border);
+        .cnss-filter-btn {
+            min-height: 35px;
+            padding: 6px 13px;
+            border: 1px solid var(--border);
             border-radius: 7px;
-            background: var(--cnss-white);
-            color: #45534a;
+            background: var(--surface);
+            color: #526057;
             font: inherit;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
-            transition: .2s;
+            transition: background .18s, color .18s, border-color .18s;
         }
 
-        .cnss-filter:hover,
-        .cnss-filter.active {
-            border-color: var(--cnss-primary);
-            background: var(--cnss-primary);
+        .cnss-filter-btn:hover {
+            border-color: var(--green);
+            color: var(--green);
+        }
+
+        .cnss-filter-btn.is-active {
+            border-color: var(--green);
+            background: var(--green);
             color: white;
         }
 
-        /* Articles */
-        .cnss-articles {
+        /* Article cards */
+        .cnss-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
+            gap: 13px;
         }
 
-        .cnss-article {
+        .cnss-card {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 13px;
             min-width: 0;
-            padding: 20px;
-            border: 1px solid var(--cnss-border);
-            border-radius: 12px;
-            background: var(--cnss-white);
-            transition: border-color .2s, transform .2s, box-shadow .2s;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            transition: border-color .2s, box-shadow .2s, transform .2s;
         }
 
-        .cnss-article:hover {
+        .cnss-card:hover {
             transform: translateY(-2px);
-            border-color: #b5d7c2;
-            box-shadow: 0 6px 18px rgba(24, 60, 39, .05);
+            border-color: #b9d7c3;
+            box-shadow: 0 5px 16px rgba(20, 60, 38, .045);
         }
 
-        .cnss-number {
+        .cnss-card-number {
+            flex: 0 0 39px;
+            width: 39px;
+            height: 39px;
             display: flex;
-            flex: 0 0 42px;
-            width: 42px;
-            height: 42px;
             align-items: center;
             justify-content: center;
-            border-radius: 9px;
-            background: var(--cnss-light);
-            color: var(--cnss-primary);
-            font-size: 16px;
-            font-weight: 800;
+            border-radius: 8px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 900;
         }
 
-        .cnss-article-main {
+        .cnss-card-content {
             flex: 1;
             min-width: 0;
         }
 
-        .cnss-category {
+        .cnss-card-category {
             display: block;
-            margin-bottom: 5px;
-            color: var(--cnss-primary);
-            font-size: 12px;
-            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
         }
 
-        .cnss-article h3 {
-            margin: 0 0 8px;
-            font-size: 17px;
+        .cnss-card h3 {
+            margin: 0 0 7px;
+            font-size: 16px;
             line-height: 1.7;
+            font-weight: 800;
         }
 
-        .cnss-article h3 a {
+        .cnss-card h3 a {
+            color: var(--text);
             text-decoration: none;
         }
 
-        .cnss-article h3 a:hover {
-            color: var(--cnss-primary);
+        .cnss-card h3 a:hover {
+            color: var(--green);
         }
 
-        .cnss-article p {
-            margin: 0 0 12px;
-            color: var(--cnss-muted);
-            font-size: 14px;
+        .cnss-card p {
+            margin: 0 0 11px;
+            color: var(--muted);
+            font-size: 13px;
             line-height: 1.8;
         }
 
-        .cnss-read {
+        .cnss-card-link {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            color: var(--cnss-primary);
-            font-size: 13px;
+            gap: 6px;
+            color: var(--green) !important;
+            font-size: 12px;
             font-weight: 800;
             text-decoration: none;
         }
 
-        .cnss-read:hover {
+        .cnss-card-link:hover {
             text-decoration: underline;
         }
 
-        .cnss-empty {
+        .cnss-no-results {
             display: none;
-            padding: 30px 15px;
+            padding: 25px 15px;
+            border: 1px dashed var(--border);
+            border-radius: 9px;
+            background: var(--surface);
+            color: var(--muted);
             text-align: center;
-            border: 1px dashed var(--cnss-border);
-            border-radius: 10px;
-            background: var(--cnss-white);
-            color: var(--cnss-muted);
         }
 
-        /* Help box */
-        .cnss-help {
-            display: grid;
-            grid-template-columns: 1fr auto;
+        /* Official resources */
+        .cnss-official {
+            display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
-            margin-top: 28px;
-            padding: 23px;
-            border: 1px solid #cfe5d6;
-            border-radius: 12px;
-            background: #edf7f1;
+            margin-top: 24px;
+            padding: 21px 23px;
+            border: 1px solid #d5e8db;
+            border-radius: 10px;
+            background: #edf7f0;
         }
 
-        .cnss-help h2 {
-            margin: 0 0 6px;
-            color: var(--cnss-primary-dark);
-            font-size: 20px;
+        .cnss-official h2 {
+            margin: 0 0 5px;
+            color: var(--green-dark);
+            font-size: 18px;
         }
 
-        .cnss-help p {
+        .cnss-official p {
             margin: 0;
-            color: #50665a;
-            font-size: 14px;
+            color: #566c5e;
+            font-size: 13px;
         }
 
-        .cnss-help-link {
+        .cnss-official-link {
             display: inline-block;
+            flex-shrink: 0;
             padding: 10px 15px;
             border-radius: 7px;
-            background: var(--cnss-primary);
-            color: white;
-            font-size: 13px;
-            font-weight: 700;
+            background: var(--green);
+            color: #fff !important;
+            font-size: 12px;
+            font-weight: 800;
             text-decoration: none;
-            white-space: nowrap;
         }
 
-        .cnss-help-link:hover {
-            background: var(--cnss-primary-dark);
+        .cnss-official-link:hover {
+            background: var(--green-dark);
         }
 
-        .cnss-disclaimer {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid var(--cnss-border);
-            color: var(--cnss-muted);
+        .cnss-note {
+            margin-top: 16px;
+            padding-top: 13px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
             font-size: 12px;
         }
 
-        .cnss-disclaimer a {
-            color: var(--cnss-primary);
+        .cnss-note a {
+            color: var(--green);
         }
 
         /* Responsive */
-        @media (max-width: 720px) {
-            .cnss-hero {
-                padding-top: 25px;
-            }
-
-            .cnss-hero-mark {
-                width: 75px;
-                height: 75px;
-                border-radius: 17px;
-                font-size: 32px;
-            }
-
-            .cnss-articles {
+        @media (max-width: 760px) {
+            .cnss-grid {
                 grid-template-columns: 1fr;
             }
 
-            .cnss-help {
-                grid-template-columns: 1fr;
-            }
-
-            .cnss-help-link {
-                justify-self: start;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .cnss-page {
-                width: calc(100% - 22px);
-            }
-
-            .cnss-hero-layout {
-                grid-template-columns: 1fr;
+            .cnss-intro-layout {
                 gap: 15px;
             }
 
-            .cnss-hero-mark {
+            .cnss-mark {
+                flex-basis: 63px;
+                width: 63px;
+                height: 63px;
+                font-size: 21px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .cnss-wrap {
+                width: calc(100% - 24px);
+            }
+
+            .cnss-top-inner {
+                padding-top: 12px;
+                padding-bottom: 19px;
+            }
+
+            .cnss-crumbs {
+                margin-bottom: 14px;
+            }
+
+            .cnss-intro-layout {
+                align-items: flex-start;
+            }
+
+            .cnss-intro-copy h1 {
+                font-size: 26px;
+            }
+
+            .cnss-intro-copy p {
+                font-size: 14px;
+            }
+
+            .cnss-mark {
                 display: none;
             }
 
-            .cnss-hero h1 {
-                font-size: 27px;
+            .cnss-main {
+                padding-top: 21px;
             }
 
-            .cnss-toolbar {
+            .cnss-section-head h2 {
+                font-size: 20px;
+            }
+
+            .cnss-card {
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .cnss-card-number {
+                flex-basis: 34px;
+                width: 34px;
+                height: 34px;
+                font-size: 12px;
+            }
+
+            .cnss-card h3 {
+                font-size: 15px;
+            }
+
+            .cnss-official {
                 align-items: flex-start;
                 flex-direction: column;
-                gap: 4px;
-            }
-
-            .cnss-article {
-                padding: 15px;
-                gap: 11px;
-            }
-
-            .cnss-number {
-                flex-basis: 35px;
-                width: 35px;
-                height: 35px;
-            }
-
-            .cnss-article h3 {
-                font-size: 16px;
+                padding: 17px;
             }
         }
     </style>
@@ -428,8 +464,8 @@
 <header class="site-header">
     <div class="container header-container">
         <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="دليل المغرب" class="logo-img">
-            <span>دليل المغرب</span>
+            <img src="images/logo.png" alt="Hassani Tools" class="logo-img">
+            <span>Hassani Tools</span>
         </a>
 
         <nav class="main-nav">
@@ -439,303 +475,247 @@
     </div>
 </header>
 
-<main>
-    <section class="cnss-hero">
-        <div class="cnss-page">
-            <div class="cnss-breadcrumb">
+<main class="cnss-page">
+
+    <section class="cnss-top">
+        <div class="cnss-wrap cnss-top-inner">
+
+            <nav class="cnss-crumbs" aria-label="مسار الصفحة">
                 <a href="index.html">الرئيسية</a>
                 <span>/</span>
                 <span>الضمان الاجتماعي CNSS</span>
-            </div>
+            </nav>
 
-            <div class="cnss-hero-layout">
-                <div>
-                    <span class="cnss-label">دليل الخدمات الاجتماعية</span>
+            <div class="cnss-intro-layout">
+                <div class="cnss-intro-copy">
+                    <span class="cnss-eyebrow">دليل الخدمات الاجتماعية</span>
                     <h1>دليل CNSS بالمغرب</h1>
                     <p>
-                        عندك مشكل فالتسجيل، التغطية الصحية أو التعويضات؟
-                        اكتشف شروحات مبسطة تساعدك تفهم الإجراءات وتعرف الخطوة
-                        المناسبة حسب الحالة ديالك.
+                        شروحات عملية لمشاكل التسجيل والتغطية الصحية والتعويضات،
+                        مع خطوات واضحة وروابط رسمية تساعدك تعرف الإجراء المناسب.
                     </p>
                 </div>
 
-                <div class="cnss-hero-mark" aria-hidden="true">CNSS</div>
+                <div class="cnss-mark" aria-hidden="true">CNSS</div>
             </div>
+
         </div>
     </section>
 
-    <section class="cnss-content">
-        <div class="cnss-page">
+    <section class="cnss-main">
+        <div class="cnss-wrap">
 
-            <div class="cnss-toolbar">
+            <div class="cnss-section-head">
                 <h2>المقالات والشروحات</h2>
-                <span class="cnss-count" id="cnss-count">10 مواضيع</span>
+                <span class="cnss-results" id="cnss-results">10 مواضيع</span>
             </div>
 
-            <div class="cnss-search">
-                <span class="cnss-search-icon" aria-hidden="true">⌕</span>
+            <div class="cnss-searchbox">
+                <span class="cnss-search-symbol" aria-hidden="true">⌕</span>
                 <input
+                    id="cnss-search"
                     type="search"
-                    id="cnss-search-input"
-                    placeholder="قلب على موضوع، بحال التعويضات أو التسجيل..."
+                    placeholder="شنو المشكل اللي كتقلب على الحل ديالو؟"
                     aria-label="البحث في مقالات CNSS">
             </div>
 
-            <div class="cnss-filters" aria-label="تصنيف المقالات">
-                <button class="cnss-filter active" type="button" data-filter="all">جميع المواضيع</button>
-                <button class="cnss-filter" type="button" data-filter="registration">التسجيل والحساب</button>
-                <button class="cnss-filter" type="button" data-filter="health">التغطية الصحية</button>
-                <button class="cnss-filter" type="button" data-filter="benefits">التعويضات</button>
-                <button class="cnss-filter" type="button" data-filter="problems">حل المشاكل</button>
+            <div class="cnss-filter-row" aria-label="تصنيف المقالات">
+                <button type="button" class="cnss-filter-btn is-active" data-filter="all">جميع المواضيع</button>
+                <button type="button" class="cnss-filter-btn" data-filter="registration">التسجيل والحساب</button>
+                <button type="button" class="cnss-filter-btn" data-filter="health">التغطية الصحية</button>
+                <button type="button" class="cnss-filter-btn" data-filter="benefits">التعويضات</button>
+                <button type="button" class="cnss-filter-btn" data-filter="problems">حل المشاكل</button>
             </div>
 
-            <div class="cnss-articles" id="cnss-articles">
+            <div class="cnss-grid" id="cnss-grid">
 
-                <article class="cnss-article" data-category="registration">
-                    <div class="cnss-number">01</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التسجيل والحساب</span>
-                        <h3>
-                            <a href="cnss-01.html">كيفاش تعرف واش مسجل فـ CNSS بالمغرب؟</a>
-                        </h3>
-                        <p>
-                            خطوات التحقق من وضعية التسجيل، وشنو تدير إلا ما لقيتيش
-                            المعلومات ديالك فالنظام.
-                        </p>
-                        <a class="cnss-read" href="cnss-01.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="registration">
+                    <div class="cnss-card-number">01</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التسجيل والحساب</span>
+                        <h3><a href="cnss-01.html">كيفاش تعرف واش مسجل فـ CNSS بالمغرب؟</a></h3>
+                        <p>خطوات التحقق من التسجيل، وشنو تدير إلا ما لقيتيش المعلومات ديالك فالنظام.</p>
+                        <a class="cnss-card-link" href="cnss-01.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="registration">
-                    <div class="cnss-number">02</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التسجيل والحساب</span>
-                        <h3>
-                            <a href="cnss-02.html">كيفاش تسترجع رقم التسجيل ديالك فـ CNSS؟</a>
-                        </h3>
-                        <p>
-                            فين تقلب على رقم التسجيل، وشنو الخطوات الممكنة إلا نسيتيه
-                            أو ما بقاتش عندك الوثائق القديمة.
-                        </p>
-                        <a class="cnss-read" href="cnss-02.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="registration">
+                    <div class="cnss-card-number">02</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التسجيل والحساب</span>
+                        <h3><a href="cnss-02.html">كيفاش تسترجع رقم التسجيل ديالك فـ CNSS؟</a></h3>
+                        <p>فين تقلب على رقم التسجيل، وشنو تدير إلا نسيتيه أو ما بقاتش عندك الوثائق القديمة.</p>
+                        <a class="cnss-card-link" href="cnss-02.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="registration">
-                    <div class="cnss-number">03</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التسجيل والحساب</span>
-                        <h3>
-                            <a href="cnss-03.html">نسيت معلومات الدخول إلى MaCNSS: كيفاش تسترجع الحساب؟</a>
-                        </h3>
-                        <p>
-                            شنو تدير إلا نسيتي كلمة المرور أو واجهتي مشكل فالدخول
-                            إلى فضاء المؤمن له.
-                        </p>
-                        <a class="cnss-read" href="cnss-03.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="registration">
+                    <div class="cnss-card-number">03</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التسجيل والحساب</span>
+                        <h3><a href="cnss-03.html">نسيت معلومات الدخول إلى MaCNSS: كيفاش تسترجع الحساب؟</a></h3>
+                        <p>حلول أولية لمشاكل كلمة المرور والدخول إلى فضاء المؤمن له.</p>
+                        <a class="cnss-card-link" href="cnss-03.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="health">
-                    <div class="cnss-number">04</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التغطية الصحية</span>
-                        <h3>
-                            <a href="cnss-04.html">كيفاش تعرف واش عندك الحق فالتغطية الصحية AMO؟</a>
-                        </h3>
-                        <p>
-                            كيف تتحقق من وضعية التغطية الصحية، وشنو خاصك تراجع
-                            إلا كانت الوضعية ديالك غير واضحة.
-                        </p>
-                        <a class="cnss-read" href="cnss-04.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="health">
+                    <div class="cnss-card-number">04</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التغطية الصحية</span>
+                        <h3><a href="cnss-04.html">كيفاش تعرف واش عندك الحق فالتغطية الصحية AMO؟</a></h3>
+                        <p>كيف تتحقق من وضعية التغطية الصحية وفين تستفسر إلا كانت وضعيتك غير واضحة.</p>
+                        <a class="cnss-card-link" href="cnss-04.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="benefits">
-                    <div class="cnss-number">05</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التعويضات</span>
-                        <h3>
-                            <a href="cnss-05.html">كيفاش تتبع ملف التعويضات ديالك فـ CNSS؟</a>
-                        </h3>
-                        <p>
-                            تعرف على طرق تتبع الملف ومعرفة المعلومات المتاحة حول
-                            مراحل المعالجة والأداء.
-                        </p>
-                        <a class="cnss-read" href="cnss-05.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="benefits">
+                    <div class="cnss-card-number">05</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التعويضات</span>
+                        <h3><a href="cnss-05.html">كيفاش تتبع ملف التعويضات ديالك فـ CNSS؟</a></h3>
+                        <p>طرق تتبع الملف ومعرفة المعلومات المتاحة حول مراحل المعالجة.</p>
+                        <a class="cnss-card-link" href="cnss-05.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="problems">
-                    <div class="cnss-number">06</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">حل المشاكل</span>
-                        <h3>
-                            <a href="cnss-06.html">علاش التعويض ديالي تأخر أو ما توصلتش به؟</a>
-                        </h3>
-                        <p>
-                            أسباب محتملة لتأخر معالجة الملف، وكيفاش تتحقق من
-                            المعلومات والخطوات اللي تقدر تديرها.
-                        </p>
-                        <a class="cnss-read" href="cnss-06.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="problems">
+                    <div class="cnss-card-number">06</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">حل المشاكل</span>
+                        <h3><a href="cnss-06.html">علاش التعويض ديالي تأخر أو ما توصلتش به؟</a></h3>
+                        <p>أسباب محتملة لتأخر الملف، وكيف تتحقق من البيانات والخطوات التالية.</p>
+                        <a class="cnss-card-link" href="cnss-06.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="benefits">
-                    <div class="cnss-number">07</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">التعويضات</span>
-                        <h3>
-                            <a href="cnss-07.html">التعويضات العائلية بالمغرب: كيفاش تعرف شروط الاستفادة؟</a>
-                        </h3>
-                        <p>
-                            نظرة عملية على شروط الاستفادة والوثائق المحتملة
-                            وكيفية التحقق من وضعية الطلب.
-                        </p>
-                        <a class="cnss-read" href="cnss-07.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="benefits">
+                    <div class="cnss-card-number">07</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">التعويضات</span>
+                        <h3><a href="cnss-07.html">التعويضات العائلية بالمغرب: كيفاش تعرف شروط الاستفادة؟</a></h3>
+                        <p>الشروط الأساسية والوثائق المحتملة وكيفية التحقق من وضعية الطلب.</p>
+                        <a class="cnss-card-link" href="cnss-07.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="registration">
-                    <div class="cnss-number">08</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">الوثائق والشهادات</span>
-                        <h3>
-                            <a href="cnss-08.html">كيفاش تحمل شهادة التسجيل أو الوثائق من MaCNSS؟</a>
-                        </h3>
-                        <p>
-                            فين تبحث عن الوثائق المتاحة إلكترونياً، وكيف تتصرف
-                            إلا ما لقيتيش الشهادة اللي محتاج.
-                        </p>
-                        <a class="cnss-read" href="cnss-08.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="registration">
+                    <div class="cnss-card-number">08</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">الوثائق والشهادات</span>
+                        <h3><a href="cnss-08.html">كيفاش تحمل شهادة التسجيل أو الوثائق من MaCNSS؟</a></h3>
+                        <p>فين تبحث عن الوثائق المتاحة إلكترونياً، وشنو تدير إلا ما لقيتيش الشهادة.</p>
+                        <a class="cnss-card-link" href="cnss-08.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="problems">
-                    <div class="cnss-number">09</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">حقوق الأجير</span>
-                        <h3>
-                            <a href="cnss-09.html">كيفاش تتأكد واش المشغل كيصرح بيك وبالأجر ديالك؟</a>
-                        </h3>
-                        <p>
-                            كيف تراجع التصريحات بالأجور، وشنو تقدر تدير إلا لاحظتي
-                            نقصاً أو معلومات ما كتوافقش وضعيتك.
-                        </p>
-                        <a class="cnss-read" href="cnss-09.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="problems">
+                    <div class="cnss-card-number">09</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">حقوق الأجير</span>
+                        <h3><a href="cnss-09.html">كيفاش تتأكد واش المشغل كيصرح بيك وبالأجر ديالك؟</a></h3>
+                        <p>كيف تراجع التصريحات، وشنو تدير إلا لاحظتي نقصاً أو معلومات غير صحيحة.</p>
+                        <a class="cnss-card-link" href="cnss-09.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
-                <article class="cnss-article" data-category="problems">
-                    <div class="cnss-number">10</div>
-                    <div class="cnss-article-main">
-                        <span class="cnss-category">الشكايات</span>
-                        <h3>
-                            <a href="cnss-10.html">كيفاش تقدم شكاية إلى كان مشكل فالتسجيل أو التصريحات؟</a>
-                        </h3>
-                        <p>
-                            الخطوات الأولية لتوضيح المشكل، وتجهيز المعلومات
-                            الضرورية والتواصل مع القنوات الرسمية.
-                        </p>
-                        <a class="cnss-read" href="cnss-10.html">اقرأ الدليل <span>←</span></a>
+                <article class="cnss-card" data-category="problems">
+                    <div class="cnss-card-number">10</div>
+                    <div class="cnss-card-content">
+                        <span class="cnss-card-category">الشكايات</span>
+                        <h3><a href="cnss-10.html">كيفاش تقدم شكاية إلى كان مشكل فالتسجيل أو التصريحات؟</a></h3>
+                        <p>كيف تجمع المعلومات الضرورية وتوصل المشكل للقنوات الرسمية المناسبة.</p>
+                        <a class="cnss-card-link" href="cnss-10.html">اقرأ المقال ←</a>
                     </div>
                 </article>
 
             </div>
 
-            <div class="cnss-empty" id="cnss-empty">
-                ما لقيناش موضوع بهاد الكلمات. جرّب كلمات أخرى.
+            <div class="cnss-no-results" id="cnss-no-results">
+                ما لقيناش موضوع مطابق للبحث ديالك. جرّب كلمات أخرى.
             </div>
 
-            <aside class="cnss-help">
+            <aside class="cnss-official">
                 <div>
-                    <h2>باغي تتأكد من المعلومة الرسمية؟</h2>
-                    <p>
-                        راجع بوابة CNSS أو فضاء MaCNSS للتحقق من الخدمات
-                        والشروط حسب وضعيتك.
-                    </p>
+                    <h2>باغي تتأكد من المعلومات الرسمية؟</h2>
+                    <p>راجع موقع CNSS أو فضاء MaCNSS للتأكد من الإجراءات والشروط الخاصة بوضعيتك.</p>
                 </div>
 
-                <a class="cnss-help-link"
-                   href="https://www.macnss.ma/fr/"
+                <a class="cnss-official-link"
+                   href="https://www.cnss.ma/"
                    target="_blank"
                    rel="noopener noreferrer">
-                    زيارة فضاء MaCNSS ↗
+                    الموقع الرسمي لـ CNSS ↗
                 </a>
             </aside>
 
-            <div class="cnss-disclaimer">
-                هذا الدليل موقع معلوماتي مستقل، وليس الموقع الرسمي للصندوق الوطني
-                للضمان الاجتماعي. تختلف شروط الاستفادة والإجراءات بحسب الحالة،
-                لذلك تحقق دائماً من المعلومات لدى
-                <a href="https://www.cnss.ma/" target="_blank" rel="noopener noreferrer">CNSS</a>.
+            <div class="cnss-note">
+                دليل المغرب موقع معلوماتي مستقل وليس الموقع الرسمي للصندوق الوطني
+                للضمان الاجتماعي. قد تختلف الإجراءات والشروط حسب الحالة؛ لذلك
+                تحقق من التفاصيل عبر
+                <a href="https://www.cnss.ma/" target="_blank" rel="noopener noreferrer">الموقع الرسمي لـ CNSS</a>.
             </div>
 
         </div>
     </section>
+
 </main>
 
 <footer class="site-footer">
     <div class="container">
-        <p>© 2026 دليل المغرب — جميع الحقوق محفوظة.</p>
+        <p>© 2026 Hassani Tools — جميع الحقوق محفوظة.</p>
         <p>
             <a href="index.html">الرئيسية</a> |
-            <a href="taxes.html">دليل الضرائب</a>
+            <a href="taxes.html">الضرائب</a>
         </p>
     </div>
 </footer>
 
 <script>
-    (function () {
-        const searchInput = document.getElementById("cnss-search-input");
-        const articles = Array.from(document.querySelectorAll(".cnss-article"));
-        const filters = Array.from(document.querySelectorAll(".cnss-filter"));
-        const count = document.getElementById("cnss-count");
-        const emptyMessage = document.getElementById("cnss-empty");
+(function () {
+    const search = document.getElementById("cnss-search");
+    const cards = Array.from(document.querySelectorAll(".cnss-card"));
+    const buttons = Array.from(document.querySelectorAll(".cnss-filter-btn"));
+    const results = document.getElementById("cnss-results");
+    const noResults = document.getElementById("cnss-no-results");
 
-        let activeCategory = "all";
+    let activeFilter = "all";
 
-        function filterArticles() {
-            const query = searchInput.value.trim().toLocaleLowerCase("ar");
-            let visibleCount = 0;
+    function updateArticles() {
+        const query = search.value.trim().toLocaleLowerCase();
+        let visible = 0;
 
-            articles.forEach(function (article) {
-                const category = article.dataset.category;
-                const text = article.textContent.toLocaleLowerCase("ar");
+        cards.forEach(function (card) {
+            const matchesText = card.textContent.toLocaleLowerCase().includes(query);
+            const matchesCategory =
+                activeFilter === "all" || card.dataset.category === activeFilter;
 
-                const matchesSearch = !query || text.includes(query);
-                const matchesCategory =
-                    activeCategory === "all" || category === activeCategory;
+            const show = matchesText && matchesCategory;
+            card.hidden = !show;
 
-                const visible = matchesSearch && matchesCategory;
-
-                article.style.display = visible ? "flex" : "none";
-
-                if (visible) {
-                    visibleCount++;
-                }
-            });
-
-            count.textContent = visibleCount + " من " + articles.length + " مواضيع";
-            emptyMessage.style.display = visibleCount === 0 ? "block" : "none";
-        }
-
-        searchInput.addEventListener("input", filterArticles);
-
-        filters.forEach(function (button) {
-            button.addEventListener("click", function () {
-                activeCategory = button.dataset.filter;
-
-                filters.forEach(function (item) {
-                    item.classList.toggle("active", item === button);
-                });
-
-                filterArticles();
-            });
+            if (show) visible++;
         });
 
-        filterArticles();
-    })();
+        results.textContent = visible + " من " + cards.length + " مواضيع";
+        noResults.style.display = visible ? "none" : "block";
+    }
+
+    search.addEventListener("input", updateArticles);
+
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            activeFilter = button.dataset.filter;
+
+            buttons.forEach(function (item) {
+                item.classList.toggle("is-active", item === button);
+            });
+
+            updateArticles();
+        });
+    });
+
+    updateArticles();
+})();
 </script>
 
 </body>
