@@ -1,0 +1,665 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>دليل CNSS بالمغرب: التسجيل والتغطية الصحية والتعويضات | دليل المغرب</title>
+    <meta name="description" content="دليل مبسط حول الصندوق الوطني للضمان الاجتماعي CNSS بالمغرب: التسجيل، معرفة الحقوق، التغطية الصحية، التعويضات والخدمات الإلكترونية.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hassani-tv.site/cnss.html">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379"
+        crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --cnss-green: #166534;
+            --cnss-green-dark: #14532d;
+            --cnss-green-light: #dcfce7;
+            --cnss-text: #1f2937;
+            --cnss-muted: #64748b;
+            --cnss-border: #e5e7eb;
+            --cnss-bg: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--cnss-text);
+            background: var(--cnss-bg);
+            font-family: "Tajawal", Arial, sans-serif;
+            line-height: 1.9;
+        }
+
+        a {
+            color: var(--cnss-green);
+        }
+
+        .cnss-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 42px 20px 46px;
+            background: linear-gradient(135deg, #14532d, #166534 60%, #15803d);
+            color: #fff;
+        }
+
+        .cnss-hero::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.07);
+            top: -120px;
+            left: -60px;
+        }
+
+        .cnss-hero-inner {
+            position: relative;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .cnss-breadcrumb {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #dcfce7;
+        }
+
+        .cnss-breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .cnss-hero h1 {
+            margin: 0 0 12px;
+            font-size: clamp(27px, 4vw, 40px);
+            line-height: 1.5;
+        }
+
+        .cnss-hero p {
+            max-width: 780px;
+            margin: 0;
+            color: #ecfdf5;
+            font-size: 17px;
+        }
+
+        .cnss-container {
+            width: min(1100px, calc(100% - 32px));
+            margin: 28px auto 50px;
+        }
+
+        .cnss-intro {
+            padding: 22px;
+            background: #fff;
+            border: 1px solid var(--cnss-border);
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .cnss-intro h2,
+        .cnss-section-title {
+            color: var(--cnss-green-dark);
+            margin-top: 0;
+        }
+
+        .cnss-intro p {
+            margin-bottom: 0;
+        }
+
+        .cnss-info-note {
+            padding: 14px 17px;
+            margin: 18px 0 0;
+            border-right: 4px solid #16a34a;
+            background: #f0fdf4;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .cnss-section {
+            margin: 32px 0;
+        }
+
+        .cnss-section-title {
+            font-size: 25px;
+            margin-bottom: 16px;
+        }
+
+        .cnss-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .cnss-card {
+            display: flex;
+            flex-direction: column;
+            padding: 21px;
+            background: #fff;
+            border: 1px solid var(--cnss-border);
+            border-radius: 15px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .cnss-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 24px rgba(15, 23, 42, .07);
+        }
+
+        .cnss-card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            background: var(--cnss-green-light);
+            font-size: 25px;
+        }
+
+        .cnss-card h3 {
+            margin: 0 0 8px;
+            font-size: 19px;
+            color: #14532d;
+        }
+
+        .cnss-card p {
+            flex: 1;
+            margin: 0 0 14px;
+            color: #526071;
+            font-size: 15px;
+        }
+
+        .cnss-card a {
+            align-self: flex-start;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .cnss-card a:hover {
+            text-decoration: underline;
+        }
+
+        .cnss-steps {
+            padding: 22px;
+            background: #fff;
+            border: 1px solid var(--cnss-border);
+            border-radius: 15px;
+        }
+
+        .cnss-steps ol {
+            margin-bottom: 0;
+            padding-right: 22px;
+        }
+
+        .cnss-steps li {
+            margin-bottom: 10px;
+        }
+
+        .cnss-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--cnss-border);
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .cnss-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 570px;
+        }
+
+        .cnss-table th,
+        .cnss-table td {
+            padding: 13px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--cnss-border);
+        }
+
+        .cnss-table th {
+            background: #f0fdf4;
+            color: var(--cnss-green-dark);
+        }
+
+        .cnss-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .cnss-faq {
+            display: grid;
+            gap: 12px;
+        }
+
+        .cnss-faq details {
+            padding: 16px 18px;
+            border: 1px solid var(--cnss-border);
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .cnss-faq summary {
+            color: var(--cnss-green-dark);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .cnss-faq details p {
+            margin-bottom: 0;
+        }
+
+        .cnss-official-box {
+            padding: 22px;
+            background: #ecfdf5;
+            border: 1px solid #bbf7d0;
+            border-radius: 15px;
+        }
+
+        .cnss-official-box h2 {
+            margin-top: 0;
+            color: var(--cnss-green-dark);
+        }
+
+        .cnss-official-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cnss-official-links a {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 9px;
+            background: var(--cnss-green);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .cnss-official-links a:hover {
+            background: var(--cnss-green-dark);
+        }
+
+        .cnss-disclaimer {
+            margin-top: 18px;
+            color: var(--cnss-muted);
+            font-size: 13px;
+        }
+
+        .cnss-back {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 10px 17px;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            background: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .cnss-back:hover {
+            background: var(--cnss-green-light);
+        }
+
+        @media (max-width: 850px) {
+            .cnss-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .cnss-hero {
+                padding: 30px 16px 34px;
+            }
+
+            .cnss-container {
+                width: calc(100% - 24px);
+                margin-top: 18px;
+            }
+
+            .cnss-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cnss-intro,
+            .cnss-steps,
+            .cnss-official-box {
+                padding: 17px;
+            }
+
+            .cnss-section-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="دليل المغرب" class="logo-img">
+            <span>دليل المغرب</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html">الرئيسية</a>
+            <a href="taxes.html">الضرائب</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="cnss-hero">
+        <div class="cnss-hero-inner">
+            <div class="cnss-breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <span> / </span>
+                <span>الضمان الاجتماعي</span>
+            </div>
+
+            <h1>دليل CNSS بالمغرب</h1>
+
+            <p>
+                كل ما تحتاج معرفته حول الصندوق الوطني للضمان الاجتماعي:
+                التسجيل، التغطية الصحية، التعويضات، تتبع الحقوق والخدمات الإلكترونية،
+                بطريقة مبسطة تساعدك على فهم الإجراءات.
+            </p>
+        </div>
+    </section>
+
+    <div class="cnss-container">
+
+        <section class="cnss-intro">
+            <h2>ما هو الصندوق الوطني للضمان الاجتماعي CNSS؟</h2>
+
+            <p>
+                الصندوق الوطني للضمان الاجتماعي، المعروف اختصاراً بـ CNSS،
+                مؤسسة تتولى تدبير أنظمة من الحماية الاجتماعية لفئات من الأجراء
+                والعاملين المستقلين والمستفيدين وفق الشروط القانونية المعمول بها.
+                وتتيح خدماته معرفة بعض المعلومات المتعلقة بالتسجيل والتغطية
+                الاجتماعية والتصريحات والتعويضات.
+            </p>
+
+            <div class="cnss-info-note">
+                <strong>مهم:</strong>
+                تختلف الشروط والوثائق بحسب نوع النظام والوضعية الشخصية والمهنية.
+                لذلك، يجب التحقق من التفاصيل من بوابة CNSS الرسمية قبل تقديم أي طلب.
+            </div>
+        </section>
+
+        <section class="cnss-section">
+            <h2 class="cnss-section-title">اكتشف خدمات الضمان الاجتماعي</h2>
+
+            <div class="cnss-grid">
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">📝</div>
+                    <h3>التسجيل في CNSS</h3>
+                    <p>
+                        تعرف على كيفية التحقق من التسجيل، ودور المشغل في التصريح
+                        بالأجراء، وأين تتوجه إذا لم تجد معلوماتك.
+                    </p>
+                    <a href="https://www.cnss.ma/" target="_blank" rel="noopener noreferrer">
+                        زيارة الموقع الرسمي ←
+                    </a>
+                </article>
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">🩺</div>
+                    <h3>التغطية الصحية AMO</h3>
+                    <p>
+                        معلومات عامة حول التأمين الإجباري الأساسي عن المرض،
+                        وكيفية التحقق من وضعيتك والحقوق المرتبطة بنظامك.
+                    </p>
+                    <a href="https://www.cnss.ma/" target="_blank" rel="noopener noreferrer">
+                        الاطلاع على الخدمات ←
+                    </a>
+                </article>
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">💳</div>
+                    <h3>التعويضات العائلية</h3>
+                    <p>
+                        تعرف على المعلومات الأساسية المتعلقة بالتعويضات العائلية
+                        وشروط الاستفادة والوثائق التي قد يطلبها ملفك.
+                    </p>
+                    <a href="https://www.cnss.ma/" target="_blank" rel="noopener noreferrer">
+                        التحقق من الشروط ←
+                    </a>
+                </article>
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">💻</div>
+                    <h3>الخدمات الإلكترونية</h3>
+                    <p>
+                        استكشف الخدمات الرقمية التي تساعد الأجراء والمشغلين
+                        والعاملين المستقلين على تدبير إجراءاتهم عن بعد.
+                    </p>
+                    <a href="https://www.cnss.ma/fr/content/services-en-ligne-0"
+                       target="_blank" rel="noopener noreferrer">
+                        الولوج إلى الخدمات ←
+                    </a>
+                </article>
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">📄</div>
+                    <h3>الشهادات والمعلومات</h3>
+                    <p>
+                        تعرف على كيفية البحث عن الشهادات والمعلومات المتاحة
+                        في فضاء المؤمن له، بحسب نوع الخدمة ووضعيتك.
+                    </p>
+                    <a href="https://www.macnss.ma/fr/"
+                       target="_blank" rel="noopener noreferrer">
+                        فضاء المؤمن له ←
+                    </a>
+                </article>
+
+                <article class="cnss-card">
+                    <div class="cnss-card-icon" aria-hidden="true">📅</div>
+                    <h3>حجز موعد</h3>
+                    <p>
+                        إذا احتجت إلى زيارة إحدى الوكالات، تحقق من إمكانية حجز
+                        موعد عبر المنصة الرسمية المخصصة لذلك.
+                    </p>
+                    <a href="https://cnss.rdv.gov.ma/"
+                       target="_blank" rel="noopener noreferrer">
+                        منصة المواعيد ←
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="cnss-section">
+            <h2 class="cnss-section-title">كيف تبدأ في استعمال خدمات CNSS؟</h2>
+
+            <div class="cnss-steps">
+                <ol>
+                    <li>
+                        <strong>حدد الخدمة المطلوبة:</strong>
+                        هل تريد التحقق من التسجيل، أو معرفة وضعية التغطية الصحية،
+                        أو تتبع ملف تعويض؟
+                    </li>
+                    <li>
+                        <strong>جهز معلوماتك:</strong>
+                        قد تحتاج إلى رقم التسجيل أو معلومات الهوية أو وثائق
+                        مرتبطة بالطلب، حسب نوع الخدمة.
+                    </li>
+                    <li>
+                        <strong>استعمل البوابة الرسمية:</strong>
+                        اختر الخدمة المناسبة واتبع التعليمات المعروضة على الموقع.
+                    </li>
+                    <li>
+                        <strong>راجع المعلومات قبل الإرسال:</strong>
+                        تأكد من صحة البيانات والوثائق المطلوبة، واحتفظ برقم
+                        التتبع أو وصل الإيداع إذا توفر.
+                    </li>
+                    <li>
+                        <strong>إذا واجهت مشكلة:</strong>
+                        تواصل مع CNSS عبر قنواتها الرسمية أو توجّه إلى وكالة
+                        الضمان الاجتماعي عند الحاجة.
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="cnss-section">
+            <h2 class="cnss-section-title">من يمكنه استعمال خدمات CNSS؟</h2>
+
+            <div class="cnss-table-wrap">
+                <table class="cnss-table">
+                    <thead>
+                        <tr>
+                            <th>الفئة</th>
+                            <th>أمثلة على الخدمات المطلوبة</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>الأجراء</td>
+                            <td>التحقق من التسجيل، ومعلومات التغطية الاجتماعية والحقوق.</td>
+                        </tr>
+                        <tr>
+                            <td>المشغلون والمقاولات</td>
+                            <td>التصريحات والتدبير الإداري المرتبط بالأجراء عبر الخدمات المخصصة.</td>
+                        </tr>
+                        <tr>
+                            <td>العاملون المستقلون</td>
+                            <td>الاطلاع على الإجراءات المتعلقة بالنظام الذي ينتمون إليه.</td>
+                        </tr>
+                        <tr>
+                            <td>ذوو الحقوق</td>
+                            <td>معرفة الشروط والإجراءات المرتبطة بالاستفادة حسب الحالة.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="cnss-disclaimer">
+                هذه الفئات أمثلة عامة وليست تأكيداً على الأهلية؛ فالاستفادة من كل
+                خدمة مرتبطة بالشروط القانونية والإدارية الخاصة بها.
+            </p>
+        </section>
+
+        <section class="cnss-section">
+            <h2 class="cnss-section-title">أسئلة شائعة حول CNSS بالمغرب</h2>
+
+            <div class="cnss-faq">
+
+                <details>
+                    <summary>كيف أعرف واش أنا مسجل في CNSS؟</summary>
+                    <p>
+                        ابدأ بالتحقق عبر الخدمات الرسمية لـ CNSS. وإذا كنت أجيراً
+                        ولم تجد معلومات التسجيل، يمكنك طلب التوضيح من المشغل
+                        أو التواصل مع الصندوق لمعرفة الإجراء المناسب.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>واش نقدر نستعمل خدمات CNSS عبر الإنترنت؟</summary>
+                    <p>
+                        نعم، يوفر الصندوق بوابة للخدمات الإلكترونية، لكن الخدمات
+                        المتاحة وطريقة الولوج تختلف بحسب نوع الحساب والخدمة.
+                        استعمل الروابط الرسمية الموجودة في هذه الصفحة.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>شنو ندير إلا ما لقيتش المعلومات ديالي؟</summary>
+                    <p>
+                        راجع البيانات التي أدخلتها وتأكد من استعمال البوابة
+                        المناسبة. إذا استمرت المشكلة، تواصل مع CNSS أو زر وكالة
+                        رسمية لتوضيح وضعيتك.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>واش التسجيل في CNSS كيعني الاستفادة تلقائياً من جميع التعويضات؟</summary>
+                    <p>
+                        لا ينبغي افتراض ذلك؛ فلكل خدمة شروطها الخاصة، وقد ترتبط
+                        الاستفادة بنوع النظام والوضعية والوثائق المطلوبة.
+                        تحقق من الشروط الرسمية الخاصة بالخدمة التي تحتاجها.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>فين نقدر نتحقق من شروط التعويضات؟</summary>
+                    <p>
+                        من خلال الموقع الرسمي للصندوق أو الخدمات الرقمية التابعة له.
+                        اعتمد على المعلومات الرسمية المحدثة، لأن الشروط والإجراءات
+                        قد تختلف حسب نوع التعويض والحالة.
+                    </p>
+                </details>
+
+            </div>
+        </section>
+
+        <section class="cnss-section">
+            <div class="cnss-official-box">
+                <h2>روابط رسمية مفيدة</h2>
+
+                <p>
+                    للحصول على معلومات دقيقة حول الإجراءات والوثائق والشروط،
+                    راجع المنصات الرسمية التالية:
+                </p>
+
+                <div class="cnss-official-links">
+                    <a href="https://www.cnss.ma/"
+                       target="_blank" rel="noopener noreferrer">
+                        موقع CNSS
+                    </a>
+
+                    <a href="https://www.macnss.ma/fr/"
+                       target="_blank" rel="noopener noreferrer">
+                        فضاء المؤمن له
+                    </a>
+
+                    <a href="https://www.damancom.ma/"
+                       target="_blank" rel="noopener noreferrer">
+                        بوابة Damancom
+                    </a>
+
+                    <a href="https://cnss.rdv.gov.ma/"
+                       target="_blank" rel="noopener noreferrer">
+                        حجز موعد
+                    </a>
+                </div>
+
+                <p class="cnss-disclaimer">
+                    دليل المغرب موقع معلوماتي مستقل، وليس الموقع الرسمي للصندوق
+                    الوطني للضمان الاجتماعي. المعلومات الواردة هنا للتوجيه العام،
+                    ويجب التحقق من الشروط النهائية لدى CNSS.
+                </p>
+            </div>
+        </section>
+
+        <a href="index.html" class="cnss-back">← الرجوع إلى الصفحة الرئيسية</a>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 دليل المغرب — جميع الحقوق محفوظة.</p>
+        <p>
+            <a href="index.html">الرئيسية</a> |
+            <a href="taxes.html">دليل الضرائب</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
+```
