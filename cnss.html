@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>دليل CNSS بالمغرب: التسجيل والتعويضات والتغطية الصحية | Hassani Tools</title>
-    <meta name="description" content="دليل عملي لخدمات CNSS بالمغرب: التحقق من التسجيل، استرجاع رقم التسجيل، حساب MaCNSS، التغطية الصحية AMO، التعويضات وحل مشاكل التصريحات.">
+    <meta name="description" content="دليل عملي لخدمات CNSS بالمغرب: التسجيل، رقم الانخراط، حساب MaCNSS، التغطية الصحية AMO، التعويضات وحل مشاكل التصريحات.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://hassani-tv.site/cnss.html">
     <link rel="stylesheet" href="css/style.css">
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379"
-        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6541657840288379" crossorigin="anonymous"></script>
 
     <style>
         /* ===== CNSS PAGE ===== */
@@ -39,16 +38,82 @@
             box-sizing: border-box;
         }
 
-        .cnss-page a {
-            color: inherit;
-        }
+        .cnss-page a { color: inherit; }
 
         .cnss-wrap {
             width: min(1120px, calc(100% - 36px));
             margin-inline: auto;
         }
 
-        /* Compact page intro */
+        /* Header */
+        .cnss-site-header {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cnss-navbar {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .cnss-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            text-decoration: none;
+            color: var(--green-dark) !important;
+            font-size: 19px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .cnss-brand img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .cnss-nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .cnss-nav-links a {
+            color: #526057 !important;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .cnss-nav-links a:hover,
+        .cnss-nav-links a.active {
+            color: var(--green) !important;
+        }
+
+        .cnss-header-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 14px;
+            border-radius: 7px;
+            background: var(--green);
+            color: #fff !important;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .cnss-header-button:hover {
+            background: var(--green-dark);
+        }
+
+        /* Intro */
         .cnss-top {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
@@ -74,9 +139,7 @@
             text-decoration: none;
         }
 
-        .cnss-crumbs a:hover {
-            color: var(--green);
-        }
+        .cnss-crumbs a:hover { color: var(--green); }
 
         .cnss-intro-layout {
             display: flex;
@@ -162,36 +225,97 @@
         /* Search */
         .cnss-searchbox {
             position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             margin-bottom: 13px;
-        }
-
-        .cnss-searchbox input {
-            width: 100%;
-            height: 51px;
-            padding: 0 45px 0 15px;
+            padding: 5px;
             border: 1px solid #dfe6e1;
-            border-radius: 9px;
-            background: var(--surface);
-            color: var(--text);
-            font: inherit;
-            font-size: 14px;
-            outline: none;
+            border-radius: 10px;
+            background: #fff;
             transition: border-color .2s, box-shadow .2s;
         }
 
-        .cnss-searchbox input:focus {
+        .cnss-searchbox:focus-within {
             border-color: var(--green);
             box-shadow: 0 0 0 3px rgba(23, 107, 75, .08);
         }
 
-        .cnss-search-symbol {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+        .cnss-searchbox input {
+            flex: 1;
+            width: 100%;
+            min-width: 0;
+            height: 42px;
+            padding: 0 12px;
+            border: 0;
+            outline: none;
+            background: transparent;
+            color: var(--text);
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .cnss-searchbox input::placeholder {
+            color: #89948d;
+        }
+
+        .cnss-search-btn,
+        .cnss-clear-btn {
+            flex: 0 0 auto;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .cnss-search-btn {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .cnss-search-btn:hover {
+            background: var(--green-dark);
+        }
+
+        .cnss-search-btn svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cnss-clear-btn {
+            background: #f1f4f2;
+            color: #68766d;
+            display: none;
+        }
+
+        .cnss-clear-btn:hover {
+            background: #e5eee8;
+            color: var(--green);
+        }
+
+        .cnss-clear-btn svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .cnss-search-hint {
+            margin: -4px 2px 14px;
             color: var(--muted);
-            font-size: 19px;
-            pointer-events: none;
+            font-size: 11px;
         }
 
         /* Filters */
@@ -251,6 +375,8 @@
             box-shadow: 0 5px 16px rgba(20, 60, 38, .045);
         }
 
+        .cnss-card[hidden] { display: none !important; }
+
         .cnss-card-number {
             flex: 0 0 39px;
             width: 39px;
@@ -290,9 +416,7 @@
             text-decoration: none;
         }
 
-        .cnss-card h3 a:hover {
-            color: var(--green);
-        }
+        .cnss-card h3 a:hover { color: var(--green); }
 
         .cnss-card p {
             margin: 0 0 11px;
@@ -311,9 +435,7 @@
             text-decoration: none;
         }
 
-        .cnss-card-link:hover {
-            text-decoration: underline;
-        }
+        .cnss-card-link:hover { text-decoration: underline; }
 
         .cnss-no-results {
             display: none;
@@ -323,6 +445,12 @@
             background: var(--surface);
             color: var(--muted);
             text-align: center;
+        }
+
+        .cnss-no-results strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text);
         }
 
         /* Official resources */
@@ -362,9 +490,7 @@
             text-decoration: none;
         }
 
-        .cnss-official-link:hover {
-            background: var(--green-dark);
-        }
+        .cnss-official-link:hover { background: var(--green-dark); }
 
         .cnss-note {
             margin-top: 16px;
@@ -374,19 +500,30 @@
             font-size: 12px;
         }
 
-        .cnss-note a {
+        .cnss-note a { color: var(--green); }
+
+        /* Footer */
+        .cnss-footer {
+            padding: 22px 0;
+            background: #fff;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .cnss-footer p { margin: 5px 0; }
+
+        .cnss-footer a {
             color: var(--green);
+            text-decoration: none;
         }
 
         /* Responsive */
         @media (max-width: 760px) {
-            .cnss-grid {
-                grid-template-columns: 1fr;
-            }
+            .cnss-grid { grid-template-columns: 1fr; }
 
-            .cnss-intro-layout {
-                gap: 15px;
-            }
+            .cnss-intro-layout { gap: 15px; }
 
             .cnss-mark {
                 flex-basis: 63px;
@@ -394,45 +531,30 @@
                 height: 63px;
                 font-size: 21px;
             }
+
+            .cnss-nav-links { gap: 12px; }
+            .cnss-header-button { display: none; }
         }
 
         @media (max-width: 520px) {
-            .cnss-wrap {
-                width: calc(100% - 24px);
-            }
+            .cnss-wrap { width: calc(100% - 24px); }
 
             .cnss-top-inner {
                 padding-top: 12px;
                 padding-bottom: 19px;
             }
 
-            .cnss-crumbs {
-                margin-bottom: 14px;
-            }
+            .cnss-crumbs { margin-bottom: 14px; }
 
-            .cnss-intro-layout {
-                align-items: flex-start;
-            }
+            .cnss-intro-layout { align-items: flex-start; }
 
-            .cnss-intro-copy h1 {
-                font-size: 26px;
-            }
+            .cnss-intro-copy h1 { font-size: 26px; }
+            .cnss-intro-copy p { font-size: 14px; }
+            .cnss-mark { display: none; }
 
-            .cnss-intro-copy p {
-                font-size: 14px;
-            }
+            .cnss-main { padding-top: 21px; }
 
-            .cnss-mark {
-                display: none;
-            }
-
-            .cnss-main {
-                padding-top: 21px;
-            }
-
-            .cnss-section-head h2 {
-                font-size: 20px;
-            }
+            .cnss-section-head h2 { font-size: 20px; }
 
             .cnss-card {
                 padding: 15px;
@@ -446,25 +568,46 @@
                 font-size: 12px;
             }
 
-            .cnss-card h3 {
-                font-size: 15px;
-            }
+            .cnss-card h3 { font-size: 15px; }
 
             .cnss-official {
                 align-items: flex-start;
                 flex-direction: column;
                 padding: 17px;
             }
+
+            .cnss-navbar {
+                min-height: 62px;
+                flex-wrap: wrap;
+                padding-block: 10px;
+            }
+
+            .cnss-nav-links {
+                width: 100%;
+                justify-content: center;
+                padding-bottom: 5px;
+            }
         }
     </style>
 </head>
 
 <body>
-    
-        <nav class="main-nav">
+
+<header class="cnss-site-header">
+    <div class="cnss-wrap cnss-navbar">
+        <a href="index.html" class="cnss-brand">
+            <img src="images/logo.png" alt="شعار Hassani Tools">
+            <span>Hassani Tools</span>
+        </a>
+
+        <nav class="cnss-nav-links" aria-label="القائمة الرئيسية">
             <a href="index.html">الرئيسية</a>
+            <a href="cnss.html" class="active">دليل CNSS</a>
             <a href="taxes.html">الضرائب</a>
+            <a href="about.html">من نحن</a>
         </nav>
+
+        <a href="documents.html" class="cnss-header-button">استكشف الوثائق ←</a>
     </div>
 </header>
 
@@ -500,17 +643,35 @@
 
             <div class="cnss-section-head">
                 <h2>المقالات والشروحات</h2>
-                <span class="cnss-results" id="cnss-results">10 مواضيع</span>
+                <span class="cnss-results" id="cnss-results" aria-live="polite">10 مواضيع</span>
             </div>
 
-            <div class="cnss-searchbox">
-                <span class="cnss-search-symbol" aria-hidden="true">⌕</span>
+            <!-- Smart search -->
+            <form class="cnss-searchbox" id="cnss-search-form" role="search">
                 <input
                     id="cnss-search"
                     type="search"
-                    placeholder="شنو المشكل اللي كتقلب على الحل ديالو؟"
-                    aria-label="البحث في مقالات CNSS">
-            </div>
+                    autocomplete="off"
+                    placeholder="كتب السؤال ديالك: مثلاً نسيت رقم CNSS..."
+                    aria-label="اكتب سؤالك للبحث في مقالات CNSS">
+
+                <button class="cnss-clear-btn" id="cnss-clear" type="button" aria-label="مسح البحث" title="مسح البحث">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18 6 6 18M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <button class="cnss-search-btn" id="cnss-search-btn" type="submit" aria-label="بحث" title="بحث">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+                        <path d="m16 16 5 5"></path>
+                    </svg>
+                </button>
+            </form>
+
+            <p class="cnss-search-hint">
+                تقدر تكتب السؤال بالدارجة أو العربية أو الفرنسية أو بحروف لاتينية.
+            </p>
 
             <div class="cnss-filter-row" aria-label="تصنيف المقالات">
                 <button type="button" class="cnss-filter-btn is-active" data-filter="all">جميع المواضيع</button>
@@ -625,7 +786,8 @@
             </div>
 
             <div class="cnss-no-results" id="cnss-no-results">
-                ما لقيناش موضوع مطابق للبحث ديالك. جرّب كلمات أخرى.
+                <strong>ما لقيناش مقال مطابق للسؤال ديالك.</strong>
+                جرّب كلمات أخرى أو استعمل تصنيف مختلف.
             </div>
 
             <aside class="cnss-official">
@@ -654,19 +816,28 @@
 
 </main>
 
-<footer class="site-footer">
-    <div class="container">
+<footer class="cnss-footer">
+    <div class="cnss-wrap">
         <p>© 2026 Hassani Tools — جميع الحقوق محفوظة.</p>
         <p>
             <a href="index.html">الرئيسية</a> |
-            <a href="taxes.html">الضرائب</a>
+            <a href="cnss.html">دليل CNSS</a> |
+            <a href="taxes.html">الضرائب</a> |
+            <a href="about.html">من نحن</a>
         </p>
     </div>
 </footer>
 
 <script>
 (function () {
+    "use strict";
+
     const search = document.getElementById("cnss-search");
+    const searchForm = document.getElementById("cnss-search-form");
+    const searchButton = document.getElementById("cnss-search-btn");
+    const clearButton = document.getElementById("cnss-clear");
+
+    const grid = document.getElementById("cnss-grid");
     const cards = Array.from(document.querySelectorAll(".cnss-card"));
     const buttons = Array.from(document.querySelectorAll(".cnss-filter-btn"));
     const results = document.getElementById("cnss-results");
@@ -674,32 +845,373 @@
 
     let activeFilter = "all";
 
+    /*
+      قاموس مرادفات وعبارات مرتبطة بكل مقال.
+      يمكن إضافة كلمات جديدة لكل مقال من هنا.
+    */
+    const articleKeywords = {
+        "cnss-01.html": [
+            "التسجيل في cnss",
+            "واش انا مسجل",
+            "واش مسجل في الضمان الاجتماعي",
+            "كيف نعرف واش الشركة سجلتني",
+            "كيف نتحقق من التسجيل",
+            "معرفة وضعيتي في cnss",
+            "ما لقيتش اسمي في cnss",
+            "هل انا منخرط",
+            "wach msajel",
+            "wach msjel",
+            "wach ana msajel",
+            "wach charika sgelatni",
+            "wach charika msajlani",
+            "inscription cnss",
+            "verification inscription",
+            "registered cnss"
+        ],
+
+        "cnss-02.html": [
+            "نسيت رقم التسجيل",
+            "استرجاع رقم التسجيل",
+            "ضعت ليا نميرو cnss",
+            "معرفة رقم cnss",
+            "فين نلقى رقم التسجيل",
+            "رقم الانخراط",
+            "نسيت النمرة",
+            "نسيان رقم الضمان",
+            "ما عارفش رقم التسجيل",
+            "بغيت نعرف رقم cnss ديالي",
+            "nsit ra9m cnss",
+            "nsit numero cnss",
+            "numero cnss",
+            "numero affiliation",
+            "رقم التسجيل"
+        ],
+
+        "cnss-03.html": [
+            "نسيت كلمة المرور",
+            "نسيت الباسوورد",
+            "مشكل تسجيل الدخول",
+            "استرجاع الحساب",
+            "ما قادرش ندخل للحساب",
+            "حساب macnss",
+            "نسيت معلومات الدخول",
+            "تغيير كلمة السر",
+            "ما خدامش ليا الحساب",
+            "mot de passe",
+            "password",
+            "compte macnss",
+            "nsit password",
+            "nsit code",
+            "login macnss",
+            "connexion"
+        ],
+
+        "cnss-04.html": [
+            "التغطية الصحية",
+            "التأمين الصحي",
+            "عندي الحق في amo",
+            "واش عندي التغطية",
+            "الاستفادة من التغطية الصحية",
+            "التطبيب",
+            "التغطية الطبية",
+            "الضمان الصحي",
+            "واش عندي التأمين",
+            "هل انا مستفيد من amo",
+            "amo",
+            "assurance maladie",
+            "couverture medicale",
+            "assurance sante",
+            "التأمين"
+        ],
+
+        "cnss-05.html": [
+            "تتبع التعويضات",
+            "تتبع ملف التعويض",
+            "فين وصل الملف ديالي",
+            "معرفة حالة الطلب",
+            "تتبع طلب cnss",
+            "مراحل معالجة الملف",
+            "بغيت نعرف فين وصل الملف",
+            "كيفاش نراقب التعويض",
+            "suivi dossier",
+            "suivi remboursement",
+            "suivi demande",
+            "تتبع الملف"
+        ],
+
+        "cnss-06.html": [
+            "التعويض تأخر",
+            "ما توصلتش بالتعويض",
+            "علاش ما وصلنيش الفلوس",
+            "تأخر الأداء",
+            "مشكل التعويضات",
+            "التعويض ما دخلش",
+            "الفلوس ديال cnss",
+            "علاش التعويض ما وصلش",
+            "تأخر ملف التعويض",
+            "retard remboursement",
+            "remboursement non reçu",
+            "argent pas reçu",
+            "تأخر التعويض"
+        ],
+
+        "cnss-07.html": [
+            "التعويضات العائلية",
+            "تعويضات الأطفال",
+            "منحة الأطفال",
+            "تعويض الأبناء",
+            "الاستفادة من التعويضات العائلية",
+            "شروط التعويضات",
+            "بغيت تعويض على الوليدات",
+            "فلوس الأطفال",
+            "allocations familiales",
+            "aide enfants",
+            "تعويضات الأسرة",
+            "الأطفال"
+        ],
+
+        "cnss-08.html": [
+            "شهادة التسجيل",
+            "تحميل شهادة cnss",
+            "استخراج شهادة التسجيل",
+            "الوثائق من macnss",
+            "بغيت شهادة cnss",
+            "وثيقة الضمان الاجتماعي",
+            "تحميل الوثائق",
+            "attestation cnss",
+            "telecharger attestation",
+            "document cnss",
+            "شهادة الانخراط"
+        ],
+
+        "cnss-09.html": [
+            "المشغل كيصرح بيا",
+            "الشركة كتصرح بيا",
+            "واش الشركة مسجلاني",
+            "التصريح بالأجر",
+            "المشغل ما كيصرحش",
+            "عدد أيام التصريح",
+            "الأجر المصرح به",
+            "حقوق الأجير",
+            "كيف نعرف واش مول الشركة كيصرح بيا",
+            "wach patron kayser7 biya",
+            "wach charika katser7 biya",
+            "patron declare",
+            "charika katser7 biya",
+            "declaration salaire",
+            "declaration cnss",
+            "التصريحات",
+            "المشغل"
+        ],
+
+        "cnss-10.html": [
+            "تقديم شكاية",
+            "بغيت ندير شكاية",
+            "الشركة ما كتصرحش بيا",
+            "مشكل مع المشغل",
+            "شكاية cnss",
+            "التبليغ عن عدم التصريح",
+            "كيفاش نشكي",
+            "تقديم تظلم",
+            "بغيت نشكي بالمشغل",
+            "reclamation cnss",
+            "plainte",
+            "reclamation",
+            "شكاية",
+            "التظلم"
+        ]
+    };
+
+    // تحويل الكلمات إلى شكل موحد لتسهيل المقارنة
+    function normalize(value) {
+        return String(value || "")
+            .toLocaleLowerCase("ar")
+            .normalize("NFD")
+            .replace(/[\u064B-\u065F\u0670]/g, "")
+            .replace(/ـ/g, "")
+            .replace(/[أإآٱ]/g, "ا")
+            .replace(/ى/g, "ي")
+            .replace(/ؤ/g, "و")
+            .replace(/ئ/g, "ي")
+            .replace(/[^\p{L}\p{N}\s]/gu, " ")
+            .replace(/\s+/g, " ")
+            .trim();
+    }
+
+    // كلمات شائعة لا تضيف معنى كبيرا للبحث
+    const ignoredWords = new Set([
+        "كيفاش", "كيف", "شنو", "اش", "واش", "بغيت",
+        "اريد", "عندي", "ديالي", "لي", "من", "في",
+        "ف", "على", "عن", "هل", "انا", "هو", "هي",
+        "واحد", "واحدة", "ممكن", "عافاك", "بغيتك",
+        "the", "how", "what", "do", "i", "my", "is",
+        "wach", "bghit", "kifach", "chno", "ana",
+        "dyali", "diali", "li", "fi", "f"
+    ]);
+
+    function getWords(text) {
+        return normalize(text)
+            .split(" ")
+            .filter(word => word.length > 1 && !ignoredWords.has(word));
+    }
+
+    function getArticleUrl(card) {
+        const link = card.querySelector("h3 a");
+        if (!link) return "";
+        return link.getAttribute("href").split("/").pop();
+    }
+
+    // حساب درجة ارتباط السؤال بالمقال
+    function calculateScore(card, query) {
+        const url = getArticleUrl(card);
+        const keywords = articleKeywords[url] || [];
+
+        const title = normalize(
+            card.querySelector("h3")?.textContent || ""
+        );
+
+        const description = normalize(
+            card.querySelector("p")?.textContent || ""
+        );
+
+        const category = normalize(
+            card.querySelector(".cnss-card-category")?.textContent || ""
+        );
+
+        const normalizedQuery = normalize(query);
+        const queryWords = getWords(query);
+
+        let score = 0;
+
+        if (!normalizedQuery) return 0;
+
+        // تطابق السؤال كاملا مع العنوان أو الوصف
+        if (title.includes(normalizedQuery)) score += 15;
+        if (description.includes(normalizedQuery)) score += 8;
+
+        // تطابق السؤال مع الكلمات البديلة
+        keywords.forEach(keyword => {
+            const normalizedKeyword = normalize(keyword);
+
+            if (
+                normalizedKeyword === normalizedQuery ||
+                normalizedKeyword.includes(normalizedQuery) ||
+                normalizedQuery.includes(normalizedKeyword)
+            ) {
+                score += 12;
+            }
+
+            const keywordWords = getWords(keyword);
+
+            const matchedWords = queryWords.filter(word =>
+                keywordWords.some(keywordWord =>
+                    keywordWord === word ||
+                    (
+                        word.length >= 4 &&
+                        keywordWord.length >= 4 &&
+                        (
+                            keywordWord.includes(word) ||
+                            word.includes(keywordWord)
+                        )
+                    )
+                )
+            );
+
+            score += matchedWords.length * 3;
+        });
+
+        // مطابقة الكلمات المهمة مع عنوان المقال ووصفه
+        queryWords.forEach(word => {
+            if (title.includes(word)) score += 5;
+            if (description.includes(word)) score += 2;
+            if (category.includes(word)) score += 1;
+        });
+
+        return score;
+    }
+
     function updateArticles() {
-        const query = search.value.trim().toLocaleLowerCase();
+        const query = search.value.trim();
+        const hasQuery = query.length > 0;
+
         let visible = 0;
 
-        cards.forEach(function (card) {
-            const matchesText = card.textContent.toLocaleLowerCase().includes(query);
-            const matchesCategory =
-                activeFilter === "all" || card.dataset.category === activeFilter;
+        const rankedCards = cards.map(card => ({
+            card: card,
+            score: hasQuery ? calculateScore(card, query) : 0
+        }));
 
-            const show = matchesText && matchesCategory;
+        // عرض المقالات الأكثر ارتباطا بالسؤال أولا
+        if (hasQuery) {
+            rankedCards.sort((a, b) => b.score - a.score);
+        }
+
+        rankedCards.forEach(item => {
+            const card = item.card;
+            const score = item.score;
+
+            const matchesCategory =
+                activeFilter === "all" ||
+                card.dataset.category === activeFilter;
+
+            // البحث العادي بدون سؤال يعرض جميع المقالات
+            // أما السؤال فيعرض المقالات التي لها صلة به
+            const matchesSearch = !hasQuery || score >= 3;
+
+            const show = matchesCategory && matchesSearch;
+
             card.hidden = !show;
 
-            if (show) visible++;
+            if (show) {
+                visible++;
+
+                // نقل البطاقات إلى ترتيب النتائج
+                grid.appendChild(card);
+            }
         });
 
         results.textContent = visible + " من " + cards.length + " مواضيع";
         noResults.style.display = visible ? "none" : "block";
+
+        clearButton.style.display = hasQuery ? "inline-flex" : "none";
     }
 
+    // تشغيل البحث عند الكتابة
     search.addEventListener("input", updateArticles);
 
-    buttons.forEach(function (button) {
+    // تشغيل البحث عند الضغط على زر العدسة أو Enter
+    searchForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        updateArticles();
+        search.focus();
+    });
+
+    searchButton.addEventListener("click", function () {
+        updateArticles();
+    });
+
+    // مسح السؤال وإظهار جميع المقالات
+    clearButton.addEventListener("click", function () {
+        search.value = "";
+        activeFilter = "all";
+
+        buttons.forEach(button => {
+            button.classList.toggle(
+                "is-active",
+                button.dataset.filter === "all"
+            );
+        });
+
+        updateArticles();
+        search.focus();
+    });
+
+    // التصنيفات
+    buttons.forEach(button => {
         button.addEventListener("click", function () {
             activeFilter = button.dataset.filter;
 
-            buttons.forEach(function (item) {
+            buttons.forEach(item => {
                 item.classList.toggle("is-active", item === button);
             });
 
@@ -707,7 +1219,9 @@
         });
     });
 
+    // تشغيل أولي
     updateArticles();
+
 })();
 </script>
 
